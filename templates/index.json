@@ -36,12 +36,12 @@
             "overlay_color": "#000000",
             "overlay_opacity": 10,
             "overlay_blur": 2,
-            "subtitle": "Developed by KondaSoft",
-            "title": "Simple to Use, Easy to Customize",
-            "description": "<p>Free Shopify Theme inspired by simplicity and elegance.</p>",
+            "subtitle": "General Equipment and Supply",
+            "title": "Ridgid",
+            "description": "<h4>Explore our collection of reliable and innovative Ridgid products.</h4>",
             "btn_primary_text": "Primary button",
             "btn_primary_url": "",
-            "btn_secondary_text": "Secondary button",
+            "btn_secondary_text": "",
             "btn_secondary_url": ""
           }
         }
@@ -50,8 +50,9 @@
         "slide_Q4UPQq",
         "slide_TddqxQ"
       ],
+      "custom_css": [],
       "settings": {
-        "bg_color": "bg-primary",
+        "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
         "text_color": "text-white",
@@ -61,12 +62,12 @@
         "border_opacity": 100,
         "carousel_controls": true,
         "carousel_indicators": true,
-        "carousel_transition": "slide carousel-fade",
-        "carousel_transition_duration": 350,
-        "carousel_autoplay": 2,
+        "carousel_transition": "slide",
+        "carousel_transition_duration": 300,
+        "carousel_autoplay": 10,
         "carousel_effect": "carousel-zoom-out",
         "media_mobile_height": 400,
-        "media_desktop_height": 490,
+        "media_desktop_height": 400,
         "media_adapt": false,
         "media_full": true,
         "caption_max_width": "900",
@@ -83,9 +84,7 @@
     },
     "featured_products_nXJKQn": {
       "type": "featured-products",
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -96,9 +95,7 @@
         "border_color": "border-primary",
         "border_opacity": 100,
         "container_max_width": "",
-        "products": [
-
-        ],
+        "products": [],
         "collection": "featured-products",
         "limit": 10,
         "recommended_mode": true,

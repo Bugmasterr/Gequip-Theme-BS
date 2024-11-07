@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "color_primary": "#0d6efd",
+    "color_primary": "#334fb4",
     "color_secondary": "#455a64",
     "color_body_bg": "#ffffff",
     "color_body_color": "#212529",
@@ -101,21 +101,17 @@
     "product_card_wishlist_color": "text-primary",
     "product_card_img_carousel_dark": false,
     "cart_img_border": "img-thumbnail",
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "blocks": {
       "11532412952436166569": {
         "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "6143736321357441667": {
         "type": "shopify://apps/tidio-live-chat-chatbots/blocks/app-embed/1002274d-fb18-4939-98f6-5f05a8deeadc",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       }
     }
   }

@@ -17,7 +17,7 @@
         "slide_j46kwk": {
           "type": "slide",
           "settings": {
-            "announcement": "General Equipment & Supply will be closed on Thanksgiving Day and Black Friday, November 28-29, 2024."
+            "announcement": "General Equipment & Supply will be closed on November 28-29, 2024"
           }
         }
       },
@@ -37,7 +37,7 @@
         "font_size": "fs-xs",
         "font_size_desktop": "fs-desktop-sm",
         "text_transform": "",
-        "letter_spacing": 1,
+        "letter_spacing": 0,
         "carousel_autoplay": 5,
         "carousel_vertical": true,
         "pt": 4,
@@ -51,20 +51,22 @@
           "type": "mobile",
           "settings": {
             "container_max_width": "",
-            "logo_height": 30,
-            "main_menu": "",
+            "logo": "shopify://shop_images/GES-Logo_d8ac6272-7875-4843-9b36-8efaed5e20ba.webp",
+            "logo_height": 60,
+            "main_menu": "main-menu",
             "collections_menu": "",
-            "social_icons": true,
-            "pt": 2,
-            "pb": 2
+            "social_icons": false,
+            "pt": 4,
+            "pb": 4
           }
         },
         "069e870e-aed4-4929-bf73-c0daca8be18e": {
           "type": "desktop",
           "settings": {
             "container_max_width": "",
-            "logo_height": 32,
-            "main_menu": "",
+            "logo": "shopify://shop_images/GES-Logo_d8ac6272-7875-4843-9b36-8efaed5e20ba.webp",
+            "logo_height": 70,
+            "main_menu": "main-menu",
             "pt": 5,
             "pb": 5
           }
