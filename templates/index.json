@@ -15,10 +15,10 @@
         "slide_Q4UPQq": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify://shop_images/854DX_vert_app_10.jpg",
-            "img_desktop": "shopify://shop_images/881Bender_app1_9-18-15_300dpi.jpg",
+            "img_mobile": "shopify://shop_images/GreenleeBanner2.png",
+            "img_desktop": "shopify://shop_images/GreenleeBanner.png",
             "overlay_color": "#000000",
-            "overlay_opacity": 50,
+            "overlay_opacity": 0,
             "overlay_blur": 0,
             "subtitle": "General Equipment & Supply",
             "title": "Greenlee",
@@ -33,7 +33,7 @@
           "type": "slide",
           "settings": {
             "img_mobile": "shopify://shop_images/Ridgid_Banner2_a0c0f6c1-8db4-422e-8dae-0a391bd02b12.png",
-            "img_desktop": "shopify://shop_images/Ridgid_Banner2.png",
+            "img_desktop": "shopify://shop_images/Ridgid_Banner.png",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "overlay_blur": 0,
