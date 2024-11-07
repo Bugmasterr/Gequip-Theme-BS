@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header Group",
@@ -8,19 +17,12 @@
         "slide_j46kwk": {
           "type": "slide",
           "settings": {
-            "announcement": "Announce something important here"
-          }
-        },
-        "slide_mwF4Tk": {
-          "type": "slide",
-          "settings": {
-            "announcement": "Free Shipping For All Orders Over $100"
+            "announcement": "General Equipment & Supply will be closed on Thanksgiving Day and Black Friday, November 28-29, 2024."
           }
         }
       },
       "block_order": [
-        "slide_j46kwk",
-        "slide_mwF4Tk"
+        "slide_j46kwk"
       ],
       "settings": {
         "bg_color": "bg-primary",
@@ -31,7 +33,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "600",
+        "container_max_width": "",
         "font_size": "fs-xs",
         "font_size_desktop": "fs-desktop-sm",
         "text_transform": "",
@@ -49,9 +51,8 @@
           "type": "mobile",
           "settings": {
             "container_max_width": "",
-            "logo": "shopify:\/\/shop_images\/ks-bootshop-logo.png",
             "logo_height": 30,
-            "main_menu": "dropdown-menu",
+            "main_menu": "",
             "collections_menu": "",
             "social_icons": true,
             "pt": 2,
@@ -62,9 +63,8 @@
           "type": "desktop",
           "settings": {
             "container_max_width": "",
-            "logo": "shopify:\/\/shop_images\/ks-bootshop-logo.png",
             "logo_height": 32,
-            "main_menu": "dropdown-menu",
+            "main_menu": "",
             "pt": 5,
             "pb": 5
           }

@@ -117,8 +117,8 @@
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
         "breakpoint_desktop": 5,
-        "pt": 8,
-        "pb": 8
+        "pt": 10,
+        "pb": 10
       }
     },
     "richtext_4miPYL": {
