@@ -17,11 +17,12 @@
     {{ section.settings.border_color }} 
     {{ section.settings.pb | prepend: 'pb-' }} 
     {{ section.settings.pb | prepend: 'pb-' }}
-    {{ section.settings.width |  prepend: 'mw-' }}
+
   "
   style="
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
+    max-width:{{ section.settings.width }};
   ">
   <div 
     id="carousel-{{ section.id }}" 
@@ -230,7 +231,8 @@
       "default": 100,
       "min": 0,
       "max": 100,
-      "step": 5
+      "step": 5,
+      "unit": "%"
     },
     {
       "type": "range",
