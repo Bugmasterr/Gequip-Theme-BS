@@ -17,7 +17,7 @@
     {{ section.settings.border_color }} 
     {{ section.settings.pb | prepend: 'pb-' }} 
     {{ section.settings.pb | prepend: 'pb-' }}
-    {{ section.settings.rounded |  prepend: 'rounded-' }}
+    {{ section.settings.width |  prepend: 'vw-' }}
   "
   style="
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
@@ -225,13 +225,13 @@
     },
     {
       "type": "range",
-      "id": "rounded",
-      "label": "Border Radius",
-      "default": 0,
+      "id": "width",
+      "label": "Width Percentage",
+      "default": 100,
       "min": 0,
-      "max": 20,
-      "step": 1,
-      "unit": "px"
+      "max": 100,
+      "step": 5,
+      "unit": "vw"
     },
     {
       "type": "range",
