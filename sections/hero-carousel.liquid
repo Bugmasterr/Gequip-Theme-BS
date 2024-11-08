@@ -17,7 +17,7 @@
     {{ section.settings.border_color }} 
     {{ section.settings.pb | prepend: 'pb-' }} 
     {{ section.settings.pb | prepend: 'pb-' }}
-    {{ section.settings.width |  prepend: 'vw-' }}
+    {{ section.settings.width |  prepend: 'mw-' }}
   "
   style="
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
@@ -231,7 +231,7 @@
       "min": 0,
       "max": 100,
       "step": 5,
-      "unit": "vw"
+      "unit": ""
     },
     {
       "type": "range",
