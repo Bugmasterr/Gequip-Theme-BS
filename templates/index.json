@@ -16,7 +16,7 @@
           "type": "slide",
           "settings": {
             "img_mobile": "shopify://shop_images/GreenleeBanner2.png",
-            "img_desktop": "shopify://shop_images/GreenleeBanner.png",
+            "img_desktop": "shopify://shop_images/GreenleeBanner2.png",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "overlay_blur": 0,
@@ -33,7 +33,7 @@
           "type": "slide",
           "settings": {
             "img_mobile": "shopify://shop_images/Ridgid_Banner2_a0c0f6c1-8db4-422e-8dae-0a391bd02b12.png",
-            "img_desktop": "shopify://shop_images/Ridgid_Banner.png",
+            "img_desktop": "shopify://shop_images/Ridgid_Banner2.png",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "overlay_blur": 0,
