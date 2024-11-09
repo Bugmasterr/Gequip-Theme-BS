@@ -37,7 +37,7 @@
     "dialog_header_title_font_size": 1.3,
     "product_card_text_align": "text-center",
     "product_card_img_mode": "image",
-    "product_card_img_orientation": "ratio-3x4",
+    "product_card_img_orientation": "ratio-1x1",
     "product_card_img_border": "img-thumbnail",
     "product_card_carousel_controls_color": "body-color",
     "product_card_carousel_transition": "slide carousel-fade",
