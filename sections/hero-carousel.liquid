@@ -4,6 +4,19 @@
     assign media_desktop_height = section.settings.media_desktop_height | prepend: 'height: ' | append: 'px;'
   endif
 %}
+<style>
+
+  .hero-carousel {
+    max-width: {{ section.settings.width | append: 'vw'}};
+  }
+  
+  @media(max-width:786px) {
+    .hero-carousel{
+      max-width: 100vw;
+      width: 100vw;
+    }
+  }
+</style>
 
 <div 
   id="hero-carousel-{{ section.id }}" 
@@ -17,13 +30,11 @@
     {{ section.settings.border_color }} 
     {{ section.settings.pb | prepend: 'pb-' }} 
     {{ section.settings.pb | prepend: 'pb-' }}
-
   "
   style="
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
-    max-width: {{ section.settings.width | append: '%' }};
-    margin: auto;
+
   ">
   <div 
     id="carousel-{{ section.id }}" 
@@ -228,12 +239,12 @@
     {
       "type": "range",
       "id": "width",
-      "label": "Width Percentage",
+      "label": "Width px",
       "default": 100,
       "min": 0,
       "max": 100,
-      "step": 5,
-      "unit": "%"
+      "step": 10,
+      "unit": "vw"
     },
     {
       "type": "range",
