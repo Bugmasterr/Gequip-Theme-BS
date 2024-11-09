@@ -41,7 +41,7 @@
       {% endif %}
       {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: settings.product_card_img_border %}
     </div>
-    <h3 class="product-card-title product-title {{ settings.product_card_title_font_size }}">
+    <h3 class="card-title product-title {{ settings.product_card_title_font_size }}">
       {{ product.title }}
     </h3>
     {% render 'product-rating-badge', product: product %}
