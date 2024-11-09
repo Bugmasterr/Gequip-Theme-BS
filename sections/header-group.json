@@ -82,7 +82,7 @@
         "bg_gradient": "",
         "text_color": "text-body",
         "border_top_width": 0,
-        "border_bottom_width": 0,
+        "border_bottom_width": 16,
         "border_color": "border-body",
         "border_opacity": 100,
         "shadow": "shadow-sm"
