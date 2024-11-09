@@ -51,18 +51,15 @@
         "slide_Q4UPQq",
         "slide_TddqxQ"
       ],
-      "custom_css": [
-        ".hero-carousel {border: 10px solid; border-radius: 20px;}",
-        "img {border-radius: 20px;}"
-      ],
+      "custom_css": [],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
         "bg_gradient": "",
         "text_color": "text-white",
         "width": 70,
-        "border_top_width": 9,
-        "border_bottom_width": 9,
+        "border_top_width": 0,
+        "border_bottom_width": 0,
         "border_color": "border-primary",
         "border_opacity": 100,
         "carousel_controls": true,
