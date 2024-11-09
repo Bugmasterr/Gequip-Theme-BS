@@ -38,7 +38,7 @@
     "product_card_text_align": "text-center",
     "product_card_img_mode": "image",
     "product_card_img_orientation": "ratio-1x1",
-    "product_card_img_border": "img-thumbnail",
+    "product_card_img_border": "rounded",
     "product_card_carousel_controls_color": "body-color",
     "product_card_carousel_transition": "slide carousel-fade",
     "product_card_badge_discount_type": "value",

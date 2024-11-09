@@ -86,7 +86,10 @@
     },
     "featured_products_nXJKQn": {
       "type": "featured-products",
-      "custom_css": [],
+      "custom_css": [
+        ".productCard {height: 500px;}",
+        ".btn-atc {position: absolute; width: 80%; right: 10%; bottom: 10%; padding: 10px;}"
+      ],
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
