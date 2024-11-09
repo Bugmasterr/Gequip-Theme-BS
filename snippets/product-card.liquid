@@ -7,65 +7,75 @@
 {% endcomment %}
 
 <div class="product-card {{ settings.product_card_text_align }}">
-  {# The main container for the product card, with text alignment defined by settings. #}
+  {% comment %} The main container for the product card, with text alignment defined by settings. {% endcomment %}
 
   <a 
     href="{{ product.url | within: collection }}" 
     class="product-card-link">
-    {# Link wrapping the product image and details, leading to the product's page within the collection. #}
+    {% comment %} Link wrapping the product image and details, leading to the product's page within the collection. {% endcomment %}
 
     <div class="product-card-img-wrapper mb-4">
-      {# Wrapper for the product image with bottom margin. #}
+      {% comment %} Wrapper for the product image with bottom margin. {% endcomment %}
 
       {% if product.available == false %}
         <span class="product-sold-out-badge badge"
           {% if current_variant.available %}hidden{% endif %}>
           {{ 'product.sold_out' | t }}
         </span>  
-        {# Displays a "Sold Out" badge if the product is not available. Uses translation and hides badge if the variant is available. #}
+        {% comment %} 
+        Displays a "Sold Out" badge if the product is not available. 
+        Uses translation and hides badge if the variant is available. 
+        {% endcomment %}
 
       {% elsif product.compare_at_price > product.price %}
         <span 
           class="product-sale-badge badge"
           data-discount-type="{{ settings.product_card_badge_discount_type }}"> 
-          {# Displays a "Sale" badge if there is a discount, with a discount type attribute for styling. #}
+          {% comment %} 
+          Displays a "Sale" badge if there is a discount, with a discount type attribute for styling. 
+          {% endcomment %}
 
           {% if product.compare_at_price > 0 %}
-            {# Checks that the compare-at price is set, indicating a discount. #}
+            {% comment %} Checks that the compare-at price is set, indicating a discount. {% endcomment %}
             {% if settings.product_card_badge_discount_type == 'percentage' %} 
               <span class="visually-hidden">
                 {{ 'product.save' | t }} 
               </span>
               {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round | prepend: '-' | append: '%' }}
-              {# If discount type is 'percentage', displays the percentage off. Calculates by dividing the price difference by compare-at price, rounds it, and adds percentage sign. #}
+              {% comment %} 
+              If discount type is 'percentage', displays the percentage off. 
+              Calculates by dividing the price difference by compare-at price, rounds it, and adds percentage sign. 
+              {% endcomment %}
 
             {% else %}
               {{ 'product.save' | t }} 
               {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}
-              {# If discount type is not 'percentage', displays the amount saved in currency format, without trailing zeros. #}
+              {% comment %} 
+              If discount type is not 'percentage', displays the amount saved in currency format, without trailing zeros. 
+              {% endcomment %}
             {% endif %}
           {% endif %}
         </span>
       {% endif %}
 
       {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: settings.product_card_img_border %}
-      {# Renders the featured image of the product, with orientation and border classes based on settings. #}
+      {% comment %} Renders the featured image of the product, with orientation and border classes based on settings. {% endcomment %}
     </div>
 
     <h3 class="product-card-title product-title {{ settings.product_card_title_font_size }}">
       {{ product.title }}
     </h3>
-    {# Displays the product title with dynamic font size from settings. #}
+    {% comment %} Displays the product title with dynamic font size from settings. {% endcomment %}
 
     {% render 'product-rating-badge', product: product %}
-    {# Renders the product rating badge component, if applicable. #}
+    {% comment %} Renders the product rating badge component, if applicable. {% endcomment %}
 
     {% render 'product-card-price', product: product %}
-    {# Renders the product price component, potentially displaying sale price if available. #}
+    {% comment %} Renders the product price component, potentially displaying sale price if available. {% endcomment %}
   </a>
 
   {% if settings.product_card_show_atc_form %}
     {% render 'product-card-form', product: product %}
-    {# Optionally renders an "Add to Cart" form based on settings. #}
+    {% comment %} Optionally renders an "Add to Cart" form based on settings. {% endcomment %}
   {% endif %}
 </div>
