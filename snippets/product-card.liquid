@@ -15,7 +15,7 @@
         <!-- Product Image -->
         <div class="col-3">
           <a href="{{ product.url | within: collection }}" class="product-card-link">
-            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}" width="{{ settings.container_max_width }}" height="auto">
+            <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="{{ settings.container_max_width }}" height="auto">
           </a>
         </div>
 
