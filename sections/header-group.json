@@ -76,21 +76,47 @@
         "37d4f863-aecd-4a86-87c1-a5887bf87140",
         "069e870e-aed4-4929-bf73-c0daca8be18e"
       ],
+      "custom_css": [],
       "settings": {
-        "bg_color": "bg-body",
+        "bg_color": "bg-white",
         "bg_opacity": 100,
         "bg_gradient": "",
         "text_color": "text-body",
         "border_top_width": 0,
-        "border_bottom_width": 16,
-        "border_color": "border-body",
+        "border_bottom_width": 0,
+        "border_color": "border-primary",
         "border_opacity": 100,
         "shadow": "shadow-sm"
+      }
+    },
+    "html_WCEepj": {
+      "type": "html",
+      "custom_css": [],
+      "settings": {
+        "liquid": "<style>\n.gradient-overlay{\nheight: 25px;\nbackground-image: linear-gradient(rgba(25,25,25,.1), rgba(255,0,0,0));\n}\n\n\n</style>\n<div class=\"gradient-overlay\"></div>",
+        "bg_color": "bg-primary",
+        "bg_opacity": 0,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container": "",
+        "container_max_width": "",
+        "text_align": "text-center",
+        "header_title": "",
+        "header_title_font_size": "h2",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "pt": 0,
+        "pb": 5
       }
     }
   },
   "order": [
     "announcement_bar_Ge9W3V",
-    "navbar"
+    "navbar",
+    "html_WCEepj"
   ]
 }
