@@ -8,7 +8,7 @@
   {% render 'product-card' product: product  %}
 {% endcomment %}
 
-<div class="product-card {{ settings.product_card_text_align }}">
+<div class="product-card border {{ settings.product_card_text_align }}">
   <a 
     href="{{ product.url | within: collection }}" 
     class="product-card-link">
