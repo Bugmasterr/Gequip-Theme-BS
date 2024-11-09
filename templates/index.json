@@ -91,7 +91,7 @@
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
-        "text_color": "text-body",
+        "text_color": "text-secondary",
         "border_top_width": 0,
         "border_bottom_width": 0,
         "border_color": "border-primary",
@@ -99,14 +99,14 @@
         "container_max_width": "",
         "products": [],
         "collection": "featured-products",
-        "limit": 10,
+        "limit": 24,
         "recommended_mode": true,
         "recommended_mode_intent": "related",
         "header_title": "Featured Products",
         "header_title_font_size": "h3",
         "header_description": "",
         "header_description_font_size": "fs-md",
-        "slider_speed": 300,
+        "slider_speed": 800,
         "slider_navigation": true,
         "slider_pagination": true,
         "slider_pagination_type": "bullets",
@@ -116,8 +116,8 @@
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
         "breakpoint_desktop": 5,
-        "pt": 10,
-        "pb": 10
+        "pt": 12,
+        "pb": 8
       }
     },
     "richtext_4miPYL": {
@@ -149,7 +149,6 @@
     },
     "richtext_AtYwxr": {
       "type": "richtext",
-      "disabled": true,
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
