@@ -46,7 +46,7 @@
         <button type="submit" class="btn btn-primary btn-lg" {% if product.available == false %}disabled{% endif %}>
           Add to Cart
         </button>
-        <button type="button" class="btn btn-outline-secondary">
+        <button type="button" class="learnMore btn btn-outline-secondary">
           Learn More
         </button>
       </form>
@@ -55,6 +55,9 @@
 </div>
 
 <style>
+  .learnMore {
+    font-size: 1rem;
+  }
   .product-card {
     display: flex;
     flex-direction: column;
