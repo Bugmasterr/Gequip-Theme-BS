@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "collection_header_JKf7mh": {
@@ -37,15 +46,15 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "limit": 48,
+        "limit": 50,
         "show_product_count": true,
         "show_filters": true,
-        "filters_btn_color": "btn-outline-secondary",
+        "filters_btn_color": "btn-light-primary",
         "show_sort_by": true,
-        "sort_by_btn_color": "btn-outline-secondary",
+        "sort_by_btn_color": "btn-light-primary",
         "breakpoint_mobile": 2,
         "breakpoint_tablet": 3,
-        "breakpoint_desktop": 4,
+        "breakpoint_desktop": 5,
         "pt": 10,
         "pb": 10
       }
