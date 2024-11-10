@@ -6,11 +6,7 @@
   {% render 'product-card' product: product  %}
 {% endcomment %}
 
-<style>
-.productCard {
-}
-</style>
-<div class="card productCard border p-5 {{ settings.product_card_text_align }}">
+<div class="product-card {{ settings.product_card_text_align }}">
   <a 
     href="{{ product.url | within: collection }}" 
     class="product-card-link">
@@ -39,7 +35,7 @@
       {% endif %}
       {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: settings.product_card_img_border %}
     </div>
-    <h3 class="card-title product-title {{ settings.product_card_title_font_size }}">
+    <h3 class="product-card-title product-title {{ settings.product_card_title_font_size }}">
       {{ product.title }}
     </h3>
     {% render 'product-rating-badge', product: product %}
@@ -48,3 +44,4 @@
   {% if settings.product_card_show_atc_form %}
     {% render 'product-card-form', product: product %}
   {% endif %}
+</div>
