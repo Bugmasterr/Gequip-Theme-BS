@@ -41,7 +41,7 @@
       <h2 class="original-price p-4 my-auto">{{ product.compare_at_price | money }}</h2>
       {% endif %}
     </div>
-{% if product.tags == "bender" %}
+{% if product.tags contains "bender" %}
   <p>bender</p>
 {% endif %}
     {% if settings.product_card_show_atc_form %}
