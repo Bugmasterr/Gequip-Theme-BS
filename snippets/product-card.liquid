@@ -12,7 +12,7 @@
   <div class="position-relative" style="flex-grow: 1;">
     <a href="{{ product.url | within: collection }}" class="product-card-link d-block">
       <div class="product-card-img-wrapper d-flex justify-content-center align-items-center p-4" style="height: 200px; width: 100%;">
-        <img src="{{ product.featured_image | image_url: width: auto, height: auto }}" class="img-fluid product-image">
+        <img src="{{ product.featured_image | image_url: width: auto, height: auto }}" class="img-fluid product-image rounded">
         {% if product.compare_at_price > product.price %}
           <span class="product-sale-badge badge bg-primary position-absolute start-0 top-0 m-4">
             {% if settings.product_card_badge_discount_type == 'percentage' %} 
