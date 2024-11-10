@@ -8,7 +8,7 @@
   {% render 'product-card' product: product  %}
 {% endcomment %}
 
-<div class="product-card card border p-3 m-auto" style="width: 250px; height: 500px; display: flex; flex-direction: column;">
+<div class="product-card card border p-3 m-auto" style="width: auto; height: 500px; display: flex; flex-direction: column;">
   <div class="position-relative" style="flex-grow: 1;">
     <a href="{{ product.url | within: collection }}" class="product-card-link d-block">
       <div class="product-card-img-wrapper d-flex justify-content-center align-items-center p-4" style="height: 200px; width: 100%;">
