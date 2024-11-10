@@ -13,15 +13,6 @@
     <a href="{{ product.url | within: collection }}" class="product-card-link d-block">
       <div class="product-card-img-wrapper d-flex justify-content-center align-items-center overflow-hidden p-4" style="height: 200px; width: 100%;">
         <img src="{{ product.featured_image | image_url: width: auto, height: auto }}" class="img-fluid product-image">
-        {% if product.compare_at_price > product.price %}
-          <span class="product-sale-badge badge bg-primary position-absolute top-0 start-0 m-4 bigger-badge">
-            {% if settings.product_card_badge_discount_type == 'percentage' %} 
-              {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round | prepend: '-' | append: '%' }}
-            {% else %}
-              {{ 'product.save' | t }} {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}
-            {% endif %}
-          </span>
-        {% endif %}
         {% if product.available == false %}
           <span class="product-sold-out-badge badge bg-secondary position-absolute top-50 start-50 translate-middle">
             {{ 'product.sold_out' | t }}
@@ -39,6 +30,15 @@
       {% if product.compare_at_price > product.price %}
       <h2 class="original-price p-4 my-auto">{{ product.compare_at_price | money }}</h2>
       {% endif %}
+        {% if product.compare_at_price > product.price %}
+          <span class="product-sale-badge badge bg-primary position-absolute top-0 start-0 m-4 bigger-badge">
+            {% if settings.product_card_badge_discount_type == 'percentage' %} 
+              {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round | prepend: '-' | append: '%' }}
+            {% else %}
+              {{ 'product.save' | t }} {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}
+            {% endif %}
+          </span>
+        {% endif %}
     </div>
     {% if settings.product_card_show_atc_form %}
       <form class="product-card-atc-form d-grid gap-1 mt-auto" action="/cart/add" method="post" {% if product.available == false %}disabled{% endif %}>
