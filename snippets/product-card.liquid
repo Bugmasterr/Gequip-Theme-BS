@@ -8,90 +8,37 @@
   {% render 'product-card' product: product  %}
 {% endcomment %}
 
-<div class="product-card">
-  <a href="{{ product.url | within: collection }}" class="product-card-link">
-    <div class="product-card-img-wrapper">      
-      {% comment %} Display sold out badge if product is unavailable {% endcomment %}
-      {% if product.available == false %}
-        <span class="product-sold-out-badge" {% if current_variant.available %}hidden{% endif %}>
-          {{ 'product.sold_out' | t }}
-        </span>  
-      {% comment %} Display sale badge if product is on sale {% endcomment %}
-      {% elsif product.compare_at_price > product.price %}
-        <span class="product-sale-badge" data-discount-type="{{ settings.product_card_badge_discount_type }}"> 
-          {% if product.compare_at_price > 0 %}
+<div class="product-card card border p-3" style="width: 18rem;">
+  <div class="position-relative">
+    <a href="{{ product.url | within: collection }}" class="product-card-link d-block">
+      <div class="product-card-img-wrapper d-flex justify-content-center align-items-center overflow-hidden" style="height: 200px;">
+        {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: 'img-fluid' %}
+        {% if product.compare_at_price > product.price %}
+          <span class="product-sale-badge badge bg-danger position-absolute top-0 start-0 m-2">
             {% if settings.product_card_badge_discount_type == 'percentage' %} 
-              <span class="visually-hidden">
-                {{ 'product.save' | t }} 
-              </span>
               {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round | prepend: '-' | append: '%' }}
             {% else %}
-              {{ 'product.save' | t }} 
-              {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}
+              {{ 'product.save' | t }} {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}
             {% endif %}
-          {% endif %}
-        </span>
-      {% endif %}
-      {% comment %} Product image {% endcomment %}
-      {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: settings.product_card_img_border %}
-    </div>
-    <h3 class="product-title {{ settings.product_card_title_font_size }}">
-      {{ product.title }}
-    </h3>
-    {% comment %} Product rating {% endcomment %}
-    {% render 'product-rating-badge', product: product %}
-    {% comment %} Product price {% endcomment %}
-    {% render 'product-card-price', product: product %}
-  </a>
-  {% comment %} Add to Cart form {% endcomment %}
-  {% if settings.product_card_show_atc_form %}
-    {% render 'product-card-form', product: product %}
-  {% endif %}
-</div>
-
-{% comment %}
-<style>
-.productCard {
-}
-</style>
-<div class="card productCard border p-5 {{ settings.product_card_text_align }}">
-  <a 
-    href="{{ product.url | within: collection }}" 
-    class="product-card-link">
-    <div class="product-card-img-wrapper mb-4">      
-      {% if product.available == false %}
-        <span class="product-sold-out-badge badge"
-          {% if current_variant.available %}hidden{% endif %}>
-          {{ 'product.sold_out' | t }}
-        </span>  
-      {% elsif product.compare_at_price > product.price %}
-        <span 
-          class="product-sale-badge badge"
-          data-discount-type="{{ settings.product_card_badge_discount_type }}"> 
-          {% if product.compare_at_price > 0 %}
-            {% if settings.product_card_badge_discount_type == 'percentage' %} 
-              <span class="visually-hidden">
-                {{ 'product.save' | t }} 
-              </span>
-              {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round | prepend: '-' | append: '%' }}
-            {% else %}
-              {{ 'product.save' | t }} 
-              {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}
-            {% endif %}
-          {% endif %}
-        </span>
-      {% endif %}
-      {% render 'image-url', img: product.featured_image, orientation: settings.product_card_img_orientation, class: settings.product_card_img_border %}
-    </div>
+          </span>
+        {% endif %}
+      </div>
+    </a>
+  </div>
+  <div class="card-body d-flex flex-column justify-content-between">
     <h3 class="card-title product-title {{ settings.product_card_title_font_size }}">
       {{ product.title }}
     </h3>
-    {% render 'product-rating-badge', product: product %}
-    {% render 'product-card-price', product: product %}
-  </a>
-  {% if settings.product_card_show_atc_form %}
-    {% render 'product-card-form', product: product %}
-  {% endif %}
+    <div class="product-price mb-2">
+      {% render 'product-card-price', product: product %}
+    </div>
+    {% if settings.product_card_show_atc_form %}
+      <form class="product-card-atc-form mt-auto d-flex justify-content-center" action="/cart/add" method="post">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="btn btn-primary">
+          Add to Cart
+        </button>
+      </form>
+    {% endif %}
+  </div>
 </div>
-
-{% endcomment %}
