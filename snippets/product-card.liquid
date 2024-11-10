@@ -27,13 +27,13 @@
             {{ 'product.sold_out' | t }}
           </span>
         {% endif %}
+        <h2 class="product-title {{ settings.product_card_title_font_size }}">
+      {{ product.title }}
+    </h2>
       </div>
     </a>
   </div>
   <div class="product-info p-4">
-    <h2 class="product-title {{ settings.product_card_title_font_size }}">
-      {{ product.title }}
-    </h2>
     <div class="product-price my-2">
       <span class="current-price">{{ product.price | money }}</span>
       {% if product.compare_at_price > product.price %}
