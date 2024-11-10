@@ -30,6 +30,7 @@
       {% if product.compare_at_price > product.price %}
       <h2 class="original-price p-4 my-auto">{{ product.compare_at_price | money }}</h2>
       {% endif %}
+    </div>
         {% if product.compare_at_price > product.price %}
           <span class="product-sale-badge badge bg-primary my-auto bigger-badge">
             {% if settings.product_card_badge_discount_type == 'percentage' %} 
@@ -39,7 +40,6 @@
             {% endif %}
           </span>
         {% endif %}
-    </div>
     {% if settings.product_card_show_atc_form %}
       <form class="product-card-atc-form d-grid gap-1 mt-auto" action="/cart/add" method="post" {% if product.available == false %}disabled{% endif %}>
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" {% if product.available == false %}disabled{% endif %}>
