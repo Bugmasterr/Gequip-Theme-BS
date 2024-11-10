@@ -8,6 +8,38 @@
   {% render 'product-card' product: product  %}
 {% endcomment %}
 
+  <style>
+    .productCard {
+      /* Add your styles here */
+    }
+    .product-card-img-wrapper {
+      /* Add your styles here */
+    }
+    .card-title {
+      /* Add your styles here */
+    }
+    .product-price {
+      /* Add your styles here */
+    }
+  </style>
+  <div class="card productCard">
+    <a href="{{ product.url }}" class="product-card-link">
+      <div class="product-card-img-wrapper">
+        {% render 'image-url', img: product.featured_image %}
+      </div>
+      <h3 class="card-title product-title">
+        {{ product.title }}
+      </h3>
+      <div class="product-price">
+        {% render 'product-card-price', product: product %}
+      </div>
+    </a>
+  </div>
+
+
+
+
+{% comment %}
 <style>
 .productCard {
 }
@@ -51,3 +83,5 @@
     {% render 'product-card-form', product: product %}
   {% endif %}
 </div>
+
+{% endcomment %}
