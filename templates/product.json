@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583": {
@@ -7,16 +16,16 @@
           "type": "media_gallery",
           "settings": {
             "img_orientation": "ratio-1x1",
-            "img_border": "img-thumbnail",
-            "effect": "slide",
+            "img_border": "rounded",
+            "effect": "fade",
             "speed": 300,
             "controls_color": "body-color",
             "pagination_type": "bullets",
             "scrollbar": true,
             "show_thumbs": "show",
-            "thumbs_per_view": 5,
+            "thumbs_per_view": 8,
             "full_screen": true,
-            "full_screen_effect": "slide"
+            "full_screen_effect": "zoom"
           }
         },
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1": {
@@ -27,16 +36,27 @@
             "pb": 2
           }
         },
-        "judge_me_reviews_preview_badge_J3NUWe": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+        "loox_reviews_loox_rating_UqFi6c": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 18,
+            "pattern": "",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": true,
+            "emptyRatingWidget": true
+          }
         },
         "bf49a5ff-d625-4485-a09c-44d883547f90": {
           "type": "richtext",
           "settings": {
             "title": "",
             "title_font_size": "h6",
-            "description": "<p>{{ product.metafields.descriptors.subtitle.value }}<\/p>",
+            "description": "<p>{{ product.metafields.descriptors.subtitle.value }}</p>",
             "description_font_size": "",
             "product_description": false,
             "description_classes": "opacity-70",
@@ -47,8 +67,8 @@
         "095886ab-f46a-4a25-9d3d-e7c79235921b": {
           "type": "price",
           "settings": {
-            "font_size": "fs-lg",
-            "badge_discount_type": "percentage",
+            "font_size": "fs-xl",
+            "badge_discount_type": "value",
             "pt": 0,
             "pb": 3
           }
@@ -62,23 +82,8 @@
             "pb": 3
           }
         },
-        "subscriptions_app_block_4aHTie": {
-          "type": "shopify:\/\/apps\/subscriptions\/blocks\/app-block\/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
-          "settings": {
-            "color_text_title": "#212529",
-            "color_text_body": "#212529",
-            "dividers_color": "#212529",
-            "bacgkround_color": "#ffffff",
-            "border_thickness": 1,
-            "border_radius": 8,
-            "supporting_text_title": "Purchase options",
-            "subscription_policy_url": "shopify:\/\/policies\/privacy-policy",
-            "product": "{{product}}"
-          }
-        },
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74": {
           "type": "stock_indicator",
-          "disabled": true,
           "settings": {
             "low_stock_threshold": 10,
             "low_stock_bg_color": "bg-primary",
@@ -105,26 +110,24 @@
         "08894b72-c532-44db-9228-5f14c9841895": {
           "type": "trust_icons",
           "settings": {
-            "label": "What we promise",
+            "label": "",
             "max_width": "460",
-            "img_size": 24,
-            "img_1": "shopify:\/\/shop_images\/icon-star.svg",
-            "text_1": "<p>Commitment to<br\/>Excellence<\/p>",
-            "img_2": "shopify:\/\/shop_images\/hand-thumbs-up.svg",
-            "text_2": "<p>100% Satisfaction<br\/>Guarantee<\/p>",
-            "img_3": "shopify:\/\/shop_images\/icon-truck.svg",
-            "text_3": "<p>Free Shipping<br\/>Over $90<\/p>",
+            "img_size": 16,
+            "img_1": "shopify://shop_images/GES-Logo.webp",
+            "text_1": "",
+            "text_2": "",
+            "text_3": "",
             "text_4": "",
             "pt": 0,
-            "pb": 7
+            "pb": 0
           }
         },
         "11016cfc-fdff-46f2-9b6b-26a6e68b7653": {
           "type": "collapse",
           "settings": {
             "icon_size": 20,
-            "title": "Product Details",
-            "title_font_family": "",
+            "title": "Product Description",
+            "title_font_family": "heading",
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
@@ -133,7 +136,7 @@
             "description_font_size": "fs-md",
             "border_top_width": 1,
             "border_bottom_width": 0,
-            "border_color": "border-body",
+            "border_color": "border-secondary",
             "border_opacity": 100,
             "open_by_default": true,
             "pt": 0,
@@ -149,7 +152,7 @@
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
-            "description": "<p>Feel free to create additional blocks like this for <strong>Shipping, Payments, etc <\/strong>through the Shopify Theme editor. Also, you may easily adjust their order by dragging and dropping.<\/p>",
+            "description": "<p>Feel free to create additional blocks like this for <strong>Shipping, Payments, etc </strong>through the Shopify Theme editor. Also, you may easily adjust their order by dragging and dropping.</p>",
             "product_description": false,
             "description_font_size": "fs-md",
             "border_top_width": 1,
@@ -170,7 +173,7 @@
             "title_font_size": "fs-md",
             "title_text_transform": "text-capitalize",
             "title_letter_spacing": 1,
-            "description": "<p>To return an item to us, follow the directions listed on the return exchange form included with your order. If you don’t have this form available, you can download one by clicking here<\/p>",
+            "description": "<p>To return an item to us, follow the directions listed on the return exchange form included with your order. If you don’t have this form available, you can download one by clicking here</p>",
             "product_description": false,
             "description_font_size": "fs-md",
             "border_top_width": 1,
@@ -196,7 +199,7 @@
           "type": "liquid",
           "disabled": true,
           "settings": {
-            "liquid": "<p class=\"bg-primary text-white rounded p-5\">Today's date: <b>{{ 'now' | date: \"%b %d, %Y\" }}<\/b><\/p>",
+            "liquid": "<p class=\"bg-primary text-white rounded p-5\">Today's date: <b>{{ 'now' | date: \"%b %d, %Y\" }}</b></p>",
             "pt": 3,
             "pb": 3
           }
@@ -205,11 +208,10 @@
       "block_order": [
         "8abeac2d-7b60-4697-891c-4d6201789d31",
         "40d3cdd3-9d78-4f15-b346-c3f46d49f7b1",
-        "judge_me_reviews_preview_badge_J3NUWe",
+        "loox_reviews_loox_rating_UqFi6c",
         "bf49a5ff-d625-4485-a09c-44d883547f90",
         "095886ab-f46a-4a25-9d3d-e7c79235921b",
         "4566c39b-0f51-4900-b193-a0ac76bf0c8f",
-        "subscriptions_app_block_4aHTie",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
         "08894b72-c532-44db-9228-5f14c9841895",
@@ -234,19 +236,6 @@
         "pb": 10
       }
     },
-    "1710322973d29fae05": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_XNFVCT": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_XNFVCT"
-      ],
-      "settings": {}
-    },
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41": {
       "type": "featured-products",
       "settings": {
@@ -261,12 +250,12 @@
         "container_max_width": "",
         "products": [],
         "collection": "",
-        "limit": 8,
+        "limit": 10,
         "recommended_mode": true,
         "recommended_mode_intent": "related",
         "header_title": "Recommended Products",
         "header_title_font_size": "h3",
-        "header_description": "<p>Add on optional description for this section<\/p>",
+        "header_description": "<p>Discover more related products</p>",
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": true,
@@ -277,10 +266,42 @@
         "slider_autoplay": 0,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 4,
+        "breakpoint_desktop": 5,
         "pt": 2,
         "pb": 11
       }
+    },
+    "1710322973d29fae05": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_wTUqD6": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1200,
+            "borderRadius": 8,
+            "itemsPerView": 5,
+            "mobileItemsPerView": 1,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "0.72",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#FFFFFF",
+            "arrows_iconColor": "#9A9A9A",
+            "shadow": "offset-dark",
+            "border_active": true,
+            "border_width": 1,
+            "border_color": "#dedede",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_wTUqD6"
+      ],
+      "settings": {}
     },
     "20426219-2b04-4ec4-9f23-1ed81a76c181": {
       "type": "separator",
@@ -297,8 +318,8 @@
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
-    "1710322973d29fae05",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
+    "1710322973d29fae05",
     "20426219-2b04-4ec4-9f23-1ed81a76c181"
   ]
 }
