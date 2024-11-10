@@ -58,7 +58,7 @@
     
     {% comment %} Product tags {% endcomment %}
     <div class="product-tags mb-2">
-      {% assign tags_to_display = "greenlee,ridgid,bender,threading,cable-pulling,sheave,welding,material-handling,clamp,gang-box" | split: "," %}
+      {% assign tags_to_display = "greenlee, ridgid, bender, threading, cable-pulling, sheave, welding, material-handling, clamp, gang-box" | split: "," %}
       {% assign matched_tags = "" %}
       {% for tag in product.tags %}
         {% if tags_to_display contains tag %}
