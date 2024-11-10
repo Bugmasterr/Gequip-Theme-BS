@@ -30,11 +30,11 @@
 
         {% comment %} New product badge {% endcomment %}
     {% assign current_time = 'now' | date: "%s" %}
-    {% assign publish_time = product.published_at | date: "%s" %}
+    {% assign publish_time = product.created_at | date: "%s" %}
     {% assign time_diff = current_time | minus: publish_time %}
-    {% assign new_threshold = 30 | times: 86400 %}
+    {% assign new_threshold = 10 | times: 86400 %}
     {% if time_diff < new_threshold %}
-      <span class="badge bg-success position-absolute top-0 end-0 m-4">New</span>
+      <span class="badge bg-success position-absolute top-0 end-0 m-4">New Arrival</span>
     {% endif %}
         
         {% comment %} Sold out badge {% endcomment %}
