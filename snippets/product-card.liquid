@@ -26,7 +26,7 @@
   </div>
   <div class="product-info p-4">
         {% if product.compare_at_price > product.price %}
-          <span class="product-sale-badge badge bg-primary my-auto w-auto bigger-badge">
+          <span class="bg-primary my-auto w-auto bigger-badge">
             {% if settings.product_card_badge_discount_type == 'percentage' %} 
               {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round | prepend: '-' | append: '%' }}
             {% else %}
