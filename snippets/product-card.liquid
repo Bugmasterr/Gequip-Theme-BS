@@ -13,7 +13,7 @@
     <a href="{{ product.url | within: collection }}" class="product-card-link d-block">
       <div class="product-card-img-wrapper d-flex justify-content-center align-items-center overflow-hidden" style="height: 150px; width: 150px; margin: 0 auto;">
         <img
-  src="{{ img | image_url: height: 300, crop: 'center' }}"
+  src="{{ img | image_url: height: 300, crop: 'height' }}"
   class="img-fluid {{ class }}"
   alt="{{ img.alt }}"
   width="{{ width }}"
