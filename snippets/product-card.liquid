@@ -35,15 +35,50 @@
   </div>
   
   <div class="product-info p-4">
+    {% render 'product-rating-badge', product: product %}
+    
+    <div class="product-tags mb-2">
+      {% assign tags_to_display = "greenlee,ridgid,bender,threading,cable-pulling,sheave,welding,material-handling,clamp,gang-box" | split: "," %}
+      {% assign matched_tags = product.tags | where_any: "tags_to_display" %}
+      {% assign matched_tags = matched_tags | slice: 0, 5 %}
+      {% for tag in matched_tags %}
+        <span class="badge bg-info text-dark">{{ tag }}</span>
+      {% endfor %}
+    </div>
+
+    {% assign stock_status = 'in_stock' %}
+    {% if product.available == false %}
+      {% assign stock_status = 'out_of_stock' %}
+    {% elsif product.inventory_quantity < 5 %}
+      {% assign stock_status = 'low_stock' %}
+    {% endif %}
+    
+    <div class="stock-status mb-2">
+      <span class="stock-dot {{ stock_status }}"></span>
+      {% if stock_status == 'in_stock' %}
+        In Stock
+      {% elsif stock_status == 'low_stock' %}
+        Low Stock
+      {% else %}
+        Out of Stock
+      {% endif %}
+    </div>
+    
+    {% assign current_time = 'now' | date: "%s" %}
+    {% assign publish_time = product.published_at | date: "%s" %}
+    {% assign time_diff = current_time | minus: publish_time %}
+    {% assign new_threshold = 30 | times: 86400 %}
+    {% if time_diff < new_threshold %}
+      <span class="badge bg-success">New</span>
+    {% endif %}
+
     <div class="product-price my-2">
       <h2 class="current-price my-auto">{{ product.price | money }}</h2>
       {% if product.compare_at_price > product.price %}
       <h2 class="original-price p-4 my-auto">{{ product.compare_at_price | money }}</h2>
       {% endif %}
     </div>
-{% if product.tags contains "bender" %}
-  <p>bender</p>
-{% endif %}
+
     {% if settings.product_card_show_atc_form %}
       <form class="product-card-atc-form d-grid gap-1 mt-auto" action="/cart/add" method="post" {% if product.available == false %}disabled{% endif %}>
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" {% if product.available == false %}disabled{% endif %}>
@@ -54,7 +89,6 @@
     {% endif %}
   </div>
 </div>
-
 
 <style>
   .product-card {
@@ -75,9 +109,9 @@
     width: 100%;
     height: 100%;
   }
-  .bigger-badge {
-    font-size: 1rem;
-    padding: 0.4rem .75rem;
+  .product-sale-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
   }
   .product-card .product-price {
     display: flex;
@@ -105,5 +139,27 @@
   }
   .product-card-atc-form.disabled {
     pointer-events: none;
+  }
+  .product-tags .badge {
+    margin-right: 0.25rem;
+  }
+  .stock-status {
+    display: flex;
+    align-items: center;
+  }
+  .stock-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+  .stock-dot.in_stock {
+    background-color: green;
+  }
+  .stock-dot.low_stock {
+    background-color: orange;
+  }
+  .stock-dot.out_of_stock {
+    background-color: red;
   }
 </style>
