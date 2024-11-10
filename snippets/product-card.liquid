@@ -35,9 +35,9 @@
   </div>
   <div class="product-info p-4">
     <div class="product-price my-2">
-      <h2 class="current-price p-1">{{ product.price | money }}</h2>
+      <h2 class="current-price p-2 my-auto">{{ product.price | money }}</h2>
       {% if product.compare_at_price > product.price %}
-      <h2 class="original-price p-1">{{ product.compare_at_price | money }}</h2>
+      <h2 class="original-price p-2 my-auto">{{ product.compare_at_price | money }}</h2>
       {% endif %}
     </div>
     {% if settings.product_card_show_atc_form %}
