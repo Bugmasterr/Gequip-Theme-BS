@@ -14,7 +14,7 @@
       <div class="product-card-img-wrapper d-flex justify-content-center align-items-center overflow-hidden" style="margin: 0 auto;">
         <img src="{{ product.featured_image | image_url: width: auto, height: auto }}" class="img-fluid product-image">
         {% if product.compare_at_price > product.price %}
-          <span class="product-sale-badge badge bg-primary position-absolute top-0 start-2 m-4 bigger-badge">
+          <span class="product-sale-badge badge bg-primary position-absolute top-0 start-3 m-4 bigger-badge">
             {% if settings.product_card_badge_discount_type == 'percentage' %} 
               {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round | prepend: '-' | append: '%' }}
             {% else %}
