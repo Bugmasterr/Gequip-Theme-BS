@@ -28,7 +28,7 @@
     <div class="product-price my-2">
       <h2 class="current-price my-auto">{{ product.price | money }}</h2>
       {% if product.compare_at_price > product.price %}
-      <h2 class="original-price p-auto my-auto">{{ product.compare_at_price | money }}</h2>
+      <h2 class="original-price p-4 my-auto">{{ product.compare_at_price | money }}</h2>
       {% endif %}
         {% if product.compare_at_price > product.price %}
           <span class="product-sale-badge badge bg-primary my-auto bigger-badge">
@@ -80,7 +80,7 @@
     align-content: center;
   }
   .product-card .current-price {
-    font-size: 1.35rem;
+    font-size: 1.15;
     font-weight: bold;
   }
   .product-card .original-price {
