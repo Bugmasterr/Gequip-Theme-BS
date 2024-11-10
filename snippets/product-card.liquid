@@ -21,7 +21,11 @@
     .product-price {
       /* Add your styles here */
     }
+    .product-card-atc-btn {
+      /* Add your styles for ATC button here */
+    }
   </style>
+
   <div class="card productCard">
     <a href="{{ product.url }}" class="product-card-link">
       <div class="product-card-img-wrapper">
@@ -34,8 +38,13 @@
         {% render 'product-card-price', product: product %}
       </div>
     </a>
+    <form class="product-card-atc-form" action="/cart/add" method="post">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" class="product-card-atc-btn">
+        Add to Cart
+      </button>
+    </form>
   </div>
-
 
 
 
