@@ -21,7 +21,7 @@
         "label {color: gray;}"
       ],
       "settings": {
-        "bg_color": "bg-white",
+        "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
         "text_color": "text-body",
@@ -37,8 +37,8 @@
         "btn_color": "btn-primary",
         "btn_size": "btn-sm",
         "notice": "<p>By signing up for email, you agree to our <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a>.</p>",
-        "pt": 13,
-        "pb": 13
+        "pt": 10,
+        "pb": 10
       }
     },
     "footer": {
