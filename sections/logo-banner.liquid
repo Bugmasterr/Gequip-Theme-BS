@@ -1,0 +1,103 @@
+<div class="logos overflow-hidden py-5 px-0 position-relative" style="background-color: #fff; white-space: nowrap;">
+  <div class="logos-slide d-inline-block">
+    {% for image in section.settings.images %}
+      <img src="{{ image.src }}" alt="{{ image.alt }}" style="height: 50px; margin: 0 {{ section.settings.image_margin }}px;">
+    {% endfor %}
+    {% for image in section.settings.images %}
+      <img src="{{ image.src }}" alt="{{ image.alt }}" style="height: 50px; margin: 0 {{ section.settings.image_margin }}px;">
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .logos::before, 
+  .logos::after {
+    content: '';
+    width: 200px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+  }
+
+  .logos::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+  }
+
+  .logos::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+  }
+
+  .logos-slide {
+    animation: {{ section.settings.slide_duration }}s slide infinite linear;
+  }
+
+  .logos:hover .logos-slide {
+    animation-play-state: paused;
+  }
+
+  @keyframes slide {
+    from{
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
+<script>
+  const logos = document.querySelector('.logos');
+  const logosSlide = document.querySelector('.logos-slide');
+
+  // Get the number of images
+  const numImages = logos.querySelectorAll('img').length;
+
+  // Set the width of the logos-slide element to accommodate all images
+  logosSlide.style.width = `${numImages * section.settings.image_width}%`;
+
+  // Set the animation-duration to the slide duration
+  logosSlide.style.animationDuration = `${section.settings.slide_duration}s`;
+</script>
+
+{% schema %}
+  {
+    "name": "logo-banner",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "images",
+        "label": "Logo images"
+      },
+      {
+        "type": "number",
+        "id": "slide_duration",
+        "label": "Slide duration (s)"
+      },
+      {
+        "type": "number",
+        "id": "image_width",
+        "label": "Image width"
+      },
+      {
+        "type": "number",
+        "id": "image_margin",
+        "label": "Image margin"
+      },
+      {
+        "type": "number",
+        "id": "padding_top",
+        "label": "Padding top"
+      },
+      {
+        "type": "number",
+        "id": "padding_bottom",
+        "label": "Padding bottom"
+      }
+    ]
+  }
+  {% endschema %}
