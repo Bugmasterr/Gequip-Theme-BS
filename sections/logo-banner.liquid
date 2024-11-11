@@ -57,47 +57,73 @@
   const numImages = logos.querySelectorAll('img').length;
 
   // Set the width of the logos-slide element to accommodate all images
-  logosSlide.style.width = `${numImages * section.settings.image_width}%`;
+  logosSlide.style.width = `${numImages * {{ section.settings.image_width | default: 100 }}%`;
 
   // Set the animation-duration to the slide duration
-  logosSlide.style.animationDuration = `${section.settings.slide_duration}s`;
+  logosSlide.style.animationDuration = `${{{ section.settings.slide_duration | default: 10 }}}s`;
 </script>
 
 {% schema %}
-  {
-    "name": "logo-banner",
-    "tag": "section",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "images",
-        "label": "Logo images"
-      },
-      {
-        "type": "number",
-        "id": "slide_duration",
-        "label": "Slide duration (s)"
-      },
-      {
-        "type": "number",
-        "id": "image_width",
-        "label": "Image width"
-      },
-      {
-        "type": "number",
-        "id": "image_margin",
-        "label": "Image margin"
-      },
-      {
-        "type": "number",
-        "id": "padding_top",
-        "label": "Padding top"
-      },
-      {
-        "type": "number",
-        "id": "padding_bottom",
-        "label": "Padding bottom"
-      }
-    ]
-  }
-  {% endschema %}
+{
+  "name": "logo-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "images",
+      "label": "Logo images"
+    },
+    {
+      "type": "range",
+      "id": "slide_duration",
+      "label": "Slide duration (s)",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image width (%)",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "image_margin",
+      "label": "Image margin (px)",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (px)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Logos"
+    }
+  ]
+}
+{% endschema %}
+
