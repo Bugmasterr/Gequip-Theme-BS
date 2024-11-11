@@ -1,8 +1,13 @@
-<div>test</div>
+<div class="logoBanner" id="logo-banner-test-{{ section.id }}">test</div>
 
 {% schema %}
   {
     "name": "Logos-Banner",
-    "settings": []
+    "tag": "section",
+    "class": "logoBanner",
+    "settings": [],
+    "disabled_on": {
+      "groups": ["header","footer"]
+    }
   }
 {% endschema %}
