@@ -1,4 +1,4 @@
-<div class="logos overflow-hidden py-5 px-0 position-relative" style="background-color: #fff; white-space: nowrap;">
+<div id="logo-banner-{{ section.id }}" class="logos overflow-hidden py-5 px-0 position-relative" style="background-color: #fff; white-space: nowrap;">
   <div class="logos-slide d-inline-block">
     {% for image in section.settings.images %}
       <img src="{{ image.src }}" alt="{{ image.alt }}" style="height: 50px; margin: 0 {{ section.settings.image_margin }}px;">
@@ -120,8 +120,7 @@
   ],
   "presets": [
     {
-      "name": "Default",
-      "category": "Logos"
+      "name": "logo-banner"
     }
   ]
 }
