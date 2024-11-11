@@ -9,6 +9,30 @@
  */
 {
   "sections": {
+    "html_pk6mHi": {
+      "type": "html",
+      "custom_css": [],
+      "settings": {
+        "liquid": "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n\n<style>\n     * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n\n        .logos::before, \n        .logos::after {\n            content: '';\n            width: 200px;\n            height: 100%;\n            position: absolute;\n            top: 0;\n            z-index: 2;\n        }\n\n        .logos::before {\n            left: 0;\n            background: linear-gradient(to left, rgba(255, 255, 255, 0), #fff);\n        }\n\n        .logos::after {\n            right: 0;\n            background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);\n        }\n\n        .logos-slide {\n            animation: 10s slide infinite linear;\n        }\n\n        .logos:hover .logos-slide {\n            animation-play-state: paused;\n        }\n\n        .logos-slide img {\n            height: 50px;\n            margin: 0 50px;\n        }\n\n        @keyframes slide {\n            from{\n                transform: translateX(0);\n            }\n\n            to {\n                transform: translateX(-100%);\n            }\n        }\n    </style>\n    \n<body class=\"bg-dark\">\n    <main class=\"vw-100 d-flex flex-row justify-content-center align-items-center\">\n      <div class=\"logos overflow-hidden py-5 px-0 position-relative\" style=\"background-color: #fff; white-space: nowrap;\">\n        <div class=\"logos-slide d-inline-block\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_17c23c2b-1f49-43f7-baf3-fefd832b7c69.jpg?v=1731127295&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_7fcb81de-34b9-4f0a-9184-f41d07fb38e1.jpg?v=1731128940&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/Sumner.jpg?v=1716631333&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_6c7a805e-ac1f-46ed-b9a2-ffac0ff6890f.jpg?v=1731134286&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/b-b-pipe-and-industrial-tools-brand-thumbnail.jpg?v=1716597183&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_569403f3-ae19-4946-9255-b6c3ad98400b.jpg?v=1731127611&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_eb8bb483-552a-41e4-9331-f5122bec41aa.jpg?v=1731128019&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/current-tools-brand-thumbnail.jpg?v=1716598027&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_f61fcb6f-b2d0-4ffc-a2e8-1dc55c36338c.jpg?v=1731129043&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_a4e10d8f-5994-4ab9-81ae-920f2206f695.jpg?v=1731127411&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_d0529a59-01e4-4aa5-baea-fc3ff29fa0e3.jpg?v=1731127996&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_e3028507-4684-4370-b04f-42e96f2bfbf5.jpg?v=1731127675&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_a8b14ebf-46fd-44e7-835d-cc7f60794add.jpg?v=1720466203&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/guardian-brand-thumbnail.jpg?v=1716599933&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_e0fd3595-25d9-4ca5-80b3-a77d64b966bd.jpg?v=1731128825&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_52382807-f15f-4118-81e2-a5697f78c87b.jpg?v=1731127979&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_7ab7db7c-504a-41dc-b4ab-669083911298.jpg?v=1731127790&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/media_389f580d-5d31-435d-ab53-02cc0a6e5c3f.jpg?v=1720466316&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/media_ed8218d6-a82c-4cb4-bb7d-6d081c76d931.jpg?v=1731128984&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/texas-pneumatic-brand-thumbnail.jpg?v=1716604126&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/victor-brand-thumbnail.jpg?v=1716605289&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/werner-brand-thumbnail.jpg?v=1716605807&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/wright-tool-brand-thumbnail.jpg?v=1716608084&width=460\" alt=\"\">\n        </div>\n    </div>\n  </main>\n  </body>\n  <script>\nconst logos = document.querySelector('.logos');\nconst logosSlide = document.querySelector('.logos-slide');\n\n// Get the number of images\nconst numImages = logos.querySelectorAll('img').length;\n\n// Clone all images and append them to the logos-slide element\nlogos.querySelectorAll('img').forEach((image) => {\n  const clonedImage = image.cloneNode(true);\n  logosSlide.appendChild(clonedImage);\n});\n\n// Clone all images again to create a seamless loop\nlogos.querySelectorAll('img').forEach((image) => {\n  const clonedImage = image.cloneNode(true);\n  logosSlide.appendChild(clonedImage);\n});\n\n// Set the width of the logos-slide element to accommodate all images\nlogosSlide.style.width = `${numImages * 200}%`;\n\n// Set the animation duration to the number of images multiplied by the slide duration\nconst slideDuration = numImages * 40;\n\n// Set the animation-iteration-count to infinite\nlogosSlide.style.animationIterationCount = 'infinite';\n\n// Set the animation-duration to the slide duration\nlogosSlide.style.animationDuration = `${slideDuration}s`;\n  </script>\n</html>",
+        "bg_color": "bg-white",
+        "bg_opacity": 0,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 50,
+        "container": "",
+        "container_max_width": "",
+        "text_align": "text-center",
+        "header_title": "",
+        "header_title_font_size": "h2",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "pt": 4,
+        "pb": 4
+      }
+    },
     "hero_carousel_CmDneU": {
       "type": "hero-carousel",
       "blocks": {
@@ -51,7 +75,9 @@
         "slide_Q4UPQq",
         "slide_TddqxQ"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "{padding-top: 1.5em;}"
+      ],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
@@ -220,7 +246,7 @@
             "description_font_size": "fs-md",
             "btn_primary_text": "Primary button",
             "btn_primary_url": "",
-            "btn_primary_color": "btn-primary",
+            "btn_primary_color": "btn-light-primary",
             "btn_secondary_text": "Secondary button",
             "btn_secondary_url": "",
             "btn_secondary_color": "btn-outline-primary",
@@ -474,7 +500,7 @@
     "html_Y7Cp8x": {
       "type": "html",
       "settings": {
-        "liquid": "<iframe class=\"rounded\" src=\"https://www.google.com/maps/embed/v1/place?q=3423+Fork+Shoals+Rd,+Simpsonville,+SC+29680&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8\" width=\"100%\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "liquid": "<iframe class=\"rounded\" src=\"https://www.google.com/maps/embed/v1/place?q=3423+Fork+Shoals+Rd,+Simpsonville,+SC+29680&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8\" width=\"100%\" height=\"500\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
@@ -491,7 +517,7 @@
         "header_description": "<p>3423 Fork Shoals Rd, Simpsonville, SC 29680</p>",
         "header_description_font_size": "fs-md",
         "pt": 10,
-        "pb": 10
+        "pb": 14
       }
     },
     "separator_pMbxtB": {
@@ -550,6 +576,7 @@
     }
   },
   "order": [
+    "html_pk6mHi",
     "hero_carousel_CmDneU",
     "featured_products_nXJKQn",
     "richtext_4miPYL",
