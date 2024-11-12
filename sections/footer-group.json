@@ -28,7 +28,7 @@
         "text_color": "text-body",
         "border_top_width": 1,
         "border_bottom_width": 0,
-        "border_color": "border-primary",
+        "border_color": "border-secondary",
         "border_opacity": 50,
         "container_max_width": "600",
         "header_title": "Signup For The Best Deals",
