@@ -237,6 +237,55 @@
         "container_max_width": ""
       }
     },
+    "media_with_text_3cgm8E": {
+      "type": "media-with-text",
+      "blocks": {
+        "row_4NFNry": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-white",
+            "bg_opacity": 50,
+            "bg_gradient": "",
+            "text_color": "text-body",
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_color": "border-primary",
+            "border_opacity": 10,
+            "media_align_desktop": "",
+            "media_border": "rounded",
+            "img": "shopify://shop_images/881Bender_app1_9-18-15_300dpi.jpg",
+            "img_orientation": "ratio-1x1",
+            "video_ratio": "ratio-1x1",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "external_video": "",
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-start",
+            "subtitle": "Tools to get the job done",
+            "title": "Tools & Equipment",
+            "title_font_size": "h3",
+            "description": "<p>Discover a Wide Range of High-Quality Industrial Tools for Every Application. Leap into a broad assortment of superior industrial tools suitable for various applications. Browse through our extensive collection of premium industrial tools tailored to suit different needs and tasks.</p>",
+            "description_font_size": "fs-md",
+            "btn_primary_text": "Primary button",
+            "btn_primary_url": "",
+            "btn_primary_color": "btn-light-primary",
+            "btn_secondary_text": "Secondary button",
+            "btn_secondary_url": "",
+            "btn_secondary_color": "btn-outline-primary",
+            "pt": 10,
+            "pb": 10
+          }
+        }
+      },
+      "block_order": [
+        "row_4NFNry"
+      ],
+      "settings": {
+        "container_max_width": ""
+      }
+    },
     "card_slider_BFzjjF": {
       "type": "card-slider",
       "blocks": {
@@ -560,6 +609,7 @@
     "richtext_AtYwxr",
     "richtext_4miPYL",
     "media_with_text_xTY8gi",
+    "media_with_text_3cgm8E",
     "card_slider_BFzjjF",
     "faq_7TT7z4",
     "testimonials_eFtnyC",
