@@ -52,7 +52,8 @@
         "slide_TddqxQ"
       ],
       "custom_css": [
-        "{padding-top: 1.5em;}"
+        "{padding-top: 1.5em;}",
+        "#carousel-template--18681194676467__hero_carousel_CmDneU {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
