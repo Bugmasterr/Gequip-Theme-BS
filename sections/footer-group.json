@@ -15,7 +15,7 @@
       "type": "newsletter",
       "custom_css": [
         ".newsletter-notice {padding: 4px;}",
-        ".title{padding: 5px;}",
+        ".title {padding: 5px;}",
         "input {background: whitesmoke;}",
         "input:hover {background: white; outline: 1px solid #334fb4; transition: background 0.5s;}",
         "input:focus {background: white;}",
@@ -129,6 +129,7 @@
         "7468602d-7e94-4bd5-9673-02b2f8269581",
         "0f9016c8-7819-40d8-a874-905df26582ca"
       ],
+      "custom_css": [],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
@@ -141,8 +142,8 @@
         "social_icons": false,
         "show_payment_icons": true,
         "show_powered_by": false,
-        "pt": 10,
-        "pb": 7
+        "pt": 8,
+        "pb": 8
       }
     }
   },
