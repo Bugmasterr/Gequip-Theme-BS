@@ -190,16 +190,16 @@
             "subtitle": "Tools to get the job done",
             "title": "Tools & Equipment",
             "title_font_size": "h3",
-            "description": "<p>Discover a Wide Range of High-Quality Industrial Tools for Every Application. Leap into a broad assortment of superior industrial tools suitable for various applications. Browse through our extensive collection of premium industrial tools tailored to suit different needs and tasks.</p>",
+            "description": "<p>Shop for Tools & Equipment for all Stages of Your Project Life Cycle. Our wide range of tools and equipment are designed to meet your project's needs.  </p>",
             "description_font_size": "fs-md",
-            "btn_primary_text": "Primary button",
+            "btn_primary_text": "View Our Catalog",
             "btn_primary_url": "",
             "btn_primary_color": "btn-light-primary",
-            "btn_secondary_text": "Secondary button",
+            "btn_secondary_text": "",
             "btn_secondary_url": "",
             "btn_secondary_color": "btn-outline-primary",
-            "pt": 0,
-            "pb": 0
+            "pt": 4,
+            "pb": 4
           }
         }
       },
@@ -210,8 +210,7 @@
         ".description {padding-bottom: 10px;}",
         ".title {padding-block: 10px;}",
         " {line-height: 1.75rem; align-items: center; justify-content: center;}",
-        ".container .row {height: 450px; margin: auto;}",
-        "@media (min-width: 786px) {.img-fluid {height: 350px; width: auto; padding-left: 100px; }}"
+        "@media (min-width: 786px) {.img-fluid {height: 350px; width: auto; padding-left: 100px; } .container .row {height: 450px; margin: auto; }}"
       ],
       "settings": {
         "container_max_width": ""
