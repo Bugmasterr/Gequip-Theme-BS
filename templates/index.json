@@ -207,7 +207,9 @@
         "row_JkMDbM"
       ],
       "custom_css": [
-        ".description {padding-bottom: 10px; line-height: 1.75rem;}"
+        ".description {padding-bottom: 10px;}",
+        ".title {padding-block: 10px;}",
+        " {line-height: 1.75rem;}"
       ],
       "settings": {
         "container_max_width": ""
