@@ -161,33 +161,6 @@
         "pb": 11
       }
     },
-    "richtext_4miPYL": {
-      "type": "richtext",
-      "settings": {
-        "bg_color": "bg-secondary",
-        "bg_opacity": 20,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 1,
-        "border_bottom_width": 1,
-        "border_color": "border-primary",
-        "border_opacity": 50,
-        "container_max_width": "900",
-        "text_align": "text-center",
-        "title": "Title here",
-        "title_font_size": "h3",
-        "description": "<p>Description here</p>",
-        "description_font_size": "fs-md",
-        "btn_primary_text": "Primary button",
-        "btn_primary_url": "",
-        "btn_primary_color": "btn-outline-primary",
-        "btn_secondary_text": "Secondary button",
-        "btn_secondary_url": "",
-        "btn_secondary_color": "btn-primary",
-        "pt": 12,
-        "pb": 12
-      }
-    },
     "media_with_text_xTY8gi": {
       "type": "media-with-text",
       "blocks": {
@@ -204,7 +177,7 @@
             "border_opacity": 10,
             "media_align_desktop": "",
             "media_border": "rounded",
-            "img": "shopify://shop_images/881Bender_app1_9-18-15_300dpi.jpg",
+            "img": "shopify://shop_images/project-life-cycle.png",
             "img_orientation": "ratio-1x1",
             "video_ratio": "ratio-1x1",
             "video_autoplay": true,
@@ -235,6 +208,33 @@
       ],
       "settings": {
         "container_max_width": ""
+      }
+    },
+    "richtext_4miPYL": {
+      "type": "richtext",
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 20,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 50,
+        "container_max_width": "900",
+        "text_align": "text-center",
+        "title": "Title here",
+        "title_font_size": "h3",
+        "description": "<p>Description here</p>",
+        "description_font_size": "fs-md",
+        "btn_primary_text": "Primary button",
+        "btn_primary_url": "",
+        "btn_primary_color": "btn-outline-primary",
+        "btn_secondary_text": "Secondary button",
+        "btn_secondary_url": "",
+        "btn_secondary_color": "btn-primary",
+        "pt": 12,
+        "pb": 12
       }
     },
     "media_with_text_3cgm8E": {
@@ -607,8 +607,8 @@
     "separator_kfq8kz",
     "featured_products_nXJKQn",
     "richtext_AtYwxr",
-    "richtext_4miPYL",
     "media_with_text_xTY8gi",
+    "richtext_4miPYL",
     "media_with_text_3cgm8E",
     "card_slider_BFzjjF",
     "faq_7TT7z4",
