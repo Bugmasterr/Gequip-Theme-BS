@@ -198,8 +198,8 @@
             "btn_secondary_text": "Secondary button",
             "btn_secondary_url": "",
             "btn_secondary_color": "btn-outline-primary",
-            "pt": 10,
-            "pb": 10
+            "pt": 0,
+            "pb": 0
           }
         }
       },
@@ -209,8 +209,9 @@
       "custom_css": [
         ".description {padding-bottom: 10px;}",
         ".title {padding-block: 10px;}",
-        " {line-height: 1.75rem;}",
-        ".img-fluid {height: auto;width: auto;}"
+        " {line-height: 1.75rem; align-items: center; justify-content: center;}",
+        ".container .row {height: 450px; margin: auto;}",
+        "@media (min-width: 786px) {.img-fluid {height: 350px; width: auto; padding-left: 100px; }}"
       ],
       "settings": {
         "container_max_width": ""
