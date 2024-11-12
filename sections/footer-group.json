@@ -15,6 +15,7 @@
       "type": "newsletter",
       "custom_css": [
         ".newsletter-notice {padding: 4px;}",
+        ".title{padding: 5px;}",
         "input {background: whitesmoke;}",
         "input:hover {background: white; outline: 1px solid #334fb4; transition: background 0.5s;}",
         "input:focus {background: white;}",
