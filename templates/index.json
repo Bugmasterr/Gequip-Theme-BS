@@ -194,7 +194,7 @@
             "description_font_size": "fs-md",
             "btn_primary_text": "View Our Catalog",
             "btn_primary_url": "",
-            "btn_primary_color": "btn-light-primary",
+            "btn_primary_color": "btn-primary",
             "btn_secondary_text": "",
             "btn_secondary_url": "",
             "btn_secondary_color": "btn-outline-primary",
