@@ -210,7 +210,7 @@
         ".description {padding-bottom: 10px;}",
         ".title {padding-block: 10px;}",
         " {line-height: 1.75rem;}",
-        ".img-fluid {height: 450px; width: auto; padding: 30px;}"
+        ".img-fluid {height: auto;width: auto;}"
       ],
       "settings": {
         "container_max_width": ""
