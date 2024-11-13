@@ -510,8 +510,9 @@
         "item_qp7jPa": {
           "type": "item",
           "settings": {
-            "title": "First Card",
-            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec massa velit, sagittis nec pharetra id, iaculis non sapien.</p>",
+            "img": "shopify://shop_images/GES-CraneAndRigging.png",
+            "title": "",
+            "description": "",
             "btn_text": "Learn more",
             "btn_url": ""
           }
@@ -570,7 +571,6 @@
         "item_iKKgHJ",
         "item_Je3xNm"
       ],
-      "disabled": true,
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
@@ -701,6 +701,7 @@
       "block_order": [
         "item_B99dNi"
       ],
+      "disabled": true,
       "settings": {
         "bg_color": "bg-secondary",
         "bg_opacity": 50,
