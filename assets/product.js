@@ -1,7 +1,4 @@
-/*
-  © 2024 KondaSoft
-  https://www.kondasoft.com
-*/
+
 
 class ProductForm extends HTMLElement {
   constructor () {
