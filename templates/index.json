@@ -9,30 +9,6 @@
  */
 {
   "sections": {
-    "html_pk6mHi": {
-      "type": "html",
-      "custom_css": [],
-      "settings": {
-        "liquid": "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  </head>\n\n<style>\n     * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n\n        .logos::before, \n        .logos::after {\n            content: '';\n            width: 200px;\n            height: 100%;\n            position: absolute;\n            top: 0;\n            z-index: 2;\n        }\n\n        .logos::before {\n            left: 0;\n            background: linear-gradient(to left, rgba(255, 255, 255, 0), #fff);\n        }\n\n        .logos::after {\n            right: 0;\n            background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);\n        }\n\n        .logos-slide {\n            animation: 10s slide infinite linear;\n        }\n\n        .logos:hover .logos-slide {\n            animation-play-state: paused;\n        }\n\n        .logos-slide img {\n            height: 50px;\n            margin: 0 50px;\n        }\n\n        @keyframes slide {\n            from{\n                transform: translateX(0);\n            }\n\n            to {\n                transform: translateX(-100%);\n            }\n        }\n    </style>\n    \n<body class=\"bg-dark\">\n    <main class=\"vw-100 d-flex flex-row justify-content-center align-items-center\">\n      <div class=\"logos overflow-hidden py-5 px-0 position-relative\" style=\"background-color: #fff; white-space: nowrap;\">\n        <div class=\"logos-slide d-inline-block\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_17c23c2b-1f49-43f7-baf3-fefd832b7c69.jpg?v=1731127295&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_7fcb81de-34b9-4f0a-9184-f41d07fb38e1.jpg?v=1731128940&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/Sumner.jpg?v=1716631333&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_6c7a805e-ac1f-46ed-b9a2-ffac0ff6890f.jpg?v=1731134286&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/b-b-pipe-and-industrial-tools-brand-thumbnail.jpg?v=1716597183&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_569403f3-ae19-4946-9255-b6c3ad98400b.jpg?v=1731127611&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_eb8bb483-552a-41e4-9331-f5122bec41aa.jpg?v=1731128019&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/current-tools-brand-thumbnail.jpg?v=1716598027&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_f61fcb6f-b2d0-4ffc-a2e8-1dc55c36338c.jpg?v=1731129043&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_a4e10d8f-5994-4ab9-81ae-920f2206f695.jpg?v=1731127411&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_d0529a59-01e4-4aa5-baea-fc3ff29fa0e3.jpg?v=1731127996&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_e3028507-4684-4370-b04f-42e96f2bfbf5.jpg?v=1731127675&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_a8b14ebf-46fd-44e7-835d-cc7f60794add.jpg?v=1720466203&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/guardian-brand-thumbnail.jpg?v=1716599933&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_e0fd3595-25d9-4ca5-80b3-a77d64b966bd.jpg?v=1731128825&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_52382807-f15f-4118-81e2-a5697f78c87b.jpg?v=1731127979&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/media_7ab7db7c-504a-41dc-b4ab-669083911298.jpg?v=1731127790&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/media_389f580d-5d31-435d-ab53-02cc0a6e5c3f.jpg?v=1720466316&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/media_ed8218d6-a82c-4cb4-bb7d-6d081c76d931.jpg?v=1731128984&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/texas-pneumatic-brand-thumbnail.jpg?v=1716604126&width=460\" alt=\"\">\n\n            <img src=\"https://toolup.com/cdn/shop/collections/victor-brand-thumbnail.jpg?v=1716605289&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/werner-brand-thumbnail.jpg?v=1716605807&width=460\" alt=\"\">\n            \n            <img src=\"https://toolup.com/cdn/shop/collections/wright-tool-brand-thumbnail.jpg?v=1716608084&width=460\" alt=\"\">\n        </div>\n    </div>\n  </main>\n  </body>\n  <script>\nconst logos = document.querySelector('.logos');\nconst logosSlide = document.querySelector('.logos-slide');\n\n// Get the number of images\nconst numImages = logos.querySelectorAll('img').length;\n\n// Clone all images and append them to the logos-slide element\nlogos.querySelectorAll('img').forEach((image) => {\n  const clonedImage = image.cloneNode(true);\n  logosSlide.appendChild(clonedImage);\n});\n\n// Clone all images again to create a seamless loop\nlogos.querySelectorAll('img').forEach((image) => {\n  const clonedImage = image.cloneNode(true);\n  logosSlide.appendChild(clonedImage);\n});\n\n// Set the width of the logos-slide element to accommodate all images\nlogosSlide.style.width = `${numImages * 200}%`;\n\n// Set the animation duration to the number of images multiplied by the slide duration\nconst slideDuration = numImages * 40;\n\n// Set the animation-iteration-count to infinite\nlogosSlide.style.animationIterationCount = 'infinite';\n\n// Set the animation-duration to the slide duration\nlogosSlide.style.animationDuration = `${slideDuration}s`;\n  </script>\n</html>",
-        "bg_color": "bg-white",
-        "bg_opacity": 0,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 1,
-        "border_bottom_width": 1,
-        "border_color": "border-primary",
-        "border_opacity": 50,
-        "container": "",
-        "container_max_width": "",
-        "text_align": "text-center",
-        "header_title": "",
-        "header_title_font_size": "h2",
-        "header_description": "",
-        "header_description_font_size": "fs-md",
-        "pt": 4,
-        "pb": 4
-      }
-    },
     "hero_carousel_CmDneU": {
       "type": "hero-carousel",
       "blocks": {
@@ -76,7 +52,8 @@
         "slide_TddqxQ"
       ],
       "custom_css": [
-        "{padding-top: 1.5em;}"
+        "{padding-top: 1.5em;}",
+        "#carousel-template--18681194676467__hero_carousel_CmDneU {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
@@ -110,18 +87,34 @@
         "pb": 0
       }
     },
+    "separator_kfq8kz": {
+      "type": "separator",
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 0,
+        "height": 0,
+        "container": "container",
+        "container_max_width": "",
+        "pt": 0,
+        "pb": 12
+      }
+    },
     "featured_products_nXJKQn": {
       "type": "featured-products",
-      "custom_css": [],
+      "custom_css": [
+        ".title {padding-block: 15px;}",
+        "#featured-products-template--18681194676467__featured_products_nXJKQn {box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;}",
+        ".card {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}"
+      ],
       "settings": {
-        "bg_color": "bg-body",
+        "bg_color": "bg-primary",
         "bg_opacity": 100,
         "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
+        "text_color": "text-white",
+        "border_top_width": 2,
         "border_bottom_width": 0,
         "border_color": "border-primary",
-        "border_opacity": 100,
+        "border_opacity": 25,
         "container_max_width": "",
         "products": [],
         "collection": "featured-products",
@@ -142,75 +135,8 @@
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
         "breakpoint_desktop": 5,
-        "pt": 12,
-        "pb": 8
-      }
-    },
-    "richtext_4miPYL": {
-      "type": "richtext",
-      "settings": {
-        "bg_color": "bg-secondary",
-        "bg_opacity": 20,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 1,
-        "border_bottom_width": 1,
-        "border_color": "border-primary",
-        "border_opacity": 100,
-        "container_max_width": "900",
-        "text_align": "text-center",
-        "title": "Title here",
-        "title_font_size": "h3",
-        "description": "<p>Description here</p>",
-        "description_font_size": "fs-md",
-        "btn_primary_text": "Primary button",
-        "btn_primary_url": "",
-        "btn_primary_color": "btn-outline-primary",
-        "btn_secondary_text": "Secondary button",
-        "btn_secondary_url": "",
-        "btn_secondary_color": "btn-primary",
-        "pt": 12,
-        "pb": 12
-      }
-    },
-    "richtext_AtYwxr": {
-      "type": "richtext",
-      "settings": {
-        "bg_color": "bg-primary",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-white",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-body",
-        "border_opacity": 100,
-        "container_max_width": "900",
-        "text_align": "text-center",
-        "title": "Title Here",
-        "title_font_size": "h2",
-        "description": "<p>description here</p>",
-        "description_font_size": "fs-md",
-        "btn_primary_text": "Primary button",
-        "btn_primary_url": "",
-        "btn_primary_color": "btn-white",
-        "btn_secondary_text": "Secondary button",
-        "btn_secondary_url": "",
-        "btn_secondary_color": "btn-light-white",
-        "pt": 11,
-        "pb": 11
-      }
-    },
-    "separator_kfq8kz": {
-      "type": "separator",
-      "disabled": true,
-      "settings": {
-        "bg_color": "bg-primary",
-        "bg_opacity": 10,
-        "height": 1,
-        "container": "container",
-        "container_max_width": "",
         "pt": 0,
-        "pb": 10
+        "pb": 8
       }
     },
     "media_with_text_xTY8gi": {
@@ -229,7 +155,7 @@
             "border_opacity": 10,
             "media_align_desktop": "",
             "media_border": "rounded",
-            "img": "shopify://shop_images/881Bender_app1_9-18-15_300dpi.jpg",
+            "img": "shopify://shop_images/project-life-cycle.png",
             "img_orientation": "ratio-1x1",
             "video_ratio": "ratio-1x1",
             "video_autoplay": true,
@@ -242,24 +168,340 @@
             "subtitle": "Tools to get the job done",
             "title": "Tools & Equipment",
             "title_font_size": "h3",
-            "description": "<p>Discover a Wide Range of High-Quality Industrial Tools for Every Application. Leap into a broad assortment of superior industrial tools suitable for various applications. Browse through our extensive collection of premium industrial tools tailored to suit different needs and tasks.</p>",
+            "description": "<p>Shop for Tools & Equipment for all Stages of Your Project Life Cycle. Our wide range of tools and equipment are designed to meet your project's needs.  </p>",
             "description_font_size": "fs-md",
-            "btn_primary_text": "Primary button",
+            "btn_primary_text": "View Our Catalog",
             "btn_primary_url": "",
-            "btn_primary_color": "btn-light-primary",
-            "btn_secondary_text": "Secondary button",
+            "btn_primary_color": "btn-primary",
+            "btn_secondary_text": "",
             "btn_secondary_url": "",
             "btn_secondary_color": "btn-outline-primary",
-            "pt": 10,
-            "pb": 10
+            "pt": 4,
+            "pb": 4
           }
         }
       },
       "block_order": [
         "row_JkMDbM"
       ],
+      "custom_css": [
+        ".description {padding-bottom: 10px;}",
+        ".title {padding-block: 10px;}",
+        " {line-height: 1.75rem; align-items: center; justify-content: center;}",
+        "@media (min-width: 786px) {.img-fluid {height: 350px; width: auto; padding-left: 100px; } .container .row {height: 450px; margin: auto; }}"
+      ],
       "settings": {
         "container_max_width": ""
+      }
+    },
+    "richtext_4miPYL": {
+      "type": "richtext",
+      "disabled": true,
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 20,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 24,
+        "container_max_width": "900",
+        "text_align": "text-center",
+        "title": "Title here",
+        "title_font_size": "h3",
+        "description": "<p>Description here</p>",
+        "description_font_size": "fs-md",
+        "btn_primary_text": "Primary button",
+        "btn_primary_url": "",
+        "btn_primary_color": "btn-outline-primary",
+        "btn_secondary_text": "Secondary button",
+        "btn_secondary_url": "",
+        "btn_secondary_color": "btn-primary",
+        "pt": 12,
+        "pb": 12
+      }
+    },
+    "1731431012b89ce66a": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_iMXyhp": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1100,
+            "borderRadius": 6,
+            "itemsPerView": 4,
+            "mobileItemsPerView": 1,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "0.72",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#ffffff",
+            "arrows_iconColor": "#334fb4",
+            "shadow": "offset-light",
+            "border_active": true,
+            "border_width": 1,
+            "border_color": "#1b2c69",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_iMXyhp"
+      ],
+      "custom_css": [
+        "div {background: var(--bs-primary); box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; max-width: 100vw;}"
+      ],
+      "settings": {}
+    },
+    "featured_products_AAxprB": {
+      "type": "featured-products",
+      "custom_css": [
+        ".title {padding-bottom: 15px;}"
+      ],
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 50,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-secondary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "featured-products",
+        "limit": 24,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "New Arrivals",
+        "header_title_font_size": "h3",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 800,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 5,
+        "pt": 8,
+        "pb": 8
+      }
+    },
+    "media_with_text_3cgm8E": {
+      "type": "media-with-text",
+      "blocks": {
+        "row_4NFNry": {
+          "type": "row",
+          "settings": {
+            "bg_color": "bg-primary",
+            "bg_opacity": 100,
+            "bg_gradient": "",
+            "text_color": "text-white",
+            "border_top_width": 0,
+            "border_bottom_width": 0,
+            "border_color": "border-primary",
+            "border_opacity": 10,
+            "media_align_desktop": "flex-desktop-row-reverse",
+            "media_border": "img-thumbnail",
+            "img": "shopify://shop_images/20240328_122910-crop.jpg",
+            "img_orientation": "ratio-1x1",
+            "video_ratio": "ratio-1x1",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_muted": true,
+            "video_controls": true,
+            "external_video": "",
+            "text_align_mobile": "text-center",
+            "text_align_desktop": "text-desktop-end",
+            "subtitle": "Custom-Designed Power Distribution Centers",
+            "title": "Temporary Power Units and Portable Distribution Centers",
+            "title_font_size": "h3",
+            "description": "<p>General Equipment & Supply will take your specifications and develop a robust and rugged custom designed power distribution center for temporary and portable jobsite power. These distribution load centers can be skid mounted, stationary or provided in two and four wheeled cart designs, depending on  your specific requirement.</p>",
+            "description_font_size": "fs-md",
+            "btn_primary_text": "Find Out More",
+            "btn_primary_url": "",
+            "btn_primary_color": "btn-outline-white",
+            "btn_secondary_text": "",
+            "btn_secondary_url": "",
+            "btn_secondary_color": "btn-light-primary",
+            "pt": 0,
+            "pb": 0
+          }
+        }
+      },
+      "block_order": [
+        "row_4NFNry"
+      ],
+      "custom_css": [
+        ".description {padding-bottom: 10px;}",
+        ".title {padding-block: 10px;}",
+        " {line-height: 1.75rem; align-items: center; justify-content: center;}",
+        ".container {padding: 20px; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; max-width: 100vw;}",
+        ".row {max-width: var(--bs-container-max-width);}",
+        "@media (min-width: 786px) {.img-fluid {height: 400px; width: auto; margin-left: 5rem; padding: 5px; } .container .row {height: 520px; margin: auto; } .text-center {margin-left: 25px; }}"
+      ],
+      "settings": {
+        "container_max_width": ""
+      }
+    },
+    "featured_products_3cALLr": {
+      "type": "featured-products",
+      "custom_css": [
+        ".title {padding-bottom: 15px;}"
+      ],
+      "settings": {
+        "bg_color": "bg-white",
+        "bg_opacity": 50,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 1,
+        "border_color": "border-secondary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "threading",
+        "limit": 24,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "Threading",
+        "header_title_font_size": "h3",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 800,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 5,
+        "pt": 8,
+        "pb": 10
+      }
+    },
+    "featured_products_qGWChX": {
+      "type": "featured-products",
+      "custom_css": [
+        ".title {padding-bottom: 15px;}"
+      ],
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 50,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 1,
+        "border_color": "border-secondary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "conduit-benders",
+        "limit": 24,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "Bending",
+        "header_title_font_size": "h3",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 800,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 5,
+        "pt": 8,
+        "pb": 10
+      }
+    },
+    "featured_products_tfxwmm": {
+      "type": "featured-products",
+      "custom_css": [
+        ".title {padding-bottom: 15px;}"
+      ],
+      "settings": {
+        "bg_color": "bg-white",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 1,
+        "border_color": "border-secondary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "welding-machines",
+        "limit": 24,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "Welding",
+        "header_title_font_size": "h3",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 800,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 5,
+        "pt": 8,
+        "pb": 10
+      }
+    },
+    "featured_products_i7bgKE": {
+      "type": "featured-products",
+      "custom_css": [
+        ".title {padding-bottom: 15px;}"
+      ],
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 50,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 1,
+        "border_color": "border-secondary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "products": [],
+        "collection": "gangboxes",
+        "limit": 24,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "Storage Boxes",
+        "header_title_font_size": "h3",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 800,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 5,
+        "pt": 8,
+        "pb": 10
       }
     },
     "card_slider_BFzjjF": {
@@ -268,8 +510,9 @@
         "item_qp7jPa": {
           "type": "item",
           "settings": {
-            "title": "First Card",
-            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec massa velit, sagittis nec pharetra id, iaculis non sapien.</p>",
+            "img": "shopify://shop_images/ridgid-1224-006.png",
+            "title": "",
+            "description": "",
             "btn_text": "Learn more",
             "btn_url": ""
           }
@@ -338,9 +581,9 @@
         "border_color": "border-primary",
         "border_opacity": 40,
         "container_max_width": "",
-        "header_title": "Card Slider",
+        "header_title": "Cards",
         "header_title_font_size": "h3",
-        "header_description": "<p>Add on optional description for this section</p>",
+        "header_description": "<p>Test Desc</p>",
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": true,
@@ -349,14 +592,14 @@
         "slider_scrollbar": true,
         "slider_partial_slides_mobile": true,
         "slider_autoplay": 0,
-        "item_bg_color": "bg-white",
+        "item_bg_color": "bg-secondary",
         "item_bg_opacity": 100,
         "item_text_color": "text-body",
-        "item_border_width": 1,
-        "item_border_color": "",
+        "item_border_width": 0,
+        "item_border_color": "border-secondary",
         "item_border_opacity": 100,
-        "item_shadow": "shadow-sm",
-        "item_text_align": "text-start",
+        "item_shadow": "shadow-lg",
+        "item_text_align": "text-center",
         "item_img_orientation": "ratio-4x3",
         "item_title_font_size": "h5",
         "item_description_font_size": "",
@@ -367,61 +610,6 @@
         "breakpoint_desktop": 4,
         "pt": 8,
         "pb": 8
-      }
-    },
-    "testimonials_eFtnyC": {
-      "type": "testimonials",
-      "blocks": {
-        "item_B99dNi": {
-          "type": "item",
-          "settings": {
-            "title": "Exceeded my expectations!",
-            "description": "<p>The Condition of the reconditioned unit exceeded my expectations. The delivery was fast, and in great condition. I would highly recommend this seller.</p>",
-            "author": "Donald S..",
-            "author_subtitle": "Verified Customer"
-          }
-        }
-      },
-      "block_order": [
-        "item_B99dNi"
-      ],
-      "settings": {
-        "bg_color": "bg-secondary",
-        "bg_opacity": 50,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 1,
-        "border_bottom_width": 1,
-        "border_color": "border-primary",
-        "border_opacity": 100,
-        "container_max_width": "",
-        "header_title": "Customer Testimonials",
-        "header_title_font_size": "h3",
-        "header_description": "<p>Discover what customers are saying about our products</p>",
-        "header_description_font_size": "fs-lg",
-        "slider_speed": 300,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": true,
-        "slider_autoplay": 0,
-        "card_bg_color": "bg-primary",
-        "card_bg_opacity": 100,
-        "card_text_color": "text-white",
-        "card_border_width": 0,
-        "card_border_color": "border-white",
-        "card_border_opacity": 50,
-        "card_shadow": "shadow-sm",
-        "card_text_align": "text-start",
-        "card_show_stars": true,
-        "card_title_font_size": "h4",
-        "card_description_font_size": "fs-md",
-        "breakpoint_mobile": 1,
-        "breakpoint_tablet": 2,
-        "breakpoint_desktop": 4,
-        "pt": 8,
-        "pb": 0
       }
     },
     "faq_7TT7z4": {
@@ -486,7 +674,7 @@
         "border_top_width": 0,
         "border_bottom_width": 0,
         "border_color": "border-body",
-        "border_opacity": 100,
+        "border_opacity": 50,
         "container_max_width": "",
         "open_first_item": true,
         "header_title": "FAQs",
@@ -497,18 +685,77 @@
         "pb": 8
       }
     },
+    "testimonials_eFtnyC": {
+      "type": "testimonials",
+      "blocks": {
+        "item_B99dNi": {
+          "type": "item",
+          "settings": {
+            "title": "Exceeded my expectations!",
+            "description": "<p>The Condition of the reconditioned unit exceeded my expectations. The delivery was fast, and in great condition. I would highly recommend this seller.</p>",
+            "author": "Donald S..",
+            "author_subtitle": "Verified Customer"
+          }
+        }
+      },
+      "block_order": [
+        "item_B99dNi"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 50,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 1,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 25,
+        "container_max_width": "",
+        "header_title": "Customer Testimonials",
+        "header_title_font_size": "h3",
+        "header_description": "<p>Discover what customers are saying about our products</p>",
+        "header_description_font_size": "fs-lg",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": true,
+        "slider_autoplay": 0,
+        "card_bg_color": "bg-primary",
+        "card_bg_opacity": 100,
+        "card_text_color": "text-white",
+        "card_border_width": 0,
+        "card_border_color": "border-white",
+        "card_border_opacity": 35,
+        "card_shadow": "shadow-sm",
+        "card_text_align": "text-start",
+        "card_show_stars": true,
+        "card_title_font_size": "h4",
+        "card_description_font_size": "fs-md",
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 4,
+        "pt": 8,
+        "pb": 0
+      }
+    },
     "html_Y7Cp8x": {
       "type": "html",
+      "custom_css": [
+        ".description {padding-bottom: 10px;}"
+      ],
       "settings": {
         "liquid": "<iframe class=\"rounded\" src=\"https://www.google.com/maps/embed/v1/place?q=3423+Fork+Shoals+Rd,+Simpsonville,+SC+29680&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8\" width=\"100%\" height=\"500\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
         "text_color": "text-body",
-        "border_top_width": 1,
+        "border_top_width": 0,
         "border_bottom_width": 0,
         "border_color": "border-primary",
-        "border_opacity": 100,
+        "border_opacity": 27,
         "container": "container",
         "container_max_width": "",
         "text_align": "text-center",
@@ -516,7 +763,7 @@
         "header_title_font_size": "h3",
         "header_description": "<p>3423 Fork Shoals Rd, Simpsonville, SC 29680</p>",
         "header_description_font_size": "fs-md",
-        "pt": 10,
+        "pt": 12,
         "pb": 14
       }
     },
@@ -535,7 +782,8 @@
     "blog_slider_UUweWT": {
       "type": "blog-slider",
       "custom_css": [
-        ".title {padding-bottom: 20px;}"
+        ".title {padding-bottom: 20px;}",
+        ".article-card img {padding: 7px;}"
       ],
       "settings": {
         "bg_color": "bg-secondary",
@@ -544,8 +792,8 @@
         "text_color": "text-body",
         "border_top_width": 1,
         "border_bottom_width": 1,
-        "border_color": "border-primary",
-        "border_opacity": 100,
+        "border_color": "border-secondary",
+        "border_opacity": 50,
         "container_max_width": "",
         "header_title": "Our Latest Blog Post",
         "header_title_font_size": "h2",
@@ -553,7 +801,7 @@
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": true,
-        "slider_pagination": true,
+        "slider_pagination": false,
         "slider_pagination_type": "bullets",
         "slider_scrollbar": true,
         "slider_partial_slides_mobile": true,
@@ -561,7 +809,7 @@
         "blog": "news",
         "limit": 8,
         "article_card_text_align": "text-center",
-        "article_card_img_orientation": "ratio-1x1",
+        "article_card_img_orientation": "ratio-4x3",
         "article_card_img_border": "img-thumbnail",
         "article_card_title_size": "fs-xl",
         "article_card_meta": false,
@@ -569,23 +817,28 @@
         "article_card_excerpt": true,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 3,
+        "breakpoint_desktop": 4,
         "pt": 8,
         "pb": 8
       }
     }
   },
   "order": [
-    "html_pk6mHi",
     "hero_carousel_CmDneU",
-    "featured_products_nXJKQn",
-    "richtext_4miPYL",
-    "richtext_AtYwxr",
     "separator_kfq8kz",
+    "featured_products_nXJKQn",
     "media_with_text_xTY8gi",
+    "richtext_4miPYL",
+    "1731431012b89ce66a",
+    "featured_products_AAxprB",
+    "media_with_text_3cgm8E",
+    "featured_products_3cALLr",
+    "featured_products_qGWChX",
+    "featured_products_tfxwmm",
+    "featured_products_i7bgKE",
     "card_slider_BFzjjF",
-    "testimonials_eFtnyC",
     "faq_7TT7z4",
+    "testimonials_eFtnyC",
     "html_Y7Cp8x",
     "separator_pMbxtB",
     "blog_slider_UUweWT"
