@@ -35,14 +35,15 @@
         {% endif %}
       </div>
 
-      {% comment %} Product title {% endcomment %}
-      <h2 class="product-title p-4 {{ settings.product_card_title_font_size }}">
-        {{ product.title }}
-      </h2>
-    </a>
   </div>
 
   <div class="product-info p-4" style="flex: 2;">
+
+    {% comment %} Product title {% endcomment %}
+    <h2 class="product-title p-4 {{ settings.product_card_title_font_size }}">
+      {{ product.title }}
+    </h2>
+
     {% comment %} Product rating badge {% endcomment %}
     {% render 'product-rating-badge', product: product %}
 
@@ -95,6 +96,7 @@
     {% endif %}
   </div>
 </div>
+</a>
 
 <style>
   .product-card {
