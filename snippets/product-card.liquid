@@ -1,4 +1,7 @@
 <style>
+  * {
+    user-select: none;
+  }
   .card-product {
     margin: auto;
     border-radius: 6px;
@@ -7,7 +10,7 @@
     border: none;
     overflow: hidden;
     position: relative;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.15s ease-in-out;
   }
 
   .card-product:hover {
@@ -42,7 +45,7 @@
     color: #fff;
     border-radius: 0;
     width: 95%;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.15s ease-in-out;
   }
 
   .btn-add-to-cart:hover {
@@ -71,7 +74,6 @@
   }
 
 </style>
-
 <div class="card shadow-sm card-product p-3 position-relative">
   <span class="badge bg-danger badge-featured">Featured</span>
   <div class="row g-0 h-100">
@@ -87,7 +89,6 @@
         <h6 class="fw-bold mb-1 product-name">Greenlee 555C</h6>
         <p class="text-muted small mb-1 product-details">Greenlee 555C Classic Electric Bender for 1/2in. to 2in. Conduit - Reconditioned</p>
 {% assign num_reviews = product.metafields.loox.num_reviews %}
-
 {% if num_reviews > 0 %}
     {% render 'product-rating-badge', product: product %}
 {% else %}
@@ -105,7 +106,6 @@
           <del class="text-danger">$4,995.00</del> 
           <span class="badge bg-success text-white fw-light py-2 px-3 badge-save">Save $2,000!</span>
         </p>
-
   <!-- Add to Cart Button -->
   <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart">
     <i class="bi bi-cart-fill"></i> Add to Cart
@@ -113,4 +113,5 @@
 </div>
 <!-- Add icons CDN for Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
