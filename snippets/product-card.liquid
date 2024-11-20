@@ -87,7 +87,7 @@
     <!-- Product Image -->
     <div class="col-md-5">
       <div class="card-product-image-container">
-        <img src="https://www.gequip.com/cdn/shop/files/ridigid-141-geared-threader-04.png" alt="Product Image" class="card-product-image">
+        <img src="{{ product.featured_image | image_url: width: auto, height: auto }}">
       </div>
     </div>
     <!-- Product Info -->
