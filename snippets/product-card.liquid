@@ -87,7 +87,7 @@
     <!-- Product Image -->
     <div class="col-md-5">
       <div class="card-product-image-container">
-        <img src="{{ product.featured_image | image_url: width: 300, height: 200 }}">
+        <img src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
       </div>
     </div>
     <!-- Product Info -->
