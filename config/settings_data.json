@@ -14,7 +14,7 @@
     "color_body_bg": "#ffffff",
     "color_body_color": "#212529",
     "transparent_header": "header-transparent",
-    "container_max_width": 1500,
+    "container_max_width": 1400,
     "border_radius": 0.3,
     "logo": "shopify://shop_images/ges-logo-1.png",
     "favicon": "shopify://shop_images/favicon.png",
