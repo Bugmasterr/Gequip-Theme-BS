@@ -95,7 +95,13 @@
       <div>
         <h6 class="fw-bold mb-1 product-name">Greenlee 555C</h6>
         <p class="text-muted small mb-1 product-details">Greenlee 555C Classic Electric Bender for 1/2in. to 2in. Conduit - Reconditioned</p>
-        {% render 'product-rating-badge', product: product %}
+{% assign num_reviews = product.metafields.loox.num_reviews %}
+
+{% if num_reviews > 0 %}
+    {% render 'product-rating-badge', product: product %}
+{% else %}
+  <br>
+{% endif %}
         <p class="text-success small mb-1 product-details"><i class="bi bi-check-circle"></i> In Stock</p>
         <p class="small mb-1 product-details"><i class="bi bi-tools"></i> Reconditioned</p>
         <p class="small mb-1 product-details"><i class="bi bi-truck"></i> Freight</p>
