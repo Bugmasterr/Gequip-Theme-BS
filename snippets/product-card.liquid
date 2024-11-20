@@ -11,7 +11,6 @@
     overflow: hidden;
     position: relative;
     transition: transform 0.15s ease-in-out;
-    transition: filter .2s;
     cursor: pointer;
   }
 
@@ -19,6 +18,7 @@
     box-shadow: 0 10px 15px var(-bg-primary);
     outline: 1px solid lightgray;
     transform: translateY(-5px);
+
   }
 
   .card-product-info {
@@ -36,6 +36,7 @@
     border-radius: 12px;
     overflow: hidden;
     padding: 5px;
+    transition: filter .2s;
   }
 
   .card-product-image {
@@ -46,6 +47,7 @@
 .card-product:hover .card-product-image-container {
     filter:brightness(103%);
     z-index: 1;
+    transition: filter .2s;
 }
   .btn-add-to-cart {
     color: #fff;
