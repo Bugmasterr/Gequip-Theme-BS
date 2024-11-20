@@ -134,7 +134,7 @@
         "slider_autoplay": 0,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 5,
+        "breakpoint_desktop": 6,
         "pt": 0,
         "pb": 8
       }
