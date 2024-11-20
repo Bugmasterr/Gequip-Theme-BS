@@ -18,7 +18,7 @@
   }
 
   .card-product-image-container {
-    height: 175px;
+    height: 200px;
     width: 100%;
     margin: auto;
     border-radius: 12px;
@@ -85,7 +85,7 @@
   <span class="badge bg-danger badge-featured">Featured</span>
   <div class="row g-0 h-100">
     <!-- Product Image -->
-    <div class="col-md-5">
+    <div>
       <div class="card-product-image-container">
         {{ product.featured_image | img_url: '200x150' | img_tag: product.featured_image.alt }}
       </div>
