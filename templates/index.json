@@ -273,7 +273,7 @@
         "border_opacity": 100,
         "container_max_width": "",
         "products": [],
-        "collection": "featured-products",
+        "collection": "new",
         "limit": 24,
         "recommended_mode": true,
         "recommended_mode_intent": "related",
