@@ -95,7 +95,7 @@
     <!-- Product Info -->
     <div class="col-md card-product-info">
       <div>
-        <h6 class="fw-bold mb-1 product-name">Greenlee 555C</h6>
+        <h6 class="fw-bold mb-1 product-name">{{ product.selected_or_first_available_variant.sku }}</h6>
         <p class="text-muted small mb-1 product-details">{{ product.title }}</p>
 {% assign num_reviews = product.metafields.loox.num_reviews %}
 {% if num_reviews > 0 %}
