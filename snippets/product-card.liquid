@@ -82,6 +82,8 @@
     margin: 0.3rem 0;
   }
 
+{% assign weight_in_pounds = product.selected_or_first_available_variant.weight | weight_with_unit: 'lb' %}
+  
 </style>
 <div class="card shadow-sm card-product p-3 position-relative">
   <span class="badge bg-danger badge-featured">Featured</span>
@@ -105,20 +107,19 @@
 {% endif %}
         <p class="text-success small mb-1 product-details"><i class="bi bi-check-circle"></i>{{ product.selected_or_first_available_variant.available }}</p>
         <p class="text-muted small mb-1 product-details"><i class="text-primary bi bi-nut"></i> Reconditioned</p>
-{% assign weight_in_pounds = product.selected_or_first_available_variant.weight | weight_with_unit: 'lb' %}
-
-<p class="text-muted small mb-1 product-details">
-  <i class="text-primary bi bi-truck"></i>
-  {% if weight_in_pounds > 150 %}
-    Freight
-  {% elsif weight_in_pounds <= 100 and weight_in_pounds > 0 %}
-    Standard
-  {% elsif weight_in_pounds == 0 %}
-    View In Cart
-  {% else %}
-    Contact Us for Shipping Details
-  {% endif %}
-</p>
+        <p class="text-muted small mb-1 product-details">
+          <i class="text-primary bi bi-truck"></i>
+          {% if weight_in_pounds > 150 %}
+            Freight
+          {% elsif weight_in_pounds <= 100 and weight_in_pounds > 0 %}
+            Standard
+          {% elsif weight_in_pounds == 0 %}
+            View In Cart
+          {% else %}
+            Contact Us for Shipping Details
+          {% endif %}
+        </p>
+        
         <p class="text-muted small mb-2 product-details"><i class="text-primary bi bi-clock"></i> 3 - 5 Business Days</p>
       </div>
     </div>
