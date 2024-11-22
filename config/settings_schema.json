@@ -375,18 +375,6 @@
   {
     "name": "Product cards",
     "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_featured_badge",
-      "label": "Show Featured Badge",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "featured_badge_text",
-      "label": "Featured Badge Text",
-      "default": "Featured"
-    },
       {
         "type": "select",
         "id": "product_card_text_align",
