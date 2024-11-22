@@ -135,10 +135,14 @@
             {% endif %}
           </p>
           <p class="text-muted small mb-2 product-details"><i class="text-primary bi bi-clock"></i>
-            {% if product.metafields.ges.lead_time != blank %}
-              {{ product.metafields.ges.lead_time | remove: 'Ready to ship in ' | remove: 'ready to ship or pickup in ' | remove: 'Ships in ' | remove: 'ready to ship in ' | remove: 'business days' | remove: 'Business Days' | append: ' Business Days' }}
+            {% if product.metafields.ges.customLeadTime == blank %}
+              {% if product.metafields['mm-google-shopping'].shipping != blank %}
+                {{ product.metafields['mm-google-shopping'].shipping }}
+              {% else %}
+                3 - 5 Business Days
+              {% endif %}
             {% else %}
-              3 - 5 Business Days
+              {{ product.metafields.ges.customLeadTime }}
             {% endif %}
           </p>
         </div>
