@@ -82,7 +82,7 @@
     margin: 0.3rem 0;
   }
 
-{% assign weight_in_pounds = product.selected_or_first_available_variant.weight | weight_with_unit: 'lb' %}
+{% assign weight_in_pounds = product.selected_or_first_available_variant.weight_in_unit | times: 1 %}
   
 </style>
 <div class="card shadow-sm card-product p-3 position-relative">
