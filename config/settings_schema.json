@@ -1,11 +1,11 @@
 [
   {
-    "name": "gequip_bootstrap_theme",
-    "theme_name": "gequip-bs-theme",
-    "theme_version": "1.0.0",
-    "theme_author": "Branen",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
+    "name": "theme_info",
+    "theme_name": "ks_bootshop",
+    "theme_version": "5.0.0",
+    "theme_author": "KondaSoft",
+    "theme_documentation_url": "https:\/\/www.kondasoft.com",
+    "theme_support_url": "https:\/\/community.kondasoft.com"
   },
   {
     "name": "Colors",
@@ -39,6 +39,23 @@
   {
     "name": "General",
     "settings": [
+      {
+        "type": "select",
+        "id": "transparent_header",
+        "label": "Transparent header",
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)",
+        "options": [
+          {
+            "value": "header-transparent",
+            "label": "Yes"
+          },
+          {
+            "value": "",
+            "label": "No"
+          }
+        ],
+        "default": "header-transparent"
+      },
       {
         "type": "range",
         "id": "container_max_width",
@@ -358,6 +375,18 @@
   {
     "name": "Product cards",
     "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_featured_badge",
+      "label": "Show Featured Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "featured_badge_text",
+      "label": "Featured Badge Text",
+      "default": "Featured"
+    },
       {
         "type": "select",
         "id": "product_card_text_align",
@@ -373,6 +402,23 @@
             "label": "Center"
           }
         ]
+      },
+      {
+        "type": "select",
+        "id": "product_card_img_mode",
+        "label": "Image mode",
+        "options": [
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "carousel",
+            "label": "Carousel"
+          }
+        ],
+        "default": "image",
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
       },
       {
         "type": "select",
@@ -483,6 +529,13 @@
         "default": "slide"
       },
       {
+        "type": "text",
+        "id": "product_card_custom_badge_metafield",
+        "label": "Custom badge metafield",
+        "default": "custom.badge",
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
         "type": "select",
         "id": "product_card_badge_discount_type",
         "label": "Sale badge discount type",
@@ -497,6 +550,13 @@
             "label": "Value"
           }
         ]
+      },
+      {
+        "type": "checkbox",
+        "id": "product_card_show_wishlist",
+        "label": "Show wishtlist button",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
       },
       {
         "type": "select",
@@ -585,6 +645,30 @@
           }
         ]
       },
+      {
+        "type": "select",
+        "id": "product_card_atc_style",
+        "label": "\"Add to cart\" style",
+        "default": "variant-selector",
+        "options": [
+          {
+            "value": "quick-view",
+            "label": "Quick view"
+          },
+          {
+            "value": "variant-selector",
+            "label": "Variant selector"
+          }
+        ],
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
+        "type": "text",
+        "id": "product_card_color_swatches",
+        "label": "Color swatches",
+        "default": "Color, color",
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      }
     ]
   },
   {
@@ -617,8 +701,22 @@
         "default": true
       },
       {
+        "type": "checkbox",
+        "id": "cart_shipping_calculator",
+        "label": "Show shipping calculator",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
         "type": "header",
         "content": "Cart goal"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_goal_enable",
+        "label": "Enable cart goal",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
       },
       {
         "type": "textarea",
@@ -759,6 +857,13 @@
         "content": "Upsells"
       },
       {
+        "type": "checkbox",
+        "id": "cart_upsells_enable",
+        "label": "Enable upsells",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
         "type": "text",
         "id": "cart_upsells_title",
         "label": "Title",
@@ -831,6 +936,11 @@
         ]
       },
       {
+        "type": "header",
+        "content": "Gift upsell",
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
         "type": "checkbox",
         "id": "cart_gift_upsell_enable",
         "label": "Enable gift upsell",
@@ -857,6 +967,41 @@
         "id": "search",
         "label": "Enable search",
         "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "search_query",
+        "label": "Show suggestions",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
+        "type": "checkbox",
+        "id": "search_collections",
+        "label": "Search collections",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
+        "type": "checkbox",
+        "id": "search_articles",
+        "label": "Search blog articles",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
+        "type": "checkbox",
+        "id": "search_pages",
+        "label": "Search pages",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
+        "type": "checkbox",
+        "id": "search_show_quick_view",
+        "label": "Show \"Quick view\" button",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
       },
       {
         "type": "select",
@@ -916,6 +1061,20 @@
   {
     "name": "Features",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "wishlist",
+        "label": "Enable wishlist",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      },
+      {
+        "type": "checkbox",
+        "id": "recently_viewed",
+        "label": "Enable recently-viewed",
+        "default": true,
+        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+      }
     ]
   },
   {
