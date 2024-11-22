@@ -1,7 +1,6 @@
 <style>
   * {
     user-select: none;
-    text-decoration: none; 
   }
   .card-product {
     margin: auto;
@@ -83,6 +82,10 @@
     margin: 0.3rem 0;
   }
 
+  a {
+    text-decoration: none;
+  }
+
 {% assign weight_in_pounds = product.selected_or_first_available_variant.weight_in_unit | times: 1 %}
   
 </style>
@@ -116,7 +119,7 @@
           </p>
           <p class="text-muted small mb-1 product-details"><i class="text-primary bi bi-nut"></i>
             {% if product.metafields.ges.product_condition != blank %}
-              {{ product.metafields.ges.product_condition }}
+              {{ product.metafields.ges.product_condition | remove: '"' | remove: '[' | remove: ']' }}
             {% else %}
               Reconditioned
             {% endif %}
