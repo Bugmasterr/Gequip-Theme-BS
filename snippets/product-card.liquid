@@ -106,7 +106,7 @@
   ---
 {% endif %}
         <p class="text-success small mb-1 product-details"><i class="bi bi-check-circle"></i>{{ product.selected_or_first_available_variant.available }}</p>
-        <p class="text-muted small mb-1 product-details"><i class="text-primary bi bi-nut"></i> Reconditioned</p>
+        <p class="text-muted small mb-1 product-details"><i class="text-primary bi bi-nut"></i>{{ product.metafields.ges.product_condition }}</p>
         <p class="text-muted small mb-1 product-details">
           <i class="text-primary bi bi-truck"></i>
           {% if weight_in_pounds > 130 %}
