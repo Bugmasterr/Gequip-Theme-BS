@@ -136,8 +136,8 @@
           </p>
           <p class="text-muted small mb-2 product-details"><i class="text-primary bi bi-clock"></i>
             {% if product.metafields.ges.customLeadTime == blank %}
-              {% if product.metafields['mm-google-shopping'].shipping != blank %}
-                {{ product.metafields['mm-google-shopping'].shipping }}
+              {% if product.metafields.mm-google-shopping.shipping != blank %}
+                {{ product.metafields.mm-google-shopping.shipping }}
               {% else %}
                 3 - 5 Business Days
               {% endif %}
