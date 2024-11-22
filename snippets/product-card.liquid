@@ -85,54 +85,71 @@
 {% assign weight_in_pounds = product.selected_or_first_available_variant.weight_in_unit | times: 1 %}
   
 </style>
-<div class="card shadow-sm card-product p-3 position-relative">
-  <span class="badge bg-danger badge-featured">Featured</span>
-  <div class="row g-0 h-100">
-    <!-- Product Image -->
-    <div class="col-md-5">
-      <div class="card-product-image-container">
-        <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
+<a href="{{ product.url }}">
+  <div class="card shadow-sm card-product p-3 position-relative">
+    <span class="badge bg-danger badge-featured">Featured</span>
+    <div class="row g-0 h-100">
+      <!-- Product Image -->
+      <div class="col-md-5">
+        <div class="card-product-image-container">
+          <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
+        </div>
       </div>
-    </div>
-    <!-- Product Info -->
-    <div class="col-md card-product-info">
-      <div>
-        <h6 class="fw-bold mb-1 product-name">{{ product.selected_or_first_available_variant.sku }}</h6>
-        <p class="text-muted small mb-1 product-details">{{ product.title }}</p>
-{% assign num_reviews = product.metafields.loox.num_reviews %}
-{% if num_reviews > 0 %}
-    {% render 'product-rating-badge', product: product %}
-{% else %}
-  ---
-{% endif %}
-        <p class="text-success small mb-1 product-details"><i class="bi bi-check-circle"></i>{{ product.selected_or_first_available_variant.available }}</p>
-        <p class="text-muted small mb-1 product-details"><i class="text-primary bi bi-nut"></i>{{ product.metafields.ges.product_condition }}</p>
-        <p class="text-muted small mb-1 product-details">
-          <i class="text-primary bi bi-truck"></i>
-          {% if weight_in_pounds > 130 %}
-            Freight
-          {% elsif weight_in_pounds <= 130 and weight_in_pounds > 0 %}
-            Standard
+      <!-- Product Info -->
+      <div class="col-md card-product-info">
+        <div>
+          <h6 class="fw-bold mb-1 product-name">{{ product.selected_or_first_available_variant.sku }}</h6>
+          <p class="text-muted small mb-1 product-details">{{ product.title }}</p>
+          {% assign num_reviews = product.metafields.loox.num_reviews %}
+          {% if num_reviews > 0 %}
+              {% render 'product-rating-badge', product: product %}
           {% else %}
-            View Shipping Details in Cart
+            ---
           {% endif %}
-        </p>
-        
-        <p class="text-muted small mb-2 product-details"><i class="text-primary bi bi-clock"></i> 3 - 5 Business Days</p>
+          <p class="text-muted small mb-1 product-details">
+            {% if product.selected_or_first_available_variant.available %}
+              <i class="bi bi-check-circle text-success"></i> In Stock
+            {% else %}
+              <i class="bi bi-x-circle text-danger"></i> Out of Stock
+            {% endif %}
+          </p>
+          <p class="text-muted small mb-1 product-details"><i class="text-primary bi bi-nut"></i>
+            {% if product.metafields.ges.product_condition != blank %}
+              {{ product.metafields.ges.product_condition }}
+            {% else %}
+              Reconditioned
+            {% endif %}
+          </p>
+          <p class="text-muted small mb-1 product-details">
+            <i class="text-primary bi bi-truck"></i>
+            {% if weight_in_pounds > 130 %}
+              Freight
+            {% elsif weight_in_pounds <= 130 and weight_in_pounds > 0 %}
+              Standard
+            {% else %}
+              View Shipping Details in Cart
+            {% endif %}
+          </p>
+          <p class="text-muted small mb-2 product-details"><i class="text-primary bi bi-clock"></i>
+            {% if product.metafields.ges.lead_time != blank %}
+              {{ product.metafields.ges.lead_time }}
+            {% else %}
+              3 - 5 Business Days
+            {% endif %}
+          </p>
+        </div>
       </div>
     </div>
+    <h5 class="text-primary mb-0 fw-bolder product-price" style="padding-left: 10px; font-size: 20pt;">{{ product.price | money }}</h5>
+    <p class="small mb-1 product-details" style="padding-bottom: 10px; padding-left: 10px;">
+      <del class="text-danger text-decoration-line-through">{{ product.compare_at_price | money }}</del> 
+      <span class="badge bg-success text-white fw-light py-2 px-3 badge-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
+    </p>
+    <!-- Add to Cart Button -->
+    <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart">
+      <i class="bi bi-cart-fill"></i> Add to Cart
+    </button>
   </div>
-          <h5 class="text-primary mb-0 fw-bolder product-price" style="padding-left: 10px; font-size: 20pt;">{{ product.price | money }}</h5>
-        <p class="small mb-1 product-details" style="padding-bottom: 10px; padding-left: 10px;">
-          <del class="text-danger text-decoration-line-through">{{ product.compare_at_price | money }}</del> 
-          <span class="badge bg-success text-white fw-light py-2 px-3 badge-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
-        </p>
-  <!-- Add to Cart Button -->
-  <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart">
-    <i class="bi bi-cart-fill"></i> Add to Cart
-  </button>
-</div>
+</a>
 <!-- Add icons CDN for Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-
