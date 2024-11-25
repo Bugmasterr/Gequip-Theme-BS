@@ -91,7 +91,7 @@
 </style>
 <a href="{{ product.url }}">
   <div class="card shadow-sm card-product p-3 position-relative">
-    {% assign prioritized_collections = "Sale,New,Featured,Best Seller,Greenlee,Ridgid,Threading" | split: "," %}
+    {% assign prioritized_collections = "Sale,New Arrival,Featured,Best Seller,Greenlee,Ridgid,Threading" | split: "," %}
     {% assign collection_name = "" %}
     {% for collection in product.collections %}
       {% if prioritized_collections contains collection.title %}
