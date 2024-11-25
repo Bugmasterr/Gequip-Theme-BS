@@ -2,11 +2,6 @@
   .card-product * {
     user-select: none;
   }
-
-  .card-product img {
-    pointer-effects: none;
-  }
-  
   .card-product {
     margin: auto;
     border-radius: 6px;
@@ -23,7 +18,6 @@
     box-shadow: 0 10px 15px var(-bg-primary);
     outline: 1px solid lightgray;
     transform: translateY(-5px);
-
   }
 
   .card-product-info {
@@ -49,11 +43,12 @@
     height: 100%;
     object-fit: cover;
   }
-.card-product:hover .card-product-image-container {
-    filter:brightness(108%);
+  .card-product:hover .card-product-image-container {
+    filter: brightness(108%);
     z-index: 1;
     transition: filter .2s;
-}
+  }
+
   .btn-add-to-cart {
     color: #fff;
     border-radius: 0;
@@ -90,8 +85,8 @@
   .product-name {
     line-clamp: 1;
     -webkit-line-clamp: 3;
-    -webkit-boxa-orient: verticle;
-    aoverflow: hidden;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   a {
@@ -118,7 +113,7 @@
       <!-- Product Image -->
       <div class="col-md-5">
         <div class="card-product-image-container">
-          <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}?timestamp={{ 'now' | date: '%s' }}" alt="{{ product.title }}">
+          <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
         </div>
       </div>
       <!-- Product Info -->
