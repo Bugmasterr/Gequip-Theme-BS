@@ -4,7 +4,7 @@
   }
 
   .card-product img {
-    pointer-events: none;
+    pointer-effects: none;
   }
   
   .card-product {
@@ -118,7 +118,7 @@
       <!-- Product Image -->
       <div class="col-md-5">
         <div class="card-product-image-container">
-          <div class="card-product-image" style="background-image: url('{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}')"></div>
+          <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
         </div>
       </div>
       <!-- Product Info -->
