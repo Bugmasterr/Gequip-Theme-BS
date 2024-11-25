@@ -118,7 +118,7 @@
       <!-- Product Image -->
       <div class="col-md-5">
         <div class="card-product-image-container">
-          <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
+          <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}?timestamp={{ 'now' | date: '%s' }}" alt="{{ product.title }}">
         </div>
       </div>
       <!-- Product Info -->
