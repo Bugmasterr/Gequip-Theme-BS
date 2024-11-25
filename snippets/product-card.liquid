@@ -94,7 +94,29 @@
   }
 
   .product-details[title]:hover {
-    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .custom-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 10pt;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    white-space: nowrap;
+  }
+
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip-container:hover .custom-tooltip {
+    opacity: 1;
   }
 
   .product-name {
@@ -122,15 +144,6 @@
 
   a {
     text-decoration: none;
-  }
-
-  .loading-placeholder {
-    background: #f3f3f3;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 
   @keyframes shake {
@@ -169,7 +182,6 @@
       <!-- Product Image -->
       <div class="col-md-5">
         <div class="card-product-image-container">
-          
           <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
         </div>
       </div>
@@ -184,42 +196,54 @@
           {% else %}
             ---
           {% endif %}
-          <p class="text-muted small mb-1 product-details" title="Availability status">
-            {% if product.selected_or_first_available_variant.available %}
-              <i class="bi bi-check-circle text-success"></i> In Stock
-            {% else %}
-              <i class="bi bi-x-circle text-danger"></i> Out of Stock
-            {% endif %}
-          </p>
-          <p class="text-muted small mb-1 product-details" title="Product condition"><i class="text-primary bi bi-nut"></i>
-            {% if product.metafields.ges.product_condition != blank %}
-              {{ product.metafields.ges.product_condition | remove: '"' | remove: '[' | remove: ']' }}
-            {% else %}
-              Reconditioned
-            {% endif %}
-          </p>
-          <p class="text-muted small mb-1 product-details" title="Shipping method">
-            <i class="text-primary bi bi-truck"></i>
-            {% if weight_in_pounds > 130 %}
-              Freight
-            {% elsif weight_in_pounds <= 130 and weight_in_pounds > 0 %}
-              Standard
-            {% else %}
-              View Shipping Details in Cart
-            {% endif %}
-          </p>
-          <p class="text-muted small mb-2 product-details" title="Lead time">
-            <i class="text-primary bi bi-clock"></i>
-            {% if product.metafields.ges.customLeadTime == blank %}
-              {% if product.metafields.mm-google-shopping.shipping != blank %}
-                {{ product.metafields.mm-google-shopping.shipping }}
+          <div class="tooltip-container">
+            <p class="text-muted small mb-1 product-details" title="Availability status">
+              {% if product.selected_or_first_available_variant.available %}
+                <i class="bi bi-check-circle text-success"></i> In Stock
               {% else %}
-                3 - 5 Business Days
+                <i class="bi bi-x-circle text-danger"></i> Out of Stock
               {% endif %}
-            {% else %}
-              {{ product.metafields.ges.customLeadTime }}
-            {% endif %}
-          </p>
+            </p>
+            <span class="custom-tooltip">{{ product.selected_or_first_available_variant.available ? 'Available for purchase' : 'Currently unavailable' }}</span>
+          </div>
+          <div class="tooltip-container">
+            <p class="text-muted small mb-1 product-details" title="Product condition"><i class="text-primary bi bi-nut"></i>
+              {% if product.metafields.ges.product_condition != blank %}
+                {{ product.metafields.ges.product_condition | remove: '"' | remove: '[' | remove: ']' }}
+              {% else %}
+                Reconditioned
+              {% endif %}
+            </p>
+            <span class="custom-tooltip">Condition of the product</span>
+          </div>
+          <div class="tooltip-container">
+            <p class="text-muted small mb-1 product-details" title="Shipping method">
+              <i class="text-primary bi bi-truck"></i>
+              {% if weight_in_pounds > 130 %}
+                Freight
+              {% elsif weight_in_pounds <= 130 and weight_in_pounds > 0 %}
+                Standard
+              {% else %}
+                View Shipping Details in Cart
+              {% endif %}
+            </p>
+            <span class="custom-tooltip">Shipping method based on product weight</span>
+          </div>
+          <div class="tooltip-container">
+            <p class="text-muted small mb-2 product-details" title="Lead time">
+              <i class="text-primary bi bi-clock"></i>
+              {% if product.metafields.ges.customLeadTime == blank %}
+                {% if product.metafields.mm-google-shopping.shipping != blank %}
+                  {{ product.metafields.mm-google-shopping.shipping }}
+                {% else %}
+                  3 - 5 Business Days
+                {% endif %}
+              {% else %}
+                {{ product.metafields.ges.customLeadTime }}
+              {% endif %}
+            </p>
+            <span class="custom-tooltip">Estimated lead time for shipping</span>
+          </div>
         </div>
       </div>
     </div>
