@@ -58,6 +58,7 @@
 
   .btn-add-to-cart:hover {
     background-color: #0d6efd;
+    transform: scale(1.05);
   }
 
   .badge-featured {
@@ -80,11 +81,16 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin: 0.3rem 0;
+    transition: color 0.15s ease-in-out;
+  }
+
+  .product-details[title]:hover {
+    font-weight: bold;
   }
 
   .product-name {
     line-clamp: 1;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
