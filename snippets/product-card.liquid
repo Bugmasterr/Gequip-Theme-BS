@@ -103,17 +103,6 @@
     color: #516FDA;
   }
 
-  .cart-feedback {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: green;
-    color: white;
-    padding: 2px 5px;
-    font-size: 10px;
-    border-radius: 50%;
-    display: none;
-  }
 
   a {
     text-decoration: none;
@@ -225,7 +214,7 @@
       <span class="badge bg-success text-white fw-light py-2 px-3 badge-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
     </p>
     <!-- Add to Cart Button -->
-    <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart">
+    <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart" type="submit" name="add">
       <i class="bi bi-cart-fill"></i>
       {% if product.selected_or_first_available_variant.available %}
         {{ 'product.add_to_cart' | t }}
