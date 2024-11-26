@@ -159,13 +159,15 @@
     {% if collection_name != blank %}
       <span class="badge bg-danger badge-featured">{{ collection_name }}</span>
     {% endif %}
-    <div href="{{ product.url }}" class="row g-0 h-100">
+    <div class="row g-0 h-100">
       <!-- Product Image -->
       <div class="col-md-5">
+        <a href="{{ product.url }}">
         <div class="card-product-image-container">
           
           <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
         </div>
+        </a
       </div>
       <!-- Product Info -->
       <div class="col-md card-product-info">
