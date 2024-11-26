@@ -225,10 +225,8 @@
     </p>
     <!-- Add to Cart Button -->
     <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart">
-      <i class="bi bi-cart-fill"></i>      {% unless current_variant.available %}
-        disabled
-      {% endunless %}>
-      {% if current_variant.available %}
+      <i class="bi bi-cart-fill"></i>
+      {% if product.selected_or_first_available_variant.available %}
         {{ 'product.add_to_cart' | t }}
       {% else %}
         {{ 'product.sold_out' | t }}
