@@ -147,7 +147,6 @@
 {% assign weight_in_pounds = product.selected_or_first_available_variant.weight_in_unit | times: 1 %}
   
 </style>
-<a href="{{ product.url }}">
   <div class="card shadow-sm card-product p-3 position-relative">
     {% assign prioritized_collections = "Sale,New Arrival,Featured,Best Seller" | split: "," %}
     {% assign collection_name = "" %}
@@ -160,6 +159,7 @@
     {% if collection_name != blank %}
       <span class="badge bg-danger badge-featured">{{ collection_name }}</span>
     {% endif %}
+    <a href="{{ product.url }}">
     <div class="row g-0 h-100">
       <!-- Product Image -->
       <div class="col-md-5">
@@ -223,6 +223,7 @@
       <del class="text-danger text-decoration-line-through">{{ product.compare_at_price | money }}</del> 
       <span class="badge bg-success text-white fw-light py-2 px-3 badge-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
     </p>
+    </a>
     <!-- Add to Cart Button -->
     <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart">
       <i class="bi bi-cart-fill"></i>
@@ -235,6 +236,5 @@
     {% render product-block-atc-button %}
     <span class="cart-feedback">+1</span>
   </div>
-</a>
 <!-- Add icons CDN for Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
