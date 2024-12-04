@@ -63,10 +63,10 @@
           <div class="swiper-slide" data-media-type="{{ media.media_type }}">
             {% case media.media_type %}
               {% when 'image' %}
-                {% render 'image-url', img: media, size: 800, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
+                {% render 'image-url', img: media, size: 600, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
               {% when 'video' %}
                 {% render 'svg-icons', icon: 'play', size: '18', aria-hidden: 'true' %}
-                {% render 'image-url', img: media.preview_image, size: 800, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
+                {% render 'image-url', img: media.preview_image, size: 600, orientation: settings.product_img_orientation, class: 'img-thumbnail' %}
             {% endcase %}
           </div>
         {% endfor %}

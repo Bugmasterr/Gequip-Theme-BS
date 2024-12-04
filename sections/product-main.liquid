@@ -54,6 +54,8 @@
                         render 'product-block-richtext', block: block
                       when 'collapse'
                         render 'product-block-collapse', block: block
+                      when 'collapse_shipping'
+                        render 'product-block-collapse-shipping', block: block
                       when 'liquid'
                         render 'product-block-liquid', block: block
                       when 'trust_icons'
@@ -251,7 +253,7 @@
             { "value": "flip", "label": "Flip" },
             { "value": "creative", "label": "Creative" }
           ],
-          "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
+          "info": "NOTE: Not yet fully implemented"
         },
         {
           "type": "range",
@@ -284,14 +286,14 @@
             { "value": "bullets", "label": "Bullets" },
             { "value": "fraction", "label": "Fraction" }
           ],
-          "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
+          "info": "NOTE: Not yet fully implemented"
         },
         {
           "type": "checkbox",
           "id": "scrollbar",
           "label": "Show scrollbar",
           "default": true,
-          "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
+          "info": "NOTE: Not yet fully implemented"
         },
         {
           "type": "select",
@@ -317,7 +319,7 @@
           "id": "full_screen",
           "label": "Enable full-screen gallery",
           "default": true,
-          "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
+          "info": "NOTE: Not yet fully implemented"
         },
         {
           "type": "select",
@@ -441,13 +443,6 @@
             { "value": "select",  "label": "Select" }
           ],
           "default": "buttons"
-        },
-        {
-          "type": "text",
-          "id": "color_swatches",
-          "label": "Color swatches",
-          "default": "Color, color",
-          "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
         },
         {
           "type": "header",
@@ -1052,7 +1047,7 @@
       "settings": [
         {
           "type": "paragraph",
-          "content": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https://www.kondasoft.com/collections/shopify-themes)"
+          "content": "NOTE: Not yet fully implemented"
         },
         {
           "type": "range",
@@ -1128,12 +1123,6 @@
     },
     {
       "type": "@app"
-    }
-  ],
-  "templates": ["product"],
-  "presets": [
-    {
-      "name": "Product main"
     }
   ]
 }
