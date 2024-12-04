@@ -2,35 +2,49 @@
   class="product-price {{ block.settings.font_size }} {{ section.settings.pt }} {{ section.settings.pb }}"
   {{ block.shopify_attributes }}
 >
-
   <p
     class="product__inventory no-js-hidden{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
     {{ block.shopify_attributes }}
     id="Inventory-{{ section.id }}"
     role="status"
   >
+  
     {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-      {%- if product.selected_or_first_available_variant.inventory_quantity > section.settings.low_stock_threshold -%}
-        <svg width="15" height="15" aria-hidden="true">
-          <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(40, 167, 69, 0.3)"/>
-          <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(40, 167, 69)"/>
-        </svg>
-        <span class="text-success">In Stock: {{ product.selected_or_first_available_variant.inventory_quantity }}</span>
-      {%- elsif product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-        <svg width="15" height="15" aria-hidden="true">
-          <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(255, 193, 7, 0.3)"/>
-          <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(255, 193, 7)"/>
-        </svg>
-        <span class="text-body">Low Stock: {{ product.selected_or_first_available_variant.inventory_quantity }}</span>
+      {%- assign inventory_quantity = product.selected_or_first_available_variant.inventory_quantity -%}
+      {%- assign low_stock_threshold = section.settings.low_stock_threshold | default: 2 -%}
+
+      {%- if inventory_quantity > low_stock_threshold -%}
+        <i class="bi-circle-fill pulse-animation"></i>
+        <span class="text-success">In Stock: {{ inventory_quantity }}</span>
+      {%- elsif inventory_quantity > 0 -%}
+        <i class="bi-circle-half" style="color: #ffb300;"></i>
+        <span style="color: #c58a00;">Low Stock: {{ inventory_quantity }}</span>
       {%- else -%}
-        <svg width="15" height="15" aria-hidden="true">
-          <circle cx="7.5" cy="7.5" r="7.5" fill="rgb(40, 167, 69, 0.3)"/>
-          <circle cx="7.5" cy="7.5" r="5" stroke="rgb(255, 255, 255)" stroke-width="1" fill="rgb(40, 167, 69)"/>
-        </svg>
-        <span class="text-success">Out of Stock</span>
+        <i class="bi-circle text-danger"></i>
+        <span class="text-danger">Out of Stock</span>
       {%- endif -%}
     {%- endif -%}
   </p>
 </div>
 
 {{ form | payment_terms }}
+
+
+<!-- Stock Indicator Pulse Animation -->
+<style>
+  @keyframes pulse {
+    0% {
+      color: var(--bs-success);
+    }
+    35% {
+      color: #20c075;
+    }
+    100% {
+      color: var(--bs-success);
+    }
+  }
+
+  .pulse-animation {
+    animation: pulse 4s infinite;
+  }
+</style>
