@@ -219,7 +219,22 @@
         "pb": 0
       }
     },
-    "repair_inquiry"
+    "repair_inquiry": {
+      "type": "repair-inquiry",
+      "settings": {
+        "bg_color": "bg-body text-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "800",
+        "pt": 0,
+        "pb": 0
+      }
+    }
   },
   "order": [
     "hero_carousel_tdHVay",
