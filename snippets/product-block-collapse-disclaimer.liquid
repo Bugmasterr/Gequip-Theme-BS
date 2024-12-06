@@ -4,7 +4,7 @@
 %}
 
 <div 
-  class="product-block-collapse {{ pt }} {{ pb }}" 
+  class="product-block-collapse-disclaimer {{ pt }} {{ pb }}" 
   {{ block.shopify_attributes }}>
   <div 
     class="
@@ -45,15 +45,17 @@
       {% render 'svg-icons', icon: 'chevron-down', size: 18 %}
     </button>
     <div id="collapse-{{ block.id }}" class="collapse {% if block.settings.open_by_default %}show{% endif %}">
-      <div class="collapse-inner description rte mb-0 {{ block.settings.description_font_size }}">
-        {% if block.settings.description contains '[page' %}
-          {% assign page_handle = block.settings.description | split: '[page:' | last | split: ']' | first %}
-          {{ pages[page_handle].content }}
-        {% elsif block.settings.product_description %}
-          {{ product.description }}
-        {% else %}
-          {{ block.settings.description }}
-        {% endif %}
+      <div class="collapse-inner disclaimer rte mb-0 {{ block.settings.description_font_size }}">
+        {% case product.metafields.ges.product_condition.value %}
+          {% when 'New Surplus' %}
+            <p class="disclaimer-description">This product is in new surplus condition. It may not come with the original packaging but is unused.</p>
+          {% when 'Reconditioned' %}
+            <p class="disclaimer-description">This product has been professionally reconditioned to meet the manufacturer's specifications and is fully functional.</p>
+          {% when 'Used' %}
+            <p class="disclaimer-description">This product is in used condition and may show signs of previous use but is fully operational.</p>
+          {% else %}
+            <p class="disclaimer-description">No condition information available for this product.</p>
+        {% endcase %}
       </div>
     </div>
   </div>

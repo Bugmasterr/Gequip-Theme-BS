@@ -54,8 +54,6 @@
                         render 'product-block-richtext', block: block
                       when 'collapse'
                         render 'product-block-collapse', block: block
-                      when 'collapse_shipping'
-                        render 'product-block-collapse-shipping', block: block
                       when 'liquid'
                         render 'product-block-liquid', block: block
                       when 'trust_icons'
@@ -64,6 +62,8 @@
                         render 'product-block-separator', block: block
                       when 'stock_indicator'
                         render 'product-block-stock-indicator', block: block
+                      when 'disclaimer_collapse', block: block
+                        render 'product-block-collapse-disclaimer', block: block
                       when '@app'
                         render block
                     endcase
@@ -253,7 +253,7 @@
             { "value": "flip", "label": "Flip" },
             { "value": "creative", "label": "Creative" }
           ],
-          "info": "NOTE: Not yet fully implemented"
+          "info": "NOTE: To Be Implemented"
         },
         {
           "type": "range",
@@ -286,14 +286,14 @@
             { "value": "bullets", "label": "Bullets" },
             { "value": "fraction", "label": "Fraction" }
           ],
-          "info": "NOTE: Not yet fully implemented"
+          "info": "NOTE: To Be Implemented"
         },
         {
           "type": "checkbox",
           "id": "scrollbar",
           "label": "Show scrollbar",
           "default": true,
-          "info": "NOTE: Not yet fully implemented"
+          "info": "NOTE: To Be Implemented"
         },
         {
           "type": "select",
@@ -319,7 +319,7 @@
           "id": "full_screen",
           "label": "Enable full-screen gallery",
           "default": true,
-          "info": "NOTE: Not yet fully implemented"
+          "info": "NOTE: To Be Implemented"
         },
         {
           "type": "select",
@@ -1047,7 +1047,7 @@
       "settings": [
         {
           "type": "paragraph",
-          "content": "NOTE: Not yet fully implemented"
+          "content": "NOTE: To Be Implemented"
         },
         {
           "type": "range",
@@ -1097,6 +1097,152 @@
           "step": 1,
           "default": 8,
           "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "range",
+          "id": "pt",
+          "label": "Top",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "pb",
+          "label": "Bottom",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "disclaimer_collapse",
+      "name": "Disclaimer Collapse",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon size",
+          "step": 1,
+          "default": 20,
+          "min": 8,
+          "max": 32,
+          "unit": "px"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collapse Title"
+        },
+        {
+          "type": "select",
+          "id": "title_font_family",
+          "label": "Title font-family",
+          "default": "",
+          "options": [
+              { "value": "", "label": "Body" },
+              { "value": "heading", "label": "Heading" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "title_font_size",
+          "label": "Title font-size",
+          "default": "fs-md",
+          "options": [
+            { "value": "fs-xs", "label": "xs" },
+            { "value": "fs-sm", "label": "sm" },
+            { "value": "fs-md", "label": "md" },
+            { "value": "fs-lg", "label": "lg" },
+            { "value": "fs-xl", "label": "xl" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "title_text_transform",
+          "label": "Title text-transform",
+          "default": "text-capitalize",
+          "options": [
+              { "value": "", "label": "Normal" },
+              { "value": "text-capitalize", "label": "Capitalize" },
+              { "value": "text-lowercase", "label": "Lowercase" },
+              { "value": "text-uppercase", "label": "Uppercase" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "title_letter_spacing",
+          "label": "Title letter-spacing",
+          "step": 0.5,
+          "default": 0,
+          "min": 0,
+          "max": 5
+        },
+        {
+          "type": "header",
+          "content": "General"
+        },
+        {
+          "type": "range",
+          "id": "border_top_width",
+          "label": "Border top width",
+          "default": 1,
+          "min": 0,
+          "max": 16,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "border_bottom_width",
+          "label": "Border bottom width",
+          "default": 0,
+          "min": 0,
+          "max": 16,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "border_color",
+          "label": "Border color",
+          "default": "border-body",
+          "options": [
+            { "value": "border-primary", "label": "Primary" },
+            { "value": "border-secondary", "label": "Secondary" },
+            { "value": "border-body", "label": "Body" },
+            { "value": "border-white", "label": "White" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "border_opacity",
+          "label": "Border opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 100,
+          "unit": "%"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
         },
         {
           "type": "header",
