@@ -1,7 +1,7 @@
 <article
-  id="repair-inquiry-{{ section.id }}" 
+  id="page-content-{{ section.id }}" 
   class="
-    repair-inquiry 
+    page-content 
     {{ section.settings.bg_color }} 
     {{ section.settings.bg_gradient }}
     {{ section.settings.text_color }}
@@ -18,92 +18,20 @@
   <div 
     class="container" 
     style="max-width: {{ section.settings.container_max_width }}px">
-    
     {% unless section.settings.show_title == blank %}
-      <h1 class="title {{ section.settings.title_font_size }} text-center">
+      <h1 class="title {{ section.settings.title_font_size }}">
         {{ page.title }}
       </h1>
     {% endunless %}
-
-    <div class="text-center py-3">
-      <p>Specializing in Greenlee 555 Bending Machines and More</p>
-      <a href="#inquiry-form" class="btn btn-primary mt-3">Request a Repair Quote</a>
+    <div class="description rte {{ section.settings.description_font_size }}">
+      {{ page.content }}
     </div>
-
-    <section class="py-5">
-      <h2 class="text-center">Why Choose Us?</h2>
-      <p class="text-center">
-        With years of experience and ample parts in stock, we specialize in repairing Greenlee 555 bending machines and other industrial equipment. Our skilled technicians ensure a quick turnaround and reliable service.
-      </p>
-    </section>
-
-    <section class="py-5">
-      <h2 class="text-center">Our Services</h2>
-      <div class="row text-center">
-        <div class="col-md-4">
-          <p><strong>Greenlee 555 Bending Machine Repairs</strong></p>
-        </div>
-        <div class="col-md-4">
-          <p><strong>Motor Replacements and Calibration</strong></p>
-        </div>
-        <div class="col-md-4">
-          <p><strong>Routine Maintenance for Industrial Tools</strong></p>
-        </div>
-      </div>
-    </section>
-
-    <section id="inquiry-form" class="py-5 bg-light">
-      <h2 class="text-center">Request a Repair Quote</h2>
-      <form class="mx-auto" style="max-width: 600px;">
-        <div class="mb-3">
-          <label for="name" class="form-label">Full Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
-        </div>
-        <div class="mb-3">
-          <label for="equipment" class="form-label">Equipment Type/Model</label>
-          <input type="text" class="form-control" id="equipment" name="equipment" placeholder="Enter equipment type or model" required>
-        </div>
-        <div class="mb-3">
-          <label for="issue" class="form-label">Description of the Issue</label>
-          <textarea class="form-control" id="issue" name="issue" placeholder="Describe the issue with your equipment" rows="4" required></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="image" class="form-label">Upload Photos (optional)</label>
-          <input type="file" class="form-control" id="image" name="image" accept="image/*">
-        </div>
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary">Submit Inquiry</button>
-        </div>
-      </form>
-    </section>
-
-    <section class="py-5">
-      <h2 class="text-center">Client Testimonials</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <blockquote class="blockquote">
-            <p>"Fast and professional service! They fixed my Greenlee 555 in no time."</p>
-            <footer class="blockquote-footer">Happy Customer</footer>
-          </blockquote>
-        </div>
-        <div class="col-md-6">
-          <blockquote class="blockquote">
-            <p>"Great experience! Highly recommend their repair services."</p>
-            <footer class="blockquote-footer">Satisfied Client</footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
   </div>
 </article>
 
 {% schema %}
 {
-  "name": "Repair Inquiry",
+  "name": "Page content",
   "settings": [
     {
       "type": "header",
@@ -154,9 +82,56 @@
       ]
     },
     {
+      "type": "range",
+      "id": "border_top_width",
+      "label": "Border top width",
+      "default": 0,
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "border_bottom_width",
+      "label": "Border bottom width",
+      "default": 0,
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "border-body",
+      "options": [
+        { "value": "border-primary", "label": "Primary" },
+        { "value": "border-secondary", "label": "Secondary" },
+        { "value": "border-body", "label": "Body" },
+        { "value": "border-white", "label": "White" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "border_opacity",
+      "label": "Border opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 100,
+      "unit": "%"
+    },
+    {
       "type": "text",
       "id": "container_max_width",
-      "label": "Container max-width (px)"
+      "label": "Container max-width (px)",
+      "info": "Leave empty to use the global container width"
+    },
+    {
+      "type": "header",
+      "content": "General"
     },
     {
       "type": "checkbox",
@@ -172,31 +147,52 @@
       "options": [
         { "value": "h1", "label": "H1" },
         { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" }
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
       ]
+    },
+    {
+      "type": "select",
+      "id": "description_font_size",
+      "label": "Description font-size",
+      "default": "fs-md",
+      "options": [
+        { "value": "fs-sm", "label": "sm" },
+        { "value": "fs-md", "label": "md" },
+        { "value": "fs-lg", "label": "lg" },
+        { "value": "fs-xl", "label": "xl" },
+        { "value": "fs-xxl", "label": "xxl" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
     },
     {
       "type": "range",
       "id": "pt",
-      "label": "Top padding",
-      "default": 10,
+      "label": "Top",
       "min": 0,
       "max": 20,
-      "step": 1
+      "step": 1,
+      "default": 10
     },
     {
       "type": "range",
       "id": "pb",
-      "label": "Bottom padding",
-      "default": 10,
+      "label": "Bottom",
       "min": 0,
       "max": 20,
-      "step": 1
+      "step": 1,
+      "default": 10
     }
   ],
+  "templates": ["page"],
   "presets": [
     {
-      "name": "Repair Inquiry"
+      "name": "Page content"
     }
   ]
 }
