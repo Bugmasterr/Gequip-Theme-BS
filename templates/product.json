@@ -211,6 +211,10 @@
         "separator_cWJNG3",
         "liquid_iDU3Rg"
       ],
+      "custom_css": [
+        "h1,h2,h3 {font-size: 22px;}",
+        "h4,h5,h6 {font-size: 18px;}"
+      ],
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
