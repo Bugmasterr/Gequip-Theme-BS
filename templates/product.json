@@ -56,7 +56,7 @@
           "settings": {
             "title": "",
             "title_font_size": "h6",
-            "description": "<p></p><p><strong>Brand</strong>: {{ product.vendor }}</p><p><strong>Part Number</strong>: {{ product.metafields[\"shopify--facts\"].mpn.value }}</p><p><strong>Lead Time</strong>: {{ product.metafields.ges.lead_time.value }}</p><p><strong>Condition:</strong></p>{{ product.metafields.ges.product_condition | metafield_tag }}<p></p><p></p>",
+            "description": "<p></p><p><strong>Brand</strong>: {{ product.vendor }}</p><p><strong>Part Number</strong>: {{ product.metafields[\"shopify--facts\"].mpn.value }}</p><p><strong>Lead Time</strong>: </p><p><strong>Condition:</strong></p>{{ product.metafields.ges.product_condition | metafield_tag }}<p></p><p></p>",
             "description_font_size": "fs-md",
             "product_description": false,
             "description_classes": "opacity-90 text-primary lh-1",
@@ -76,7 +76,7 @@
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74": {
           "type": "stock_indicator",
           "settings": {
-            "low_stock_threshold": 10,
+            "low_stock_threshold": 3,
             "low_stock_bg_color": "bg-primary",
             "has_stock_bg_color": "bg-primary",
             "progress_height": 8,
