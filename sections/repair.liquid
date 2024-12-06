@@ -14,22 +14,11 @@
   style="
     --bs-bg-opacity: {{ section.settings.bg_opacity | append: '%' }};
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
+    margin: auto;
   ">
   <div 
-    class="container" 
-    style="max-width: {{ section.settings.container_max_width }}px">
-    
-    {% unless section.settings.show_title == blank %}
-      <h1 class="title {{ section.settings.title_font_size }} text-center">
-        {{ page.title }}
-      </h1>
-    {% endunless %}
-
-    <div class="text-center py-3">
-      <p>Specializing in Greenlee 555 Bending Machines and More</p>
-      <a href="#inquiry-form" class="btn btn-primary mt-3">Request a Repair Quote</a>
-    </div>
-
+    class="container w-50 m-auto">
+  
     <section class="py-5">
       <h2 class="text-center">Why Choose Us?</h2>
       <p class="text-center">
@@ -41,20 +30,22 @@
       <h2 class="text-center">Our Services</h2>
       <div class="row text-center">
         <div class="col-md-4">
-          <p><strong>Greenlee 555 Bending Machine Repairs</strong></p>
+          <p>Greenlee 555 Bending Machine Repairs</p>
         </div>
         <div class="col-md-4">
-          <p><strong>Motor Replacements and Calibration</strong></p>
+          <p>Motor Replacements and Calibration</p>
         </div>
         <div class="col-md-4">
-          <p><strong>Routine Maintenance for Industrial Tools</strong></p>
+          <p>Routine Maintenance for Industrial Tools</p>
         </div>
       </div>
     </section>
+  </div>
 
-    <section id="inquiry-form" class="py-5 bg-light">
+  <section id="inquiry-form" class="py-5 bg-light">
+    <div class="container" style="max-width: 600px;">
       <h2 class="text-center">Request a Repair Quote</h2>
-      <form class="mx-auto" style="max-width: 600px;">
+      <form>
         <div class="mb-3">
           <label for="name" class="form-label">Full Name</label>
           <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
@@ -79,8 +70,10 @@
           <button type="submit" class="btn btn-primary">Submit Inquiry</button>
         </div>
       </form>
-    </section>
+    </div>
+  </section>
 
+  <div class="container w-50 m-auto">
     <section class="py-5">
       <h2 class="text-center">Client Testimonials</h2>
       <div class="row">
