@@ -134,7 +134,7 @@
   }
 
 {% assign weight_in_pounds = product.selected_or_first_available_variant.weight_in_unit | times: 1 %}
-
+  
 </style>
   <div class="card shadow-sm card-product p-3 position-relative">
     {% assign prioritized_collections = "Sale,New Arrival,Featured,Best Seller" | split: "," %}
@@ -194,10 +194,14 @@
           </p>
           <p class="text-muted small mb-2 product-details" title="Lead time">
             <i class="text-primary bi bi-clock"></i>
-            {% if product.metafields.mm-google-shopping.shipping != blank %}
-              {{ product.metafields.mm-google-shopping.shipping }}
-            {% else %}
+            {% if product.metafields.ges.customLeadTime == blank %}
+              {% if product.metafields.mm-google-shopping.shipping != blank %}
+                {{ product.metafields.mm-google-shopping.shipping }}
+              {% else %}
                 3 - 5 Business Days
+              {% endif %}
+            {% else %}
+              {{ product.metafields.ges.customLeadTime }}
             {% endif %}
           </p>
         </div>
