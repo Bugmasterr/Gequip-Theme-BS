@@ -16,32 +16,6 @@
     --bs-border-opacity: {{ section.settings.border_opacity | append: '%' }};
     margin: auto;
   ">
-  <div 
-    class="container w-50 m-auto">
-  
-    <section class="py-5">
-      <h2 class="text-center">Why Choose Us?</h2>
-      <p class="text-center">
-        With years of experience and ample parts in stock, we specialize in repairing Greenlee 555 bending machines and other industrial equipment. Our skilled technicians ensure a quick turnaround and reliable service.
-      </p>
-    </section>
-
-    <section class="py-5">
-      <h2 class="text-center">Our Services</h2>
-      <div class="row text-center">
-        <div class="col-md-4">
-          <p>Greenlee 555 Bending Machine Repairs</p>
-        </div>
-        <div class="col-md-4">
-          <p>Motor Replacements and Calibration</p>
-        </div>
-        <div class="col-md-4">
-          <p>Routine Maintenance for Industrial Tools</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
   <section id="inquiry-form" class="py-5 bg-light">
     <div class="container" style="max-width: 600px;">
       <h2 class="text-center">Request a Repair Quote</h2>
@@ -149,6 +123,12 @@
       ]
     },
     {
+      "type": "richtext",
+      "id": "rich_text_box",
+      "label": "Rich Text Box",
+      "default": "<p>List your services here...</p>"
+    },
+    {
       "type": "range",
       "id": "pt",
       "label": "Top padding",
@@ -174,3 +154,4 @@
   ]
 }
 {% endschema %}
+
