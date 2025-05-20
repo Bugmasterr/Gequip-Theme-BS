@@ -1,221 +1,226 @@
-<style>
-  .card-product * {
-    user-select: none;
-  }
-  .card-product {
-    margin: auto;
-    border-radius: 6px;
-    width: 100%;
-    height:550px;
-    border: none;
-    overflow: hidden;
+{% comment %}
+  Product card logic: lead time & condition
+{% endcomment %}
+{% liquid
+  assign product_condition = ''
+  if product.metafields.ges.product_condition != null
+    assign product_condition = product.metafields.ges.product_condition | replace: '["', '' | replace: '"]', ''
+  elsif product.title contains 'Reconditioned'
+    assign product_condition = 'Reconditioned'
+  elsif product.title contains 'New'
+    assign product_condition = 'New Surplus'
+  elsif product.title contains 'Used'
+    assign product_condition = 'Used'
+  endif
+
+  assign product_warranty = ''
+  if product_condition == 'Reconditioned'
+    assign product_warranty = '90-Day Operational Warranty'
+  elsif product_condition == 'New Surplus' or product_condition == 'Used'
+    assign product_warranty = 'Ships fast!'
+  endif
+
+  assign lead_time = ''
+  assign lt_min = product.metafields.ges['lead-time-min']
+  assign lt_max = product.metafields.ges['lead-time-max']
+
+  if lt_min or lt_max
+    if lt_min != blank and lt_max != blank
+      assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: lt_max | append: ' Business Days'
+    elsif lt_min != blank
+      assign computed_max = lt_min | plus: 2
+      assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: computed_max | append: ' Business Days'
+    elsif lt_max != blank
+      assign computed_min = lt_max | minus: 2
+      if computed_min < 1
+        assign computed_min = 1
+      endif
+      assign lead_time = 'Ships In ' | append: computed_min | append: ' to ' | append: lt_max | append: ' Business Days'
+    endif
+  elsif product_condition == 'Reconditioned'
+    assign lead_time = 'Ships In 5 - 9 Business Days'
+  else
+    assign lead_time = 'Ships In 1 - 2 Business Days'
+  endif
+
+  if product.metafields.ges.lead_time != blank
+    assign lead_time = product.metafields.ges.lead_time
+  endif
+%}
+
+{% comment %}
+  Product card styles
+{% endcomment %}
+{% style %}
+  .product-card {
     position: relative;
-    transition: transform 0.1s ease-in-out;
-    cursor: pointer;
-  }
-
-  .card-product:hover {
-    box-shadow: 0 10px 15px var(-bg-primary);
-    outline: 1px solid lightgray;
-    transform: translateY(-5px);
-  }
-
-  .card-product-info {
-    text-align: left;
-    font-size: 12pt;
-    padding: 10px;
-    margin: 0;
-    line-height: normal;
-  }
-
-  .card-product-image-container {
-    height: 225px;
-    width: 100%;
-    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     overflow: hidden;
-    padding: 5px;
-  }
-
-  .card-product-image {
-    width: 100%;
+    transition: all 0.3s ease;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.1s ease-in-out;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
   }
   
-  .card-product:hover .card-product-image {
-    transform: scale(1.05);
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    border-color: #e0e0e0;
   }
-
-  .btn-add-to-cart {
-    color: #fff;
-    border-radius: 0;
-    width: 95%;
-    transition: all 0.15s ease-in-out;
+  
+  .product-image-container {
     position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: #f9f9f9;
   }
-
-  .btn-add-to-cart:hover {
-    outline: 1px solid #334FB4;
-    transform: scale(1.05);
-    opacity: .85;
+  
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
   }
-
-  .btn-add-to-cart:active {
-    transform: scale(0.95);
+  
+  .product-card:hover .product-image {
+    transform: scale(1.08);
   }
-
-  .badge-featured {
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-sku {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    color: #212529;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 3rem;
+  }
+  
+  .product-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #495057;
+  }
+  
+  .meta-item i {
+    margin-right: 0.5rem;
+    color: #334fb4;
+    font-size: 1rem;
+  }
+  
+  .product-price {
+    display: flex;
+    align-items: baseline;
+    margin: 1rem 0;
+  }
+  
+  .current-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #334fb4;
+  }
+  
+  .compare-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: #dc3545;
+    margin-left: 0.5rem;
+  }
+  
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+  }
+  
+  .add-to-cart-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+  
+  .condition-badge {
     position: absolute;
-    top: 8px;
-    left: 8px;
-    padding: 5px 7px;
-    font-size: 12px;
+    top: .5rem;
+    left: .5rem;
+    background: #dc3545;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
     z-index: 10;
   }
+{% endstyle %}
 
-  .badge-save {
-    translate: 0px -2px;
-  }
-
-  .product-details {
-    display: -webkit-box;
-    line-clamp: 3;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin: 0.3rem 0;
-    transition: color 0.15s ease-in-out;
-  }
-
-  .product-details[title]:hover {
-    text-decoration: underline;
-  }
-
-  .product-name {
-    line-clamp: 1;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .product-name:hover {
-    color: #516FDA;
-  }
-
-
-  a {
-    text-decoration: none;
-  }
-
-  .loading-placeholder {
-    background: #f3f3f3;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  @keyframes shake {
-    0%, 100% {
-      transform: translateX(0);
-    }
-    20%, 60% {
-      transform: translateX(-10px);
-    }
-    40%, 80% {
-      transform: translateX(10px);
-    }
-  }
-
-  .btn-error {
-    animation: shake 0.4s;
-  }
-
-{% assign weight_in_pounds = product.selected_or_first_available_variant.weight_in_unit | times: 1 %}
-  
-</style>
-  <div class="card shadow-sm card-product p-3 position-relative">
-    {% assign prioritized_collections = "Sale,New Arrival,Featured,Best Seller" | split: "," %}
-    {% assign collection_name = "" %}
-    {% for collection in product.collections %}
-      {% if prioritized_collections contains collection.title %}
-        {% assign collection_name = collection.title %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-    {% if collection_name != blank %}
-      <span class="badge bg-danger badge-featured">{{ collection_name }}</span>
+{% comment %}
+  Product card
+{% endcomment %}
+<div class="product-card">
+  <div class="product-image-container">
+    {% if product_condition != blank %}
+      <div class="condition-badge">{{ product_condition }}</div>
     {% endif %}
-  <div class="row g-0 h-100">
-      <!-- Product Image -->
-      <a href="{{ product.url }}">
-      <div class="col-md-5">
-        <div class="card-product-image-container">
-
-          <img class="card-product-image" src="{{ product.featured_image | image_url: width: 300 | image_tag: loading: 'lazy' }}">
+    <img class="product-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy">
+  </div>
+  
+  <div class="product-info">
+    <div class="product-sku">SKU: {{ product.selected_or_first_available_variant.sku }}</div>
+    
+    <h2 class="product-title">
+      {{ product.title | remove: '- New Surplus' | remove: '- New' | remove: '- Used' | remove: '- Reconditioned' | strip }}
+    </h2>
+    
+    <div class="product-meta">
+      {% if lead_time != blank %}
+        <div class="meta-item">
+          <i class="bi bi-truck"></i>
+          <span>{{ lead_time }}</span>
         </div>
-      </div>
-      <!-- Product Info -->
-      <div class="col-md card-product-info">
-        <div>
-          <h6 class="fw-bold mb-1 product-name">{{ product.selected_or_first_available_variant.sku }}</h6>
-          <p class="text-muted small mb-1 product-details">{{ product.title }}</p>
-          {% assign num_reviews = product.metafields.loox.num_reviews %}
-          {% if num_reviews > 0 %}
-              {% render 'product-rating-badge', product: product %}
-          {% else %}
-            ---
-          {% endif %}
-          <p class="text-muted small mb-1 product-details" title="Availability status">
-            {% if product.selected_or_first_available_variant.available %}
-              <i class="bi bi-check-circle text-success"></i> In Stock
-            {% else %}
-              <i class="bi bi-x-circle text-danger"></i> Out of Stock
-            {% endif %}
-          </p>
-          <p class="text-muted small mb-1 product-details" title="Product condition"><i class="text-primary bi bi-nut"></i>
-            {% if product.metafields.ges.product_condition != blank %}
-              {{ product.metafields.ges.product_condition | remove: '"' | remove: '[' | remove: ']' }}
-            {% else %}
-              Reconditioned
-            {% endif %}
-          </p>
-          <p class="text-muted small mb-1 product-details" title="Shipping method">
-            <i class="text-primary bi bi-truck"></i>
-            {% if weight_in_pounds > 130 %}
-              Freight
-            {% elsif weight_in_pounds <= 130 and weight_in_pounds > 0 %}
-              Standard
-            {% else %}
-              View Shipping Details in Cart
-            {% endif %}
-          </p>
-          <p class="text-muted small mb-2 product-details" title="Lead time">
-            <i class="text-primary bi bi-clock"></i>
-            {% if product.metafields.ges.customLeadTime == blank %}
-              {% if product.metafields.mm-google-shopping.shipping != blank %}
-                {{ product.metafields.mm-google-shopping.shipping }}
-              {% else %}
-                3 - 5 Business Days
-              {% endif %}
-            {% else %}
-              {{ product.metafields.ges.customLeadTime }}
-            {% endif %}
-          </p>
+      {% endif %}
+      
+      {% if product_warranty != blank %}
+        <div class="meta-item">
+          <i class="bi bi-shield-check"></i>
+          <span>{{ product_warranty }}</span>
         </div>
-      </div>
-  </a>
+      {% endif %}
     </div>
-    <h5 class="text-primary mb-0 fw-bolder product-price" style="padding-left: 10px; font-size: 20pt;">{{ product.price | money }}</h5>
-    <p class="small mb-1 product-details" style="padding-bottom: 10px; padding-left: 10px;">
-      <del class="text-danger text-decoration-line-through">{{ product.compare_at_price | money }}</del> 
-      <span class="badge bg-success text-white fw-light py-2 px-3 badge-save">Save {{ product.compare_at_price | minus: product.price | money }}</span>
-    </p>
-    <!-- Add to Cart Button -->
-    <button class="btn bg-primary btn-primary m-auto mb-2 mt-2 rounded btn-add-to-cart" type="submit" name="add">
-      <i class="bi bi-cart-fill"></i>
+    
+    <div class="product-price">
+      <div class="current-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+      {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+        <div class="compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+      {% endif %}
+    </div>
+    
+    <button class="btn btn-primary add-to-cart-btn" type="submit" name="add">
+      <i class="bi bi-cart-plus me-2"></i>
       {% if product.selected_or_first_available_variant.available %}
         {{ 'product.add_to_cart' | t }}
       {% else %}
@@ -223,5 +228,6 @@
       {% endif %}
     </button>
   </div>
-<!-- Add icons CDN for Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
