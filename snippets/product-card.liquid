@@ -17,7 +17,7 @@
   if product_condition == 'Reconditioned'
     assign product_warranty = '90-Day Operational Warranty'
   elsif product_condition == 'New Surplus' or product_condition == 'Used'
-    assign product_warranty = '30-Day Returns'
+
   endif
 
   assign lead_time = ''
@@ -61,18 +61,18 @@
     height: 100%;
     background: #ffffff;
     border: 1px solid #f0f0f0;
+    padding: .66rem;
   }
   
   .card-product:hover {
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-    border-color: #334fb4;
+    border-color: #ccc;
   }
   
   .card-image-container {
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
-    padding: .5rem;
     border-radius: 5px;
     overflow: hidden;
     background: #fff;
@@ -80,8 +80,7 @@
   }
   
   .card-image {
-    width: 250px;
-    height: 100%;
+    width: 100%;
     border-radius: 5px;
     object-fit: contain;
     transition: transform 0.5s ease;
@@ -93,13 +92,12 @@
   
   .card-info {
     font-size: 0.9rem;
-    padding: 1rem;
   }
   
   .card-sku {
     font-size: .9rem;
     color: #6c757d;
-    margin-bottom: 0.5rem;
+    margin-block: 0.5rem;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
@@ -139,7 +137,7 @@
   .card-price {
     display: flex;
     align-items: baseline;
-    margin: .25rem 0;
+    margin-top: .25rem;
   }
   
   .card-current-price {
@@ -157,7 +155,6 @@
   
   .add-to-cart-btn {
     width: 100%;
-    padding: 0.5rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -172,8 +169,8 @@
   
   .card-condition-badge {
     position: absolute;
-    top: .75rem;
-    left: .75rem;
+    top: .25rem;
+    left: .25rem;
     background: #dc3545;
     color: white;
     padding: 0.25rem 0.5rem;
@@ -195,22 +192,25 @@
     {% endif %}
     <img class="card-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy">
   </div>
-  
+
+  <span style="width: 100%; height: 1rem; margin-top: 0; margin-bottom: .25rem;"><div style="width: 100%; height: 1px; background-color: #ccc; margin-top: .5rem;"></div></span>
+
   <div class="card-info">
     <div class="card-sku">{{ product.selected_or_first_available_variant.sku }}</div>
-    
+
     <div class="card-title">
       {{ product.title | remove: '- New Surplus' | remove: '- New' | remove: '- Used' | remove: '- Reconditioned' | strip }}
     </div>
-    
-    <div class="card-meta-item" style="margin-top: 0; margin-bottom: .25rem;">
-    {% assign num_reviews = product.metafields.loox.num_reviews %}
-    {% if num_reviews > 0 %}
-        {% render 'product-rating-badge', product: product %}
-    {%  else %}
-    <span style="color: #69727a;">No Reviews Yet</span>
-    {% endif %}
-    </div>
+
+    {% assign review_count = product.metafields.loox.num_reviews | default: 0 %}
+{% assign rating = product.metafields.loox.avg_rating | round: 1 | default: 0 %}
+<div class="card-meta-item" style="margin-top: 0; margin-bottom: .25rem;">
+  {% if review_count > 0 and rating >= 3 %}
+    {% render 'product-rating-badge', product: product %}
+  {% else %}
+    <span style="width: 100%; height: 1rem; margin-top: 0; margin-bottom: .25rem;">No Reviews</span>
+  {% endif %}
+</div>
 
     {% if product_condition != blank %}
       <div class="card-meta">
@@ -220,7 +220,7 @@
         </div>
       </div>
     {% endif %}
-    
+
     {% if lead_time != blank %}
       <div class="card-meta">
         <div class="card-meta-item">
@@ -253,7 +253,8 @@
       {% endif %}
     </div>
 
-    
+    <span style="width: 100%; height: 1rem; margin-top: 0; margin-bottom: .25rem;"><div style="width: 100%; height: 1px; background-color: #ccc; margin-top: .5rem;"></div></span>
+
   </div>
 </div>
 </a>
