@@ -71,35 +71,40 @@
   
   .product-image-container {
     position: relative;
-    height: 240px;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    padding: .5rem;
+    border-radius: 5px;
     overflow: hidden;
-    background: #f9f9f9;
+    background: #fff;
   }
   
   .product-image {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
     object-fit: contain;
     transition: transform 0.5s ease;
   }
   
   .product-card:hover .product-image {
-    transform: scale(1.08);
+    transform: scale(1.1);
   }
   
   .product-info {
+    font-size: 0.9rem;
     padding: 1rem;
   }
   
   .product-sku {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #6c757d;
     margin-bottom: 0.5rem;
     font-weight: 500;
   }
   
   .product-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1.4;
     margin-bottom: 0.5rem;
@@ -166,8 +171,8 @@
   
   .condition-badge {
     position: absolute;
-    top: .5rem;
-    left: .5rem;
+    top: .75rem;
+    left: .75rem;
     background: #dc3545;
     color: white;
     padding: 0.25rem 0.5rem;
