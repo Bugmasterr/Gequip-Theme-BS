@@ -17,7 +17,7 @@
   if product_condition == 'Reconditioned'
     assign product_warranty = '90-Day Operational Warranty'
   elsif product_condition == 'New Surplus' or product_condition == 'Used'
-    assign product_warranty = 'Ships fast!'
+    assign product_warranty = '30-Day Returns'
   endif
 
   assign lead_time = ''
@@ -52,7 +52,7 @@
   Product card styles
 {% endcomment %}
 {% style %}
-  .product-card {
+  .card-product {
     position: relative;
     border-radius: 5px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -63,91 +63,92 @@
     border: 1px solid #f0f0f0;
   }
   
-  .product-card:hover {
-    transform: translateY(-8px);
+  .card-product:hover {
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-    border-color: #e0e0e0;
+    border-color: #334fb4;
   }
   
-  .product-image-container {
+  .card-image-container {
     position: relative;
-    height: 100%;
+    width: 100%;
     aspect-ratio: 1 / 1;
     padding: .5rem;
     border-radius: 5px;
     overflow: hidden;
     background: #fff;
+    margin: auto;
   }
   
-  .product-image {
-    width: 100%;
+  .card-image {
+    width: 250px;
     height: 100%;
     border-radius: 5px;
     object-fit: contain;
     transition: transform 0.5s ease;
   }
   
-  .product-card:hover .product-image {
+  .card-product:hover .card-image {
     transform: scale(1.1);
   }
   
-  .product-info {
+  .card-info {
     font-size: 0.9rem;
     padding: 1rem;
   }
   
-  .product-sku {
-    font-size: 1rem;
+  .card-sku {
+    font-size: .9rem;
     color: #6c757d;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
-  .product-title {
-    font-size: 1rem;
+  .card-title {
+    font-size: .95rem;
     font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
+    line-height: 1.2;
     color: #212529;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 3rem;
+    height: 2.5rem;
   }
   
-  .product-meta {
+  .card-meta {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
   }
   
-  .meta-item {
+  .card-meta-item {
     display: flex;
     align-items: center;
-    font-size: 1rem;
+    font-size: .9rem;
     color: #495057;
   }
   
-  .meta-item i {
+  .card-meta-item i {
     margin-right: 0.5rem;
     color: #334fb4;
     font-size: 1rem;
   }
   
-  .product-price {
+  .card-price {
     display: flex;
     align-items: baseline;
-    margin: 1rem 0;
+    margin: .25rem 0;
   }
   
-  .current-price {
+  .card-current-price {
     font-size: 1.5rem;
     font-weight: 700;
     color: #334fb4;
   }
   
-  .compare-price {
+  .card-compare-price {
     font-size: 1rem;
     text-decoration: line-through;
     color: #dc3545;
@@ -169,7 +170,7 @@
     transform: translateY(-2px);
   }
   
-  .condition-badge {
+  .card-condition-badge {
     position: absolute;
     top: .75rem;
     left: .75rem;
@@ -186,53 +187,74 @@
 {% comment %}
   Product card
 {% endcomment %}
-<div class="product-card">
-  <div class="product-image-container">
+<a href="{{ product.url }}" style="text-decoration: none;">
+<div class="card-product">
+  <div class="card-image-container">
     {% if product_condition != blank %}
-      <div class="condition-badge">{{ product_condition }}</div>
+      <div class="card-condition-badge">Collection Badge</div>
     {% endif %}
-    <img class="product-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy">
+    <img class="card-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy">
   </div>
   
-  <div class="product-info">
-    <div class="product-sku">SKU: {{ product.selected_or_first_available_variant.sku }}</div>
+  <div class="card-info">
+    <div class="card-sku">{{ product.selected_or_first_available_variant.sku }}</div>
     
-    <h2 class="product-title">
+    <div class="card-title">
       {{ product.title | remove: '- New Surplus' | remove: '- New' | remove: '- Used' | remove: '- Reconditioned' | strip }}
-    </h2>
+    </div>
     
-    <div class="product-meta">
-      {% if lead_time != blank %}
-        <div class="meta-item">
+    <div class="card-meta-item" style="margin-top: 0; margin-bottom: .25rem;">
+    {% assign num_reviews = product.metafields.loox.num_reviews %}
+    {% if num_reviews > 0 %}
+        {% render 'product-rating-badge', product: product %}
+    {%  else %}
+    <span style="color: #69727a;">No Reviews Yet</span>
+    {% endif %}
+    </div>
+
+    {% if product_condition != blank %}
+      <div class="card-meta">
+        <div class="card-meta-item">
+          <i class="bi bi-tag"></i>
+          <span>{{ product_condition }}</span>
+        </div>
+      </div>
+    {% endif %}
+    
+    {% if lead_time != blank %}
+      <div class="card-meta">
+        <div class="card-meta-item">
           <i class="bi bi-truck"></i>
           <span>{{ lead_time }}</span>
         </div>
-      {% endif %}
-      
-      {% if product_warranty != blank %}
-        <div class="meta-item">
-          <i class="bi bi-shield-check"></i>
-          <span>{{ product_warranty }}</span>
+      </div>
+    {% endif %}
+
+    {% if product.selected_or_first_available_variant.available %}
+      <div class="card-meta">
+        <div class="card-meta-item">
+          <i class="bi bi-check-circle text-success"></i>
+          <span>In Stock</span>
         </div>
-      {% endif %}
-    </div>
-    
-    <div class="product-price">
-      <div class="current-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+      </div>
+    {% else %}
+      <div class="card-meta">
+        <div class="card-meta-item">
+          <i class="bi bi-x-circle text-danger"></i>
+          <span>Out of Stock</span>
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="card-price">
+      <div class="card-current-price">{{ product.selected_or_first_available_variant.price | money }}</div>
       {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
-        <div class="compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+        <div class="card-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
       {% endif %}
     </div>
+
     
-    <button class="btn btn-primary add-to-cart-btn" type="submit" name="add">
-      <i class="bi bi-cart-plus me-2"></i>
-      {% if product.selected_or_first_available_variant.available %}
-        {{ 'product.add_to_cart' | t }}
-      {% else %}
-        {{ 'product.sold_out' | t }}
-      {% endif %}
-    </button>
   </div>
 </div>
-
+</a>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
