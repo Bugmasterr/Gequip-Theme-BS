@@ -52,37 +52,35 @@
     border-radius: 5px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: box-shadow, transform 0.3s ease;
     height: 100%;
     background: #ffffff;
-    border: 1px solid #f0f0f0;
-    padding: .66rem;
   }
   
   .card-product:hover {
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-    border-color: #ccc;
+    transform: scale(1.033);
   }
   
   .card-image-container {
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
-    border-radius: 5px;
     overflow: hidden;
     background: #fff;
-    margin: auto;
+    padding: .66rem;
+    border-radius: 5px;
   }
   
   .card-image {
     width: 100%;
-    border-radius: 5px;
     object-fit: contain;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
   }
   
   .card-product:hover .card-image {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   
   .card-info {
@@ -97,6 +95,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-inline: .66rem;
   }
   
   .card-title {
@@ -108,12 +107,14 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 2.5rem;
+    height: 2.4rem;
+    padding-inline: .66rem;
   }
   
   .card-meta {
     display: flex;
     flex-direction: column;
+    padding-inline: .66rem;
   }
   
   .card-meta-item {
@@ -132,7 +133,8 @@
   .card-price {
     display: flex;
     align-items: baseline;
-    margin-top: .25rem;
+    margin-top: .33rem;
+    padding-inline: .66rem;
   }
   
   .card-current-price {
@@ -189,28 +191,24 @@
   position: relative;
 }
 
-.sold-out-card .card-product .card-image {
-  filter: brightness(0.7);
-  transition: filter 0.3s ease;
-}
 
 /* Sold out badge */
 .sold-out-badge {
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: 50%;
   transform: translate(-50%, -50%);
   webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
-  background: #dc3545;
-  color: white;
+  outline: 1px solid #ccc;
+  background: #fff;
+  color: #777;
   border-radius: 4px;
-  font-weight: bold;
   font-size: 1em;
   z-index: 2;
-  padding: .5rem .75rem;
+  padding: .25rem 2rem;
   pointer-events: none;
   text-wrap: nowrap;
 }
@@ -220,22 +218,22 @@
   Product card
 {% endcomment %}
 <a href="{{ product.url }}" style="text-decoration: none;" {% unless product.available %}class="sold-out-card"{% endunless %}>
-<div class="card-product" {% unless product.available %}style="opacity: 0.9;"{% endunless %}>
+<div class="card-product">
+  {% unless product.available %}
+    <div class="sold-out-badge">
+    <i class="bi bi-x-circle" style="color: #dc3545;"></i> OUT OF STOCK
+    </div>
+  {% endunless %}
   <div class="card-image-container">
     {% if show_collection_badge and product_condition != blank %}
       <div class="card-condition-badge">Collection Badge</div>
     {% endif %}
-    {% unless product.available %}
-      <div class="sold-out-badge">
-        OUT OF STOCK
-      </div>
-    {% endunless %}
     <div class="card-image-container-inner" style="position: relative;">
-      <img class="card-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy" width="400px" height="100%" {% unless product.available %}style="filter: brightness(0.7);"{% endunless %}>
+      <img class="card-image" src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" loading="lazy" width="400px" height="100%" {% unless product.available %}style="filter: brightness(0.9);"{% endunless %}>
     </div>
   </div>
 
-<span style="width: 100%; height: 1rem; margin-bottom: .25rem;"><div style="width: 100%; height: 1px; background-color: #ccc; margin-top: .6rem;"></div></span>
+<span style="width: 100%; height: 1rem;"><div style="width: 100%; height: 1px; background-color: #ccc; margin-bottom: .66rem;"></div></span>
 
   <div class="card-info">
     <div class="card-sku">{{ product.selected_or_first_available_variant.sku }}</div>
@@ -246,12 +244,12 @@
 
     {% assign review_count = product.metafields.loox.num_reviews | default: 0 %}
 {% assign rating = product.metafields.loox.avg_rating | round: 1 | default: 0 %}
-<div class="card-meta-item" style="display: flex; align-items: center; height: 2.5em;">
+<div class="card-meta-item" style="display: flex; align-items: center;">
   {% if review_count > 0 and rating >= 3 %}
-    {% render 'product-rating-badge', product: product %}
+  <div style="padding-inline: .66rem; height: 1.33rem; margin-block: .1rem; transform: scale(.85); transform-origin: center left;">{% render 'product-rating-badge', product: product %}</div>
   {% else %}
-    <span style="width: 100%; height: 2.5em; margin-top: 0; margin-bottom: .25rem; text-decoration: line-through; display: flex; align-items: center;">---</span>
-  {% endif %}
+  <span style="width: 100%; height: 1.33rem; margin-block: .1rem;"><div style="width: 100%; height: 1px; background-color: #ccc; margin-top: .6rem;"></div></span>
+{% endif %}
 </div>
 
     {% if product_condition != blank %}
@@ -275,11 +273,14 @@
     <div class="card-price">
       <div class="card-current-price">{{ product.selected_or_first_available_variant.price | money }}</div>
       {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+        {% assign savings = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price %}
+        {% assign savings_percentage = savings | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round %}
         <div class="card-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+        <div class="badge bg-success ms-2">Save {{ savings | money }} ({{ savings_percentage }}%)</div>
       {% endif %}
     </div>
 
-    <span style="width: 100%; height: 1rem; margin-top: 0; margin-bottom: .25rem;"><div style="width: 100%; height: 1px; background-color: #ccc; margin-top: .5rem;"></div></span>
+    <span style="width: 100%; height: 1rem; margin-top: 0; margin-bottom: .25rem;"><div style="width: 100%; height: 1px; background-color: #ccc; margin-top: .5rem; margin-bottom: .5rem;"></div></span>
 
   </div>
 </div>
