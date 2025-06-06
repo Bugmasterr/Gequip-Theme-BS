@@ -1,3 +1,83 @@
 /* 
   Add here your own custom css styles
 */
+
+/* Product Page Layout Adjustments */
+@media (min-width: 768px) { /* Bootstrap's 'md' breakpoint */
+  .product-main-layout {
+    display: flex; /* Ensure flex behavior for direct children */
+    flex-wrap: wrap; /* Allow wrapping if needed, though ideally not for these two columns */
+  }
+
+  .product-gallery-column,
+  .product-info-column {
+    flex: 0 0 50%; /* Don't grow, don't shrink, base width 50% */
+    max-width: 50%; /* Ensure it doesn't exceed 50% */
+  }
+
+  .product-description-layout .product-description-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Ensure product info column content flows as expected */
+.product-info-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile first: stack columns by default */
+.product-gallery-column,
+.product-info-column,
+.product-description-column {
+  width: 100%; /* Full width on small screens */
+}
+
+/* New Product Main (section-product-main) layout */
+@media (min-width: 768px) {
+  .section-product-main-container .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .section-product-main-container .product-gallery-area,
+  .section-product-main-container .product-info-area {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .section-product-main-container .product-details-accordion-area {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.section-product-main-container .product-info-area {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .section-product-main-container .product-gallery-area,
+  .section-product-main-container .product-info-area,
+  .section-product-main-container .product-details-accordion-area {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Full-width break-out for product details accordion */
+.section-product-main-container .product-details-accordion-area {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.section-product-main-container .product-details-accordion-area .accordion {
+  max-width: var(--container-max-width, 1140px);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1rem;
+}

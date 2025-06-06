@@ -1,0 +1,12 @@
+{% comment %} Placeholder: Product SKU/Model Snippet {% endcomment %}
+<div class="product-snippet-sku my-2">
+  {% if current_variant.sku != blank %}
+    <p class="sku-line text-muted small">{{ block.settings.sku_label | default: 'SKU:' }} {{ current_variant.sku }}</p>
+  {% endif %}
+  {% assign model_metafield = product.metafields.descriptors.model_number %}
+  {% if block.settings.model_label != blank and model_metafield != blank %}
+    <p class="model-line text-muted small">{{ block.settings.model_label }} {{ model_metafield }}</p>
+  {% elsif block.settings.model_label != blank and product.metafields.custom.model_number != blank %}
+    <p class="model-line text-muted small">{{ block.settings.model_label }} {{ product.metafields.custom.model_number }}</p> {% comment %} Fallback for common custom metafield key {% endcomment %}
+  {% endif %}
+</div>

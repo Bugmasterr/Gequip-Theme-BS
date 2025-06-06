@@ -1,0 +1,10 @@
+{% comment %} Product Vendor Snippet {% endcomment %}
+{% if product.vendor != blank %}
+  <div class="product-snippet-vendor my-1">
+    {% if block.settings.link_to_vendor_collection %}
+      <a href="{{ product.vendor | url_for_vendor }}" class="text-muted text-decoration-none small">{{ product.vendor }}</a>
+    {% else %}
+      <span class="text-muted small">{{ product.vendor }}</span>
+    {% endif %}
+  </div>
+{% endif %}

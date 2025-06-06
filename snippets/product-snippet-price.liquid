@@ -1,0 +1,64 @@
+{% style %}
+.product-snippet-price .price-item--sale {
+  font-size: 1.35em;
+  color: #334fb4 !important;
+  font-weight: bold;
+}
+.product-snippet-price .price-item--regular {
+  color: #dc3545 !important;
+}
+.product-snippet-price .price {
+  height: 2em;
+}
+.product-snippet-price .price div {
+  direction: rtl;
+}
+.product-snippet-price .price span {
+  margin: 0 !important;
+  line-height: 0;
+}
+.product-snippet-price .price label {
+  margin-block: .5em !important;
+  line-height: 0;
+}
+.product-snippet-price .product__tax {
+  line-height: 1;
+  padding: none;
+}
+.product-snippet-price .installment {
+  min-height: 1.1em;
+}
+.product-snippet-price .installment * {
+  line-height: 1;
+}
+.product-snippet-price .product-form__input.product-form__quantity {
+  /* Additional styles if needed */
+}
+.product-snippet-price .product-form__input * {
+  line-height: 1;
+}
+#variant-selects-template--18961675976947__main {
+  margin-bottom: -.5em;
+}
+{% endstyle %}
+
+{% comment %} Placeholder: Product Price Snippet {% endcomment %}
+
+<div class="product-snippet-price my-3" id="price-{{ form_id }}" role="status">
+  {%- if current_variant.compare_at_price > current_variant.price -%}
+    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+    <span class="price-item price-item--sale fw-bold me-2">
+      {{ current_variant.price | money }}
+    </span>
+    <s class="price-item price-item--regular text-muted">
+      {{ current_variant.compare_at_price | money }}
+    </s>
+    {% if block.settings.show_sale_badge %}
+      <span class="badge bg-danger ms-2">Sale</span>
+    {% endif %}
+  {%- else -%}
+    <span class="price-item price-item--regular fw-bold">
+      {{ current_variant.price | money }}
+    </span>
+  {%- endif -%}
+</div>

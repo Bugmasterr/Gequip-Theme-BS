@@ -30,48 +30,79 @@
       <a class="visually-hidden-focusable" href="#product-inner-{{ product.id }}">
         {{ 'general.accessibility.skip_product_content' | t }}
       </a>      
-      <div class="row">
-        <div class="col-desktop-9 mb-5 mb-desktop-0">
+      <div class="row product-main-layout">
+        {# Left Column: Media Gallery #}
+        <div class="col-12 col-md-6 product-gallery-column mb-3 mb-md-0">
           {% render 'product-block-media-gallery' %}
         </div>
-        <div class="col-desktop-9">
+
+        {# Right Column: Product Info (Title, Price, Options, ATC, etc.) #}
+        <div class="col-12 col-md-6 product-info-column">
           <div id="product-inner-{{ product.id }}">
             <product-form>
               {% form 'product', product, data-productid: product.id, data-variants: variants_json %}
                 <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{ product.selected_or_first_available_variant.id }}">
                 {% liquid
                   for block in section.blocks
-                    case block.type
-                      when 'title'
-                        render 'product-block-title', block: block
-                      when 'price'
-                        render 'product-block-price', block: block, form: form
-                      when 'options'
-                        render 'product-block-options', block: block, form: form
-                      when 'atc_button'
-                        render 'product-block-atc-button', block: block, form: form
-                      when 'richtext'
-                        render 'product-block-richtext', block: block
-                      when 'collapse'
-                        render 'product-block-collapse', block: block
-                      when 'liquid'
-                        render 'product-block-liquid', block: block
-                      when 'trust_icons'
-                        render 'product-block-trust-icons', block: block
-                      when 'separator'
-                        render 'product-block-separator', block: block
-                      when 'stock_indicator'
-                        render 'product-block-stock-indicator', block: block
-                      when 'disclaimer_collapse', block: block
-                        render 'product-block-collapse-disclaimer', block: block
-                      when '@app'
-                        render block
-                    endcase
+                    assign is_description_block = false
+                    if block.type == 'richtext' or block.type == 'collapse' or block.type == 'disclaimer_collapse'
+                      assign is_description_block = true
+                    endif
+
+                    unless is_description_block
+                      case block.type
+                        when 'title'
+                          render 'product-block-title', block: block
+                        when 'price'
+                          render 'product-block-price', block: block, form: form
+                        when 'options'
+                          render 'product-block-options', block: block, form: form
+                        when 'atc_button'
+                          render 'product-block-atc-button', block: block, form: form
+                        when 'liquid'
+                          render 'product-block-liquid', block: block
+                        when 'trust_icons'
+                          render 'product-block-trust-icons', block: block
+                        when 'separator'
+                          render 'product-block-separator', block: block
+                        when 'stock_indicator'
+                          render 'product-block-stock-indicator', block: block
+                        when '@app'
+                          render block
+                        else
+                          # Potentially render other non-description blocks here if any new types are added
+                      endcase
+                    endunless
                   endfor
                 %}
               {% endform %}
             </product-form>
           </div>
+        </div>
+      </div>
+
+      {# Full Width Row: Product Description (Richtext, Collapse, Disclaimer Collapse) #}
+      <div class="row product-description-layout mt-4 mt-md-5">
+        <div class="col-12 product-description-column">
+          {% liquid
+            for block in section.blocks
+              assign is_description_block = false
+              if block.type == 'richtext' or block.type == 'collapse' or block.type == 'disclaimer_collapse'
+                assign is_description_block = true
+              endif
+
+              if is_description_block
+                case block.type
+                  when 'richtext'
+                    render 'product-block-richtext', block: block
+                  when 'collapse'
+                    render 'product-block-collapse', block: block
+                  when 'disclaimer_collapse'
+                    render 'product-block-collapse-disclaimer', block: block
+                endcase
+              endif
+            endfor
+          %}
         </div>
       </div>
     </div>

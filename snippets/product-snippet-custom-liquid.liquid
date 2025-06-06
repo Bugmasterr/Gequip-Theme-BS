@@ -1,0 +1,12 @@
+{% liquid
+  assign custom_liquid_code = block.settings.custom_liquid_code
+  assign custom_class = block.settings.custom_class
+  assign pt = block.settings.pt | default: 0 | prepend: 'pt-'
+  assign pb = block.settings.pb | default: 0 | prepend: 'pb-'
+%}
+
+{% if custom_liquid_code != blank %}
+  <div class="product-block-custom-liquid {{ custom_class }} {{ pt }} {{ pb }}" {{ block.shopify_attributes }}>
+    {{ custom_liquid_code }}
+  </div>
+{% endif %}

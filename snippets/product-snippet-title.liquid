@@ -1,0 +1,4 @@
+{% comment %} Placeholder: Product Title Snippet {% endcomment %}
+<{{ block.settings.heading_tag | default: 'h1' }} class="product-snippet-title" style="font-size: {{ block.settings.title_font_size }}px;">
+  {{ product.title | escape }}
+</{{ block.settings.heading_tag | default: 'h1' }}>

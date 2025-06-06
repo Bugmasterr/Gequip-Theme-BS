@@ -10,7 +10,7 @@
 {
   "sections": {
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583": {
-      "type": "product-main",
+      "type": "product-section-main",
       "blocks": {
         "8abeac2d-7b60-4697-891c-4d6201789d31": {
           "type": "media_gallery",

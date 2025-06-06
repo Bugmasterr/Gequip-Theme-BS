@@ -1,0 +1,500 @@
+{% comment %}
+  New Product Main Section
+  - Image gallery on the left
+  - Product info (title, sku, rating, price, variants, atc, info links) on the right
+  - Accordion for details (description, features, specs) below
+{% endcomment %}
+
+{% liquid
+  assign c_product = product
+  if section.settings.product != blank
+    assign c_product = section.settings.product
+  endif
+  assign current_variant = c_product.selected_or_first_available_variant
+  assign section_id = section.id
+  assign form_id = 'product-form-' | append: section_id
+%}
+
+<div class="container section-product-main-container my-4 my-lg-5" data-section-id="{{ section_id }}" data-section-type="product-main-new">
+  {% if c_product == empty %}
+    <div class="alert alert-warning" role="alert">
+      Please select a product in the theme editor for this section.
+    </div>
+  {% else %}
+    <div class="row">
+      <!-- Left Column: Media Gallery -->
+      <div class="col-12 col-md-6 product-gallery-area mb-4 mb-md-0">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'media_gallery' -%}
+            <div class="product-block product-block-media_gallery" {{ block.shopify_attributes }}>
+              {% render 'product-snippet-media-gallery', product: c_product, block: block, section_id: section_id %}
+            </div>
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <!-- Right Column: Product Information -->
+      <div class="col-12 col-md-6 product-info-area">
+        <product-form class="product-form" data-product-id="{{ c_product.id }}">
+          {% form 'product', c_product, id: form_id, class: 'form' %}
+            <input type="hidden" name="id" value="{{ current_variant.id }}" data-productid="{{ c_product.id }}">
+
+            {% for block in section.blocks %}
+              <div class="product-block product-block-{{ block.type }}" {{ block.shopify_attributes }}>
+                {% case block.type %}
+                  {% when 'title' %}
+                    {% render 'product-snippet-title', product: c_product, block: block %}
+                  {% when 'sku' %}
+                    {% render 'product-snippet-sku', product: c_product, current_variant: current_variant, block: block %}
+                  {% when 'rating' %}
+                    {% render 'product-snippet-rating', product: c_product, block: block %}
+                  {% when 'price' %}
+                    {% render 'product-snippet-price', product: c_product, current_variant: current_variant, block: block, form_id: form_id %}
+                  {% when 'variant_picker' %}
+                    {% render 'product-snippet-variant-picker', product: c_product, form_id: form_id, block: block %}
+                  {% when 'quantity_atc' %}
+                    {% render 'product-snippet-quantity-atc', product: c_product, current_variant: current_variant, form_id: form_id, block: block %}
+                  {% when 'info_links' %}
+                    {% render 'product-snippet-info-links', block: block %}
+                  {% when 'vendor' %}
+                    {% render 'product-snippet-vendor', product: c_product, block: block %}
+                  {% when 'custom_liquid' %}
+                    {% render 'product-snippet-custom-liquid', product: c_product, block: block %}
+                {% endcase %}
+              </div>
+            {% endfor %}
+          {% endform %}
+        </product-form>
+      </div>
+    </div>
+
+    <!-- Accordion Section for Product Details -->
+    <div class="row mt-4 mt-lg-5 product-details-accordion-area">
+      <div class="col-12">
+        <h2 class="mb-3">Product Details</h2>
+        <div class="accordion" id="productDetailsAccordion-{{ section_id }}">
+          {% assign accordion_count = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'accordion_item' %}
+              {% assign accordion_count = accordion_count | plus: 1 %}
+              {% render 'product-snippet-accordion-item', product: c_product, block: block, section_id: section_id, accordion_id: 'productDetailsAccordion-' | append: section_id, item_id: accordion_count %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Main (New)",
+  "tag": "section",
+  "class": "section-product-main",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "If no product is selected, the current product context will be used (e.g., on a product page)."
+    },
+    {
+      "type": "header",
+      "content": "Theme Settings Note"
+    },
+    {
+      "type": "paragraph",
+      "content": "Ensure Swiper JS & CSS, and PhotoSwipe JS & CSS are included in your theme.liquid or theme scripts for the gallery to function."
+    }
+  ],
+  "blocks": [
+    
+    {
+      "type": "media_gallery",
+      "name": "Media Gallery",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "img_orientation",
+          "label": "Image Aspect Ratio",
+          "options": [
+            { "value": "aspect-auto", "label": "Original" },
+            { "value": "aspect-square", "label": "Square (1:1)" },
+            { "value": "aspect-video", "label": "Video (16:9)" },
+            { "value": "aspect-[4/3]", "label": "Traditional (4:3)" },
+            { "value": "aspect-[3/4]", "label": "Portrait (3:4)" }
+          ],
+          "default": "aspect-square",
+          "info": "CSS aspect ratio class. Ensure these are defined in your CSS if custom."
+        },
+        {
+          "type": "select",
+          "id": "img_border",
+          "label": "Image Border Style",
+          "options": [
+            { "value": "", "label": "None" },
+            { "value": "rounded", "label": "Rounded" },
+            { "value": "shadow-sm", "label": "Light Shadow" },
+            { "value": "border", "label": "Thin Border" }
+          ],
+          "default": "rounded"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_thumbs",
+          "label": "Show Thumbnails",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "thumbs_per_view",
+          "label": "Thumbnails per View",
+          "min": 2,
+          "max": 8,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "range",
+          "id": "swiper_speed",
+          "label": "Swiper Transition Speed (ms)",
+          "min": 100,
+          "max": 1000,
+          "step": 50,
+          "default": 300
+        },
+        {
+          "type": "select",
+          "id": "controls_color",
+          "label": "Navigation Controls Color Theme",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "dark", "label": "Dark" },
+            { "value": "light", "label": "Light (for dark backgrounds)" }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "vendor",
+      "name": "Vendor",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "link_to_vendor_collection",
+          "label": "Link to vendor collection/search",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Product Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading tag",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" }
+          ],
+          "default": "h1"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "label": "Font size",
+          "min": 12,
+          "max": 72,
+          "step": 1,
+          "default": 24
+        }
+      ]
+    },
+    {
+      "type": "sku",
+      "name": "SKU/Model",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "sku_label",
+          "label": "SKU Label",
+          "default": "SKU:"
+        },
+        {
+          "type": "text",
+          "id": "model_label",
+          "label": "Model Label",
+          "default": "Model #:",
+          "info": "Leave blank if not used."
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Product Rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows product rating if available (e.g., from Shopify Product Reviews app)."
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Product Price",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_sale_badge",
+          "label": "Show sale badge",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant Picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "picker_type",
+          "label": "Picker type",
+          "options": [
+            { "value": "dropdown", "label": "Dropdown" },
+            { "value": "radio", "label": "Radio buttons" }
+          ],
+          "default": "radio"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_unavailable_variants",
+          "label": "Show unavailable variants",
+          "default": false,
+          "info": "Unavailable variants will be visible but not selectable."
+        }
+      ]
+    },
+    {
+      "type": "quantity_atc",
+      "name": "Add to cart button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_qty_field",
+          "label": "Show quantity field",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_buttons",
+          "label": "Show dynamic buttons",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "\"Add to cart\" button"
+        },
+        {
+          "type": "select",
+          "id": "atc_btn_color",
+          "label": "Button color",
+          "default": "btn-primary",
+          "options": [
+            { "group": "Solid", "value": "btn-primary", "label": "Primary" },
+            { "group": "Solid", "value": "btn-secondary", "label": "Secondary" },
+            { "group": "Solid", "value": "btn-white", "label": "White" },
+            { "group": "Light", "value": "btn-light-primary", "label": "Primary" },
+            { "group": "Light", "value": "btn-light-secondary", "label": "Secondary" },
+            { "group": "Light", "value": "btn-light-white", "label": "White" },
+            { "group": "Outline", "value": "btn-outline-primary", "label": "Primary" },
+            { "group": "Outline", "value": "btn-outline-secondary", "label": "Secondary" },
+            { "group": "Outline", "value": "btn-outline-white", "label": "White" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "atc_btn_size",
+          "label": "Button size",
+          "default": "",
+          "options": [
+            { "value": "btn-sm", "label": "Small" },
+            { "value": "", "label": "Medium" },
+            { "value": "btn-lg", "label": "Large" }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "\"Buy it now\" button"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_buy_btn",
+          "label": "Show button",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "buy_btn_color",
+          "label": "Button color",
+          "default": "btn-secondary",
+          "options": [
+            { "group": "Solid", "value": "btn-primary", "label": "Primary" },
+            { "group": "Solid", "value": "btn-secondary", "label": "Secondary" },
+            { "group": "Solid", "value": "btn-white", "label": "White" },
+            { "group": "Light", "value": "btn-light-primary", "label": "Primary" },
+            { "group": "Light", "value": "btn-light-secondary", "label": "Secondary" },
+            { "group": "Light", "value": "btn-light-white", "label": "White" },
+            { "group": "Outline", "value": "btn-outline-primary", "label": "Primary" },
+            { "group": "Outline", "value": "btn-outline-secondary", "label": "Secondary" },
+            { "group": "Outline", "value": "btn-outline-white", "label": "White" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "buy_btn_size",
+          "label": "Button size",
+          "default": "",
+          "options": [
+            { "value": "btn-sm", "label": "Small" },
+            { "value": "", "label": "Medium" },
+            { "value": "btn-lg", "label": "Large" }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "range",
+          "id": "pt",
+          "label": "Top",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "pb",
+          "label": "Bottom",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    },
+    {
+      "type": "info_links",
+      "name": "Info Text/Link",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Short info text</p>"
+        }
+      ]
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid_code",
+          "label": "Custom Liquid Code",
+          "info": "Enter your custom Liquid code here. Use 'product' to access the current product object, and 'block' for block settings."
+        },
+        {
+          "type": "text",
+          "id": "custom_class",
+          "label": "Custom CSS Class",
+          "info": "Optional: Add a custom CSS class to the wrapper element."
+        },
+        {
+          "type": "header",
+          "content": "Spacing"
+        },
+        {
+          "type": "range",
+          "id": "pt",
+          "label": "Top Padding (0-20)",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "pb",
+          "label": "Bottom Padding (0-20)",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 2
+        }
+      ]
+    },
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Accordion Title",
+          "default": "Details"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Accordion Content",
+          "default": "<p>Add your rich text content here.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Main (New)",
+      "blocks": [
+        { "type": "media_gallery" },
+        { "type": "vendor" },
+        { "type": "title" },
+        { "type": "sku" },
+        { "type": "rating" },
+        { "type": "price" },
+        { "type": "variant_picker" },
+        { "type": "quantity_atc" },
+        { "type": "info_links", "settings": {"text": "<p><a href=\"#\">Free shipping over $50</a></p>"} },
+        { "type": "accordion_item", "settings": {"title": "Description", "open_by_default": true} },
+        { "type": "accordion_item", "settings": {"title": "Features"} },
+        { "type": "accordion_item", "settings": {"title": "Specifications"} },
+        { "type": "custom_liquid" }
+      ]
+    }
+  ]
+}
+{% endschema %}

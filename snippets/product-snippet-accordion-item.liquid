@@ -1,0 +1,20 @@
+{% comment %}
+  Product Accordion Item Snippet
+  Accepts: block, section_id, accordion_id, item_id (for unique IDs)
+{% endcomment %}
+{% assign item_uid = accordion_id | append: '-item-' | append: item_id %}
+{% assign heading_id = 'heading-' | append: item_uid %}
+{% assign collapse_id = 'collapse-' | append: item_uid %}
+
+<div class="accordion-item">
+  <h2 class="accordion-header" id="{{ heading_id }}">
+    <button class="accordion-button {% unless block.settings.open_by_default %}collapsed{% endunless %}" type="button" data-bs-toggle="collapse" data-bs-target="#{{ collapse_id }}" aria-expanded="{{ block.settings.open_by_default | default: false }}" aria-controls="{{ collapse_id }}">
+      {{ block.settings.title | default: "Accordion Item" }}
+    </button>
+  </h2>
+  <div id="{{ collapse_id }}" class="accordion-collapse collapse {% if block.settings.open_by_default %}show{% endif %}" aria-labelledby="{{ heading_id }}" data-bs-parent="#{{ accordion_id }}">
+    <div class="accordion-body">
+      {{ block.settings.content }}
+    </div>
+  </div>
+</div>
