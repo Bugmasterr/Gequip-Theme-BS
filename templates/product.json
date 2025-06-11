@@ -9,8 +9,151 @@
  */
 {
   "sections": {
-    "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583": {
+    "product_section_main_DLRWgJ": {
       "type": "product-section-main",
+      "blocks": {
+        "media_gallery_ndteky": {
+          "type": "media_gallery",
+          "settings": {
+            "img_orientation": "aspect-square",
+            "img_border": "rounded",
+            "show_thumbs": true,
+            "thumbs_per_view": 4,
+            "swiper_speed": 300,
+            "controls_color": "primary"
+          }
+        },
+        "custom_liquid_BREzqh": {
+          "type": "custom_liquid",
+          "name": "product-block-details",
+          "settings": {
+            "custom_liquid_code": "{% style %}\n.product-details {\n  font-size: 0.875rem;\n  color: #666;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.5rem;\n}\n.product-details__item {\n  display: inline-flex;\n  align-items: center;\n}\n.product-details__item:not(:last-child)::after {\n  content: \"|\";\n  display: inline-block;\n  margin-left: 0.5rem;\n}\n{% endstyle %}\n\n{%- liquid\n  assign vendor = product.vendor\n  assign vendor_collection = collections[vendor]\n  assign variant = product.selected_or_first_available_variant\n  assign sku = variant.sku\n  assign upc = variant.barcode\n-%}\n\n<div class=\"product-details\">\n  <span class=\"product-details__item\">\n    {%- if vendor_collection.products_count > 0 -%}\n      <a href=\"{{ vendor_collection.url }}\">{{ vendor }}</a>\n    {%- else -%}\n      {{ vendor }}\n    {%- endif -%}\n  </span>\n  \n  {%- if sku != blank -%}\n    <span class=\"product-details__item\">SKU: {{ sku }}</span>\n  {%- endif -%}\n  \n  {%- if upc != blank -%}\n    <span class=\"product-details__item\">UPC: {{ upc }}</span>\n  {%- endif -%}\n</div>",
+            "custom_class": "",
+            "pt": 2,
+            "pb": 2
+          }
+        },
+        "custom_liquid_GThEAm": {
+          "type": "custom_liquid",
+          "name": "product-block-title",
+          "settings": {
+            "custom_liquid_code": "<h1 class=\"product-title\">{{ product.title }}</h1>\n\n<style>\n  .product-title {\n    font-size: clamp(18px, 2vw, 22px);\n    margin-bottom: 0.5rem;\n  }\n  \n  .product-title-divider {\n    border: 0;\n    border-bottom: 1px solid #999;\n    margin: 0;\n    padding: 0;\n  }\n</style>",
+            "custom_class": "",
+            "pt": 4,
+            "pb": 0
+          }
+        },
+        "custom_liquid_CKqzqd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid_code": "<div \n  class=\"\n    product-block-separator separator-wrapper\n  \" \n  {{ block.shopify_attributes }}>\n  <hr \n    class=\"separator my-0\" \n    style=\"background: #666;\n      opacity: 1;\n      --bs-bg-opacity: {{ block.settings.bg_opacity | append: '%' }};\n      height: {{ block.settings.height | append: 'px' }}\n    \">\n</div>",
+            "custom_class": "",
+            "pt": 4,
+            "pb": 2
+          }
+        },
+        "custom_liquid_QrWXkb": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid_code": "Test",
+            "custom_class": "",
+            "pt": 2,
+            "pb": 2
+          }
+        },
+        "custom_liquid_V7Rbzj": {
+          "type": "custom_liquid",
+          "name": "product-style-price",
+          "settings": {
+            "custom_liquid_code": "{%-style-%}\n.product-snippet-price .price-item--sale {\n  font-size: 1.5em;\n  color: #334fb4 !important;\n  font-weight: bold;\n}\n.product-snippet-price .price-item--regular {\n  color: #dc3545 !important;\n}\n.product-snippet-price .price {\n  height: 2em;\n}\n.product-snippet-price .price div {\n  direction: rtl;\n}\n.product-snippet-price .price span {\n  margin: 0 !important;\n  line-height: 0;\n}\n.product-snippet-price .price label {\n  margin-block: .5em !important;\n  line-height: 0;\n}\n.product-snippet-price .product__tax {\n  line-height: 1;\n  padding: none;\n}\n.product-snippet-price .installment {\n  min-height: 1.1em;\n}\n.product-snippet-price .installment * {\n  line-height: 1;\n}\n.product-snippet-price .product-form__input.product-form__quantity {\n  /* Additional styles if needed */\n}\n.product-snippet-price .product-form__input * {\n  line-height: 1;\n}\n#variant-selects-template--18961675976947__main {\n  margin-bottom: -.5em;\n}\n{%-endstyle-%}",
+            "custom_class": "",
+            "pt": 2,
+            "pb": 2
+          }
+        },
+        "price_fe6MgH": {
+          "type": "price",
+          "settings": {
+            "show_sale_badge": false
+          }
+        },
+        "variant_picker_KERWn7": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "show_unavailable_variants": true
+          }
+        },
+        "quantity_atc_QCpfBb": {
+          "type": "quantity_atc",
+          "settings": {
+            "show_qty_field": true,
+            "show_dynamic_buttons": false,
+            "atc_btn_color": "btn-primary",
+            "atc_btn_size": "btn-lg",
+            "show_buy_btn": false,
+            "buy_btn_color": "btn-light-primary",
+            "buy_btn_size": "btn-lg",
+            "pt": 4,
+            "pb": 4
+          }
+        },
+        "custom_liquid_q6BEVQ": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid_code": "<div>{% for type in shop.enabled_payment_types -%} {{ type | payment_type_svg_tag }}\n{% endfor %}</i>\n</div>",
+            "custom_class": "",
+            "pt": 0,
+            "pb": 4
+          }
+        },
+        "accordion_item_z6zary": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Description",
+            "content": "<p>Add your rich text content here.</p>",
+            "open_by_default": true
+          }
+        },
+        "accordion_item_xBQgTh": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Features",
+            "content": "<p>Add your rich text content here.</p>",
+            "open_by_default": false
+          }
+        },
+        "accordion_item_UEpYmK": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Specifications",
+            "content": "<p>Add your rich text content here.</p>",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "media_gallery_ndteky",
+        "custom_liquid_BREzqh",
+        "custom_liquid_GThEAm",
+        "custom_liquid_CKqzqd",
+        "custom_liquid_QrWXkb",
+        "custom_liquid_V7Rbzj",
+        "price_fe6MgH",
+        "variant_picker_KERWn7",
+        "quantity_atc_QCpfBb",
+        "custom_liquid_q6BEVQ",
+        "accordion_item_z6zary",
+        "accordion_item_xBQgTh",
+        "accordion_item_UEpYmK"
+      ],
+      "name": "Product Main (New)",
+      "settings": {
+        "product": ""
+      }
+    },
+    "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583": {
+      "type": "product-main",
       "blocks": {
         "8abeac2d-7b60-4697-891c-4d6201789d31": {
           "type": "media_gallery",
@@ -211,6 +354,7 @@
         "separator_cWJNG3",
         "liquid_iDU3Rg"
       ],
+      "disabled": true,
       "custom_css": [
         "h1,h2,h3 {font-size: 22px;}",
         "h4,h5,h6 {font-size: 18px;}"
@@ -311,6 +455,7 @@
     }
   },
   "order": [
+    "product_section_main_DLRWgJ",
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
     "1710322973d29fae05",
