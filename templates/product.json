@@ -25,7 +25,6 @@
         },
         "custom_liquid_BREzqh": {
           "type": "custom_liquid",
-          "name": "product-block-details",
           "settings": {
             "custom_liquid_code": "{% style %}\n.product-details {\n  font-size: 1rem;\n  color: #666;\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.5rem;\n}\n.product-details__item {\n  display: inline-flex;\n  align-items: center;\n}\n.product-details__item:not(:last-child)::after {\n  content: \"|\";\n  display: inline-block;\n  margin-left: 0.5rem;\n}\n{% endstyle %}\n\n{%- liquid\n  assign vendor = product.vendor\n  assign vendor_collection = collections[vendor]\n  assign variant = product.selected_or_first_available_variant\n  assign sku = variant.sku\n  assign upc = variant.barcode\n-%}\n\n<div class=\"product-details\">\n  <span class=\"product-details__item\">\n    {%- if vendor_collection.products_count > 0 -%}\n      <a href=\"{{ vendor_collection.url }}\">{{ vendor }}</a>\n    {%- else -%}\n      {{ vendor }}\n    {%- endif -%}\n  </span>\n  \n  {%- if sku != blank -%}\n    <span class=\"product-details__item\">SKU: {{ sku }}</span>\n  {%- endif -%}\n  \n  {%- if upc != blank -%}\n    <span class=\"product-details__item\">UPC: {{ upc }}</span>\n  {%- endif -%}\n</div>",
             "custom_class": "",
@@ -35,7 +34,6 @@
         },
         "custom_liquid_GThEAm": {
           "type": "custom_liquid",
-          "name": "product-block-title",
           "settings": {
             "custom_liquid_code": "<h1 class=\"product-title\">{{ product.title }}</h1>\n\n<style>\n  .product-title {\n    font-size: clamp(18px, 2vw, 22px);\n    margin-bottom: 0.5rem;\n  }\n  \n  .product-title-divider {\n    border: 0;\n    border-bottom: 1px solid #999;\n    margin: 0;\n    padding: 0;\n  }\n</style>",
             "custom_class": "",
@@ -45,7 +43,6 @@
         },
         "custom_liquid_CKqzqd": {
           "type": "custom_liquid",
-          "name": "Separator",
           "settings": {
             "custom_liquid_code": "<div \n  class=\"\n    product-block-separator separator-wrapper\n  \" \n  {{ block.shopify_attributes }}>\n  <hr \n    class=\"separator my-0\" \n    style=\"\n      opacity: .66;\n    \">\n</div>",
             "custom_class": "",
@@ -55,7 +52,6 @@
         },
         "custom_liquid_LfqhYj": {
           "type": "custom_liquid",
-          "name": "Stock Indicator",
           "settings": {
             "custom_liquid_code": "<div class=\"stock-indicator\">\n  <p role=\"status\" id=\"Inventory-{{ section.id }}\" class=\"product__inventory\">\n    {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}\n      {%- assign inventory_quantity = product.selected_or_first_available_variant.inventory_quantity -%}\n\n      {%- if inventory_quantity > 2 -%}\n        <i class=\"bi-check-circle-fill pulse-animation\"></i>\n        <span class=\"text-success\">In Stock: {{ inventory_quantity }}</span>\n      {%- elsif inventory_quantity > 0 -%}\n        <i style=\"color: #ffb300;\" class=\"bi-circle-half\"></i>\n        <span style=\"color: #c58a00;\">Low Stock: {{ inventory_quantity }}</span>\n      {%- else -%}\n        <i class=\"bi-x-circle text-danger\"></i>\n        <span class=\"text-danger\">Out of Stock</span>\n      {%- endif -%}\n    {%- endif -%}\n  </p>\n</div>\n\n<style>\n.stock-indicator {\nline-height: 0;\npadding: 0;\nmargin: 0;\n}\n\n  @keyframes pulse {\n    0%, 100% { color: var(--bs-success); }\n    50% { color: #20c075; }\n  }\n  \n  .pulse-animation {\n    animation: pulse 3s infinite;\n  }\n</style>",
             "custom_class": "",
@@ -65,7 +61,6 @@
         },
         "custom_liquid_BLPHDV": {
           "type": "custom_liquid",
-          "name": "Condition Indicator",
           "settings": {
             "custom_liquid_code": "{% liquid\n  if product.metafields.ges.product_condition != null\n    assign product_condition = product.metafields.ges.product_condition | replace: '[\"', '' | replace: '\"]', ''\n  elsif product.title contains 'Reconditioned'\n    assign product_condition = 'Reconditioned'\n  elsif product.title contains 'New'\n    assign product_condition = 'New Surplus'\n  elsif product.title contains 'Used'\n    assign product_condition = 'Used'\n  else\n    assign product_condition = ''\n  endif\n  if product_condition == 'Reconditioned'\n    assign product_warranty = '90-Day Operational Warranty'\n  elsif product_condition == 'New Surplus' or product_condition == 'Used'\n    assign product_warranty = ''\n  endif\n%}\n\n{% if product.metafields.ges['lead-time-min'] or product.metafields.ges['lead-time-max'] %}\n  {% assign lt_min = product.metafields.ges['lead-time-min'] %}\n  {% assign lt_max = product.metafields.ges['lead-time-max'] %}\n\n  {% if lt_min != blank and lt_max != blank %}\n    {% assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: lt_max | append: ' Business Days' %}\n\n  {% elsif lt_min != blank %}\n    {% assign computed_max = lt_min | plus: 2 %}\n    {% assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: computed_max | append: ' Business Days' %}\n\n  {% elsif lt_max != blank %}\n    {% assign computed_min = lt_max | minus: 2 %}\n    {% if computed_min < 1 %}\n      {% assign computed_min = 1 %}\n    {% endif %}\n    {% assign lead_time = 'Ships In ' | append: computed_min | append: ' to ' | append: lt_max | append: ' Business Days' %}\n  {% endif %}\n\n{% elsif product_condition == 'Reconditioned' %}\n  {% assign lead_time = 'Ships In 5 - 9 Business Days' %}\n{% else %}\n  {% assign lead_time = 'Ships In 1 - 2 Business Days' %}\n{% endif %}\n\n{% if product.metafields.ges.lead_time != blank %}\n{% assign lead_time = product.metafields.ges.lead_time %}\n{% endif %}\n\n\n<div class=\"product-detail condition\" style=\"\">\n  <i class=\"bi bi-truck\"></i> {{ product_condition }}\n</div>",
             "custom_class": "",
@@ -75,7 +70,6 @@
         },
         "custom_liquid_KbgddT": {
           "type": "custom_liquid",
-          "name": "Lead-Time Indicator",
           "settings": {
             "custom_liquid_code": "{% liquid\n  if product.metafields.ges.product_condition != null\n    assign product_condition = product.metafields.ges.product_condition | replace: '[\"', '' | replace: '\"]', ''\n  elsif product.title contains 'Reconditioned'\n    assign product_condition = 'Reconditioned'\n  elsif product.title contains 'New'\n    assign product_condition = 'New Surplus'\n  elsif product.title contains 'Used'\n    assign product_condition = 'Used'\n  else\n    assign product_condition = ''\n  endif\n  if product_condition == 'Reconditioned'\n    assign product_warranty = '90-Day Operational Warranty'\n  elsif product_condition == 'New Surplus' or product_condition == 'Used'\n    assign product_warranty = ''\n  endif\n%}\n\n{% if product.metafields.ges['lead-time-min'] or product.metafields.ges['lead-time-max'] %}\n  {% assign lt_min = product.metafields.ges['lead-time-min'] %}\n  {% assign lt_max = product.metafields.ges['lead-time-max'] %}\n\n  {% if lt_min != blank and lt_max != blank %}\n    {% assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: lt_max | append: ' Business Days' %}\n\n  {% elsif lt_min != blank %}\n    {% assign computed_max = lt_min | plus: 2 %}\n    {% assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: computed_max | append: ' Business Days' %}\n\n  {% elsif lt_max != blank %}\n    {% assign computed_min = lt_max | minus: 2 %}\n    {% if computed_min < 1 %}\n      {% assign computed_min = 1 %}\n    {% endif %}\n    {% assign lead_time = 'Ships In ' | append: computed_min | append: ' to ' | append: lt_max | append: ' Business Days' %}\n  {% endif %}\n\n{% elsif product_condition == 'Reconditioned' %}\n  {% assign lead_time = 'Ships In 5 - 9 Business Days' %}\n{% else %}\n  {% assign lead_time = 'Ships In 1 - 2 Business Days' %}\n{% endif %}\n\n{% if product.metafields.ges.lead_time != blank %}\n{% assign lead_time = product.metafields.ges.lead_time %}\n{% endif %}\n\n{%-style-%}\n.product-detail {\nfont-size: 1rem;\npadding: 0;\nmargin:0;\ncolor:#333;\nborder-radius:5px; \n}\n{%-endstyle-%}\n\n<div class=\"product-detail condition\" style=\"\">\n  <i class=\"bi bi-truck\"></i> {{ lead_time }}\n</div>",
             "custom_class": "",
@@ -85,7 +79,6 @@
         },
         "custom_liquid_C7kTUy": {
           "type": "custom_liquid",
-          "name": "Separator",
           "settings": {
             "custom_liquid_code": "<div \n  class=\"\n    product-block-separator separator-wrapper\n  \" \n  {{ block.shopify_attributes }}>\n  <hr \n    class=\"separator my-0\" \n    style=\"\n      opacity: .66;\n    \">\n</div>",
             "custom_class": "",
@@ -95,7 +88,6 @@
         },
         "custom_liquid_V7Rbzj": {
           "type": "custom_liquid",
-          "name": "product-style-price",
           "settings": {
             "custom_liquid_code": "{%-style-%}\n.product-snippet-price .price-item--sale {\n  font-size: 1.5em;\n  color: #334fb4 !important;\n  font-weight: bold;\n  line-height: 0;\n}\n.product-snippet-price .price-item--regular {\n  color: #dc3545 !important;\n}\n.product-snippet-price .price {\n  height: 2em;\n}\n.product-snippet-price .price div {\n  direction: rtl;\n}\n.product-snippet-price .price span {\n  margin: 0 !important;\n  line-height: 0;\n}\n.product-snippet-price .price label {\n  margin-block: .5em !important;\n  line-height: 0;\n}\n.product-snippet-price .product__tax {\n  line-height: 1;\n  padding: none;\n}\n.product-snippet-price .installment {\n  min-height: 1.1em;\n}\n.product-snippet-price .installment * {\n  line-height: 1;\n}\n.product-snippet-price .product-form__input.product-form__quantity {\n  /* Additional styles if needed */\n}\n.product-snippet-price .product-form__input * {\n  line-height: 1;\n}\n#variant-selects-template--18961675976947__main {\n  margin-bottom: -.5em;\n}\n{%-endstyle-%}",
             "custom_class": "",
@@ -138,30 +130,6 @@
             "pt": 0,
             "pb": 4
           }
-        },
-        "accordion_item_z6zary": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Description",
-            "content": "<p>Add your rich text content here.</p>",
-            "open_by_default": true
-          }
-        },
-        "accordion_item_xBQgTh": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Features",
-            "content": "<p>Add your rich text content here.</p>",
-            "open_by_default": false
-          }
-        },
-        "accordion_item_UEpYmK": {
-          "type": "accordion_item",
-          "settings": {
-            "title": "Specifications",
-            "content": "<p>Add your rich text content here.</p>",
-            "open_by_default": false
-          }
         }
       },
       "block_order": [
@@ -177,12 +145,8 @@
         "price_fe6MgH",
         "variant_picker_KERWn7",
         "quantity_atc_QCpfBb",
-        "custom_liquid_q6BEVQ",
-        "accordion_item_z6zary",
-        "accordion_item_xBQgTh",
-        "accordion_item_UEpYmK"
+        "custom_liquid_q6BEVQ"
       ],
-      "name": "Product Main (New)",
       "settings": {
         "product": ""
       }

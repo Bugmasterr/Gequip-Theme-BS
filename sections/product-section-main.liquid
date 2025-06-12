@@ -68,22 +68,6 @@
         </product-form>
       </div>
     </div>
-
-    <!-- Accordion Section for Product Details -->
-    <div class="row mt-4 mt-lg-5 product-details-accordion-area">
-      <div class="col-12">
-        <h2 class="mb-3">Product Details</h2>
-        <div class="accordion" id="productDetailsAccordion-{{ section_id }}">
-          {% assign accordion_count = 0 %}
-          {% for block in section.blocks %}
-            {% if block.type == 'accordion_item' %}
-              {% assign accordion_count = accordion_count | plus: 1 %}
-              {% render 'product-snippet-accordion-item', product: c_product, block: block, section_id: section_id, accordion_id: 'productDetailsAccordion-' | append: section_id, item_id: accordion_count %}
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    </div>
   {% endif %}
 </div>
 
