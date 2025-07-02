@@ -1,50 +1,71 @@
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign inventory_quantity = current_variant.inventory_quantity
+  assign inventory_management = current_variant.inventory_management
+  assign pt = block.settings.pt | prepend: 'pt-'
+  assign pb = block.settings.pb | prepend: 'pb-'
+  assign font_size = block.settings.font_size
+  assign low_stock_threshold = section.settings.low_stock_threshold | default: 2
+  assign has_stock_bg_color = section.settings.has_stock_bg_color | default: 'bg-success'
+  assign low_stock_bg_color = section.settings.low_stock_bg_color | default: 'bg-warning'
+  assign oos_bg_color = 'bg-danger'
+%}
+
 <div 
-  class="product-price {{ block.settings.font_size }} {{ section.settings.pt }} {{ section.settings.pb }}"
+  class="product-stock-indicator d-flex align-items-center gap-2 {{ font_size }} {{ pt }} {{ pb }}"
   {{ block.shopify_attributes }}
 >
-  <p
-    class="product__inventory no-js-hidden{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
-    {{ block.shopify_attributes }}
-    id="Inventory-{{ section.id }}"
-    role="status"
-  >
-  
-    {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-      {%- assign inventory_quantity = product.selected_or_first_available_variant.inventory_quantity -%}
-      {%- assign low_stock_threshold = section.settings.low_stock_threshold | default: 2 -%}
-
-      {%- if inventory_quantity > low_stock_threshold -%}
-        <i class="bi-circle-fill pulse-animation"></i>
-        <span class="text-success">In Stock: {{ inventory_quantity }}</span>
-      {%- elsif inventory_quantity > 0 -%}
-        <i class="bi-circle-half" style="color: #ffb300;"></i>
-        <span style="color: #c58a00;">Low Stock: {{ inventory_quantity }}</span>
-      {%- else -%}
-        <i class="bi-circle text-danger"></i>
-        <span class="text-danger">Out of Stock</span>
-      {%- endif -%}
-    {%- endif -%}
-  </p>
+  {% if inventory_management == 'shopify' %}
+    {% if inventory_quantity > low_stock_threshold %}
+      <span class="stock-dot {{ has_stock_bg_color }} pulse-animation"></span>
+      <span class="fw-medium text-success">In Stock 
+        <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
+      </span>
+    {% elsif inventory_quantity > 0 %}
+      <span class="stock-dot {{ low_stock_bg_color }}"></span>
+      <span class="fw-medium text-warning">Low Stock 
+        <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
+      </span>
+    {% else %}
+      <span class="stock-dot {{ oos_bg_color }}"></span>
+      <span class="fw-medium text-danger">Out of Stock</span>
+    {% endif %}
+  {% endif %}
 </div>
 
 {{ form | payment_terms }}
 
-
-<!-- Stock Indicator Pulse Animation -->
 <style>
+  .product-stock-indicator .stock-dot {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    vertical-align: middle;
+  }
+  .product-stock-indicator .bg-success {
+    background: var(--bs-success, #198754);
+  }
+  .product-stock-indicator .bg-warning {
+    background: var(--bs-warning, #ffc107);
+  }
+  .product-stock-indicator .bg-danger {
+    background: var(--bs-danger, #dc3545);
+  }
+  .product-stock-indicator .pulse-animation {
+    animation: pulse 2.5s infinite;
+    box-shadow: 0 0 0 0 rgba(32,192,117,0.5);
+  }
   @keyframes pulse {
     0% {
-      color: var(--bs-success);
+      box-shadow: 0 0 0 0 rgba(32,192,117,0.7);
     }
-    35% {
-      color: #20c075;
+    60% {
+      box-shadow: 0 0 0 8px rgba(32,192,117,0);
     }
     100% {
-      color: var(--bs-success);
+      box-shadow: 0 0 0 0 rgba(32,192,117,0);
     }
-  }
-
-  .pulse-animation {
-    animation: pulse 4s infinite;
   }
 </style>

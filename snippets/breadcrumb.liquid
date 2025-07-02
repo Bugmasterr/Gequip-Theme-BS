@@ -1,0 +1,28 @@
+<nav class="breadcrumb d-none d-desktop-block" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list d-flex align-items-center mb-0 p-0" style="list-style: none; overflow: hidden; white-space: nowrap;">
+    <li class="breadcrumb-item">
+      <a href="{{ routes.root_url }}">Home</a>
+    </li>
+
+    {% assign vendor_collection = collections[product.vendor] %}
+    {% if product.vendor %}
+      <li class="breadcrumb-item">
+        {% if vendor_collection and vendor_collection.products_count != blank and vendor_collection.products_count > 0 %}
+          <a href="{{ vendor_collection.url }}">{{ product.vendor }}</a>
+        {% else %}
+          {{ product.vendor }}
+        {% endif %}
+      </li>
+    {% endif %}
+
+    <li class="breadcrumb-item active" aria-current="page" >
+      {{ product.title | strip | truncate: 35 }}
+    </li>
+  </ol>
+
+  {% if product.metafields.custom.breadcrumb %}
+    <div class="breadcrumb-custom">
+      {{ product.metafields.custom.breadcrumb }}
+    </div>
+  {% endif %}
+</nav>

@@ -1,0 +1,134 @@
+{% comment %}
+  Share and PDF Download buttons for product-main section.
+  Expects:
+  - product: The product object.
+{% endcomment %}
+<div class="share-bookmark-container d-flex align-items-center gap-2 position-relative d-none d-desktop-block">
+  <span class="d-inline-block">
+    <button
+      type="button"
+      class="share-btn btn btn-link px-2"
+      id="share-btn-{{ product.id }}"
+      aria-label="Share product"
+      data-tooltip="Share product">
+      <i class="bi bi-share me-1"></i>
+    </button>
+  </span>
+  <span class="d-inline-block">
+    <button
+      type="button"
+      class="pdf-btn btn btn-link px-2"
+      id="pdf-btn-{{ product.id }}"
+      aria-label="Save as PDF"
+      data-tooltip="Save as PDF">
+      <i class="bi bi-file-earmark-pdf"></i>
+    </button>
+  </span>
+  <div
+    id="product-share-alert-{{ product.id }}"
+    class="alert alert-success share-alert px-3 py-2 m-0 position-absolute top-100 start-0 mt-2 shadow-sm fade"
+    role="alert"
+    style="z-index:10; min-width:120px; font-size:0.95rem;"
+    hidden>
+    <i class="bi bi-clipboard-check me-1"></i>Link copied!
+  </div>
+  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Popper.js tooltips
+      document.querySelectorAll('[data-tooltip]').forEach(function(el) {
+        const tooltipText = el.getAttribute('data-tooltip');
+        const tooltip = document.createElement('div');
+        tooltip.className = 'popper-tooltip';
+        tooltip.setAttribute('role', 'tooltip');
+        tooltip.setAttribute('hidden', '');
+        tooltip.textContent = tooltipText;
+        document.body.appendChild(tooltip);
+        const popperInstance = Popper.createPopper(el, tooltip, { placement: 'top' });
+        el.addEventListener('mouseenter', function() {
+          tooltip.removeAttribute('hidden');
+          popperInstance.update();
+        });
+        el.addEventListener('mouseleave', function() {
+          tooltip.setAttribute('hidden', '');
+        });
+      });
+    });
+  </script>
+</div>
+<style>
+  .share-btn:focus, .pdf-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0d6efd44;
+  }
+  .share-btn:hover, .pdf-btn:hover {
+    background: #f3f4f6;
+  }
+  .share-alert.fade {
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .share-alert.show {
+    opacity: 1;
+  }
+  .popper-tooltip {
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    z-index: 9999;
+    pointer-events: none;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var shareBtn = document.getElementById('share-btn-{{ product.id }}');
+    var pdfBtn = document.getElementById('pdf-btn-{{ product.id }}');
+    var alertBox = document.getElementById('product-share-alert-{{ product.id }}');
+    var url = '{{ request.origin }}{{ product.url }}';
+
+    // Share functionality
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (navigator.share) {
+          navigator.share({ title: '{{ product.title | escape }}', url: url }).catch(function(){});
+        } else {
+          // Fallback to clipboard
+          var showAlert = function() {
+            if (alertBox) {
+              alertBox.hidden = false;
+              alertBox.classList.add('show');
+              setTimeout(function() {
+                alertBox.classList.remove('show');
+                setTimeout(function(){ alertBox.hidden = true; }, 350);
+              }, 1800);
+            }
+          };
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(url).then(showAlert, function(){});
+          } else {
+            var textarea = document.createElement('textarea');
+            textarea.value = url;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try { document.execCommand('copy'); } catch(e){}
+            document.body.removeChild(textarea);
+            showAlert();
+          }
+        }
+      });
+    }
+
+    // PDF Download/View functionality
+    if (pdfBtn) {
+      pdfBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.print();
+      });
+    }
+  });
+</script>

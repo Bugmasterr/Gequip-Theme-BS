@@ -16,6 +16,8 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: '32', height: '32' }}">
   {%- endunless -%}
 
+  {{ 'product-card.css' | asset_url | stylesheet_tag }}
+
   <title>
     {{ page_title }}
     {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
