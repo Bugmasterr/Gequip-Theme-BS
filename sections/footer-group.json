@@ -22,15 +22,15 @@
         "label {color: gray;}"
       ],
       "settings": {
-        "bg_color": "bg-body",
+        "bg_color": "bg-primary",
         "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 1,
-        "border_bottom_width": 0,
-        "border_color": "border-secondary",
-        "border_opacity": 50,
-        "container_max_width": "600",
+        "bg_gradient": "bg-gradient",
+        "text_color": "text-white",
+        "border_top_width": 0,
+        "border_bottom_width": 1,
+        "border_color": "border-primary",
+        "border_opacity": 10,
+        "container_max_width": "800",
         "header_title": "Signup For The Best Deals",
         "header_title_font_size": "h3",
         "header_description": "<p>Stay Updated on Exclusive Discounts and Sales Offers!</p>",
@@ -38,8 +38,8 @@
         "btn_color": "btn-primary",
         "btn_size": "btn-sm",
         "notice": "<p>By signing up for email, you agree to our <a href=\"/policies/terms-of-service\">Terms of Service</a> and <a href=\"/policies/privacy-policy\">Privacy Policy</a>.</p>",
-        "pt": 14,
-        "pb": 14
+        "pt": 10,
+        "pb": 10
       }
     },
     "footer": {

@@ -14,7 +14,7 @@
     "color_body_bg": "#ffffff",
     "color_body_color": "#212529",
     "transparent_header": "header-transparent",
-    "container_max_width": 1450,
+    "container_max_width": 1300,
     "border_radius": 0.3,
     "logo": "shopify://shop_images/ges-logo-1.png",
     "favicon": "shopify://shop_images/favicon.png",
@@ -27,9 +27,9 @@
     "btn_bg_gradient": false,
     "btn_padding_x": 1,
     "btn_padding_y": 0.3,
-    "dialog_backdrop_color": "#1b2c69",
+    "dialog_backdrop_color": "#212529",
     "dialog_backdrop_opacity": 35,
-    "dialog_backdrop_blur": 2,
+    "dialog_backdrop_blur": 1,
     "dialog_header_bg_color": "primary",
     "dialog_header_bg_opacity": 100,
     "dialog_header_text_color": "white",
@@ -120,6 +120,7 @@
   },
   "platform_customizations": {
     "custom_css": [
+      "div,span {font-size: 1.1rem;}",
       ".card {box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 2px 0px, rgba(60, 64, 67, 0.1) 0px 2px 6px 2px;}"
     ]
   }
