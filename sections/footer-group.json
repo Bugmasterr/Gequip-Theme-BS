@@ -74,11 +74,11 @@
           "settings": {
             "title": "About us",
             "title_font_size": "fs-xl",
-            "description": "<p>Testing buttons in the footer</p>",
+            "description": "<p>Offering cost-effective reconditioned tools and equipment that fit your budget without compromising performance.<br/><br/></p>",
             "btn_primary_text": "Learn More",
-            "btn_primary_url": "shopify://pages/about",
-            "btn_primary_color": "btn-outline-white",
-            "btn_secondary_text": "Learn more",
+            "btn_primary_url": "shopify://pages/about-ges",
+            "btn_primary_color": "btn-light-white",
+            "btn_secondary_text": "",
             "btn_secondary_url": "shopify://pages/about",
             "btn_secondary_color": "btn-light-white"
           }
@@ -103,8 +103,8 @@
         "social_icons": false,
         "show_payment_icons": true,
         "show_powered_by": false,
-        "pt": 8,
-        "pb": 8
+        "pt": 10,
+        "pb": 10
       }
     }
   },
