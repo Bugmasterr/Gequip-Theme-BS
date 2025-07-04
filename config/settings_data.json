@@ -10,7 +10,7 @@
 {
   "current": {
     "color_primary": "#334fb4",
-    "color_secondary": "#eaeaea",
+    "color_secondary": "#cccccc",
     "color_body_bg": "#ffffff",
     "color_body_color": "#212529",
     "transparent_header": "header-transparent",
@@ -18,8 +18,8 @@
     "border_radius": 0.3,
     "logo": "shopify://shop_images/ges-logo-1.png",
     "favicon": "shopify://shop_images/favicon.png",
-    "font_body": "inter_n4",
-    "font_headings": "inter_n6",
+    "font_body": "assistant_n4",
+    "font_headings": "assistant_n4",
     "btn_text_transform": "text-uppercase",
     "btn_font_family": "var(--bs-body-font-family)",
     "btn_font_weight": "500",

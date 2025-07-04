@@ -15,44 +15,25 @@
         "slide_Q4UPQq": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify://shop_images/GreenleeBanner2.png",
-            "img_desktop": "shopify://shop_images/GreenleeBanner2.png",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
+            "img_mobile": "shopify://shop_images/ges-bg.png",
+            "img_desktop": "shopify://shop_images/ges-bg.png",
+            "overlay_color": "#334fb4",
+            "overlay_opacity": 70,
             "overlay_blur": 0,
-            "subtitle": "General Equipment & Supply",
-            "title": "Greenlee",
-            "description": "<h5>Explore our collection of Greenlee products</h5>",
+            "subtitle": "Remanufactured Excellence",
+            "title": "General Equipment & Supply",
+            "description": "<p>Explore our New, Used, and Reconditioned Tools and Equipment</p>",
             "btn_primary_text": "View All Products",
-            "btn_primary_url": "shopify://pages/shop-by-category",
-            "btn_secondary_text": "",
-            "btn_secondary_url": ""
-          }
-        },
-        "slide_TddqxQ": {
-          "type": "slide",
-          "settings": {
-            "img_mobile": "shopify://shop_images/Ridgid_Banner2_a0c0f6c1-8db4-422e-8dae-0a391bd02b12.png",
-            "img_desktop": "shopify://shop_images/Ridgid_Banner2.png",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "overlay_blur": 0,
-            "subtitle": "General Equipment and Supply",
-            "title": "Ridgid",
-            "description": "<h5>Explore our collection of reliable and innovative Ridgid products.</h5>",
-            "btn_primary_text": "View All Products",
-            "btn_primary_url": "",
+            "btn_primary_url": "shopify://collections/new",
             "btn_secondary_text": "",
             "btn_secondary_url": ""
           }
         }
       },
       "block_order": [
-        "slide_Q4UPQq",
-        "slide_TddqxQ"
+        "slide_Q4UPQq"
       ],
       "custom_css": [
-        "{padding-top: 1.5em;}",
         "#carousel-template--18681194676467__hero_carousel_CmDneU {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}"
       ],
       "settings": {
@@ -60,7 +41,7 @@
         "bg_opacity": 100,
         "bg_gradient": "",
         "text_color": "text-white",
-        "width": 70,
+        "width": 100,
         "border_top_width": 0,
         "border_bottom_width": 0,
         "border_color": "border-primary",
