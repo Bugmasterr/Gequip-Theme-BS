@@ -239,7 +239,7 @@
         ".description {padding-bottom: 10px;}",
         ".title {padding-block: 10px;}",
         " {line-height: 1.75rem; align-items: center; justify-content: center;}",
-        "@media (min-width: 786px) {.img-fluid {height: 350px; width: auto; padding-left: 100px; } .container .row {height: 450px; margin: auto; }}"
+        "@media (min-width: 786px) {.img-fluid {display: block; width: 67%; margin: auto; padding: 1em; } .container .row {margin: auto; }}"
       ],
       "settings": {
         "container_max_width": ""
