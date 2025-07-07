@@ -100,6 +100,10 @@ save
             "pt": 0,
             "pb": 3
           }
+        },
+        "recommended_products_custom": {
+          "type": "recommended_products",
+          "settings": {}
         }
       },
       "block_order": [
@@ -110,7 +114,8 @@ save
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "separator_MwNDG4",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
-        "separator_Gr3iJ9"
+        "separator_Gr3iJ9",
+        "recommended_products_custom"
       ],
       "custom_css": [
         "h1,h2,h3 {font-size: 22px;}",

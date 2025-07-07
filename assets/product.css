@@ -2,7 +2,9 @@
 /*
   General
 */
-
+.breadcrumb {
+  height: 1em;
+}
 .breadcrumb-nav-item {
   text-decoration: none;
 }
