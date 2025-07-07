@@ -15,10 +15,9 @@
         "slide_Q4UPQq": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify://shop_images/ges-bg.png",
-            "img_desktop": "shopify://shop_images/ges-bg.png",
+            "img_mobile": "shopify://shop_images/white.jpg",
             "overlay_color": "#334fb4",
-            "overlay_opacity": 70,
+            "overlay_opacity": 0,
             "overlay_blur": 0,
             "subtitle": "Remanufactured Excellence",
             "title": "General Equipment & Supply",
@@ -34,7 +33,8 @@
         "slide_Q4UPQq"
       ],
       "custom_css": [
-        "#carousel-template--18681194676467__hero_carousel_CmDneU {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}"
+        ".carousel {box-shadow: #233a8f 0px 0px 30px 10px inset;}",
+        ".title {font-weight: bold !important;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
@@ -53,15 +53,15 @@
         "carousel_autoplay": 10,
         "carousel_effect": "carousel-zoom-out",
         "media_mobile_height": 400,
-        "media_desktop_height": 450,
+        "media_desktop_height": 400,
         "media_adapt": false,
         "media_full": true,
         "caption_max_width": "900",
         "caption_position": "carousel-caption-center",
         "subtitle_font_size": "fs-md",
         "title_font_size": "h1",
-        "description_font_size": "fs-lg",
-        "btn_primary_color": "btn-primary",
+        "description_font_size": "fs-xl",
+        "btn_primary_color": "btn-outline-white",
         "btn_secondary_color": "btn-light-secondary",
         "btn_font_size": "fs-md",
         "pt": 0,
