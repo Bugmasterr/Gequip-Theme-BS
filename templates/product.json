@@ -190,55 +190,57 @@
         "pb": 11
       }
     },
-    "1710322973d29fae05": {
-      "type": "apps",
-      "blocks": {
-        "loox_reviews_loox_card_carousel_section_wTUqD6": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "maxWidth": 1200,
-            "borderRadius": 8,
-            "itemsPerView": 5,
-            "mobileItemsPerView": 1,
-            "maxNumberOfCharacters": 100,
-            "imageRatio": "0.72",
-            "reviewerNameColor": "#000000",
-            "textColor": "#000000",
-            "itemBackgroundColor": "#ffffff",
-            "starsColor": "",
-            "starsBackgroundColor": "#ffffff",
-            "arrows_backgroundColor": "#ffffff",
-            "arrows_iconColor": "#9a9a9a",
-            "shadow": "offset-dark",
-            "border_active": true,
-            "border_width": 1,
-            "border_color": "#dedede",
-            "productIds": ""
-          }
-        }
-      },
-      "block_order": [
-        "loox_reviews_loox_card_carousel_section_wTUqD6"
-      ],
-      "settings": {}
-    },
     "20426219-2b04-4ec4-9f23-1ed81a76c181": {
       "type": "separator",
       "settings": {
-        "bg_color": "bg-body text-body",
-        "bg_opacity": 10,
+        "bg_color": "bg-secondary",
+        "bg_opacity": 100,
         "height": 1,
         "container": "container-fluid",
         "container_max_width": "",
         "pt": 0,
         "pb": 0
       }
+    },
+    "17519138752e9ffda2": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_HPhWB9": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": false
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_HPhWB9"
+      ],
+      "settings": {}
+    },
+    "separator_TQzYYL": {
+      "type": "separator",
+      "name": "Separator",
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 100,
+        "height": 1,
+        "container": "",
+        "container_max_width": "",
+        "pt": 15,
+        "pb": 5
+      }
     }
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
-    "1710322973d29fae05",
-    "20426219-2b04-4ec4-9f23-1ed81a76c181"
+    "20426219-2b04-4ec4-9f23-1ed81a76c181",
+    "17519138752e9ffda2",
+    "separator_TQzYYL"
   ]
 }
