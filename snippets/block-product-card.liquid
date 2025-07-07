@@ -1,0 +1,163 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = product.featured_media
+  assign is_available = product.selected_or_first_available_variant.available | default: false
+  assign on_sale = false
+  if current_variant.compare_at_price and current_variant.price and current_variant.compare_at_price > current_variant.price
+    assign on_sale = true
+  endif
+-%}
+<style>
+.rec-product-card {
+  border-radius: .3rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s, transform 0.15s;
+  font-size: 0.9rem;
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 0;
+}
+.rec-product-card:hover {
+  box-shadow: 0 5px 20px rgba(30,40,80,0.10);
+  transform: translateY(-1px) scale(1.01);
+}
+.rec-product-card__link {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+}
+.rec-product-card__media {
+    width: 100%;
+    height: 100%;
+  border-radius: .3rem;
+}
+.rec-product-card__image,
+.rec-product-card__placeholder {
+  object-fit:contain;
+  background: #ddd;
+  object-position: center;
+  overflow: hidden;
+  border-radius: .3rem;
+  aspect-ratio: 1;
+}
+.rec-product-card__placeholder {
+  opacity: 0.22;
+}
+.rec-product-card__badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ff3a3a;
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  border-radius: .3rem;
+  padding: 0.18em 0.5em;
+  z-index: 2;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  letter-spacing: 0.02em;
+  display: none;
+}
+.rec-product-card__badge--soldout {
+  background: #888ca0;
+  left: auto;
+  right: 8px;
+  display: block;
+}
+.rec-product-card__content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.rec-product-card__title {
+  font-size: .8rem !important;
+  font-weight: 400;
+  margin: 0 0 0.05em 0;
+  line-height: 1.2;
+  min-height: 2.1em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.12s;
+  word-break: break-word;
+  margin-top: .5rem;
+}
+.rec-product-card__link:hover .rec-product-card__title {
+  color: #334fb4;
+  text-decoration: underline;
+}
+.rec-product-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3em;
+  font-size: 0.75rem !important;
+  margin-bottom: 0;
+}
+.rec-product-card__price-current {
+  color: #334fb4;
+  font-weight: 700;
+  font-size: 1rem !important;
+}
+.rec-product-card__price-sale {
+  color: #334fb4;
+}
+.rec-product-card__price-compare {
+  color: #aaa;
+  font-size: 0.75rem !important;
+  text-decoration: line-through;
+  margin-left: 0.18em;
+  font-weight: 400;
+}
+.rec-product-card__sku {
+  color: #666;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  margin-top: 0.08em;
+  width: fit-content;
+}
+</style>
+<div class="rec-product-card{% if is_available == false %} rec-product-card--soldout{% endif %}">
+  <a href="{{ product.url }}" class="rec-product-card__link">
+    <div class="rec-product-card__media">
+      {% if featured_media %}
+        {{ featured_media | image_url: width: 180 | image_tag:
+          loading: 'lazy',
+          width: 180,
+          height: 180,
+          class: 'rec-product-card__image',
+          alt: featured_media.alt | escape
+        }}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'rec-product-card__image rec-product-card__placeholder' }}
+      {% endif %}
+      {% if on_sale %}
+        <span class="rec-product-card__badge">Sale</span>
+      {% endif %}
+      {% if is_available == false %}
+        <span class="rec-product-card__badge rec-product-card__badge--soldout">Sold Out</span>
+      {% endif %}
+    </div>
+    <div class="rec-product-card__content">
+      <h3 class="rec-product-card__title">{{ product.title | escape }}</h3>
+      {% if current_variant.sku != blank %}
+        <div class="rec-product-card__sku">SKU: {{ current_variant.sku }}</div>
+      {% endif %}
+      <div class="rec-product-card__price">
+    <span class="rec-product-card__price-current{% if on_sale %} rec-product-card__price-sale{% endif %}">
+      {{ current_variant.price | money }}
+    </span>
+    <s class="rec-product-card__price-compare">
+        {{ current_variant.compare_at_price | money }}
+      </s>
+  </div>
+
+    </div>
+  </a>
+</div>

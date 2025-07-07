@@ -1,10 +1,13 @@
-{% assign limit = 8 %}
-{% assign intent = 'related' %}
+{%- liquid
+  assign limit = 8
+  assign intent = 'related'
+  assign section_id = 'featured-products-custom'
+-%}
 
 {% if request.page_type == 'product' %}
   <script>
     async function initProductRecommendations () {
-      const sectionId = 'featured-products-custom'
+      const sectionId = '{{ section_id }}'
       const baseUrl = '{{ routes.product_recommendations_url }}'
       const productId = {{ product.id }}
       const limit = {{ limit }}
@@ -27,60 +30,100 @@
 {% endif %}
 
 <style>
-  #featured-products-custom .swiper-slide .card-product {
-
+  #{{ section_id }} .swiper-slide {
+    max-height: 350px;
+    padding: .5rem .5rem;
+  }
+  
+  #{{ section_id }} .swiper {
+    outline: none;
+  }
+  
+  #{{ section_id }} .swiper-button-prev,
+  #{{ section_id }} .swiper-button-next {
+    color: #000;
+  }
+  
+  #{{ section_id }} .swiper-button-prev:after,
+  #{{ section_id }} .swiper-button-next:after {
+    font-size: 24px;
+    
+  }
+  
+  #{{ section_id }} .swiper-pagination-bullet {
+    background: #000;
+  }
+  
+  #{{ section_id }} .swiper-scrollbar {
+    background: rgba(0,0,0,0.1);
+  }
+  
+  #{{ section_id }} .swiper-scrollbar-drag {
+    background: #666;
   }
 </style>
 
-<swiper-slider
-  id="featured-products-custom"
-  class="featured-products swiper-slider pt-10 pb-10"
+<swiper-slider id="{{ section_id }}" class="featured-products swiper-slider recommended-products pt-10 pb-10"
+  id="{{ section_id }}"
   style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; background-color: none;"
-  data-section-id="featured-products-custom"
+  
+  data-section-id="{{ section_id }}"
   data-slider-speed="300"
-  data-slider-navigation="true"
-  data-slider-pagination="true"
+  data-slider-navigation="false"
+  data-slider-pagination="false"
   data-slider-scrollbar="true"
   data-slider-autoplay="0"
   data-breakpoint-mobile="1"
   data-breakpoint-tablet="2"
-  data-breakpoint-desktop="2">
-  <div class="container" style="max-width: 1200px;">
-    <h3 style="font-weight: normal;">Recommended Products</h3>
-    <div class="swiper mt-n3 mt-desktop-n3">
+  data-breakpoint-desktop="3">
+  <div class="container recommended-products__container">
+    <h3 class="recommended-products__title">Recommended Products</h3>
+    
+    <div class="swiper">
       <div class="swiper-wrapper">
-        {% if request.page_type == 'product' and request.path contains 'recommendations' and recommendations.products.size > 0 %}
+        {% if recommendations.products_count > 0 %}
           {% for product in recommendations.products %}
-            <div class="swiper-slide p-desktop-5">
-              {% render 'product-card', product: product %}
+            <div class="swiper-slide">
+              {% render 'block-product-card', product: product %}
             </div>
           {% endfor %}
-        {% else %}
-          {% if product.collections.first.products.size > 0 %}
-            {% assign displayed = 0 %}
-            {% for related_product in product.collections.first.products %}
-              {% if related_product.id != product.id %}
-                <div class="swiper-slide p-desktop-3">
-                  {% render 'product-card', product: related_product %}
-                </div>
-                {% assign displayed = displayed | plus: 1 %}
-                {% if displayed == limit %}
-                  {% break %}
-                {% endif %}
+        {% elsif product and product.collections.first.products.size > 0 %}
+          {% assign displayed = 0 %}
+          {% for related_product in product.collections.first.products %}
+            {% if related_product.id != product.id %}
+              <div class="swiper-slide">
+                {% render 'block-product-card', product: related_product %}
+              </div>
+              {% assign displayed = displayed | plus: 1 %}
+              {% if displayed == limit %}
+                {% break %}
               {% endif %}
-            {% endfor %}
-          {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {% for i in (1..4) %}
+          <div class="swiper-slide">
+            <div class="recommended-product-card__placeholder-media"></div>
+            <div class="recommended-product-card__placeholder-info">
+              <div class="recommended-product-card__placeholder-line recommended-product-card__placeholder-line--medium"></div>
+              <div class="recommended-product-card__placeholder-line recommended-product-card__placeholder-line--short"></div>
+            </div>
+          </div>
+          {% endfor %}
         {% endif %}
       </div>
-      <div class="swiper-controls">
-        <div class="swiper-pagination"></div>
-        <div class="swiper-scrollbar"></div>
-        <div class="swiper-button-prev">
-          {% render 'svg-icons', icon: 'chevron-left', size: 24 %}
-        </div>
-        <div class="swiper-button-next">
-          {% render 'svg-icons', icon: 'chevron-right', size: 24 %}
-        </div>
+      
+
+      <div class="swiper-scrollbar"></div>
+      <div class="swiper-button-prev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="swiper-button-next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
     </div>
   </div>
