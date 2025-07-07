@@ -1,0 +1,87 @@
+{% assign limit = 8 %}
+{% assign intent = 'related' %}
+
+{% if request.page_type == 'product' %}
+  <script>
+    async function initProductRecommendations () {
+      const sectionId = 'featured-products-custom'
+      const baseUrl = '{{ routes.product_recommendations_url }}'
+      const productId = {{ product.id }}
+      const limit = {{ limit }}
+      const intent = '{{ intent }}'
+      const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=${intent}`
+      const response = await fetch(url)
+      const data = await response.text()
+      document.querySelector('#featured-products-custom')
+        .closest('.shopify-section, .custom-section, body').outerHTML = data
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      initProductRecommendations()
+    })
+    document.addEventListener('shopify:section:load', (e) => {
+      if (e.target.querySelector('.featured-products')) {
+        initProductRecommendations()
+      }
+    })  
+  </script>
+{% endif %}
+
+<style>
+  #featured-products-custom .swiper-slide .card-product {
+
+  }
+</style>
+
+<swiper-slider
+  id="featured-products-custom"
+  class="featured-products swiper-slider pt-10 pb-10"
+  style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; background-color: none;"
+  data-section-id="featured-products-custom"
+  data-slider-speed="300"
+  data-slider-navigation="true"
+  data-slider-pagination="true"
+  data-slider-scrollbar="true"
+  data-slider-autoplay="0"
+  data-breakpoint-mobile="1"
+  data-breakpoint-tablet="2"
+  data-breakpoint-desktop="2">
+  <div class="container" style="max-width: 1200px;">
+    <h3 style="font-weight: normal;">Recommended Products</h3>
+    <div class="swiper mt-n3 mt-desktop-n3">
+      <div class="swiper-wrapper">
+        {% if request.page_type == 'product' and request.path contains 'recommendations' and recommendations.products.size > 0 %}
+          {% for product in recommendations.products %}
+            <div class="swiper-slide p-desktop-5">
+              {% render 'product-card', product: product %}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% if product.collections.first.products.size > 0 %}
+            {% assign displayed = 0 %}
+            {% for related_product in product.collections.first.products %}
+              {% if related_product.id != product.id %}
+                <div class="swiper-slide p-desktop-3">
+                  {% render 'product-card', product: related_product %}
+                </div>
+                {% assign displayed = displayed | plus: 1 %}
+                {% if displayed == limit %}
+                  {% break %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="swiper-controls">
+        <div class="swiper-pagination"></div>
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-button-prev">
+          {% render 'svg-icons', icon: 'chevron-left', size: 24 %}
+        </div>
+        <div class="swiper-button-next">
+          {% render 'svg-icons', icon: 'chevron-right', size: 24 %}
+        </div>
+      </div>
+    </div>
+  </div>
+</swiper-slider>

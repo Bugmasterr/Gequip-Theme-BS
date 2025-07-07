@@ -75,6 +75,8 @@
                         render 'product-block-separator', block: block
                       when 'stock_indicator'
                         render 'product-block-stock-indicator', block: block
+                      when 'recommended_products'
+                        render 'product-recommendations', block: block
                       when 'disclaimer_collapse', block: block
                         render 'product-block-collapse-disclaimer', block: block
                       when '@app'
@@ -221,6 +223,12 @@
     }
   ],
   "blocks": [
+    {
+      "type": "recommended_products",
+      "name": "Recommended products",
+      "limit": 1,
+      "settings": []
+    },
     {
       "type": "media_gallery",
       "name": "Media gallery",
