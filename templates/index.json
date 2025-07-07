@@ -32,6 +32,7 @@
       "block_order": [
         "slide_Q4UPQq"
       ],
+      "disabled": true,
       "custom_css": [
         ".carousel {box-shadow: #233a8f 0px 0px 30px 10px inset;}",
         ".title {font-weight: bold !important;}"
@@ -66,6 +67,46 @@
         "btn_font_size": "fs-md",
         "pt": 0,
         "pb": 0
+      }
+    },
+    "featured_products_nXJKQn": {
+      "type": "featured-products",
+      "custom_css": [
+        ".title {padding-block: 15px;}",
+        "#featured-products-template--18681194676467__featured_products_nXJKQn {box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;}",
+        ".card {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}"
+      ],
+      "settings": {
+        "bg_color": "bg-primary",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-white",
+        "border_top_width": 2,
+        "border_bottom_width": 0,
+        "border_color": "border-primary",
+        "border_opacity": 25,
+        "container_max_width": "",
+        "products": [],
+        "collection": "featured-products",
+        "limit": 24,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "Featured Products",
+        "header_title_font_size": "h3",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 800,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 4,
+        "breakpoint_desktop": 6,
+        "pt": 0,
+        "pb": 8
       }
     },
     "featured_collections_WdQqPa": {
@@ -150,45 +191,40 @@
         "pb": 5
       }
     },
-    "featured_products_nXJKQn": {
-      "type": "featured-products",
-      "custom_css": [
-        ".title {padding-block: 15px;}",
-        "#featured-products-template--18681194676467__featured_products_nXJKQn {box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;}",
-        ".card {box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}"
+    "1731431012b89ce66a": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_iMXyhp": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1100,
+            "borderRadius": 6,
+            "itemsPerView": 4,
+            "mobileItemsPerView": 1,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "0.72",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#ffffff",
+            "arrows_iconColor": "#334fb4",
+            "shadow": "offset-light",
+            "border_active": true,
+            "border_width": 1,
+            "border_color": "#1b2c69",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_iMXyhp"
       ],
-      "settings": {
-        "bg_color": "bg-primary",
-        "bg_opacity": 100,
-        "bg_gradient": "",
-        "text_color": "text-white",
-        "border_top_width": 2,
-        "border_bottom_width": 0,
-        "border_color": "border-primary",
-        "border_opacity": 25,
-        "container_max_width": "",
-        "products": [],
-        "collection": "featured-products",
-        "limit": 24,
-        "recommended_mode": true,
-        "recommended_mode_intent": "related",
-        "header_title": "Featured Products",
-        "header_title_font_size": "h3",
-        "header_description": "",
-        "header_description_font_size": "fs-md",
-        "slider_speed": 800,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": false,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 1,
-        "breakpoint_tablet": 4,
-        "breakpoint_desktop": 6,
-        "pt": 0,
-        "pb": 8
-      }
+      "custom_css": [
+        "div {background: var(--bs-primary); box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; max-width: 100vw;}"
+      ],
+      "settings": {}
     },
     "media_with_text_xTY8gi": {
       "type": "media-with-text",
@@ -272,41 +308,6 @@
         "pt": 12,
         "pb": 12
       }
-    },
-    "1731431012b89ce66a": {
-      "type": "apps",
-      "blocks": {
-        "loox_reviews_loox_card_carousel_section_iMXyhp": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "maxWidth": 1100,
-            "borderRadius": 6,
-            "itemsPerView": 4,
-            "mobileItemsPerView": 1,
-            "maxNumberOfCharacters": 100,
-            "imageRatio": "0.72",
-            "reviewerNameColor": "#000000",
-            "textColor": "#000000",
-            "itemBackgroundColor": "#ffffff",
-            "starsColor": "",
-            "starsBackgroundColor": "#ffffff",
-            "arrows_backgroundColor": "#ffffff",
-            "arrows_iconColor": "#334fb4",
-            "shadow": "offset-light",
-            "border_active": true,
-            "border_width": 1,
-            "border_color": "#1b2c69",
-            "productIds": ""
-          }
-        }
-      },
-      "block_order": [
-        "loox_reviews_loox_card_carousel_section_iMXyhp"
-      ],
-      "custom_css": [
-        "div {background: var(--bs-primary); box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; max-width: 100vw;}"
-      ],
-      "settings": {}
     },
     "featured_products_AAxprB": {
       "type": "featured-products",
@@ -876,11 +877,11 @@
   },
   "order": [
     "hero_carousel_CmDneU",
-    "featured_collections_WdQqPa",
     "featured_products_nXJKQn",
+    "featured_collections_WdQqPa",
+    "1731431012b89ce66a",
     "media_with_text_xTY8gi",
     "richtext_4miPYL",
-    "1731431012b89ce66a",
     "featured_products_AAxprB",
     "media_with_text_3cgm8E",
     "featured_products_3cALLr",
