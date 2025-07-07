@@ -1063,6 +1063,11 @@ a:hover .img-thumbnail-title {
 /*
   Swiper
 */
+.product-card-slide {
+  display: flex;
+  padding: 5px !important;
+  margin: 0 !important;
+}
 .swiper {
   --swiper-theme-color: var(--text-color-rgb, --bs-body-color-rgb);
   --swiper-navigation-size: 2rem;

@@ -19,16 +19,21 @@
 }
 .rating-badge {
   padding-inline: var(--spacing);
-  height: 1.33rem;
-  margin-block: .1rem;
-  transform: scale(.85);
+  transform: scale(.8);
   transform-origin: center left;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  -webkit-transform: scale(.8);
+  -moz-transform: scale(.8);
+  -ms-transform: scale(.8);
+  -o-transform: scale(.8);
 }
 .savings {
   color: #fff;
   font-size: .9rem;
   background-color: #198754;
-  padding: .2rem var(--spacing);
+  padding: .25rem var(--spacing);
   border-radius: 5px;
 }
 
@@ -180,29 +185,29 @@
 }
 
 .card-title {
-    font-size: clamp(0.9rem, 0.8vw + 0.7rem, 1.1rem);
-    font-weight: 600;
+    font-size: .9rem;
+    font-weight: 400;
     line-height: 1.2;
     color: #212529 !important;
     display: -webkit-box;
     line-clamp: 2;
     -webkit-line-clamp: 2;
+    min-height: 2.1rem;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: auto;
     padding-inline: .66rem;
 }
 
 .card-meta {
     display: flex;
     flex-direction: column;
-    padding-inline: .66rem;
+    align-items: left;
+    justify-content: center;
 }
 
 .card-meta-item {
     display: flex;
     align-items: center;
-    font-size: .9rem;
     color: #495057;
 }
 
@@ -210,18 +215,19 @@
     margin-right: 0.5rem;
     color: #334fb4;
     font-size: 1rem;
+    padding-left: .66rem;
 }
 
 .card-price {
     display: flex;
     align-items: baseline;
-    margin-top: auto;
     padding-inline: .66rem;
+    min-height: 1.5rem;
 }
 
 .card-current-price {
-    font-size: clamp(1.1rem, 1vw + 0.9rem, 1.6rem);
-    font-weight: 700;
+    font-size: clamp(1.1rem, 1vw + 0.9rem, 1.5rem);
+    font-weight: 600;
     color: #334fb4;
 }
 
@@ -231,6 +237,8 @@
     color: var(--brand-red);
     opacity: .66;
     font-weight: 700;
+    min-height: 1em;
+    padding-left: .66rem;
 }
 
 .add-to-cart-btn {
@@ -279,12 +287,12 @@
 .sold-out-card .card-product::after {
     content: 'Out of Stock';
     position: absolute;
-    top: 25%;
+    top: 45%;
     left: 50%;
-    width: 75%;
+    width: 92%;
     text-align: center;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: #666;
     box-shadow: 0 0px 6px rgba(0,0,0,0.5);
     color: #fff;
     font-size: 1rem;
@@ -297,10 +305,10 @@
     pointer-events: none;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -25%);
+    -moz-transform: translate(-50%, -25%);
+    -ms-transform: translate(-50%, -25%);
+    -o-transform: translate(-50%, -25%);
 }
 
 /* Hidden old badge and notify for sold out */

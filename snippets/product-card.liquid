@@ -93,37 +93,33 @@
       {{ product.title | remove: '- New Surplus' | remove: '- New' | remove: '- Used' | remove: '- Reconditioned' | strip }}
     </div>
 
-{% capture rating_badge %}<div class="rating-badge">{% render 'product-rating-badge', product: product %}</div>{% endcapture %}
-<div class="card-meta-item" style="display: flex; align-items: center;">
-  {{ rating_badge }}
+{% capture rating_content %}
+  {% render 'product-rating-badge', product: product %}
+{% endcapture %}
+
+{% if rating_content %}
+  <span class="rating-badge">
+    {{ rating_content }}
+  </span>
+{% endif %}
+
+<div class="card-meta d-flex">
+  {% if product_condition != blank %}
+    <span class="card-meta-item d-flex">
+      <i class="bi bi-tag me-1"></i>
+      <span style="font-size: .9em;">{{ product_condition }}</span>
+    </span>
+  {% endif %}
 </div>
 
-    {% if product_condition != blank %}
-      <div class="card-meta">
-        <div class="card-meta-item">
-          <i class="bi bi-tag"></i>
-          <span>{{ product_condition }}</span>
-        </div>
-      </div>
-    {% endif %}
-
-    {% if lead_time != blank %}
-      <div class="card-meta">
-        <div class="card-meta-item">
-          <i class="bi bi-truck"></i>
-          <span>{{ lead_time }}</span>
-        </div>
-      </div>
-    {% endif %}
-
-    <div class="card-price">
-      <div class="card-current-price">{{ variant.price | money }}</div>
-    </div>
+<div class="card-price mt-2">
+  <span class="card-current-price">{{ variant.price | money }}</span>
+</div>
     
     {% if variant.compare_at_price > variant.price %}
       {% assign savings = variant.compare_at_price | minus: variant.price %}
-      <div class="card-meta">
-        <div class="card-meta-item" style="padding: 0; margin: .5rem 0; line-height: 0;">
+      <div>
+        <div style="padding: 0; margin: .5rem 0; line-height: 0;">
           <span>
             <span class="card-compare-price">{{ variant.compare_at_price | money }}</span>
             <span class="savings">Save {{ savings | money_without_trailing_zeros }}</span>
