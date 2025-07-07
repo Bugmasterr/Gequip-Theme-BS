@@ -15,29 +15,6 @@
   elsif product.title contains 'Used'
     assign product_condition = 'Used'
   endif
-
-  assign lt_min = product.metafields.ges['lead-time-min'] | default: blank
-  assign lt_max = product.metafields.ges['lead-time-max'] | default: blank
-  assign computed_lead_time = ''
-
-  if lt_min != blank and lt_max != blank
-    assign computed_lead_time = 'Ships In ' | append: lt_min | append: '-' | append: lt_max | append: ' Business Days'
-  elsif lt_min != blank
-    assign computed_max = lt_min | plus: 2
-    assign computed_lead_time = 'Ships In ' | append: lt_min | append: '-' | append: computed_max | append: ' Business Days'
-  elsif lt_max != blank
-    assign computed_min = lt_max | minus: 2
-    if computed_min < 1
-      assign computed_min = 1
-    endif
-    assign computed_lead_time = 'Ships In ' | append: computed_min | append: '-' | append: lt_max | append: ' Business Days'
-  elsif product_condition == 'Reconditioned'
-    assign computed_lead_time = 'Ships In 5-9 Business Days'
-  else
-    assign computed_lead_time = 'Ships In 1-2 Business Days'
-  endif
-
-  assign lead_time = product.metafields.ges.lead_time | default: computed_lead_time
 %}
 
 {% comment %}

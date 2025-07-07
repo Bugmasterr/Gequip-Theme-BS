@@ -15,7 +15,6 @@
   width: 100%;
   height: 1px;
   background-color: #ccc;
-  margin: var(--spacing) 0;
 }
 .rating-badge {
   padding-inline: var(--spacing);
@@ -137,33 +136,56 @@
 
 .card-product:hover {
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-    transform: scale(1.033);
-    outline:  1px solid #ccc;
+    outline:  1px solid #aaa;
     z-index: 2;
+    
 }
-
+.card-product:hover .card-title,
+.card-product:hover .card-sku {
+    text-decoration: underline;
+}
+.card-product:hover img {
+transform: scale(1.1);
+-webkit-transform: scale(1.1);
+-moz-transform: scale(1.1);
+-ms-transform: scale(1.1);
+-o-transform: scale(1.1);
+}
 .card-image-container {
     position: relative;
     width: 100%;
-    aspect-ratio: var(--card-ratio, 1 / 1);
-    contain-intrinsic-size: 1px 1px;
+    height: 100%;
+    aspect-ratio: 1/1;
     background: #fff;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .66rem;
+    padding: .67rem;
+    overflow: hidden;
+}
+
+.card-image-container-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
     overflow: hidden;
 }
 
 .card-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     border-radius: 5px;
     transition: transform 0.3s ease;
-    display: block;
-    box-sizing: border-box;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
 }
 
 .card-info {
@@ -181,7 +203,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-inline: .66rem;
+    padding-inline: .67rem;
 }
 
 .card-title {
@@ -195,7 +217,7 @@
     min-height: 2.1rem;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding-inline: .66rem;
+    padding-inline: .67rem;
 }
 
 .card-meta {
@@ -215,13 +237,13 @@
     margin-right: 0.5rem;
     color: #334fb4;
     font-size: 1rem;
-    padding-left: .66rem;
+    padding-left: .67rem;
 }
 
 .card-price {
     display: flex;
     align-items: baseline;
-    padding-inline: .66rem;
+    padding-inline: .67rem;
     min-height: 1.5rem;
 }
 
@@ -238,7 +260,7 @@
     opacity: .66;
     font-weight: 700;
     min-height: 1em;
-    padding-left: .66rem;
+    padding-left: .67rem;
 }
 
 .add-to-cart-btn {
@@ -261,7 +283,7 @@
     left: .25rem;
     background: var(--brand-red);
     color: white;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.67rem;
     border-radius: 5px;
     font-size: 0.8rem;
     font-weight: 600;
