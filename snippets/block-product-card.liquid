@@ -88,16 +88,15 @@
 .rec-product-card__title {
   font-size: .8rem !important;
   font-weight: 400;
-  margin: 0 0 0.05em 0;
+  margin: 0;
   line-height: 1.2;
-  min-height: 2.1em;
+  min-height: 3.5em;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: color 0.12s;
   word-break: break-word;
-  margin-top: .5rem;
 }
 .rec-product-card__link:hover .rec-product-card__title {
   color: #334fb4;
@@ -107,6 +106,7 @@
   align-items: baseline;
   gap: 0.3em;
   font-size: 0.75rem !important;
+  margin-top: .25rem;
   margin-bottom: 0;
 }
 .rec-product-card__price-current {
@@ -122,7 +122,7 @@
   font-size: 1em !important;
   text-decoration: line-through;
   margin-left: 0.18em;
-  font-weight: 400;
+  font-weight: 600;
   position: relative;
 }
 .rec-product-card__price-savings {
@@ -134,15 +134,14 @@
   border-radius: .3rem;
   white-space: nowrap;
   vertical-align: middle;
-  display: inline-block;
+  width: fit-content;
 }
 .rec-product-card__sku {
   color: #666;
   font-size: 0.75rem !important;
   letter-spacing: 0.03em;
   display: inline-block;
-  margin-top: 0.08em;
-  width: fit-content;
+  margin-top: 1em;
 }
 </style>
 <div class="rec-product-card{% if is_available == false %} rec-product-card--soldout{% endif %}">
@@ -161,10 +160,10 @@
       {% endif %}
     </div>
     <div class="rec-product-card__content">
-      <h3 class="rec-product-card__title">{{ product.title | escape }}</h3>
       {% if current_variant.sku != blank %}
-        <div class="rec-product-card__sku">SKU: {{ current_variant.sku }}</div>
+        <div class="rec-product-card__sku">{{ current_variant.sku }}</div>
       {% endif %}
+      <h3 class="rec-product-card__title">{{ product.title | escape }}</h3>
       <div class="rec-product-card__price">
         <div class="rec-product-card__price-current{% if on_sale %} rec-product-card__price-sale{% endif %}">
           {{ current_variant.price | money }}
