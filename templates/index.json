@@ -129,7 +129,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "",
+        "container_max_width": "1200",
         "header_title": "Featured Categories",
         "header_title_font_size": "h2",
         "header_description": "<p>Collection of Products from Top Categories</p>",
@@ -215,7 +215,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "",
+        "container_max_width": "1200",
         "header_title": "Top Brands",
         "header_title_font_size": "h2",
         "header_description": "<p>Collection of Products from Top Brands</p>",
@@ -238,7 +238,7 @@
         "breakpoint_tablet": 4,
         "breakpoint_desktop": 5,
         "pt": 5,
-        "pb": 5
+        "pb": 0
       }
     },
     "featured_products_nXJKQn": {
@@ -403,7 +403,7 @@
         "border_bottom_width": 0,
         "border_color": "border-secondary",
         "border_opacity": 100,
-        "container_max_width": "",
+        "container_max_width": "1600",
         "products": [],
         "collection": "new",
         "limit": 24,
