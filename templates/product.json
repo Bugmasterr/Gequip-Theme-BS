@@ -6,9 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
-save
  */
- {
+{
   "sections": {
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583": {
       "type": "product-main",
@@ -56,6 +55,14 @@ save
             "pb": 0
           }
         },
+        "options_yPm99y": {
+          "type": "options",
+          "settings": {
+            "options_style": "select",
+            "pt": 4,
+            "pb": 4
+          }
+        },
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74": {
           "type": "stock_indicator",
           "settings": {
@@ -93,6 +100,7 @@ save
         },
         "separator_Gr3iJ9": {
           "type": "separator",
+          "disabled": true,
           "settings": {
             "bg_color": "bg-secondary",
             "bg_opacity": 100,
@@ -101,9 +109,13 @@ save
             "pb": 3
           }
         },
-        "recommended_products_custom": {
-          "type": "recommended_products",
-          "settings": {}
+        "liquid_8tK9Pc": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% assign limit = 8 %}\n{% assign intent = 'related' %}\n\n{% if request.page_type == 'product' %}\n  <script>\n    async function initProductRecommendations () {\n      const sectionId = 'featured-products-custom'\n      const baseUrl = '{{ routes.product_recommendations_url }}'\n      const productId = {{ product.id }}\n      const limit = {{ limit }}\n      const intent = '{{ intent }}'\n      const url = `${baseUrl}?section_id=${sectionId}&product_id=${productId}&limit=${limit}&intent=${intent}`\n      const response = await fetch(url)\n      const data = await response.text()\n      document.querySelector('#featured-products-custom')\n        .closest('.shopify-section, .custom-section, body').outerHTML = data\n    }\n    window.addEventListener('DOMContentLoaded', () => {\n      initProductRecommendations()\n    })\n    document.addEventListener('shopify:section:load', (e) => {\n      if (e.target.querySelector('.featured-products')) {\n        initProductRecommendations()\n      }\n    })  \n  </script>\n{% endif %}\n\n<style>\n  #featured-products-custom .swiper-slide .card-product {\n\n  }\n</style>\n\n<swiper-slider\n  id=\"featured-products-custom\"\n  class=\"featured-products swiper-slider pt-10 pb-10\"\n  style=\"border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; background-color: none;\"\n  data-section-id=\"featured-products-custom\"\n  data-slider-speed=\"300\"\n  data-slider-navigation=\"true\"\n  data-slider-pagination=\"true\"\n  data-slider-scrollbar=\"true\"\n  data-slider-autoplay=\"0\"\n  data-breakpoint-mobile=\"1\"\n  data-breakpoint-tablet=\"2\"\n  data-breakpoint-desktop=\"2\">\n  <div class=\"container\" style=\"max-width: 1200px;\">\n    <h3 style=\"font-weight: normal;\">Recommended Products</h3>\n    <div class=\"swiper mt-n3 mt-desktop-n3\">\n      <div class=\"swiper-wrapper\">\n        {% if request.page_type == 'product' and request.path contains 'recommendations' and recommendations.products.size > 0 %}\n          {% for product in recommendations.products %}\n            <div class=\"swiper-slide p-desktop-5\">\n              {% render 'product-card', product: product %}\n            </div>\n          {% endfor %}\n        {% else %}\n          {% if product.collections.first.products.size > 0 %}\n            {% assign displayed = 0 %}\n            {% for related_product in product.collections.first.products %}\n              {% if related_product.id != product.id %}\n                <div class=\"swiper-slide p-desktop-3\">\n                  {% render 'product-card', product: related_product %}\n                </div>\n                {% assign displayed = displayed | plus: 1 %}\n                {% if displayed == limit %}\n                  {% break %}\n                {% endif %}\n              {% endif %}\n            {% endfor %}\n          {% endif %}\n        {% endif %}\n      </div>\n      <div class=\"swiper-controls\">\n        <div class=\"swiper-pagination\"></div>\n        <div class=\"swiper-scrollbar\"></div>\n        <div class=\"swiper-button-prev\">\n          {% render 'svg-icons', icon: 'chevron-left', size: 24 %}\n        </div>\n        <div class=\"swiper-button-next\">\n          {% render 'svg-icons', icon: 'chevron-right', size: 24 %}\n        </div>\n      </div>\n    </div>\n  </div>\n</swiper-slider>",
+            "pt": 3,
+            "pb": 3
+          }
         }
       },
       "block_order": [
@@ -111,11 +123,12 @@ save
         "title_nhwVdi",
         "separator_QYPa9w",
         "095886ab-f46a-4a25-9d3d-e7c79235921b",
+        "options_yPm99y",
         "a277dbff-85ae-4c5e-ad26-4f7bb2cadc74",
         "separator_MwNDG4",
         "ea44a44f-429a-4dd2-b40c-f1bf6304c554",
         "separator_Gr3iJ9",
-        "recommended_products_custom"
+        "liquid_8tK9Pc"
       ],
       "custom_css": [
         "h1,h2,h3 {font-size: 22px;}",
