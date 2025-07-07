@@ -115,6 +115,7 @@
         "collection_BAf6Hq"
       ],
       "custom_css": [
+        ".img-thumbnail {padding: 1em;}",
         ".collection-title {background: #666; color: white; font-weight: 600; margin: 0; padding: 0.5rem 0.5rem; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}"
       ],
       "name": "Featured collections",
@@ -143,7 +144,7 @@
         "collection_card_img_orientation": "ratio-1x1",
         "collection_card_img_border": "img-thumbnail",
         "collection_card_show_title": true,
-        "collection_card_title_font_size": "fs-lg",
+        "collection_card_title_font_size": "fs-xl",
         "collection_card_title_position": "collection-card-title-normal",
         "collection_card_show_product_count": false,
         "breakpoint_mobile": 2,
@@ -200,6 +201,7 @@
         "collection_FwH74L"
       ],
       "custom_css": [
+        ".img-thumbnail {padding: 1em;}",
         ".collection-title {background: #666; color: white; font-weight: 600; margin: 0; padding: 0.5rem 0.5rem; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}"
       ],
       "name": "Featured collections",
