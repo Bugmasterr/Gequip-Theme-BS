@@ -43,20 +43,18 @@
       </span>
     </div>
     <div class="card-image-container-inner">
-      {% assign img_url = product.featured_image | image_url: width: 600 %}
+      {% assign img_url = product.featured_image | image_url: width: 256 %}
       <img 
-        src="{{ img_url }}"
+        src="{{ img_url | asset_url }}"
         class="card-image{% unless variant.available %} unavailable{% endunless %}"
         loading="lazy"
         srcset="
-          {{ product.featured_image | image_url: width: 165 }} 165w,
-          {{ product.featured_image | image_url: width: 360 }} 360w,
-          {{ product.featured_image | image_url: width: 533 }} 533w,
-          {{ product.featured_image | image_url: width: 720 }} 720w,
-          {{ product.featured_image | image_url: width: 940 }} 940w
+          {{ product.featured_image | image_url: width: 256 }} 256w,
         "
         sizes="(max-width: 768px) 50vw, 25vw"
         alt="{{ product.title | escape }}"
+        width="256"
+        height="256"
       >
     </div>
   </div>

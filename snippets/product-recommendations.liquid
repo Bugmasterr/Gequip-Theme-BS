@@ -31,8 +31,7 @@
 
 <style>
   #{{ section_id }} .swiper-slide {
-    max-height: 350px;
-    padding: .5rem .5rem;
+    padding: .5rem .25rem;
   }
   
   #{{ section_id }} .swiper {
@@ -41,7 +40,7 @@
   
   #{{ section_id }} .swiper-button-prev,
   #{{ section_id }} .swiper-button-next {
-    color: #000;
+    color: #333;
   }
   
   #{{ section_id }} .swiper-button-prev:after,
@@ -63,9 +62,9 @@
   }
 </style>
 
-<swiper-slider id="{{ section_id }}" class="featured-products swiper-slider recommended-products pt-10 pb-10"
+<swiper-slider id="{{ section_id }}" class="featured-products swiper-slider recommended-products pt-5 pb-5"
   id="{{ section_id }}"
-  style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; background-color: none;"
+  style="border-top: 0px; border-bottom: 0px; background-color: none;"
   
   data-section-id="{{ section_id }}"
   data-slider-speed="300"
@@ -73,9 +72,9 @@
   data-slider-pagination="false"
   data-slider-scrollbar="true"
   data-slider-autoplay="0"
-  data-breakpoint-mobile="1"
+  data-breakpoint-mobile="1.5"
   data-breakpoint-tablet="2"
-  data-breakpoint-desktop="3">
+  data-breakpoint-desktop="3.25">
   <div class="container recommended-products__container">
     <h3 class="recommended-products__title">Recommended Products</h3>
     
