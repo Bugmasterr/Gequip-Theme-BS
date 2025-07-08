@@ -2,7 +2,11 @@
 :root {
   --brand-blue: #334fb4;
   --brand-red: #dc3545;
-  --spacing: 0.66rem;
+  --spacing: 0.67rem;
+  --border-radius: 5px;
+  --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --product-img-width: 256px;
+  --product-img-height: 256px;
 }
 
 /* Utility classes */
@@ -23,10 +27,6 @@
   min-height: 2rem;
   display: flex;
   align-items: center;
-  -webkit-transform: scale(.8);
-  -moz-transform: scale(.8);
-  -ms-transform: scale(.8);
-  -o-transform: scale(.8);
 }
 .savings {
   color: #fff;
@@ -36,24 +36,23 @@
   border-radius: 5px;
 }
 
-
 .card-product {
-    position: relative;
-    border-radius: 5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    overflow: hidden;
-    transition: box-shadow, transform 0.3s ease;
-    height: 100%;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    transform-origin: center;
-    will-change: transform;
-    -webkit-transition: box-shadow, transform 0.3s ease;
-    -moz-transition: box-shadow, transform 0.3s ease;
-    -ms-transition: box-shadow, transform 0.3s ease;
-    -o-transition: box-shadow, transform 0.3s ease;
+  --card-padding: 0.67rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  transform-origin: center;
+  will-change: transform;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: box-shadow, transform 0.3s ease;
+  -webkit-transition: box-shadow, transform 0.3s ease;
+  -moz-transition: box-shadow, transform 0.3s ease;
+  -ms-transition: box-shadow, transform 0.3s ease;
+  -o-transition: box-shadow, transform 0.3s ease;
 }
 
 .info-icon {
@@ -69,6 +68,7 @@
     border-radius: 4px;
     padding: 0;
     opacity: 0;
+    visibility: hidden;
     transition: all 0.2s ease;
     z-index: 50;
     cursor: pointer;
@@ -77,6 +77,7 @@
 
 .card-product:hover .info-icon {
     opacity: 1;
+    visibility: visible;
 }
 
 .info-icon i {
@@ -85,15 +86,15 @@
     transition: all 0.2s ease;
 }
 
-.info-icon:hover i.bi-info-square {
+.info-icon .bi-info-square-fill {
     display: none;
 }
 
-.info-icon i.bi-info-square-fill {
+.info-icon:hover .bi-info-square {
     display: none;
 }
 
-.info-icon:hover i.bi-info-square-fill {
+.info-icon:hover .bi-info-square-fill {
     display: inline-block;
 }
 
@@ -108,20 +109,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
     line-clamp: 6;
     -webkit-box-orient: vertical;
     z-index: 1000;
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     transition: opacity 0.2s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    right: 0;
-    top: calc(100% + 5px);
 }
 
 .info-icon:hover .tooltip {
     opacity: 1;
+    visibility: visible;
 }
 
 .info-icon .tooltip {
@@ -138,31 +138,26 @@
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
     outline:  1px solid #aaa;
     z-index: 2;
-    
 }
+
 .card-product:hover .card-title,
 .card-product:hover .card-sku {
     text-decoration: underline;
 }
-.card-product:hover img {
-transform: scale(1.1);
--webkit-transform: scale(1.1);
--moz-transform: scale(1.1);
--ms-transform: scale(1.1);
--o-transform: scale(1.1);
+
+.card-product:hover .card-image {
+    transform: scale(1.1);
 }
+
 .card-image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 1/1;
-    background: #fff;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: .67rem;
-    overflow: hidden;
+  padding: var(--card-padding);
+  aspect-ratio: 1/1;
+  background: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .card-image-container-inner {
@@ -182,10 +177,6 @@ transform: scale(1.1);
     object-position: center;
     border-radius: 5px;
     transition: transform 0.3s ease;
-    -webkit-transition: transform 0.3s ease;
-    -moz-transition: transform 0.3s ease;
-    -ms-transition: transform 0.3s ease;
-    -o-transition: transform 0.3s ease;
 }
 
 .card-info {
@@ -203,7 +194,7 @@ transform: scale(1.1);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-inline: .67rem;
+    padding-inline: var(--spacing);
 }
 
 .card-title {
@@ -217,13 +208,13 @@ transform: scale(1.1);
     min-height: 2.1rem;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding-inline: .67rem;
+    padding-inline: var(--spacing);
 }
 
 .card-meta {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -235,32 +226,44 @@ transform: scale(1.1);
 
 .card-meta-item i {
     margin-right: 0.5rem;
-    color: #334fb4;
+    color: var(--brand-blue);
     font-size: 1rem;
-    padding-left: .67rem;
+    padding-left: var(--spacing);
+}
+
+.card-condition-text {
+    font-size: .9em;
 }
 
 .card-price {
     display: flex;
     align-items: baseline;
-    padding-inline: .67rem;
-    min-height: 1.5rem;
+    padding-inline: var(--spacing);
+    min-height: 1em;
 }
 
 .card-current-price {
     font-size: clamp(1.1rem, 1vw + 0.9rem, 1.5rem);
     font-weight: 600;
-    color: #334fb4;
+    color: var(--brand-blue);
 }
 
 .card-compare-price {
+    display: inline-flex;
+    align-items: center;
     font-size: clamp(0.9rem, 0.8vw + 0.5rem, 1rem);
     text-decoration: line-through;
     color: var(--brand-red);
     opacity: .66;
     font-weight: 700;
     min-height: 1em;
-    padding-left: .67rem;
+    padding-left: var(--spacing);
+}
+
+.card-savings-container {
+    padding: 0;
+    margin-bottom: 1rem;
+    line-height: 1;
 }
 
 .add-to-cart-btn {
@@ -275,45 +278,36 @@ transform: scale(1.1);
 .add-to-cart-btn:hover {
     opacity: 0.9;
     transform: translateY(-2px);
-}
-
-.card-condition-badge {
-    position: absolute;
-    top: .25rem;
-    left: .25rem;
-    background: var(--brand-red);
-    color: white;
-    padding: 0.25rem 0.67rem;
-    border-radius: 5px;
-    font-size: 0.8rem;
     font-weight: 600;
     z-index: 10;
 }
 
+.card-divider-container {
+    width: 100%;
+    height: 1rem;
+    margin-top: 0;
+    margin-bottom: .25rem;
+    padding-inline: var(--spacing);
+}
+
+.card-divider-container .card-divider {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
 /* Sold out: pseudo badge and desaturate image/media */
-.sold-out-card .card-product {
-    position: relative;
-    
-}
-
-.sold-out-card .card-product .card-image-container-inner {
-    filter: grayscale(.5) ;
+.sold-out-card .card-image-container-inner {
+    filter: grayscale(.9);
     pointer-events: none;
-    -webkit-filter: grayscale(.5);
-}
-.sold-out-card .card-product .card-image-container-inner {
-    position: relative;
-}
-.sold-out-card .card-product:hover img { 
-  transform:scale(1); 
-  -webkit-transform:scale(1); 
-  -moz-transform:scale(1); 
-  -ms-transform:scale(1); 
-  -o-transform:scale(1); 
+    -webkit-filter: grayscale(.9);
 }
 
-.sold-out-card .card-product .card-image-container-inner::after {
-    content: 'Out of Stock';
+.sold-out-card .card-product:hover .card-image {
+    transform:scale(1);
+}
+
+.sold-out-card .card-image-container-inner::after {
+    content: 'OUT OF STOCK';
     position: absolute;
     width: 100%;
     height: 100%;
@@ -334,20 +328,23 @@ transform: scale(1.1);
     text-transform: uppercase;
 }
 
+.sold-out-badge .bi-x-circle {
+    color: var(--brand-red);
+}
+
 /* Hidden old badge and notify for sold out */
-.sold-out-badge, 
+.sold-out-badge,
 .sold-out-card .notify-available-btn {
     display: none !important;
 }
 
-/* Notify available button styles moved from product-card.liquid */
 .notify-available-btn {
     position: absolute;
     top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 250px;
-    background-color: #334fb4;
+    background-color: var(--brand-blue);
     color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -363,21 +360,78 @@ transform: scale(1.1);
     opacity: 0;
     transition: all .2s ease;
 }
+
 .card-product:hover .notify-available-btn {
     opacity: 1;
 }
+
 .notify-available-btn:hover {
     border-color: #fff;
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.2);
     filter: brightness(1.25) saturate(.8);
     font-size: 1.05rem;
 }
+
 .notify-available-btn i {
     font-size: 1rem;
 }
 
+/* Stock Indicator Styles */
+.product-stock-indicator {
+  padding-inline: var(--spacing);
+  margin-bottom: .5rem;
+  font-size: .9rem;
+}
+.product-stock-indicator .stock-dot {
+  display: inline-block;
+  width: 0.67em;
+  height: 0.67em;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.product-stock-indicator .text-success {
+  color: #198754;
+}
+.product-stock-indicator .text-warning {
+  color: #ffc107;
+}
+.product-stock-indicator .text-danger {
+  color: var(--brand-red);
+}
+.product-stock-indicator .bg-success {
+  background: var(--bs-success, #198754);
+}
+.product-stock-indicator .bg-warning {
+  background: var(--bs-warning, #ffc107);
+}
+.product-stock-indicator .bg-danger {
+  background: var(--bs-danger, #dc3545);
+}
+.product-stock-indicator .pulse-animation {
+  animation: pulse 2.5s infinite;
+  box-shadow: 0 0 0 0 rgba(32,192,117,0.5);
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(32,192,117,0.7);
+  }
+  60% {
+    box-shadow: 0 0 0 8px rgba(32,192,117,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(32,192,117,0);
+  }
+}
+
 /* Responsive styles for product card */
 @media (max-width: 900px) {
+  :root {
+    --product-img-width: 200px;
+    --product-img-height: 200px;
+  }
+  .card-product {
+    --card-padding: 0.5rem;
+  }
   .card-meta {
     flex-direction: column;
     gap: 0.25rem;
@@ -385,7 +439,7 @@ transform: scale(1.1);
   }
   .card-title {
     font-size: 0.9rem;
-    height: 2.1rem;
+    min-height: 2.1rem;
   }
   .card-current-price {
     font-size: 1.4rem;
@@ -399,7 +453,12 @@ transform: scale(1.1);
 }
 
 @media (max-width: 600px) {
+  :root {
+    --product-img-width: 150px;
+    --product-img-height: 150px;
+  }
   .card-product {
+    --card-padding: 0.33rem;
     border-radius: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     padding: 0;
@@ -435,15 +494,6 @@ transform: scale(1.1);
     font-size: 0.95rem;
     padding: 0.33rem 0.66rem;
     max-width: 180px;
-  }
-  .card-condition-badge {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.33rem;
-    border-radius: 4px;
-  }
-  .sold-out-badge {
-    font-size: 0.9em;
-    padding: .15rem 1rem;
   }
   .tooltip {
     width: 180px;

@@ -1,4 +1,3 @@
-
 /*
   Collection header
 */
@@ -86,8 +85,10 @@
 */
 .collection-card-link {
   display: block;
+  position: relative;
   text-decoration: none;
   color: currentColor;
+  min-height: 300px; /* Reserve space */
 }
 
 .collection-card-link:focus-visible {
@@ -97,6 +98,8 @@
 
 .collection-card-title {
   transition: all 200ms ease-out;
+  will-change: opacity;
+  backface-visibility: hidden;
 }
 
 .collection-card-img-wrapper {
@@ -105,6 +108,9 @@
 
 .collection-card-img-wrapper img { 
   width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .collection-card-title-normal {
@@ -115,5 +121,3 @@
 .collection-card-link:focus .collection-card-title-normal {
   opacity: .8;
 }
-
-

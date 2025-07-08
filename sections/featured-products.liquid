@@ -81,9 +81,10 @@
   data-slider-pagination="{{ section.settings.slider_pagination }}"
   data-slider-scrollbar="{{ section.settings.slider_scrollbar }}"
   data-slider-autoplay="{{ section.settings.slider_autoplay }}"
-  data-breakpoint-mobile="{{ section.settings.breakpoint_mobile }}"
-  data-breakpoint-tablet="{{ section.settings.breakpoint_tablet }}"
-  data-breakpoint-desktop="{{ section.settings.breakpoint_desktop }}">
+  data-breakpoint-mobile="1"
+  data-breakpoint-tablet="2"
+  data-breakpoint-desktop="5.33"
+>
   <div 
     class="container"
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
@@ -99,8 +100,8 @@
         {% elsif products == blank %}
           {{ empty_state }}
         {% else %}
-          {% for product in products limit: section.settings.limit %} 
-            <div class="swiper-slide product-card-slide p-desktop-5">
+          {% for product in products limit: section.settings.limit %}
+            <div class="swiper-slide" style="width: calc(100% / var(--visible-slides)); padding: 0 8px; height: auto;">
               {% render 'product-card', product: product %}
             </div>
           {% endfor %}
@@ -402,7 +403,7 @@
       "min": 1,
       "max": 6,
       "step": 1,
-      "default": 4
+      "default": 3
     },
     {
       "type": "header",
