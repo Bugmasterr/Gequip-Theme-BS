@@ -93,7 +93,7 @@
       <div class="swiper-wrapper">
         {% if section.settings.recommended_mode and request.path contains 'recommendations' %}
           {% for product in recommendations.products %}
-            <div class="swiper-slide product-card-slide p-desktop-5">
+            <div class="swiper-slide product-card-slide">
               {% render 'product-card', product: product %}
             </div>
           {% endfor %}

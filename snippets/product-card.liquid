@@ -39,8 +39,13 @@
       <i class="bi bi-info-square"></i>
       <i class="bi bi-info-square-fill"></i>
       <span class="tooltip" role="tooltip">
-        {{ product.metafields.seo.meta_description | default: product.description | strip_html | truncate: 160 }}
-      </span>
+        {%- assign meta_text = product.metafields.seo.meta_description | default: product.description | strip_html | downcase -%}
+{%- assign remove_words = "with a 1 year operational warranty,with a 90 day operational warranty,with a 1 year warranty,with a 90 day warranty,reconditioned,new surplus,stock,warranty,description:,in stock,operational warranty,year operational,90 day,with one warranty" | split: "," -%}
+{%- for word in remove_words -%}
+  {%- assign meta_text = meta_text | replace: word, "" -%}
+{%- endfor -%}
+{{ meta_text | capitalize | truncatewords: 16 }}
+</span>
     </div>
     <div class="card-image-container-inner">
       {% assign img_url = product.featured_image | image_url: width: 256 %}
@@ -97,17 +102,17 @@
   <div class="product-stock-indicator d-flex align-items-center gap-2">
       {% if inventory_quantity > low_stock_threshold %}
         <span class="stock-dot bg-success pulse-animation"></span>
-        <span class="fw-medium opacity-80 ms-2"> In Stock 
+        <span class="opacity-80 ms-2"> In Stock 
           <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
         </span>
       {% elsif inventory_quantity > 0 %}
         <span class="stock-dot bg-warning"></span>
-        <span class="fw-medium opacity-80 ms-2"> Low Stock 
+        <span class="opacity-80 ms-2"> Low Stock 
           <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
         </span>
       {% else %}
         <span class="stock-dot bg-danger"></span>
-        <span class="fw-medium opacity-80 ms-2"> Out of Stock </span>
+        <span class="opacity-80 ms-2"> Out of Stock </span>
       {% endif %}
   </div>
 
