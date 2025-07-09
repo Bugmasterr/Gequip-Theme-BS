@@ -492,7 +492,6 @@
     },
     "featured_products_qGWChX": {
       "type": "featured-products",
-      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
