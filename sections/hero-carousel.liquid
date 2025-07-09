@@ -64,25 +64,25 @@
               --overlay-opacity: {{ block.settings.overlay_opacity | append: '%' }};
               --overlay-blur: {{ block.settings.overlay_blur | append: 'px' }}">
             {% if block.settings.img_mobile != blank or block.settings.img_desktop != blank %}
-              <div class="d-tablet-none">
-                <img 
-                  class="carousel-media"
-                  src="{{ block.settings.img_mobile | image_url: width: '800', crop: 'center' }}" 
-                  alt=" {{ block.settings.img_mobile.alt }}"
-                  width="800"
-                  height="{{ 800 | divided_by: block.settings.img_mobile.aspect_ratio | round }}"
-                  loading="{{ media_loading }}"
-                  style="{{ media_mobile_height }}">
+              <div class="d-tablet-none" style="{{ media_mobile_height }}">
+                {% render 'image-url',
+                  img: block.settings.img_mobile,
+                  size: 800,
+                  loading: media_loading,
+                  preload: forloop.first,
+                  sizes_attr: '100vw',
+                  class: 'carousel-media'
+                %}
               </div>
-              <div class="d-none d-tablet-block">
-                <img 
-                  class="carousel-media"
-                  src="{{ block.settings.img_desktop | image_url: width: '1600', crop: 'center' }}" 
-                  alt=" {{ block.settings.img_desktop.alt }}"
-                  width="1600"
-                  height="{{ 1600 | divided_by: block.settings.img_desktop.aspect_ratio | round }}"
-                  loading="{{ media_loading }}"
-                  style="{{ media_desktop_height }}">
+              <div class="d-none d-tablet-block" style="{{ media_desktop_height }}">
+                {% render 'image-url',
+                  img: block.settings.img_desktop,
+                  size: 1600,
+                  loading: media_loading,
+                  preload: forloop.first,
+                  sizes_attr: '{{ section.settings.width }}vw',
+                  class: 'carousel-media'
+                %}
               </div>
             {% else %}
               {% capture current %}{% cycle 1, 2 %}{% endcapture %}

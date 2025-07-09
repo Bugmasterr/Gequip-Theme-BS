@@ -12,17 +12,25 @@
   - size: {Number} (Optional) The preferred image size which the image width/height will be handled. (default is 600)
   - orientation: {String} (Optional) The image orientation. (default is square)
   - loading {String} {Optional} The image loading mode. Either lazy or eager. (default is lazy)
+  - preload {Boolean} {Optional} Whether to generate a preload link for the image. (default is false)
+  - sizes_attr {String} {Optional} The sizes attribute for the image. (default is 100vw)
   - scale {Boolean} {Optional}. Useful if your images are looking blurred. (default is false)
+  - convert_to_pjpg {Boolean} {Optional}. Whether to convert the image to PJPG. (default is true)
   - class: {String} (Optional) An optional class to apply to the Img element
 
   Usage:
-  {% render 'image-url' img: product.featured_image, size: 600, orientation: 'square', loading: 'lazy', scale: false, class: "mb-4"  %}
+  {% render 'image-url' img: product.featured_image, size: 600, orientation: 'square', loading: 'lazy', preload: false, sizes_attr: "100vw", scale: false, convert_to_pjpg: true, class: "mb-4"  %}
 {% endcomment %}
 
 {% liquid
   assign size = size | default: 600
   assign orientation = orientation | default: 'square'
   assign loading = loading | default: 'lazy'
+  assign preload = preload | default: false
+  assign sizes_attr = sizes_attr | default: '100vw'
+  if convert_to_pjpg == nil
+    assign convert_to_pjpg = true
+  endif
 
   case orientation
     when 'ratio-1x1'
@@ -34,7 +42,7 @@
     when 'ratio-16x9'
       assign width = size
       assign height = size | divided_by: 16 | times: 9 | round
-      when 'ratio-21x9'
+    when 'ratio-21x9'
       assign width = size
       assign height = size | divided_by: 21 | times: 9 | round
     when 'ratio-3x4'
@@ -58,15 +66,56 @@
     assign width_scaled = width
     assign height_scaled = height
   endif
+
+if convert_to_pjpg == true
+    assign master_url = img | image_url: width: img.width, format: 'pjpg'
+    assign url_2048 = img | image_url: width: 2048, format: 'pjpg'
+    assign url_1500 = img | image_url: width: 1500, format: 'pjpg'
+    assign url_1000 = img | image_url: width: 1000, format: 'pjpg'
+    assign url_800 = img | image_url: width: 800, format: 'pjpg'
+    assign url_600 = img | image_url: width: 600, format: 'pjpg'
+    assign url_400 = img | image_url: width: 400, format: 'pjpg'
+else
+    assign master_url = img | image_url: width: img.width
+    assign url_2048 = img | image_url: width: 2048
+    assign url_1500 = img | image_url: width: 1500
+    assign url_1000 = img | image_url: width: 1000
+    assign url_800 = img | image_url: width: 800
+    assign url_600 = img | image_url: width: 600
+    assign url_400 = img | image_url: width: 400
+endif
+
+  assign srcset = ''
+  assign srcset = srcset | append: url_400 | append: ' 400w, '
+  assign srcset = srcset | append: url_600 | append: ' 600w, '
+  assign srcset = srcset | append: url_800 | append: ' 800w, '
+  assign srcset = srcset | append: url_1000 | append: ' 1000w, '
+  assign srcset = srcset | append: url_1500 | append: ' 1500w, '
+  assign srcset = srcset | append: url_2048 | append: ' 2048w, '
+  assign srcset = srcset | append: master_url | append: ' ' | append: img.width | append: 'w'
 %}
 
+{%- if preload -%}
+  <link
+    rel="preload"
+    as="image"
+    href="{{ url_800 }}"
+    imagesrcset="{{ srcset }}"
+    imagesizes="{{ sizes_attr }}"
+  >
+{%- endif -%}
+
 <img
-  src="{{ img | image_url: width: width_scaled, height: height_scaled, crop: 'center' }}"
+  srcset="{{ srcset }}"
+  src="{{ url_800 }}"
   class="img-fluid {{ class }}"
-  alt="{{ img.alt }}"
+  alt="{{ img.alt | escape }}"
   width="{{ width }}"
   height="{{ height }}"
-  loading="{{ loading }}">
+  loading="{{ loading }}"
+  sizes="{{ sizes_attr }}"
+  decoding="async"
+>
 
 {% liquid
   # theme-check-enable ImgLazyLoading 

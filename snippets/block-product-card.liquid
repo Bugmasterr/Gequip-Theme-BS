@@ -14,13 +14,14 @@
   <a href="{{ product.url }}" class="rec-product-card__link" {% unless is_available %}tabindex="-1" aria-disabled="true"{% endunless %}>
     <div class="rec-product-card__media">
       {% if featured_media %}
-        {{ featured_media | image_url: width: 180 | image_tag:
-          loading: 'lazy',
-          width: 180,
-          height: 180,
-          class: 'rec-product-card__image',
-          alt: featured_media.alt | escape
-        }}
+        {% render 'image-url', 
+          img: featured_media, 
+          size: 180, 
+          orientation: 'square', 
+          loading: 'lazy', 
+          sizes_attr: '180px',
+          class: 'rec-product-card__image'
+        %}
       {% else %}
         {{ 'product-1' | placeholder_svg_tag: 'rec-product-card__image rec-product-card__placeholder' }}
       {% endif %}

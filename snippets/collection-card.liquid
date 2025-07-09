@@ -19,7 +19,14 @@
     href="{{ collection.url }}" 
     class="collection-card-link">
     <div class="collection-card-img-wrapper">
-      {% render 'image-url', img: img, size: 900, orientation: section.settings.collection_card_img_orientation, class: section.settings.collection_card_img_border %}
+      {% render 'image-url', 
+        img: img, 
+        size: 900, 
+        orientation: section.settings.collection_card_img_orientation, 
+        class: section.settings.collection_card_img_border,
+        loading: 'lazy',
+        sizes_attr: '(max-width: 767px) 90vw, (max-width: 991px) 45vw, 30vw'
+      %}
       {% if section.settings.collection_card_show_title %}
         <h3 
           class="

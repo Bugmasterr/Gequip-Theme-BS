@@ -57,7 +57,13 @@
                 -}}
               </div>
             {% elsif block.settings.img != blank %}
-              {% render 'image-url', img: block.settings.img, size: 900, orientation: block.settings.img_orientation, class: block.settings.media_border %}
+              {% render 'image-url', 
+                img: block.settings.img, 
+                size: 900, 
+                orientation: block.settings.img_orientation, 
+                class: block.settings.media_border,
+                convert_to_pjpg: block.settings.convert_to_pjpg
+              %}
             {% else %}
               {{ 'image' | placeholder_svg_tag: 'img-thumbnail' }}
             {% endif %}
@@ -249,6 +255,13 @@
           "type": "image_picker",
           "id": "img",
           "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "convert_to_pjpg",
+          "label": "Convert image to progressive JPEG (pjpg)",
+          "default": true,
+          "info": "If enabled, images will be converted to progressive JPEG for performance. Disable to preserve original format (e.g., PNG transparency)."
         },
         {
           "type": "select",
