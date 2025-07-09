@@ -452,6 +452,7 @@
     },
     "featured_products_3cALLr": {
       "type": "featured-products",
+      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -490,6 +491,7 @@
     },
     "featured_products_qGWChX": {
       "type": "featured-products",
+      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -528,6 +530,7 @@
     },
     "featured_products_tfxwmm": {
       "type": "featured-products",
+      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -566,6 +569,7 @@
     },
     "featured_products_i7bgKE": {
       "type": "featured-products",
+      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
