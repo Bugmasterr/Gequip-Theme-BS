@@ -253,7 +253,7 @@
         "border_bottom_width": 0,
         "border_color": "border-primary",
         "border_opacity": 25,
-        "container_max_width": "1600",
+        "container_max_width": "1500",
         "products": [],
         "collection": "featured-products",
         "limit": 24,
