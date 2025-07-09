@@ -454,7 +454,6 @@
     },
     "featured_products_3cALLr": {
       "type": "featured-products",
-      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -571,7 +570,6 @@
     },
     "featured_products_i7bgKE": {
       "type": "featured-products",
-      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
