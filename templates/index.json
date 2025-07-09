@@ -15,7 +15,7 @@
         "slide_Q4UPQq": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify://shop_images/white.jpg",
+            "img_mobile": "shopify://shop_images/RepairBanner.png",
             "img_desktop": "shopify://shop_images/Ridgid_Banner2_a0c0f6c1-8db4-422e-8dae-0a391bd02b12.png",
             "overlay_color": "#334fb4",
             "overlay_opacity": 0,
@@ -55,14 +55,14 @@
         "carousel_effect": "carousel-zoom-out",
         "media_mobile_height": 400,
         "media_desktop_height": 400,
-        "media_adapt": false,
+        "media_adapt": true,
         "media_full": true,
         "caption_max_width": "900",
         "caption_position": "carousel-caption-center",
         "subtitle_font_size": "fs-md",
         "title_font_size": "h1",
         "description_font_size": "fs-xl",
-        "btn_primary_color": "btn-outline-white",
+        "btn_primary_color": "btn-white",
         "btn_secondary_color": "btn-light-secondary",
         "btn_font_size": "fs-md",
         "pt": 0,
@@ -136,9 +136,9 @@
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": false,
-        "slider_pagination": false,
+        "slider_pagination": true,
         "slider_pagination_type": "bullets",
-        "slider_scrollbar": false,
+        "slider_scrollbar": true,
         "slider_partial_slides_mobile": false,
         "slider_autoplay": 0,
         "collection_card_text_align": "text-center",
@@ -152,7 +152,7 @@
         "breakpoint_tablet": 4,
         "breakpoint_desktop": 5,
         "pt": 7,
-        "pb": 0
+        "pb": 3
       }
     },
     "featured_collections_6gCzrm": {
@@ -222,9 +222,9 @@
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": false,
-        "slider_pagination": false,
+        "slider_pagination": true,
         "slider_pagination_type": "bullets",
-        "slider_scrollbar": false,
+        "slider_scrollbar": true,
         "slider_partial_slides_mobile": false,
         "slider_autoplay": 0,
         "collection_card_text_align": "text-center",
@@ -238,7 +238,7 @@
         "breakpoint_tablet": 4,
         "breakpoint_desktop": 5,
         "pt": 5,
-        "pb": 0
+        "pb": 3
       }
     },
     "featured_products_nXJKQn": {
@@ -253,7 +253,7 @@
         "border_bottom_width": 0,
         "border_color": "border-primary",
         "border_opacity": 25,
-        "container_max_width": "1600",
+        "container_max_width": "1500",
         "products": [],
         "collection": "featured-products",
         "limit": 24,
@@ -294,6 +294,7 @@
             "media_align_desktop": "",
             "media_border": "rounded",
             "img": "shopify://shop_images/project-life-cycle.png",
+            "convert_to_pjpg": false,
             "img_orientation": "ratio-1x1",
             "video_ratio": "ratio-1x1",
             "video_autoplay": true,
@@ -349,7 +350,8 @@
             "media_align_desktop": "flex-desktop-row-reverse",
             "media_border": "img-thumbnail",
             "img": "shopify://shop_images/20240328_122910-crop.jpg",
-            "img_orientation": "ratio-1x1",
+            "convert_to_pjpg": false,
+            "img_orientation": "ratio-3x4",
             "video_ratio": "ratio-1x1",
             "video_autoplay": true,
             "video_loop": true,
@@ -452,7 +454,6 @@
     },
     "featured_products_3cALLr": {
       "type": "featured-products",
-      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -491,7 +492,6 @@
     },
     "featured_products_qGWChX": {
       "type": "featured-products",
-      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -569,7 +569,6 @@
     },
     "featured_products_i7bgKE": {
       "type": "featured-products",
-      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -947,7 +946,7 @@
         "blog": "news",
         "limit": 8,
         "article_card_text_align": "text-center",
-        "article_card_img_orientation": "ratio-4x3",
+        "article_card_img_orientation": "ratio-1x1",
         "article_card_img_border": "img-thumbnail",
         "article_card_title_size": "fs-xl",
         "article_card_meta": false,
