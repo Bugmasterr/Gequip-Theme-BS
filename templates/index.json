@@ -15,7 +15,7 @@
         "slide_Q4UPQq": {
           "type": "slide",
           "settings": {
-            "img_mobile": "shopify://shop_images/white.jpg",
+            "img_mobile": "shopify://shop_images/RepairBanner.png",
             "img_desktop": "shopify://shop_images/Ridgid_Banner2_a0c0f6c1-8db4-422e-8dae-0a391bd02b12.png",
             "overlay_color": "#334fb4",
             "overlay_opacity": 0,
@@ -55,7 +55,7 @@
         "carousel_effect": "carousel-zoom-out",
         "media_mobile_height": 400,
         "media_desktop_height": 400,
-        "media_adapt": false,
+        "media_adapt": true,
         "media_full": true,
         "caption_max_width": "900",
         "caption_position": "carousel-caption-center",
@@ -136,9 +136,9 @@
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": false,
-        "slider_pagination": false,
+        "slider_pagination": true,
         "slider_pagination_type": "bullets",
-        "slider_scrollbar": false,
+        "slider_scrollbar": true,
         "slider_partial_slides_mobile": false,
         "slider_autoplay": 0,
         "collection_card_text_align": "text-center",
@@ -152,7 +152,7 @@
         "breakpoint_tablet": 4,
         "breakpoint_desktop": 5,
         "pt": 7,
-        "pb": 0
+        "pb": 3
       }
     },
     "featured_collections_6gCzrm": {
@@ -222,9 +222,9 @@
         "header_description_font_size": "fs-md",
         "slider_speed": 300,
         "slider_navigation": false,
-        "slider_pagination": false,
+        "slider_pagination": true,
         "slider_pagination_type": "bullets",
-        "slider_scrollbar": false,
+        "slider_scrollbar": true,
         "slider_partial_slides_mobile": false,
         "slider_autoplay": 0,
         "collection_card_text_align": "text-center",
@@ -238,7 +238,7 @@
         "breakpoint_tablet": 4,
         "breakpoint_desktop": 5,
         "pt": 5,
-        "pb": 0
+        "pb": 3
       }
     },
     "featured_products_nXJKQn": {
