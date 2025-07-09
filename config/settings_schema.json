@@ -12,9 +12,15 @@
     "settings": [
       {
         "type": "color",
-        "id": "color_primary",
-        "label": "Primary",
+        "id": "color_brand_primary",
+        "label": "Brand Primary",
         "default": "#d63384"
+      },
+      {
+        "type": "color",
+        "id": "color_brand_secondary",
+        "label": "Brand Secondary",
+        "default": "#0d6efd"
       },
       {
         "type": "color",

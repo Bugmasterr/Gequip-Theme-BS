@@ -16,10 +16,14 @@
       {% if featured_media %}
         {% render 'image-url', 
           img: featured_media, 
-          size: 180, 
-          orientation: 'square', 
-          loading: 'lazy', 
-          sizes_attr: '180px',
+          size: 360,
+          orientation: 'ratio-1x1',
+          loading: 'lazy',
+          fetchpriority: 'auto',
+          formats: 'webp,jpg',
+          placeholder: 'blur',
+          breakpoints: '180,360,540,720,900',
+          sizes_attr: '(max-width: 575.98px) 33.33vw, (max-width: 991.98px) 25vw, 180px',
           class: 'rec-product-card__image'
         %}
       {% else %}

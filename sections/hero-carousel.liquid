@@ -68,20 +68,32 @@
                 {% render 'image-url',
                   img: block.settings.img_mobile,
                   size: 800,
+                  orientation: 'auto',
                   loading: media_loading,
+                  fetchpriority: forloop.first ? 'high' : 'auto',
                   preload: forloop.first,
+                  formats: 'webp,jpg',
+                  placeholder: 'blur',
+                  breakpoints: '400,600,800,1000,1200',
                   sizes_attr: '100vw',
-                  class: 'carousel-media'
+                  class: 'carousel-media',
+                  art_direction: true
                 %}
               </div>
               <div class="d-none d-tablet-block" style="{{ media_desktop_height }}">
                 {% render 'image-url',
                   img: block.settings.img_desktop,
-                  size: 1600,
+                  size: 1800,
+                  orientation: 'auto',
                   loading: media_loading,
+                  fetchpriority: forloop.first ? 'high' : 'auto',
                   preload: forloop.first,
+                  formats: 'webp,jpg',
+                  placeholder: 'blur',
+                  breakpoints: '800,1000,1200,1600,2000',
                   sizes_attr: '{{ section.settings.width }}vw',
-                  class: 'carousel-media'
+                  class: 'carousel-media',
+                  art_direction: true
                 %}
               </div>
             {% else %}

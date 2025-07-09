@@ -5,7 +5,18 @@
 
       {% comment %} Product image with badges {% endcomment %}
       <div class="product-card-img-wrapper d-flex justify-content-center align-items-center p-4" style="height: 200px; width: 200px;">
-        <img src="{{ product.featured_image | image_url: width: auto, height: auto }}" class="img-fluid product-image rounded">
+        {% render 'image-url',
+          img: product.featured_image,
+          size: 400,
+          orientation: 'ratio-1x1',
+          loading: 'lazy',
+          fetchpriority: 'auto',
+          formats: 'webp,jpg',
+          placeholder: 'blur',
+          breakpoints: '200,300,400,600,800',
+          sizes_attr: '200px',
+          class: 'img-fluid product-image rounded'
+        %}
 
         {% comment %} Sale badge {% endcomment %}
         {% if product.compare_at_price > product.price %}

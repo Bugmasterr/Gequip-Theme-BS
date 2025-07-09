@@ -59,10 +59,17 @@
             {% elsif block.settings.img != blank %}
               {% render 'image-url', 
                 img: block.settings.img, 
-                size: 900, 
-                orientation: block.settings.img_orientation, 
+                size: 1200,
+                orientation: block.settings.img_orientation,
                 class: block.settings.media_border,
-                convert_to_pjpg: block.settings.convert_to_pjpg
+                loading: 'lazy',
+                fetchpriority: forloop.first ? 'high' : 'auto',
+                preload: forloop.first,
+                formats: 'webp,jpg',
+                placeholder: 'blur',
+                breakpoints: '400,600,900,1200,1600',
+                sizes_attr: '(min-width: 992px) 50vw, 100vw',
+                alt: block.settings.img.alt | escape
               %}
             {% else %}
               {{ 'image' | placeholder_svg_tag: 'img-thumbnail' }}
