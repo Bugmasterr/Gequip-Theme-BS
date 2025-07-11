@@ -22,7 +22,7 @@
   <div 
     class="container" 
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
-    
+
     <div 
       class="product-contents position-relative"
       data-quick-view-contents
@@ -40,8 +40,6 @@
             {% render 'share-buttons', product: product %}
           </div>
 
-    
-
           {% render 'product-block-media-gallery' %}
         </div>
         <div class="col-desktop-9">
@@ -57,8 +55,6 @@
                         render 'product-block-title', block: block
                       when 'price'
                         render 'product-block-price', block: block, form: form
-                      when 'product-block-details'
-                        render 'product-block-details', block: block
                       when 'options'
                         render 'product-block-options', block: block, form: form
                       when 'atc_button'
@@ -92,6 +88,13 @@
     </div>
   </div>
 </section>
+
+<div class="mt-5">
+  <div class="">
+    {% render 'product-description', product: product %}
+  </div>
+</div>
+
 
 {% schema %}
 {

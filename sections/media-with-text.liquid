@@ -24,7 +24,7 @@
         class="container" 
         style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
         <div class="row align-items-desktop-center {{ block.settings.media_align_desktop }}">
-          <div class="col-desktop-9 mb-6 mb-desktop-0">
+          <div class="col-desktop-8 mb-6 mb-desktop-0">
             {% if block.settings.external_video != blank %}
               {% liquid 
                 if block.settings.external_video.type == 'youtube'

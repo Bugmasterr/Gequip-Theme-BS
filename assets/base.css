@@ -8,6 +8,7 @@
   --bs-link-hover-color-rgb: currentColor;
   --bs-border-color: rgba(var(--bs-secondary-rgb), 1);
   --img-aspect-ratio: 1/1; /* Default fallback */
+  --bs-separator: #ccc;
 }
 
 
@@ -501,6 +502,132 @@
 	}
 }
 
+/*
+  Collection header
+*/
+.collection-header {
+  border-top-style: solid;
+  border-bottom-style: solid;
+  text-align: center;
+}
+
+
+/*
+  Collection products
+*/
+.collection-products {
+  border-top-style: solid;
+  border-bottom-style: solid;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: all .2s ease-out;
+}
+
+.collection-utilities {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort-by input + label {
+  cursor: pointer;
+}
+
+.sort-by input:checked + label {
+  color: var(--bs-primary);
+}
+
+.sort-by input:focus-visible + label {
+  box-shadow: var(--bs-focus-box-shadow);
+}
+
+/*
+  Collection filters
+*/
+#offcanvas-collection-filters {
+  width: 320px;
+}
+
+.collection-filters {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+} 
+
+.collection-filters .collapse-wrapper {
+  border-bottom: none;
+  margin: 0;
+}
+
+.collection-filters .collapse-wrapper button[data-bs-toggle=collapse] {
+  background-color: var(--bs-light);
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+}
+
+.collection-filters .collapse-wrapper button[data-bs-toggle=collapse]::after {
+  right: 0.75rem;
+}
+
+.collection-filters .collapse-wrapper .collapse-inner {
+  padding: .25rem 1rem 1.5rem;
+}
+
+.collection-filters .form-check {
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+
+/*
+  Collection card
+*/
+.collection-card {
+  width: 100%;
+  height: 100%;
+}
+
+.collection-card-link {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: currentColor;
+  min-height: 300px; /* Reserve space */
+}
+
+.collection-card-link:focus-visible {
+  outline: 0;
+  box-shadow: var(--bs-focus-box-shadow);
+}
+
+.collection-card-title {
+  transition: all 200ms ease-out;
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+.collection-card-img-wrapper {
+  position: relative;
+}
+
+.collection-card-img-wrapper img { 
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+
+.collection-card-link:hover .collection-card-title-normal,
+.collection-card-link:focus .collection-card-title-normal {
+  opacity: .8;
+}
+
 
 /*
   Product card
@@ -549,6 +676,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
   background: #ffffff;
   border: 1px solid #ccc;
   transform-origin: center;
@@ -820,7 +948,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #00000050;
+    background: #ffffff50;
     color: #fff;
     font-size: 1.25rem;
     font-weight: 600;
@@ -912,12 +1040,42 @@
 /*
   Separator (hr)
 */
-hr {
-  opacity: .1;
-  background-color: currentColor;
-  border: none;
-  height: 1px;
-  margin: 0;
+hr, .dropdown-divider {
+  color: var(--bs-separator);
+  opacity: 1;
+  border: 0;
+  border-top: 1px solid var(--bs-separator);
+  margin: 1rem 0;
+}
+
+.separator {
+  background-color: var(--bs-separator);
+  opacity: 1;
+}
+
+/* Update dropdown dividers */
+.dropdown-divider {
+  margin: 0.5rem 0;
+}
+
+/* Update card borders that are used as separators */
+.card + .card {
+  border-top: 1px solid var(--bs-separator);
+}
+
+/* Update list group dividers */
+.list-group-item + .list-group-item {
+  border-top: 1px solid var(--bs-separator);
+}
+
+/* Update offcanvas menu dividers */
+.offcanvas-menu hr {
+  margin: 0.5rem 0;
+}
+
+/* Update footer dividers */
+footer hr {
+  margin: 1.5rem 0;
 }
 
 
