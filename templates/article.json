@@ -13,10 +13,10 @@
       "type": "article-main",
       "custom_css": [],
       "settings": {
-        "img_show": true,
-        "img_orientation": "adapt",
+        "img_show": false,
+        "img_orientation": "ratio-1x1",
         "img_border": "img-thumbnail",
-        "max_width": "",
+        "max_width": "1000",
         "title_font_size": "h1",
         "article_meta": true,
         "show_tags": true,
