@@ -1,41 +1,60 @@
 <article 
-  id="article-main-{{ collection.id }}" 
+  id="article-main-{{ article.id }}" 
   class="
     article-main
-    {{  section.settings.pt | prepend: 'pt-' }}
-    {{  section.settings.pb | prepend: 'pb-' }}
+    bg-white shadow-sm rounded-3 border
+    {{ section.settings.pt | prepend: 'pt-' }}
+    {{ section.settings.pb | prepend: 'pb-' }}
   ">
   {% if section.settings.img_show and article.image %}
-    <div class="img-wrapper mb-8">
+    <div class="article-hero-img position-relative overflow-hidden mb-6">
       <div class="container">
-        {% render 'image-url', img: article.image, size: 1600, orientation: section.settings.img_orientation, class: section.settings.img_border %}
+        <div class="ratio {{ section.settings.img_orientation }} d-block mx-auto" style="max-width: 1000px;">
+          {% render 'image-url', img: article.image, size: 1600, orientation: section.settings.img_orientation, class: section.settings.img_border %}
+        </div>
       </div>
     </div>
   {% endif %}
   <div class="article-content">
     <div 
-      class="container" 
+      class="container px-3 px-md-5" 
       style="max-width: {{ section.settings.max_width }}px">
-      <h1 class="article-title title mb-4 {{ section.settings.title_font_size }}">
-        {{ article.title }}
-      </h1>
-      {% if section.settings.article_meta %}
-        <p class="article-meta opacity-70 mb-5">
-          {{ article.author }} @ {{ article.created_at | time_tag: '%b %d, %Y' }}
-        </p>
-      {% endif %}
-      <div class="article-content rte mb-6">
+      <header class="mb-5 text-center">
+        <h1 class="article-title fw-bold lh-tight mb-3 {{ section.settings.title_font_size }}">{{ article.title }}</h1>
+        {% if section.settings.article_meta %}
+          <div class="d-flex flex-wrap justify-content-center gap-3 mb-2 small text-muted">
+            <span>
+              <i class="bi bi-person-circle me-1"></i>
+              {{ article.author }}
+            </span>
+            <span>
+              <i class="bi bi-calendar-event me-1"></i>
+              {{ article.created_at | time_tag: '%b %d, %Y' }}
+            </span>
+            {% if article.comments_count and article.comments_count > 0 %}
+              <span>
+                <i class="bi bi-chat-left-dots me-1"></i>
+                {{ article.comments_count }} {{ 'blogs.comments' | t }}
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if section.settings.show_tags and article.tags.size > 0 %}
+          <div class="article-tags d-flex flex-wrap justify-content-center gap-2 mt-2">
+            {% for tag in article.tags %}
+              <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="badge bg-light text-primary border fw-normal px-3 py-2 small text-decoration-none">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </header>
+      <div class="article-body-content rte mb-7 mx-auto" style="max-width: 800px;">
         {{ article.content }}
       </div>
-      {% if section.settings.show_tags and article.tags.size > 0 %}
-        <div class="article-tags small opacity-70 mb-7">
-          {{ 'general.blog.posted_in' | t }}: 
-          {% for tag in article.tags %}
-          <a href="{{ blog.url }}/tagged/{{ tag | handle }}">
-            {{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-          {% endfor %}
+      {% if article.comments_enabled? %}
+        <div class="article-comments-section mt-7">
+          {% section 'comments' %}
         </div>
-      {% endif %} 
+      {% endif %}
     </div>
   </div>
 </article>
