@@ -324,6 +324,7 @@
         "row_JkMDbM"
       ],
       "custom_css": [
+        ".container {margin: 0; padding: 0;}",
         "img {margin: 1rem; height: 20em; width: auto;}"
       ],
       "settings": {
@@ -348,7 +349,7 @@
             "media_border": "img-thumbnail",
             "img": "shopify://shop_images/20240328_122910-crop.jpg",
             "convert_to_pjpg": false,
-            "img_orientation": "ratio-3x4",
+            "img_orientation": "adapt",
             "video_ratio": "ratio-1x1",
             "video_autoplay": true,
             "video_loop": true,
