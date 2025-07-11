@@ -18,7 +18,7 @@
         "img_border": "img-thumbnail",
         "max_width": "",
         "title_font_size": "h1",
-        "article_meta": false,
+        "article_meta": true,
         "show_tags": true,
         "pt": 8,
         "pb": 10
