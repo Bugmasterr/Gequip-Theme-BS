@@ -9,7 +9,8 @@
  */
 {
   "current": {
-    "color_primary": "#334fb4",
+    "color_brand_primary": "#334fb4",
+    "color_brand_secondary": "#dc3545",
     "color_secondary": "#dddddd",
     "color_body_bg": "#ffffff",
     "color_body_color": "#212529",
@@ -66,6 +67,7 @@
     "social_x": "#",
     "social_tiktok": "#",
     "social_youtube": "#",
+    "color_primary": "#334fb4",
     "checkout_logo_image": "shopify://shop_images/ges-logo-1.png",
     "checkout_logo_size": "small",
     "checkout_accent_color": "#dc3545",
