@@ -4,7 +4,7 @@
 {% liquid
   assign show_collection_badge = false
   assign variant = product.selected_or_first_available_variant
-  
+
   assign product_condition = ''
   if product.metafields.ges.product_condition != null
     assign product_condition = product.metafields.ges.product_condition | replace: '["', '' | replace: '"]', ''
@@ -17,131 +17,126 @@
   endif
 %}
 
-{% comment %}
-  Product card
-{% endcomment %}
-{% assign card_classes = 'card-link' %}{% unless product.available %}{% assign card_classes = card_classes | append: ' sold-out-card' %}{% endunless %}
+{% assign card_classes = 'card-link' %}
+{% unless product.available %}
+  {% assign card_classes = card_classes | append: ' sold-out-card' %}
+{% endunless %}
+
 <a href="{{ product.url }}" class="{{ card_classes }}">
-<div class="card-product">
-  {% unless product.available %}
-    <div class="sold-out-badge">
-      <i class="bi bi-x-circle"></i> OUT OF STOCK
-    </div>
-    <button type="button" class="notify-available-btn" data-product-id={{ product.id | json }} data-variant-id={{ variant.id | json }} aria-label="Notify when available">
-      <i class="bi bi-bell"></i> Notify When Available
-    </button>
-  {% endunless %}
-  <div class="card-image-container" style="padding-bottom: calc(100% * var(--card-aspect-ratio));">
-    {% if show_collection_badge and product_condition != blank %}
-      <div class="card-condition-badge">Collection Badge</div>
-    {% endif %}
-    <div class="info-icon">
-      <i class="bi bi-info-square"></i>
-      <i class="bi bi-info-square-fill"></i>
-      <span class="tooltip" role="tooltip">
-        {%- assign meta_text = product.metafields.seo.meta_description | default: product.description | strip_html | downcase -%}
-{%- assign remove_words = "with a 1 year operational warranty,with a 90 day operational warranty,with a 1 year warranty,with a 90 day warranty,reconditioned,new surplus,stock,warranty,description:,in stock,operational warranty,year operational,90 day,with one warranty" | split: "," -%}
-{%- for word in remove_words -%}
-  {%- assign meta_text = meta_text | replace: word, "" -%}
-{%- endfor -%}
-{{ meta_text | capitalize | truncatewords: 16 }}
-</span>
-    </div>
-    <div class="card-image">
-    <div class="card-image-container-inner">
-      {% assign card_image_class = 'card-image' %}
-      {% unless variant.available %}
-        {% assign card_image_class = card_image_class | append: ' unavailable' %}
-      {% endunless %}
-      
-      {% assign is_first_product = forloop.first | default: false %}
-      {% assign is_above_fold = is_first_product | default: false %}
-      
-      {% render 'image-url',
-        img: product.featured_image,
-        size: 320,
-        orientation: 'ratio-1x1',
-        loading: is_above_fold ? 'eager' : 'lazy',
-        fetchpriority: is_above_fold ? 'high' : 'auto',
-        preload: is_above_fold,
-        formats: 'png,jpg',
-        placeholder: 'blur',
-        breakpoints: '200,320,480,640,800',
-        sizes_attr: '(max-width: 575.98px) calc(50vw - 20px), (max-width: 991.98px) calc(33.33vw - 20px), (max-width: 1199.98px) calc(25vw - 20px), 280px',
-        class: card_image_class
-      %}
-    </div>
-  </div>
+  <div class="card-product">
+    {% unless product.available %}
+      <div class="sold-out-badge">
+        <i class="bi bi-x-circle"></i> OUT OF STOCK
+      </div>
+      <button type="button" class="notify-available-btn" data-product-id={{ product.id | json }} data-variant-id={{ variant.id | json }} aria-label="Notify when available">
+        <i class="bi bi-bell"></i> Notify When Available
+      </button>
+    {% endunless %}
 
-  <div class="card-divider-container">
-    <div class="card-divider"></div>
-  </div>
-
-  <div class="card-info">
-    <div class="card-sku">{{ variant.sku }}</div>
-
-    <div class="card-title">
-      {{ product.title | remove: '- New Surplus' | remove: '- New' | remove: '- Used' | remove: '- Reconditioned' | strip }}
-    </div>
-
-{% capture rating_content %}
-  {% render 'product-rating-badge', product: product %}
-{% endcapture %}
-
-{% if rating_content %}
-  <span class="rating-badge">
-    {{ rating_content }}
-  </span>
-{% endif %}
-
-<div class="card-meta d-flex">
-  {% if product_condition != blank %}
-    <span class="card-meta-item d-flex">
-      <i class="bi bi-tag me-1"></i>
-      <span class="card-condition-text ms-2">{{ product_condition }}</span>
-    </span>
-  {% endif %}
-</div>
-
-{% liquid
-  assign inventory_quantity = variant.inventory_quantity
-  assign inventory_management = variant.inventory_management
-  assign low_stock_threshold = 2
-%}
-  <div class="product-stock-indicator d-flex align-items-center gap-2">
-      {% if inventory_quantity > low_stock_threshold %}
-        <span class="stock-dot bg-success pulse-animation"></span>
-        <span class="opacity-80 ms-2"> In Stock 
-          <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
-        </span>
-      {% elsif inventory_quantity > 0 %}
-        <span class="stock-dot bg-warning"></span>
-        <span class="opacity-80 ms-2"> Low Stock 
-          <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
-        </span>
-      {% else %}
-        <span class="stock-dot bg-danger"></span>
-        <span class="opacity-80 ms-2"> Out of Stock </span>
+    <div class="card-image-container" style="padding-bottom: calc(100% * var(--card-aspect-ratio));">
+      {% if show_collection_badge and product_condition != blank %}
+        <div class="card-condition-badge">Collection Badge</div>
       {% endif %}
-  </div>
+      <div class="info-icon">
+        <i class="bi bi-info-square"></i>
+        <i class="bi bi-info-square-fill"></i>
+        <span class="tooltip" role="tooltip">
+          {%- assign meta_text = product.metafields.seo.meta_description | default: product.description | strip_html | downcase -%}
+          {%- assign remove_words = "with a 1 year operational warranty,with a 90 day operational warranty,with a 1 year warranty,with a 90 day warranty,reconditioned,new surplus,stock,warranty,description:,in stock,operational warranty,year operational,90 day,with one warranty" | split: "," -%}
+          {%- for word in remove_words -%}
+            {%- assign meta_text = meta_text | replace: word, "" -%}
+          {%- endfor -%}
+          {{ meta_text | capitalize | truncatewords: 16 }}
+        </span>
+      </div>
+        <div class="card-image-container-inner">
+          {% assign card_image_class = 'card-image' %}
+          {% unless variant.available %}
+            {% assign card_image_class = card_image_class | append: ' unavailable' %}
+          {% endunless %}
 
-<div class="card-price">
-  <span class="card-current-price mt-2">{{ variant.price | money }}</span>
-</div>
-    
-    {% if variant.compare_at_price > variant.price %}
-      {% assign savings = variant.compare_at_price | minus: variant.price %}
-      <div class="card-savings-container">
+          {% assign is_first_product = forloop.first | default: false %}
+          {% assign is_above_fold = is_first_product | default: false %}
+
+          {% render 'image-url',
+            img: product.featured_image,
+            size: 320,
+            orientation: 'ratio-1x1',
+            loading: is_above_fold ? 'eager' : 'lazy',
+            fetchpriority: is_above_fold ? 'high' : 'auto',
+            preload: is_above_fold,
+            formats: 'png,jpg',
+            placeholder: 'blur',
+            breakpoints: '200,320,480,640,800',
+            sizes_attr: '(max-width: 575.98px) calc(50vw - 20px), (max-width: 991.98px) calc(33.33vw - 20px), (max-width: 1199.98px) calc(25vw - 20px), 280px',
+            class: card_image_class
+          %}
+        </div>
+    </div>
+
+    <div class="card-divider-container">
+      <div class="card-divider"></div>
+    </div>
+
+    <div class="card-info">
+      <div class="card-sku">{{ variant.sku }}</div>
+
+      <div class="card-title">
+        {{ product.title | remove: '- New Surplus' | remove: '- New' | remove: '- Used' | remove: '- Reconditioned' | strip }}
+      </div>
+
+      {% capture rating_content %}
+        {% render 'product-rating-badge', product: product %}
+      {% endcapture %}
+
+      {% if rating_content %}
+        <span class="rating-badge">
+          {{ rating_content }}
+        </span>
+      {% endif %}
+
+      <div class="card-meta d-flex">
+        {% if product_condition != blank %}
+          <span class="card-meta-item d-flex">
+            <i class="bi bi-tag me-1"></i>
+            <span class="card-condition-text ms-2">{{ product_condition }}</span>
+          </span>
+        {% endif %}
+      </div>
+
+      {% liquid
+        assign inventory_quantity = variant.inventory_quantity
+        assign inventory_management = variant.inventory_management
+        assign low_stock_threshold = 2
+      %}
+      <div class="product-stock-indicator d-flex align-items-center gap-2">
+        {% if inventory_quantity > low_stock_threshold %}
+          <span class="stock-dot bg-success pulse-animation"></span>
+          <span class="opacity-80 ms-2"> In Stock 
+            <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
+          </span>
+        {% elsif inventory_quantity > 0 %}
+          <span class="stock-dot bg-warning"></span>
+          <span class="opacity-80 ms-2"> Low Stock 
+            <span class="opacity-60 ms-1">({{ inventory_quantity }})</span>
+          </span>
+        {% else %}
+          <span class="stock-dot bg-danger"></span>
+          <span class="opacity-80 ms-2"> Out of Stock </span>
+        {% endif %}
+      </div>
+
+      <div class="card-price">
+        <span class="card-current-price mt-2">{{ variant.price | money }}</span>
+      </div>
+      
+      {% if variant.compare_at_price > variant.price %}
+        {% assign savings = variant.compare_at_price | minus: variant.price %}
+        <div class="card-savings-container">
           <span class="card-compare-price">{{ variant.compare_at_price | money }}</span>
           <span class="savings">Save {{ savings | money_without_trailing_zeros }}</span>
-      </div>
-    {% endif %}
-
+        </div>
+      {% endif %}
+    </div>
   </div>
-</div>
 </a>
-
-{% unless product.available %}
-<!-- Notify available button CSS moved to assets/product-card.css -->
-
-{% endunless %}
