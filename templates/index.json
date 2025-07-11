@@ -291,7 +291,7 @@
             "border_bottom_width": 1,
             "border_color": "border-primary",
             "border_opacity": 10,
-            "media_align_desktop": "",
+            "media_align_desktop": "flex-desktop-row-reverse",
             "media_border": "rounded",
             "img": "shopify://shop_images/project-life-cycle.png",
             "convert_to_pjpg": false,
@@ -303,7 +303,7 @@
             "video_controls": true,
             "external_video": "",
             "text_align_mobile": "text-center",
-            "text_align_desktop": "text-desktop-start",
+            "text_align_desktop": "text-desktop-center",
             "subtitle": "Tools to get the job done",
             "title": "Tools & Equipment",
             "title_font_size": "h3",
@@ -324,11 +324,11 @@
         "row_JkMDbM"
       ],
       "custom_css": [
-        ".container {margin: 0; padding: 0;}",
-        "img {margin: 1rem; height: 20em; width: auto;}"
+        ".container {margin: auto;}",
+        "img {margin: 0rem; padding: 1rem; height: 25em; width: auto;}"
       ],
       "settings": {
-        "container_max_width": ""
+        "container_max_width": "1200"
       }
     },
     "media_with_text_3cgm8E": {
@@ -345,7 +345,7 @@
             "border_bottom_width": 0,
             "border_color": "border-primary",
             "border_opacity": 10,
-            "media_align_desktop": "flex-desktop-row-reverse",
+            "media_align_desktop": "",
             "media_border": "img-thumbnail",
             "img": "shopify://shop_images/20240328_122910-crop.jpg",
             "convert_to_pjpg": false,
@@ -357,7 +357,7 @@
             "video_controls": true,
             "external_video": "",
             "text_align_mobile": "text-center",
-            "text_align_desktop": "text-desktop-end",
+            "text_align_desktop": "text-desktop-start",
             "subtitle": "Custom-Designed Power Distribution Centers",
             "title": "Temporary Power Units and Portable Distribution Centers",
             "title_font_size": "h3",
@@ -378,10 +378,13 @@
         "row_4NFNry"
       ],
       "custom_css": [
-        "img {margin: 1rem; height: 20em; width: auto;}"
+        "{min-height: 30em;}",
+        ".container {margin: auto;}",
+        "img {margin: 1rem; margin-block: 2rem; height: 25em; width: auto;}",
+        ".btn {display: flex;}"
       ],
       "settings": {
-        "container_max_width": ""
+        "container_max_width": "900"
       }
     },
     "featured_products_AAxprB": {
