@@ -24,19 +24,9 @@
         {% if section.settings.article_meta %}
           <div class="d-flex flex-wrap justify-content-center gap-3 mb-2 small text-muted">
             <span>
-              <i class="bi bi-person-circle me-1"></i>
-              {{ article.author }}
-            </span>
-            <span>
               <i class="bi bi-calendar-event me-1"></i>
               {{ article.created_at | time_tag: '%b %d, %Y' }}
             </span>
-            {% if article.comments_count and article.comments_count > 0 %}
-              <span>
-                <i class="bi bi-chat-left-dots me-1"></i>
-                {{ article.comments_count }} {{ 'blogs.comments' | t }}
-              </span>
-            {% endif %}
           </div>
         {% endif %}
         {% if section.settings.show_tags and article.tags.size > 0 %}
@@ -47,14 +37,9 @@
           </div>
         {% endif %}
       </header>
-      <div class="article-body-content rte mb-7 mx-auto" style="max-width: 800px;">
+      <div class="article-body-content rte mb-7 mx-auto">
         {{ article.content }}
       </div>
-      {% if article.comments_enabled? %}
-        <div class="article-comments-section mt-7">
-          {% section 'comments' %}
-        </div>
-      {% endif %}
     </div>
   </div>
 </article>
