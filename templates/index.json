@@ -324,10 +324,7 @@
         "row_JkMDbM"
       ],
       "custom_css": [
-        ".description {padding-bottom: 10px;}",
-        ".title {padding-block: 10px;}",
-        " {line-height: 1.75rem; align-items: center; justify-content: center;}",
-        "@media (min-width: 786px) {.img-fluid {display: block; width: 67%; margin: auto; padding: 1em; } .container .row {margin: auto; }}"
+        "img {margin: 1rem; height: 20em; width: auto;}"
       ],
       "settings": {
         "container_max_width": ""
@@ -380,7 +377,7 @@
         "row_4NFNry"
       ],
       "custom_css": [
-        "@media (min-width: 786px) {.img-fluid {height: 400px; width: auto; margin-left: 5rem; padding: 5px; } .container .row {height: 520px; margin: auto; } .text-center {margin-left: 25px; }}"
+        "img {margin: 1rem; height: 20em; width: auto;}"
       ],
       "settings": {
         "container_max_width": ""
