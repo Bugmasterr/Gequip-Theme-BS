@@ -1,6 +1,6 @@
 {% comment %}
   Product Description with Tabs
-  Includes: Description and Reviews tabs with Loox integration
+  Single tab: Description only (Reviews tab removed)
 {% endcomment %}
 
 <div class="product-description mt-5">
@@ -21,19 +21,6 @@
             <i class="bi bi-card-text me-2"></i>Product Description
           </button>
         </li>
-        <li class="nav-item" role="presentation">
-          <button 
-            class="nav-link fw-medium" 
-            id="reviews-tab" 
-            data-bs-toggle="tab" 
-            data-bs-target="#reviews-content" 
-            type="button" 
-            role="tab" 
-            aria-controls="reviews" 
-            aria-selected="false">
-            <i class="bi bi-star me-2"></i>Product Reviews
-          </button>
-        </li>
       </ul>
 
       <!-- Tab Content -->
@@ -44,18 +31,8 @@
           id="description-content" 
           role="tabpanel" 
           aria-labelledby="description-tab">
-          <div class="rte">
+          <div class="rte" style="background: #cccccc50; padding: 1rem; border-radius: .5rem; border: 1px solid #ccc;">
             {{ product.description }}
-          </div>
-        </div>
-
-        <div 
-          class="tab-pane fade" 
-          id="reviews-content" 
-          role="tabpanel" 
-          aria-labelledby="reviews-tab">
-          <div id="looxReviews" data-product-id="{{ product.id }}">
-            {{ product.metafields.loox.reviews }}
           </div>
         </div>
       </div>

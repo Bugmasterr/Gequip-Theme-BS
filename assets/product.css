@@ -96,7 +96,7 @@
 }
 
 .product-media-gallery .swiper-thumbs .swiper-slide-thumb-active .img-thumbnail {
-  border-color: var(--bs-secondary-rgb);
+  border-color: var(--bs-separator);
 }
 
 .product-media-gallery .swiper-thumbs .swiper-slide[data-media-type="video"] {
@@ -212,7 +212,7 @@
   border-radius: 50rem;
   display: block;
   cursor: pointer;
-  border: 1.5px solid var(--bs-secondary-rgb);
+  border: 1.5px solid var(--bs-separator);
   padding: 0.1rem;
   margin: 0.1rem;
 }
@@ -223,7 +223,7 @@
 }
 
 .product-options .color-swatches input:checked + label {
-  border-color: var(--bs-secondary-rgb);
+  border-color: var(--bs-separator);
 }
 
 .product-options .color-swatches input:focus-visible + label {
@@ -244,7 +244,7 @@
 .product-options .size-buttons input + label {
   display: block;
   cursor: pointer;
-  border: 1.5px solid var(--bs-secondary-rgb);
+  border: 1.5px solid var(--bs-separator);
   color: var(--bs-body-color);
   padding: 0.125rem 0.5rem;
   margin: 0.25rem;
@@ -470,7 +470,7 @@ body .jdgm-form input[type="email"]:focus,
 body .jdgm-form input[type="url"]:focus, 
 body .jdgm-form textarea:focus {
   color: var(--bs-body-color);
-  border-color: rgba(var(--bs-primary-rgb), 1);
+  border-color: var(--bs-primary);
   box-shadow: var(--bs-focus-box-shadow);
 }
 
@@ -1011,10 +1011,10 @@ body .shopify_subscriptions_app_policy {
 
 /* Tab Navigation */
 .product-description {
-  --tab-active-color: rgba(var(--bs-primary-rgb), 1);
-  --tab-inactive-color: rgba(var(--bs-secondary-rgb), 0.6);
-  --tab-border-color: rgba(var(--bs-secondary-rgb), 0.2);
-  --tab-hover-color: rgba(var(--bs-primary-rgb), 0.8);
+  --tab-active-color: var(--bs-primary);
+  --tab-inactive-color: var(--bs-separator);
+  --tab-border-color: var(--bs-separator);
+  --tab-hover-color: var(--bs-primary);
   width: var(--bs-container-max-width);
   margin: 3rem auto;
   padding-top: 2rem;

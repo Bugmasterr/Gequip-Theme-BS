@@ -14,10 +14,12 @@
   {%- comment -%} 
     Colors
   {%- endcomment -%}
-  --bs-primary: {{ settings.color_primary }};
-  --bs-primary-rgb: {{ settings.color_primary | color_to_rgb | remove: 'rgb(' | remove: ')' }};
-  --bs-secondary: {{ settings.color_secondary }};
-  --bs-secondary-rgb: {{ settings.color_secondary | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+  --bs-primary: {{ settings.color_brand_primary }};
+  --bs-primary-rgb: {{ settings.color_brand_primary | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+  --bs-secondary: {{ settings.color_brand_secondary }};
+  --bs-secondary-rgb: {{ settings.color_brand_secondary | color_to_rgb | remove: 'rgb(' | remove: '#' }};
+  --bs-separator: {{ settings.color_separator | default: '#aaa' }};
+  --bs-separator-rgb: {{ settings.color_separator | default: '#aaa' | color_to_rgb | remove: 'rgb(' | remove: ')' }};
   --bs-body-bg: {{ settings.color_body_bg }};
   --bs-body-bg-rgb: {{ settings.color_body_bg | color_to_rgb | remove: 'rgb(' | remove: ')' }};
   --bs-body-color: {{ settings.color_body_color }};

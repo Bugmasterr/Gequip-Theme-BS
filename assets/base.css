@@ -6,9 +6,9 @@
   --bs-link-color-rgb: currentColor;
   --bs-link-hover-color: currentColor;
   --bs-link-hover-color-rgb: currentColor;
-  --bs-border-color: rgba(var(--bs-secondary-rgb), 1);
+  --bs-border-color: var(--bs-separator);
   --img-aspect-ratio: 1/1; /* Default fallback */
-  --bs-separator: #ccc;
+  --bs-separator: var(--bs-separator);
 }
 
 
@@ -20,7 +20,7 @@
 }
 
 .title-border-bottom span {
-  border-bottom: 1px solid rgba(var(--bs-body-color-rgb), 1);
+  border-bottom: 1px solid var(--bs-separator);
   display: inline-block;
   padding-bottom: 0.25rem;
 }
@@ -472,7 +472,7 @@
 .carousel-full-screen-indicator-border {
   width: 24px;
   height: 42px;
-  border: 1.5px solid rgba(var(--bs-white-rgb), .25);
+  border: 1.5px solid var(--bs-separator);
   border-radius: 12px;
   position: relative;
   text-align: center;
@@ -948,10 +948,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ffffff50;
-    color: #fff;
+    background: #ffffff60;
+    color: #333;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 800;
     text-wrap: nowrap;
     padding: 0.5em 1em;
     border-radius: .3rem;
@@ -1446,7 +1446,7 @@ footer hr {
   Popovers
 */
 .popover {
-  --bs-popover-border-color: var(--bs-border-color);
+  --bs-popover-border-color: var(--bs-separator);
   --bs-popover-header-bg: rgba(var(--bs-body-color-rgb), .05);
   box-shadow: var(--bs-box-shadow-sm);
 }
