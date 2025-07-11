@@ -152,6 +152,30 @@
         "border_opacity": 100,
         "container_max_width": "",
         "pt": 10,
+        "pb": 3
+      }
+    },
+    "html_EkFTw3": {
+      "type": "html",
+      "name": "HTML/Liquid",
+      "settings": {
+        "liquid": "{% style %}\n  .download-container {\n    padding: .5em 1em;\n    background: #f8f8f8;\n    border: 1px solid #ddd;\n    border-radius: 5px;\n    margin-top: 1em;\n  }\n  \n  .download-container a {\n    display: flex;\n    align-items: center;\n    font-weight: 500;\n    color: #344fb4;\n    text-decoration: none;\n    padding: 0.5em 0;\n  }\n  \n  .download-container a:hover {\n    text-decoration: underline;\n  }\n  \n  .download-container i {\n    margin-right: 8px;\n    color: #555;\n  \n  }\n  \n  h3.document-heading {\n    margin: 0;\n    background: #fff;\n    padding-block: .5em;\n    color: #555;\n    border-bottom: #aaa solid 1px;\n    display: flex;\n    align-items: center;\n  }\n  \n  h3.document-heading i {\n    margin-right: 10px;\n  }\n  {% endstyle %}\n  {% assign docs_file = product.metafields.ges.docs %}\n  {% if product.metafields.custom.documentation %}\n    <h3 class=\"document-heading\"><i class=\"bi bi-file-pdf\"></i> Documents\n    </h3>\n    <div class=\"download-container\">\n\n      {% if product.metafields.custom.documentation %}\n        {% for doc in product.metafields.custom.documentation.value %}\n          <a href=\"{{ doc.url }}\" target=\"_blank\">\n            <i class=\"bi bi-file-earmark-text\"></i> View {{ doc.text }}\n          </a>\n        {% endfor %}\n      {% endif %}\n  \n    </div>\n  {% endif %}",
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container": "container",
+        "container_max_width": "",
+        "text_align": "text-center",
+        "header_title": "",
+        "header_title_font_size": "h2",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "pt": 0,
         "pb": 10
       }
     },
@@ -251,6 +275,7 @@
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
+    "html_EkFTw3",
     "separator_NcjbwT",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
     "20426219-2b04-4ec4-9f23-1ed81a76c181",
