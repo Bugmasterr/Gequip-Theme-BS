@@ -90,7 +90,7 @@
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
     {% render 'section-header' %}
     <div class="swiper">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper mt-2">
         {% if section.settings.recommended_mode and request.path contains 'recommendations' %}
           {% for product in recommendations.products %}
             <div class="swiper-slide product-card-slide">
