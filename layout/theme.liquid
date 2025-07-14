@@ -25,10 +25,11 @@
   {%- endunless -%}
 
   <title>
-    {{ page_title }}
-    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    {% if request.page_type == 'index' %}
+      General Equipment & Supply | Bending, Lifting, Threading, and Welding
+    {% else %}
+      {{ page_title }} - {{ shop.name }}
+    {% endif %}
   </title>
 
   {% if page_description %}
