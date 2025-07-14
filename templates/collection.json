@@ -11,7 +11,9 @@
   "sections": {
     "collection_header_JKf7mh": {
       "type": "collection-header",
-      "custom_css": [],
+      "custom_css": [
+        ".img-fluid {}"
+      ],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 10,
