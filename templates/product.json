@@ -219,12 +219,12 @@
       "type": "separator",
       "settings": {
         "bg_color": "bg-secondary",
-        "bg_opacity": 100,
+        "bg_opacity": 50,
         "height": 1,
         "container": "container",
         "container_max_width": "",
         "pt": 0,
-        "pb": 0
+        "pb": 10
       }
     },
     "17519138752e9ffda2": {
@@ -246,6 +246,19 @@
         "loox_reviews_loox_dynamic_section_HPhWB9"
       ],
       "settings": {}
+    },
+    "separator_4Cf3rR": {
+      "type": "separator",
+      "name": "Separator",
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 0,
+        "height": 1,
+        "container": "",
+        "container_max_width": "",
+        "pt": 10,
+        "pb": 10
+      }
     }
   },
   "order": [
@@ -253,6 +266,7 @@
     "html_EkFTw3",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
     "20426219-2b04-4ec4-9f23-1ed81a76c181",
-    "17519138752e9ffda2"
+    "17519138752e9ffda2",
+    "separator_4Cf3rR"
   ]
 }
