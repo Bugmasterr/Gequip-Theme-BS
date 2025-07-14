@@ -678,17 +678,16 @@
   height: 100%;
   width: 100%;
   background: #ffffff;
-  border: 1px solid #ccc;
+  outline: 1px solid #00000040;
   transform-origin: center;
   will-change: transform;
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
   overflow: hidden;
-  transition: box-shadow, transform 0.3s ease;
-  -webkit-transition: box-shadow, transform 0.3s ease;
-  -moz-transition: box-shadow, transform 0.3s ease;
-  -ms-transition: box-shadow, transform 0.3s ease;
-  -o-transition: box-shadow, transform 0.3s ease;
+  transition: box-shadow, transform 0.33s ease;
+  -webkit-transition: box-shadow, transform 0.33s ease;
+  -moz-transition: box-shadow, transform 0.33s ease;
+  -ms-transition: box-shadow, transform 0.33s ease;
+  -o-transition: box-shadow, transform 0.33s ease;
 }
 
 .info-icon {
@@ -770,7 +769,7 @@
 
 .card-product:hover {
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-    outline:  1px solid #aaa;
+    outline:  1px solid #00000060;
     z-index: 2;
 }
 
