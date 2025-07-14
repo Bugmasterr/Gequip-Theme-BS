@@ -329,7 +329,7 @@
         "img {margin: 0rem; padding: 1rem; height: 25em; width: auto;}"
       ],
       "settings": {
-        "container_max_width": "1200"
+        "container_max_width": "1000"
       }
     },
     "media_with_text_3cgm8E": {
@@ -385,7 +385,7 @@
         ".btn {display: flex;}"
       ],
       "settings": {
-        "container_max_width": "900"
+        "container_max_width": "1000"
       }
     },
     "featured_products_AAxprB": {
@@ -525,7 +525,7 @@
         "border_bottom_width": 1,
         "border_color": "border-secondary",
         "border_opacity": 100,
-        "container_max_width": "1500",
+        "container_max_width": "1400",
         "products": [],
         "collection": "threading",
         "limit": 24,
