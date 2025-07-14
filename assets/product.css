@@ -1015,7 +1015,7 @@ body .shopify_subscriptions_app_policy {
   --tab-inactive-color: var(--bs-separator);
   --tab-border-color: var(--bs-separator);
   --tab-hover-color: var(--bs-primary);
-  width: var(--bs-container-max-width);
+  max-width: var(--bs-container-max-width);
   margin: auto;
   padding-top: 2rem;
   border-top: 1px solid var(--bs-border-color);
@@ -1093,11 +1093,6 @@ body .shopify_subscriptions_app_policy {
 /* Responsive adjustments */
 @media (max-width: 767.98px) {
   .product-description .nav-tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    scrollbar-width: none;
     padding-bottom: 0.5rem;
     gap: 1rem;
   }
