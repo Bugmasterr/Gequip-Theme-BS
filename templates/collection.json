@@ -11,6 +11,7 @@
   "sections": {
     "collection_header_JKf7mh": {
       "type": "collection-header",
+      "custom_css": [],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 10,
@@ -22,8 +23,8 @@
         "border_opacity": 100,
         "container_max_width": "600",
         "img_show": true,
-        "img_overlay_color": "#000000",
-        "img_overlay_opacity": 30,
+        "img_overlay_color": "#334fb4",
+        "img_overlay_opacity": 50,
         "img_overlay_blur": 0,
         "title_font_size": "h1",
         "description_show": true,
