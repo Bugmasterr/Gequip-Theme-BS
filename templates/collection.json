@@ -27,7 +27,7 @@
         "img_overlay_opacity": 50,
         "img_overlay_blur": 0,
         "title_font_size": "h1",
-        "description_show": true,
+        "description_show": false,
         "description_font_size": "fs-md",
         "pt": 12,
         "pb": 12,
