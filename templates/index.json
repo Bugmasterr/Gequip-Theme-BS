@@ -331,44 +331,6 @@
         "container_max_width": "1200"
       }
     },
-    "featured_products_AAxprB": {
-      "type": "featured-products",
-      "custom_css": [
-        ".title {padding-bottom: 15px;}"
-      ],
-      "settings": {
-        "bg_color": "bg-secondary",
-        "bg_opacity": 33,
-        "bg_gradient": "",
-        "text_color": "text-body",
-        "border_top_width": 0,
-        "border_bottom_width": 0,
-        "border_color": "border-secondary",
-        "border_opacity": 100,
-        "container_max_width": "1600",
-        "products": [],
-        "collection": "new",
-        "limit": 24,
-        "recommended_mode": true,
-        "recommended_mode_intent": "related",
-        "header_title": "New Arrivals",
-        "header_title_font_size": "h3",
-        "header_description": "",
-        "header_description_font_size": "fs-md",
-        "slider_speed": 800,
-        "slider_navigation": true,
-        "slider_pagination": true,
-        "slider_pagination_type": "bullets",
-        "slider_scrollbar": true,
-        "slider_partial_slides_mobile": false,
-        "slider_autoplay": 0,
-        "breakpoint_mobile": 1,
-        "breakpoint_tablet": 2,
-        "breakpoint_desktop": 6,
-        "pt": 8,
-        "pb": 8
-      }
-    },
     "media_with_text_3cgm8E": {
       "type": "media-with-text",
       "blocks": {
@@ -425,53 +387,99 @@
         "container_max_width": "900"
       }
     },
-    "media_with_text_qrMUmd": {
-      "type": "media-with-text",
+    "featured_products_AAxprB": {
+      "type": "featured-products",
+      "custom_css": [
+        ".title {padding-bottom: 15px;}"
+      ],
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 33,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-secondary",
+        "border_opacity": 100,
+        "container_max_width": "1600",
+        "products": [],
+        "collection": "new",
+        "limit": 24,
+        "recommended_mode": true,
+        "recommended_mode_intent": "related",
+        "header_title": "New Arrivals",
+        "header_title_font_size": "h3",
+        "header_description": "",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 800,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 6,
+        "pt": 8,
+        "pb": 8
+      }
+    },
+    "hero_carousel_KgtQxB": {
+      "type": "hero-carousel",
       "blocks": {
-        "row_yCU9rq": {
-          "type": "row",
+        "slide_ecxrUk": {
+          "type": "slide",
           "settings": {
-            "bg_color": "bg-body",
-            "bg_opacity": 100,
-            "bg_gradient": "",
-            "text_color": "text-body",
-            "border_top_width": 0,
-            "border_bottom_width": 0,
-            "border_color": "border-body",
-            "border_opacity": 100,
-            "media_align_desktop": "",
-            "media_border": "img-thumbnail",
-            "convert_to_pjpg": true,
-            "img_orientation": "adapt",
-            "video_ratio": "adapt",
-            "video_autoplay": true,
-            "video_loop": true,
-            "video_muted": true,
-            "video_controls": true,
-            "text_align_mobile": "text-center",
-            "text_align_desktop": "text-desktop-start",
-            "subtitle": "Optional Subtitle",
-            "title": "Media With Text",
-            "title_font_size": "h2",
-            "description": "<p>Either show an image, video (MP4) or an external video (YouTube). If no text block is shown, the media will take full section's space.</p>",
-            "description_font_size": "fs-md",
-            "btn_primary_text": "Primary button",
+            "img_mobile": "shopify://shop_images/RepairBanner.png",
+            "img_desktop": "shopify://shop_images/RepairBanner.png",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "overlay_blur": 0,
+            "subtitle": "Need something repaired?",
+            "title": "Tool & Equipment Repair",
+            "description": "<p>We specialize in repairing all types of equipment with quick and reliable service</p>",
+            "btn_primary_text": "View Details",
             "btn_primary_url": "",
-            "btn_primary_color": "btn-primary",
-            "btn_secondary_text": "Secondary button",
-            "btn_secondary_url": "",
-            "btn_secondary_color": "btn-secondary",
-            "pt": 5,
-            "pb": 5
+            "btn_secondary_text": "",
+            "btn_secondary_url": ""
           }
         }
       },
       "block_order": [
-        "row_yCU9rq"
+        "slide_ecxrUk"
       ],
-      "name": "Media with text",
+      "name": "Hero carousel",
       "settings": {
-        "container_max_width": ""
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-white",
+        "width": 100,
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "carousel_controls": false,
+        "carousel_indicators": false,
+        "carousel_transition": "slide",
+        "carousel_transition_duration": 500,
+        "carousel_autoplay": 5,
+        "carousel_effect": "carousel-zoom-in",
+        "media_mobile_height": 400,
+        "media_desktop_height": 400,
+        "media_adapt": false,
+        "media_full": false,
+        "caption_max_width": "",
+        "caption_position": "carousel-caption-center",
+        "subtitle_font_size": "fs-md",
+        "title_font_size": "h2",
+        "description_font_size": "fs-lg",
+        "btn_primary_color": "btn-white",
+        "btn_secondary_color": "btn-secondary",
+        "btn_font_size": "fs-md",
+        "pt": 0,
+        "pb": 0
       }
     },
     "richtext_4miPYL": {
@@ -1004,9 +1012,9 @@
     "featured_collections_6gCzrm",
     "featured_products_nXJKQn",
     "media_with_text_xTY8gi",
-    "featured_products_AAxprB",
     "media_with_text_3cgm8E",
-    "media_with_text_qrMUmd",
+    "featured_products_AAxprB",
+    "hero_carousel_KgtQxB",
     "richtext_4miPYL",
     "featured_products_3cALLr",
     "featured_products_qGWChX",
