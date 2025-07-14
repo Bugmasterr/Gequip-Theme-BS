@@ -179,19 +179,6 @@
         "pb": 10
       }
     },
-    "separator_NcjbwT": {
-      "type": "separator",
-      "name": "Separator",
-      "settings": {
-        "bg_color": "bg-secondary",
-        "bg_opacity": 100,
-        "height": 1,
-        "container": "",
-        "container_max_width": "",
-        "pt": 10,
-        "pb": 10
-      }
-    },
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41": {
       "type": "featured-products",
       "settings": {
@@ -223,7 +210,7 @@
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
         "breakpoint_desktop": 5,
-        "pt": 2,
+        "pt": 5,
         "pb": 11
       }
     },
@@ -276,7 +263,6 @@
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
     "html_EkFTw3",
-    "separator_NcjbwT",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
     "20426219-2b04-4ec4-9f23-1ed81a76c181",
     "17519138752e9ffda2",
