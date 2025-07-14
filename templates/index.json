@@ -498,7 +498,7 @@
       ],
       "settings": {
         "bg_color": "bg-secondary",
-        "bg_opacity": 50,
+        "bg_opacity": 33,
         "bg_gradient": "",
         "text_color": "text-body",
         "border_top_width": 0,
@@ -531,7 +531,6 @@
     },
     "featured_products_tfxwmm": {
       "type": "featured-products",
-      "disabled": true,
       "custom_css": [
         ".title {padding-bottom: 15px;}"
       ],
@@ -546,11 +545,11 @@
         "border_opacity": 100,
         "container_max_width": "1500",
         "products": [],
-        "collection": "welding-machines",
+        "collection": "crane-rigging",
         "limit": 24,
         "recommended_mode": true,
         "recommended_mode_intent": "related",
-        "header_title": "Welding",
+        "header_title": "Lifting & Rigging",
         "header_title_font_size": "h3",
         "header_description": "",
         "header_description_font_size": "fs-md",
@@ -575,7 +574,7 @@
       ],
       "settings": {
         "bg_color": "bg-secondary",
-        "bg_opacity": 50,
+        "bg_opacity": 33,
         "bg_gradient": "",
         "text_color": "text-body",
         "border_top_width": 0,
