@@ -1,4 +1,3 @@
-
 // Init Bootstrap tooltips
 document.querySelectorAll('[data-bs-toggle="tooltip"]')
   .forEach((el) => new window.bootstrap.Tooltip(el))
@@ -20,10 +19,10 @@ window.theme.debounce = function (callback, wait = 200) {
 // Throttle
 window.theme.throttle = function (callback, timeFrame = 200) {
   let lastTime = 0
-  return function () {
+  return (...args) => {
     const now = Date.now()
     if (now - lastTime >= timeFrame) {
-      callback()
+      callback.apply(this, args)
       lastTime = now
     }
   }
@@ -147,7 +146,7 @@ document.querySelector('.btn.shopify-challenge__button')
 // Shopify's errors messages
 const errors = document.querySelector('.errors')
 if (errors) {
-  errors.classList.add('alert', 'alert-danger')
+  errors.classList.add('alert', 'alert-danger') 
 }
 
 // Wrap Shopify's section apps within a container
@@ -241,4 +240,30 @@ document.querySelectorAll('.shopify-localization-form button').forEach(btn => {
     btn.closest('form').querySelector('[name="country_code"]').value = btn.dataset.isoCode
     btn.closest('form').submit()
   })
+})
+
+// Link Prefetching on Hover
+document.addEventListener('DOMContentLoaded', function () {
+  const prefetchedUrls = new Set()
+
+  const handleHover = window.theme.throttle(function (e) {
+    const link = e.target.closest('a')
+
+    if (
+      link &&
+      link.href &&
+      link.origin === window.location.origin &&
+      !prefetchedUrls.has(link.href)
+    ) {
+      const prefetchLink = document.createElement('link')
+      prefetchLink.rel = 'prefetch'
+      prefetchLink.href = link.href
+      // Include cookies/credentials so protected storefront pages don't return 401
+      prefetchLink.crossOrigin = 'use-credentials'
+      document.head.appendChild(prefetchLink)
+      prefetchedUrls.add(link.href)
+    }
+  }, 150) // throttle interval in ms
+
+  document.addEventListener('mouseover', handleHover)
 })

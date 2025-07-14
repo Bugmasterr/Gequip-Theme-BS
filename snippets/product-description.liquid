@@ -3,39 +3,107 @@
   Single tab: Description only (Reviews tab removed)
 {% endcomment %}
 
-<div class="product-description mt-5">
+<div class="product-description container mt-5">
   <div class="row justify-content-center">
     <div class="">
-      <!-- Tab Navigation -->
-      <ul class="nav nav-tabs border-0 mb-4" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button 
-            class="nav-link active fw-medium" 
-            id="description-tab" 
-            data-bs-toggle="tab" 
-            data-bs-target="#description-content" 
-            type="button" 
-            role="tab" 
-            aria-controls="description" 
-            aria-selected="true">
-            <i class="bi bi-card-text me-2"></i>Product Description
-          </button>
-        </li>
-      </ul>
-
-      <!-- Tab Content -->
-      <div class="tab-content pt-3">
-        <!-- Description Tab -->
-        <div 
-          class="tab-pane fade show active" 
-          id="description-content" 
-          role="tabpanel" 
-          aria-labelledby="description-tab">
-          <div class="rte" style="background: #cccccc50; padding: 1rem; border-radius: .5rem; border: 1px solid #ccc;">
+      <div class="pt-3">
+        <h3 class="fw-bold document-heading"><i class="bi bi-file-pdf"></i> Product Description
+        </h3>
+        <div>
+          <div class="desc-container mt-5 mb-10"><div class="desc">
             {{ product.description }}
-          </div>
+          </div></div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+    {% if product.metafields.custom.documentation %}
+      <h3 class="fw-bold document-heading"><i class="bi bi-file-pdf"></i> Documents
+      </h3>
+      <div class="download-container mt-5">
+        {% if product.metafields.custom.documentation %}
+          {% for doc in product.metafields.custom.documentation.value %}
+            <a href="{{ doc.url }}" target="_blank">
+              <i class="bi bi-file-earmark-text"></i> View {{ doc.text }}
+            </a>
+          {% endfor %}
+        {% endif %}    
+      </div>
+    {% endif %}
+</div>
+
+<div class="container">
+  {% liquid
+  if product.metafields.ges.product_condition != null
+    assign disclaimer_condition = product.metafields.ges.product_condition | replace: '["', '' | replace: '"]', ''
+  elsif product.title contains 'Reconditioned'
+    assign disclaimer_condition = 'Reconditioned'
+  elsif product.title contains 'New'
+    assign disclaimer_condition = 'New Surplus'
+  elsif product.title contains 'Used'
+    assign disclaimer_condition = 'Used'
+  else
+    assign disclaimer_condition = ''
+  endif
+%}
+{% style %}
+.disclaimer-container {
+padding: .5em 1em;
+background: #f8f8f8;
+border: 1px solid #ddd;
+border-radius: 5px;
+}
+{% endstyle %}
+<h3 class="document-heading mt-5 mb-5"><i class="bi bi-exclamation-circle"></i> Disclaimer
+</h3>
+{% if disclaimer_condition == 'New Surplus' %}
+  <div class="disclaimer-container new-surplus">
+    <p>Buyer understands that the Goods described herein are
+      new surplus
+      by persons other than
+      <span>GES</span>.
+      <span>GES</span>
+      is not obligated to do any repair work or modifications upon the Goods prior to sale or delivery. Any modifications performed by
+      <span>GES</span>
+      on the Goods prior to sale shall be performed as a result of the sole request of Buyer using designs and instructions provided by Buyer.</p>
+    <p>
+      <span>GES</span>
+      will attempt to comply with, but will not guarantee, shipping date and or delivery date.
+      Buyer shall have fifteen (15) days from the date of delivery to accept product.
+    </p>
+  </div>
+{% elsif disclaimer_condition == 'Used' %}
+  <div class="disclaimer-container used">
+    <p>Buyer understands that the Goods described herein have been
+      used
+      by persons other than
+      <span>GES</span>.
+      <span>GES</span>
+      is not obligated to do any repair work or modifications upon the Goods prior to sale or delivery. Any repair work or modifications performed by
+      <span>GES</span>
+      on the Goods prior to sale shall be performed as a result of the sole request of Buyer using designs and instructions provided by Buyer.</p>
+    <p>
+      <span>GES</span>
+      will attempt to comply with, but will not guarantee, shipping date and or delivery date.
+      Buyer shall have fifteen (15) days from the date of delivery to accept product.
+    </p>
+  </div>
+{% else %}
+  <div class="disclaimer-container reconditioned">
+    <p>This is a reconditioned product and is in
+      full operational condition. Photo may not represent the actual product which may or may not contain some
+      cosmetic blemishes
+      that do not interfere with functionality. We offer a
+      90-day operational warranty
+      on all reconditioned equipment. These units have been repainted and the manufacturer's logo may or may not be visible.</p>
+    <p>
+      <span>GES</span>
+      will attempt to comply with, but will not guarantee, shipping date and or delivery date.
+      The buyer shall have fifteen (15) days from the date of delivery to accept product.
+    </p>
+  </div>
+{% endif %}
 </div>

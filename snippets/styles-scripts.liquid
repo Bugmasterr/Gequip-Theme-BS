@@ -60,12 +60,12 @@
 {% comment %} 
   Styles 
 {% endcomment %}
-<link href="{{ 'variables.css' | asset_url }}" rel="stylesheet">
-<link href="{{ 'base.css' | asset_url }}" rel="stylesheet">
-<link href="{{ 'sections.css' | asset_url }}" rel="stylesheet">
-<link href="{{ 'cart.css' | asset_url }}" rel="stylesheet">
-<link href="{{ 'collection.css' | asset_url }}" rel="stylesheet">
-<link href="{{ 'product.css' | asset_url }}" rel="stylesheet">
+{{ 'variables.css' | asset_url | stylesheet_tag }}
+{{ 'base.css' | asset_url | stylesheet_tag: preload: true }}
+{{ 'sections.css' | asset_url | stylesheet_tag }}
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+{{ 'collection.css' | asset_url | stylesheet_tag }}
+{{ 'product.css' | asset_url | stylesheet_tag }}
 
 {% comment %} 
   Scripts 

@@ -866,7 +866,7 @@
 }
 
 .card-condition-text {
-    font-size: .9em;
+    font-size: 1em;
 }
 
 .card-price {
@@ -2251,17 +2251,6 @@ img {
   max-width: 100%;
   height: auto;
   aspect-ratio: attr(width) / attr(height);
-}
-
-/*
-  Font Loading  
-*/
-@font-face {
-  font-family: 'YourFont';
-  src: url('your-font.woff2') format('woff2');
-  font-display: swap;
-  font-weight: normal;
-  font-style: normal;
 }
 
 .aspect-ratio-box {

@@ -70,4 +70,10 @@
     </button>
   {% endif %}
 
+  <div>
+    {% for type in shop.enabled_payment_types -%} {{ type | payment_type_svg_tag }}
+    {% endfor %}
+  </div>
+
+
 </div>
