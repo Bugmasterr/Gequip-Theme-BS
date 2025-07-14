@@ -15,7 +15,7 @@
         "8abeac2d-7b60-4697-891c-4d6201789d31": {
           "type": "media_gallery",
           "settings": {
-            "img_orientation": "ratio-1x1",
+            "img_orientation": "adapt",
             "img_border": "rounded",
             "effect": "fade",
             "speed": 300,
@@ -137,8 +137,9 @@
         "liquid_8tK9Pc"
       ],
       "custom_css": [
-        "h1,h2,h3 {font-size: 22px;}",
-        "h4,h5,h6 {font-size: 18px;}"
+        "h1,h2,h3 {font-size: 22px; font-weight: bold;}",
+        "h4,h5,h6 {font-size: 18px;}",
+        ".disclaimer-container {}"
       ],
       "settings": {
         "bg_color": "bg-body",
@@ -159,7 +160,7 @@
       "type": "html",
       "name": "HTML/Liquid",
       "settings": {
-        "liquid": "{% style %}\n  .download-container {\n    padding: .5em 1em;\n    background: #f8f8f8;\n    border: 1px solid #ddd;\n    border-radius: 5px;\n    margin-top: 1em;\n  }\n  \n  .download-container a {\n    display: flex;\n    align-items: center;\n    font-weight: 500;\n    color: #344fb4;\n    text-decoration: none;\n    padding: 0.5em 0;\n  }\n  \n  .download-container a:hover {\n    text-decoration: underline;\n  }\n  \n  .download-container i {\n    margin-right: 8px;\n    color: #555;\n  \n  }\n  \n  h3.document-heading {\n    margin: 0;\n    background: #fff;\n    padding-block: .5em;\n    color: #555;\n    border-bottom: #aaa solid 1px;\n    display: flex;\n    align-items: center;\n  }\n  \n  h3.document-heading i {\n    margin-right: 10px;\n  }\n  {% endstyle %}\n  {% assign docs_file = product.metafields.ges.docs %}\n  {% if product.metafields.custom.documentation %}\n    <h3 class=\"document-heading\"><i class=\"bi bi-file-pdf\"></i> Documents\n    </h3>\n    <div class=\"download-container\">\n\n      {% if product.metafields.custom.documentation %}\n        {% for doc in product.metafields.custom.documentation.value %}\n          <a href=\"{{ doc.url }}\" target=\"_blank\">\n            <i class=\"bi bi-file-earmark-text\"></i> View {{ doc.text }}\n          </a>\n        {% endfor %}\n      {% endif %}\n  \n    </div>\n  {% endif %}",
+        "liquid": "{% style %}\n  .download-container {\n    padding: .5em 1em;\n    background: #f8f8f8;\n    border: 1px solid #ddd;\n    border-radius: 5px;\n    margin-top: 1em;\n  }\n  \n  .download-container a {\n    display: flex;\n    align-items: center;\n    font-weight: 500;\n    color: #344fb4;\n    text-decoration: none;\n    padding: 0.5em 0;\n  }\n  \n  .download-container a:hover {\n    text-decoration: underline;\n  }\n  \n  .download-container i {\n    margin-right: 8px;\n    color: #555;\n  \n  }\n  \n  h3.document-heading {\n    margin: 0;\n    background: #fff;\n    padding-block: .5em;\n    color: #555;\n    border-bottom: #aaa solid 1px;\n    display: flex;\n    align-items: center;\n  }\n  \n  h3.document-heading i {\n    margin-right: 10px;\n  }\n  {% endstyle %}",
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
@@ -176,19 +177,6 @@
         "header_description": "",
         "header_description_font_size": "fs-md",
         "pt": 0,
-        "pb": 10
-      }
-    },
-    "separator_NcjbwT": {
-      "type": "separator",
-      "name": "Separator",
-      "settings": {
-        "bg_color": "bg-secondary",
-        "bg_opacity": 100,
-        "height": 1,
-        "container": "",
-        "container_max_width": "",
-        "pt": 10,
         "pb": 10
       }
     },
@@ -223,7 +211,7 @@
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
         "breakpoint_desktop": 5,
-        "pt": 2,
+        "pt": 5,
         "pb": 11
       }
     },
@@ -233,7 +221,7 @@
         "bg_color": "bg-secondary",
         "bg_opacity": 100,
         "height": 1,
-        "container": "",
+        "container": "container",
         "container_max_width": "",
         "pt": 0,
         "pb": 0
@@ -258,28 +246,13 @@
         "loox_reviews_loox_dynamic_section_HPhWB9"
       ],
       "settings": {}
-    },
-    "separator_TQzYYL": {
-      "type": "separator",
-      "name": "Separator",
-      "settings": {
-        "bg_color": "bg-secondary",
-        "bg_opacity": 100,
-        "height": 1,
-        "container": "",
-        "container_max_width": "",
-        "pt": 10,
-        "pb": 5
-      }
     }
   },
   "order": [
     "8f4f1b58-133b-491a-a7b2-8bf2e6fbc583",
     "html_EkFTw3",
-    "separator_NcjbwT",
     "8b8acb35-e69e-4471-a6cb-d0a09485fb41",
     "20426219-2b04-4ec4-9f23-1ed81a76c181",
-    "17519138752e9ffda2",
-    "separator_TQzYYL"
+    "17519138752e9ffda2"
   ]
 }
