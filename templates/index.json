@@ -35,7 +35,8 @@
       ],
       "custom_css": [
         ".carousel {box-shadow: #233a8f 0px 0px 30px 10px inset;}",
-        ".title {font-weight: bold !important;}"
+        ".title {font-weight: bold !important;}",
+        ".btn-secondary {background: #DC3545;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
