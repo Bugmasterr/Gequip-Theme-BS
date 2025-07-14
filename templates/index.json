@@ -25,8 +25,8 @@
             "description": "<p>Explore our New, Used, and Reconditioned Tools and Equipment</p>",
             "btn_primary_text": "View All Products",
             "btn_primary_url": "shopify://collections/new",
-            "btn_secondary_text": "",
-            "btn_secondary_url": ""
+            "btn_secondary_text": "View our Catalogue",
+            "btn_secondary_url": "shopify://pages/ges-catalog"
           }
         }
       },
@@ -63,7 +63,7 @@
         "title_font_size": "h1",
         "description_font_size": "fs-xl",
         "btn_primary_color": "btn-white",
-        "btn_secondary_color": "btn-light-secondary",
+        "btn_secondary_color": "btn-secondary",
         "btn_font_size": "fs-md",
         "pt": 0,
         "pb": 0
@@ -440,7 +440,7 @@
             "title": "Tool & Equipment Repair",
             "description": "<p>We specialize in repairing all types of equipment with quick and reliable service</p>",
             "btn_primary_text": "View Details",
-            "btn_primary_url": "",
+            "btn_primary_url": "shopify://pages/repair",
             "btn_secondary_text": "",
             "btn_secondary_url": ""
           }
