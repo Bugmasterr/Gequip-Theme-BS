@@ -1,109 +1,326 @@
 {% comment %}
-  Product Description with Tabs
-  Single tab: Description only (Reviews tab removed)
+  Product Description with Lead Time, Documents, and Disclaimer
+  Optimized version with reduced redundancy and improved performance
 {% endcomment %}
 
-<div class="product-description container mt-5">
-  <div class="row justify-content-center">
-    <div class="">
-      <div class="pt-3">
-        <h3 class="fw-bold document-heading"><i class="bi bi-file-pdf"></i> Product Description
-        </h3>
-        <div>
-          <div class="desc-container mt-5 mb-10"><div class="desc">
-            {{ product.description }}
-          </div></div>
+{%- liquid
+  # Product Condition Logic (single source of truth)
+  assign product_condition = product.metafields.ges.product_condition | replace: '["', '' | replace: '"]', ''
+  
+  if product_condition == blank
+    if product.title contains 'Reconditioned'
+      assign product_condition = 'Reconditioned'
+    elsif product.title contains 'New'
+      assign product_condition = 'New Surplus'
+    elsif product.title contains 'Used'
+      assign product_condition = 'Used'
+    endif
+  endif
+
+  # Lead Time Logic
+  assign lt_min = product.metafields.ges['lead-time-min']
+  assign lt_max = product.metafields.ges['lead-time-max']
+  
+  # Override if custom lead time exists
+  if product.metafields.ges.lead_time != blank
+    assign lead_time = product.metafields.ges.lead_time
+  elsif lt_min != blank or lt_max != blank
+    # Calculate lead time range
+    if lt_min != blank and lt_max != blank
+      assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: lt_max | append: ' Business Days'
+    elsif lt_min != blank
+      assign computed_max = lt_min | plus: 2
+      assign lead_time = 'Ships In ' | append: lt_min | append: ' to ' | append: computed_max | append: ' Business Days'
+    else
+      assign computed_min = lt_max | minus: 2 | at_least: 1
+      assign lead_time = 'Ships In ' | append: computed_min | append: ' to ' | append: lt_max | append: ' Business Days'
+    endif
+  elsif product_condition == 'Reconditioned'
+    assign lead_time = 'Ships In 5 - 9 Business Days'
+  else
+    assign lead_time = 'Ships In 1 - 2 Business Days'
+  endif
+
+  # Documents check
+  assign has_documents = false
+  if product.metafields.custom.documentation
+    assign has_documents = true
+  endif
+-%}
+
+{%- style -%}
+/* Variables for consistent theming */
+:root {
+  --primary-color: #2563eb;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
+  --radius: 8px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --max-width: 1200px;
+}
+
+/* Main wrapper for consistent width */
+.product-info-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Lead time banner */
+.product-lead-time {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+  padding: 1em;
+  background: var(--bg-white);
+  color: var(--text-primary);
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.product-lead-time i {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Section container */
+.product-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Section headings */
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.section-heading i {
+  color: var(--primary-color);
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+/* Content sections */
+.content-section {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Product description specific */
+.content-section h1,
+.content-section h2,
+.content-section h3,
+.content-section h4,
+.content-section h5,
+.content-section h6 {
+  color: var(--text-primary);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.content-section ul,
+.content-section ol {
+  margin: var(--spacing-sm) 0;
+  padding-left: var(--spacing-lg);
+}
+
+.content-section li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Document downloads */
+.download-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--bg-white);
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: calc(var(--radius) / 2);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  padding: 1rem;
+}
+
+.download-link:hover {
+  background: var(--primary-color);
+  color: var(--bg-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.download-link i {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.download-link:hover i {
+  color: white;
+}
+
+/* Disclaimer specific styling */
+.disclaimer-content {
+  background: var(--bg-light);
+}
+
+.disclaimer-content p {
+  margin-bottom: var(--spacing-md);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.disclaimer-content p:last-child {
+  margin-bottom: 0;
+}
+
+.disclaimer-content span {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .product-info-wrapper {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .product-lead-time {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+  }
+  
+  .section-heading {
+    font-size: 1.25rem;
+  }
+  
+  .content-section {
+    padding: var(--spacing-md);
+  }
+  
+  .download-container {
+    flex-direction: column;
+  }
+  
+  .download-link {
+    width: fit-content;
+  }
+}
+
+/* Remove default margins that might interfere */
+.product-info-wrapper h1,
+.product-info-wrapper h2,
+.product-info-wrapper h3,
+.product-info-wrapper h4,
+.product-info-wrapper h5,
+.product-info-wrapper h6,
+.product-info-wrapper p {
+  margin-top: 0;
+}
+{%- endstyle -%}
+
+<div class="product-description">
+  <div class="product-lead-time d-flex align-items-center gap-2 mb-3 bg-white rounded shadow-sm">
+    <i class="bi bi-truck text-primary fs-5"></i>
+    <span class="fw-medium ps-4">{{ lead_time }}</span>
+  </div>
+
+  <ul class="nav nav-tabs mb-2" id="productDescTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button" role="tab" aria-controls="desc" aria-selected="true">
+        <i class="bi bi-file-text"></i> Description
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="productDescTabsContent">
+    <div class="tab-pane fade show active" id="desc" role="tabpanel" aria-labelledby="desc-tab">
+      <div class="desc-container mb-4">
+        <div class="desc rte">
+          {{ product.description }}
+        </div>
+      </div>
+      {%- if has_documents -%}
+      <div class="fw-bold my-5 pt-5"><i class="bi bi-file-earmark-pdf"></i> Documents</div>
+      <div class="desc-container mb-4">
+        <div class="d-flex flex-wrap gap-2">
+          {%- for doc in product.metafields.custom.documentation.value -%}
+            <a href="{{ doc.url }}" target="_blank" rel="noopener" class="download-link btn btn-outline-primary p-4">
+              <i class="bi bi-download"></i>
+              <span>{{ doc.text }}</span>
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- endif -%}
+      <div class="fw-bold my-5 pt-5"><i class="bi bi-info-circle"></i> Disclaimer</div>
+      <div class="desc-container mb-4">
+        <div class="disclaimer-content">
+          {%- case product_condition -%}
+            {%- when 'New Surplus' -%}
+              <p>Buyer understands that the Goods described herein are new surplus by persons other than <span>GES</span>. <span>GES</span> is not obligated to do any repair work or modifications upon the Goods prior to sale or delivery. Any modifications performed by <span>GES</span> on the Goods prior to sale shall be performed as a result of the sole request of Buyer using designs and instructions provided by Buyer.</p>
+              <p><span>GES</span> will attempt to comply with, but will not guarantee, shipping date and or delivery date. Buyer shall have fifteen (15) days from the date of delivery to accept product.</p>
+            {%- when 'Used' -%}
+              <p>Buyer understands that the Goods described herein have been used by persons other than <span>GES</span>. <span>GES</span> is not obligated to do any repair work or modifications upon the Goods prior to sale or delivery. Any repair work or modifications performed by <span>GES</span> on the Goods prior to sale shall be performed as a result of the sole request of Buyer using designs and instructions provided by Buyer.</p>
+              <p><span>GES</span> will attempt to comply with, but will not guarantee, shipping date and or delivery date. Buyer shall have fifteen (15) days from the date of delivery to accept product.</p>
+            {%- else -%}
+              <p>This is a reconditioned product and is in full operational condition. Photo may not represent the actual product which may or may not contain some cosmetic blemishes that do not interfere with functionality. We offer a 90-day operational warranty on all reconditioned equipment. These units have been repainted and the manufacturer's logo may or may not be visible.</p>
+              <p><span>GES</span> will attempt to comply with, but will not guarantee, shipping date and or delivery date. The buyer shall have fifteen (15) days from the date of delivery to accept product.</p>
+          {%- endcase -%}
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+      <div class="desc-container mb-4">
+        <div id="looxReviews" data-product-id="{{ product.id }}">
+          {% if shop.metafields.loox and shop.metafields.loox.enabled %}
+            <div class="loox-reviews-widget">
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  if (window.Loox && typeof window.Loox.loadWidget === 'function') {
+                    window.Loox.loadWidget({ productId: {{ product.id | json }} });
+                  }
+                });
+              </script>
+            </div>
+          {% else %}
+            <p class="text-muted">No reviews available for this product.</p>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container">
-    {% if product.metafields.custom.documentation %}
-      <h3 class="fw-bold document-heading"><i class="bi bi-file-pdf"></i> Documents
-      </h3>
-      <div class="download-container mt-5">
-        {% if product.metafields.custom.documentation %}
-          {% for doc in product.metafields.custom.documentation.value %}
-            <a href="{{ doc.url }}" target="_blank">
-              <i class="bi bi-file-earmark-text"></i> View {{ doc.text }}
-            </a>
-          {% endfor %}
-        {% endif %}    
-      </div>
-    {% endif %}
-</div>
-
-<div class="container">
-  {% liquid
-  if product.metafields.ges.product_condition != null
-    assign disclaimer_condition = product.metafields.ges.product_condition | replace: '["', '' | replace: '"]', ''
-  elsif product.title contains 'Reconditioned'
-    assign disclaimer_condition = 'Reconditioned'
-  elsif product.title contains 'New'
-    assign disclaimer_condition = 'New Surplus'
-  elsif product.title contains 'Used'
-    assign disclaimer_condition = 'Used'
-  else
-    assign disclaimer_condition = ''
-  endif
-%}
-{% style %}
-.disclaimer-container {
-padding: .5em 1em;
-background: #f8f8f8;
-border: 1px solid #ddd;
-border-radius: 5px;
-}
-{% endstyle %}
-<h3 class="document-heading mt-5 mb-5"><i class="bi bi-exclamation-circle"></i> Disclaimer
-</h3>
-{% if disclaimer_condition == 'New Surplus' %}
-  <div class="disclaimer-container new-surplus">
-    <p>Buyer understands that the Goods described herein are
-      new surplus
-      by persons other than
-      <span>GES</span>.
-      <span>GES</span>
-      is not obligated to do any repair work or modifications upon the Goods prior to sale or delivery. Any modifications performed by
-      <span>GES</span>
-      on the Goods prior to sale shall be performed as a result of the sole request of Buyer using designs and instructions provided by Buyer.</p>
-    <p>
-      <span>GES</span>
-      will attempt to comply with, but will not guarantee, shipping date and or delivery date.
-      Buyer shall have fifteen (15) days from the date of delivery to accept product.
-    </p>
-  </div>
-{% elsif disclaimer_condition == 'Used' %}
-  <div class="disclaimer-container used">
-    <p>Buyer understands that the Goods described herein have been
-      used
-      by persons other than
-      <span>GES</span>.
-      <span>GES</span>
-      is not obligated to do any repair work or modifications upon the Goods prior to sale or delivery. Any repair work or modifications performed by
-      <span>GES</span>
-      on the Goods prior to sale shall be performed as a result of the sole request of Buyer using designs and instructions provided by Buyer.</p>
-    <p>
-      <span>GES</span>
-      will attempt to comply with, but will not guarantee, shipping date and or delivery date.
-      Buyer shall have fifteen (15) days from the date of delivery to accept product.
-    </p>
-  </div>
-{% else %}
-  <div class="disclaimer-container reconditioned">
-    <p>This is a reconditioned product and is in
-      full operational condition. Photo may not represent the actual product which may or may not contain some
-      cosmetic blemishes
-      that do not interfere with functionality. We offer a
-      90-day operational warranty
-      on all reconditioned equipment. These units have been repainted and the manufacturer's logo may or may not be visible.</p>
-    <p>
-      <span>GES</span>
-      will attempt to comply with, but will not guarantee, shipping date and or delivery date.
-      The buyer shall have fifteen (15) days from the date of delivery to accept product.
-    </p>
-  </div>
-{% endif %}
 </div>
