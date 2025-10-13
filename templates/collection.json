@@ -12,7 +12,7 @@
     "collection_header_JKf7mh": {
       "type": "collection-header",
       "custom_css": [
-        ".h1{font-weight: bold;}"
+        ".h1 {font-weight: bold;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
@@ -23,7 +23,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "600",
+        "container_max_width": "1200",
         "img_show": true,
         "img_overlay_color": "#000000",
         "img_overlay_opacity": 20,
