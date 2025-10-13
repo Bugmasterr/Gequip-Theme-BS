@@ -2,7 +2,8 @@
   Product card logic: lead time & condition
 {% endcomment %}
 {% liquid
-  assign show_collection_badge = false
+  assign show_collection_badge = true
+  assign show_collection_badge = product.metafields.custom.sale_tag
   assign variant = product.selected_or_first_available_variant
 
   assign product_condition = ''
@@ -34,8 +35,8 @@
     {% endunless %}
 
     <div class="card-image-container" style="padding-bottom: calc(100% * var(--card-aspect-ratio));">
-      {% if show_collection_badge and product_condition != blank %}
-        <div class="card-condition-badge">Collection Badge</div>
+      {% if show_collection_badge %}
+        <div class="card-condition-badge">{{ show_collection_badge }}</div>
       {% endif %}
       <div class="info-icon">
         <i class="bi bi-info-square"></i>
