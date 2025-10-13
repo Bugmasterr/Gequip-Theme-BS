@@ -24,7 +24,7 @@
         "container_max_width": "600",
         "img_show": true,
         "img_overlay_color": "#000000",
-        "img_overlay_opacity": 50,
+        "img_overlay_opacity": 20,
         "img_overlay_blur": 3,
         "title_font_size": "h1",
         "description_show": false,
