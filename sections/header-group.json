@@ -17,14 +17,16 @@
         "slide_j46kwk": {
           "type": "slide",
           "settings": {
-            "announcement": ""
+            "announcement": "<a href=\"https://www.gequip.com/collections/oktoberfest-sale\" title=\"https://www.gequip.com/collections/oktoberfest-sale\"><strong>OKTOBERFEST SALE - OCT. 12th - Nov. 1st</strong></a>"
           }
         }
       },
       "block_order": [
         "slide_j46kwk"
       ],
-      "disabled": true,
+      "custom_css": [
+        "div {background: #d05c0b; max-width: 100%;}"
+      ],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
@@ -32,24 +34,24 @@
         "text_color": "text-white",
         "border_top_width": 0,
         "border_bottom_width": 0,
-        "border_color": "border-body",
+        "border_color": "border-primary",
         "border_opacity": 100,
         "container_max_width": "",
         "font_size": "fs-xs",
         "font_size_desktop": "fs-desktop-sm",
         "text_transform": "",
-        "letter_spacing": 0,
-        "carousel_autoplay": 5,
-        "carousel_vertical": true,
-        "pt": 4,
-        "pb": 4
+        "letter_spacing": 1,
+        "carousel_autoplay": 0,
+        "carousel_vertical": false,
+        "pt": 5,
+        "pb": 5
       }
     },
     "html_79pVhe": {
       "type": "html",
       "name": "HTML/Liquid",
       "settings": {
-        "liquid": "<style>\n@media (max-width: 768px) {\n  .support-banner {\n    display: none;\n  }\n}\n</style>\n<div class=\"support-banner\" style=\"\n  position: relative;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: #334FB4;\n  color: white;\n  z-index: 9999;\n  padding: .4em 0;\n  min-height: 2.5em;\n  align-content: center;\n\">\n  <div style=\"\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between; \n    align-items: center;\n    max-width: 1400px;\n    margin: auto;\n    padding: 0 16px;\n    font-size: .9em;\n  \">\n    <span style=\"display: flex; align-items: center;\">\n      <i class=\"bi bi-telephone-fill\" style=\"margin-right: 6px;\"></i>\n      Main: 1.800.800.6011\n    </span>\n    <span style=\"display: flex; align-items: center;\">\n      <a href=\"mailto:support@gequip.com\" style=\"color: white; text-decoration: none; display: flex; align-items: center;\">\n        <i class=\"bi bi-envelope-fill\" style=\"margin-right: 6px;\"></i>\n        Support@gequip.com\n      </a>\n    </span>\n    <span style=\"display: flex; align-items: center;\">\n      <i class=\"bi bi-chat-dots-fill\" style=\"margin-right: 6px;\"></i>\n      Sales: 864.256.6174\n    </span>\n  </div>\n</div>",
+        "liquid": "<style>\n@media (max-width: 768px) {\n  .support-banner {\n    display: none;\n  }\n}\n</style>\n<div class=\"support-banner\" style=\"\n  position: relative;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: #B7500A;\n  color: white;\n  z-index: 9999;\n  padding: .4em 0;\n  min-height: 2.5em;\n  align-content: center;\n\">\n  <div style=\"\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between; \n    align-items: center;\n    max-width: 1400px;\n    margin: auto;\n    padding: 0 16px;\n    font-size: .9em;\n  \">\n    <span style=\"display: flex; align-items: center;\">\n      <i class=\"bi bi-telephone-fill\" style=\"margin-right: 6px;\"></i>\n      Main: 1.800.800.6011\n    </span>\n    <span style=\"display: flex; align-items: center;\">\n      <a href=\"mailto:support@gequip.com\" style=\"color: white; text-decoration: none; display: flex; align-items: center;\">\n        <i class=\"bi bi-envelope-fill\" style=\"margin-right: 6px;\"></i>\n        Support@gequip.com\n      </a>\n    </span>\n    <span style=\"display: flex; align-items: center;\">\n      <i class=\"bi bi-chat-dots-fill\" style=\"margin-right: 6px;\"></i>\n      Sales: 864.256.6174\n    </span>\n  </div>\n</div>",
         "bg_color": "bg-body",
         "bg_opacity": 100,
         "bg_gradient": "",
@@ -110,8 +112,8 @@
         "border_top_width": 0,
         "border_bottom_width": 1,
         "border_color": "border-secondary",
-        "border_opacity": 100,
-        "shadow": ""
+        "border_opacity": 30,
+        "shadow": "shadow-sm"
       }
     }
   },

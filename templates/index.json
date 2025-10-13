@@ -9,6 +9,69 @@
  */
 {
   "sections": {
+    "hero_carousel_WnzXt7": {
+      "type": "hero-carousel",
+      "blocks": {
+        "slide_zpGnnb": {
+          "type": "slide",
+          "settings": {
+            "img_desktop": "shopify://shop_images/construction-jobsite-in-a-fall-autumn-theme.png",
+            "overlay_color": "#b7500a",
+            "overlay_opacity": 50,
+            "overlay_blur": 0,
+            "subtitle": "Limited Time Sale",
+            "title": "OKTOBERFEST SALE",
+            "description": "<p>Oct. 12th - Nov. 1st</p>",
+            "btn_primary_text": "View All Products",
+            "btn_primary_url": "https://www.gequip.com/collections/oktoberfest-sale",
+            "btn_secondary_text": "",
+            "btn_secondary_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_zpGnnb"
+      ],
+      "custom_css": [
+        ".carousel {box-shadow: #233a8f 0px 0px 30px 10px inset;}",
+        ".title {font-weight: bold !important;}",
+        ".text-white {font-weight: bold !important;}",
+        ".btn-secondary {background: #dc3545;}",
+        ".media-wrapper {max-height: 250px;}"
+      ],
+      "name": "Hero carousel",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-white",
+        "width": 100,
+        "border_top_width": 15,
+        "border_bottom_width": 0,
+        "border_color": "border-white",
+        "border_opacity": 100,
+        "carousel_controls": false,
+        "carousel_indicators": false,
+        "carousel_transition": "slide",
+        "carousel_transition_duration": 500,
+        "carousel_autoplay": 5,
+        "carousel_effect": "carousel-zoom-out",
+        "media_mobile_height": 400,
+        "media_desktop_height": 400,
+        "media_adapt": false,
+        "media_full": false,
+        "caption_max_width": "900",
+        "caption_position": "carousel-caption-center",
+        "subtitle_font_size": "fs-md",
+        "title_font_size": "h2",
+        "description_font_size": "fs-xl",
+        "btn_primary_color": "btn-secondary",
+        "btn_secondary_color": "btn-secondary",
+        "btn_font_size": "fs-lg",
+        "pt": 5,
+        "pb": 5
+      }
+    },
     "hero_carousel_CmDneU": {
       "type": "hero-carousel",
       "blocks": {
@@ -36,10 +99,12 @@
       "custom_css": [
         ".carousel {box-shadow: #233a8f 0px 0px 30px 10px inset;}",
         ".title {font-weight: bold !important;}",
-        ".btn-secondary {background: #dc3545;}"
+        ".text-white {font-weight: bold !important;}",
+        ".btn-secondary {background: #dc3545;}",
+        ".media-wrapper {max-height: 350px;}"
       ],
       "settings": {
-        "bg_color": "bg-primary",
+        "bg_color": "bg-white",
         "bg_opacity": 100,
         "bg_gradient": "",
         "text_color": "text-white",
@@ -60,14 +125,14 @@
         "media_full": true,
         "caption_max_width": "900",
         "caption_position": "carousel-caption-center",
-        "subtitle_font_size": "fs-md",
+        "subtitle_font_size": "fs-xl",
         "title_font_size": "h1",
         "description_font_size": "fs-xl",
         "btn_primary_color": "btn-white",
         "btn_secondary_color": "btn-secondary",
-        "btn_font_size": "fs-md",
+        "btn_font_size": "fs-lg",
         "pt": 0,
-        "pb": 0
+        "pb": 5
       }
     },
     "featured_collections_WdQqPa": {
@@ -998,6 +1063,7 @@
     }
   },
   "order": [
+    "hero_carousel_WnzXt7",
     "hero_carousel_CmDneU",
     "featured_collections_WdQqPa",
     "featured_collections_6gCzrm",
