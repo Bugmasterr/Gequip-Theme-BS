@@ -37,8 +37,111 @@
         "pb_desktop": 14
       }
     },
-    "collection_products_Fx3hb6": {
+    "featured_collections_agBQ6C": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_TV4D4q": {
+          "type": "collection",
+          "settings": {
+            "collection": "cable-pulling",
+            "title": ""
+          }
+        },
+        "collection_iCmKkA": {
+          "type": "collection",
+          "settings": {
+            "collection": "chain-hoists",
+            "title": ""
+          }
+        },
+        "collection_xkNgyF": {
+          "type": "collection",
+          "settings": {
+            "collection": "cable-termination",
+            "title": ""
+          }
+        },
+        "collection_HxUpbV": {
+          "type": "collection",
+          "settings": {
+            "collection": "electrical-supplies",
+            "title": ""
+          }
+        },
+        "collection_NfafCB": {
+          "type": "collection",
+          "settings": {
+            "collection": "gangboxes",
+            "title": ""
+          }
+        },
+        "collection_HjwKWT": {
+          "type": "collection",
+          "settings": {
+            "collection": "hole-making",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_TV4D4q",
+        "collection_iCmKkA",
+        "collection_xkNgyF",
+        "collection_HxUpbV",
+        "collection_NfafCB",
+        "collection_HjwKWT"
+      ],
+      "name": "Featured collections",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-primary",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "header_title": "Featured Collections",
+        "header_title_font_size": "h2",
+        "header_description": "<p>Add on optional description for this section</p>",
+        "header_description_font_size": "fs-md",
+        "slider_speed": 300,
+        "slider_navigation": true,
+        "slider_pagination": true,
+        "slider_pagination_type": "bullets",
+        "slider_scrollbar": true,
+        "slider_partial_slides_mobile": false,
+        "slider_autoplay": 0,
+        "collection_card_text_align": "text-center",
+        "collection_card_img_orientation": "ratio-1x1",
+        "collection_card_img_border": "img-thumbnail",
+        "collection_card_show_title": true,
+        "collection_card_title_font_size": "fs-md",
+        "collection_card_title_position": "collection-card-title-bottom",
+        "collection_card_show_product_count": false,
+        "breakpoint_mobile": 1,
+        "breakpoint_tablet": 2,
+        "breakpoint_desktop": 6,
+        "pt": 10,
+        "pb": 0
+      }
+    },
+    "da87b500-2710-4252-99e4-4bd5db55af39": {
+      "type": "separator",
+      "settings": {
+        "bg_color": "bg-secondary",
+        "bg_opacity": 25,
+        "height": 1,
+        "container": "",
+        "container_max_width": "",
+        "pt": 0,
+        "pb": 0
+      }
+    },
+    "collection_products_EyMmXL": {
       "type": "collection-products",
+      "name": "Collection products",
       "settings": {
         "bg_color": "bg-body",
         "bg_opacity": 100,
@@ -49,36 +152,24 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container_max_width": "",
-        "limit": 50,
+        "limit": 48,
         "show_product_count": true,
         "show_filters": true,
-        "filters_btn_color": "btn-primary",
+        "filters_btn_color": "btn-outline-primary",
         "show_sort_by": true,
-        "sort_by_btn_color": "btn-primary",
-        "breakpoint_mobile": 1,
-        "breakpoint_tablet": 4,
+        "sort_by_btn_color": "btn-outline-primary",
+        "breakpoint_mobile": 2,
+        "breakpoint_tablet": 3,
         "breakpoint_desktop": 5,
         "pt": 10,
         "pb": 10
-      }
-    },
-    "da87b500-2710-4252-99e4-4bd5db55af39": {
-      "type": "separator",
-      "disabled": true,
-      "settings": {
-        "bg_color": "bg-body text-body",
-        "bg_opacity": 10,
-        "height": 1,
-        "container": "container",
-        "container_max_width": "",
-        "pt": 0,
-        "pb": 0
       }
     }
   },
   "order": [
     "collection_header_JKf7mh",
-    "collection_products_Fx3hb6",
-    "da87b500-2710-4252-99e4-4bd5db55af39"
+    "featured_collections_agBQ6C",
+    "da87b500-2710-4252-99e4-4bd5db55af39",
+    "collection_products_EyMmXL"
   ]
 }
