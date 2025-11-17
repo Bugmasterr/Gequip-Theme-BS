@@ -139,7 +139,8 @@
       "custom_css": [
         "h1,h2,h3 {font-size: 22px; font-weight: bold;}",
         "h4,h5,h6 {font-size: 18px;}",
-        ".disclaimer-container {}"
+        ".disclaimer-container {}",
+        " {max-width: 1300px; margin: auto;}"
       ],
       "settings": {
         "bg_color": "bg-body",
@@ -151,13 +152,14 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "",
+        "container_max_width": "1300",
         "pt": 10,
         "pb": 3
       }
     },
     "html_EkFTw3": {
       "type": "html",
+      "disabled": true,
       "name": "HTML/Liquid",
       "settings": {
         "liquid": "",
@@ -170,7 +172,7 @@
         "border_color": "border-body",
         "border_opacity": 100,
         "container": "container",
-        "container_max_width": "",
+        "container_max_width": "1200",
         "text_align": "text-center",
         "header_title": "",
         "header_title_font_size": "h2",
@@ -191,7 +193,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "",
+        "container_max_width": "1200",
         "products": [],
         "collection": "",
         "limit": 20,
