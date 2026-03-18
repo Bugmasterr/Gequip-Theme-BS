@@ -1101,7 +1101,7 @@ footer hr {
 .form-control,
 .form-select {
   color: var(--bs-body-color);
-  border: 1px #333 !important;
+  border-color: var(--bs-border-color);
   border-radius: var(--bs-border-radius);
 }
 
