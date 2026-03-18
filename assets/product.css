@@ -194,6 +194,7 @@
 */
 .product-options {
   scroll-margin-top: 1rem;
+  border: 1px solid #999;
 }
 
 .product-options.rounded {
@@ -264,6 +265,8 @@
   background-color: var(--bs-body-color);
   color: white;
 }
+
+
 
 /* 
   ATC/Buy buttons
