@@ -252,7 +252,7 @@
   transition: all 200ms ease-out;
 }
 
-product-options > .form-select {
+product-options select {
   border: 1px solid #999;
 }
 
