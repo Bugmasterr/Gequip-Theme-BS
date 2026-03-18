@@ -140,7 +140,8 @@
         "h1,h2,h3 {font-size: 22px; font-weight: bold;}",
         "h4,h5,h6 {font-size: 18px;}",
         ".disclaimer-container {}",
-        " {max-width: 1300px; margin: auto;}"
+        " {max-width: 1300px; margin: auto;}",
+        ".product-snippet-variant-picker my-3 {border: 1px #666;}"
       ],
       "settings": {
         "bg_color": "bg-body",
@@ -235,6 +236,8 @@
         "loox_reviews_loox_dynamic_section_HPhWB9": {
           "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
             "only_photos": false,
             "aggregated": false,
             "limit": 20,
