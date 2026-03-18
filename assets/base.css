@@ -1102,6 +1102,7 @@ footer hr {
 .form-select {
   color: var(--bs-body-color);
   border: 1px #333;
+  background: red;
   border-radius: var(--bs-border-radius);
 }
 
