@@ -194,7 +194,6 @@
 */
 .product-options {
   scroll-margin-top: 1rem;
-  border: 1px solid #999;
 }
 
 .product-options.rounded {
@@ -251,6 +250,10 @@
   margin: 0.25rem;
   border-radius: var(--bs-border-radius);
   transition: all 200ms ease-out;
+}
+
+product-options.form-select {
+  border: 1px solid #999;
 }
 
 .product-options .size-buttons input + label:hover {
