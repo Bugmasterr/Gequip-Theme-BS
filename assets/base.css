@@ -6,9 +6,9 @@
   --bs-link-color-rgb: currentColor;
   --bs-link-hover-color: currentColor;
   --bs-link-hover-color-rgb: currentColor;
+  --bs-separator: #dee2e6;
   --bs-border-color: var(--bs-separator);
   --img-aspect-ratio: 1/1; /* Default fallback */
-  --bs-separator: var(--bs-separator);
 }
 
 
@@ -88,6 +88,8 @@
   text-transform: var(--bs-btn-text-transform);
   letter-spacing: var(--bs-btn-letter-spacing);
   background-image: var(--bs-btn-bg-gradient);
+  outline: 1px solid #00000050 !important;
+  border: none;
 }
 
 .btn-primary {
@@ -122,6 +124,7 @@
   --bs-btn-disabled-color: var(--bs-white);
   --bs-btn-disabled-bg: rgba(var(--bs-secondary-rgb), 1);
   --bs-btn-disabled-border-color: rgba(var(--bs-secondary-rgb), 1);
+  background: #dc3545;
 }
 
 .btn-white {

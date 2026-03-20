@@ -6,7 +6,7 @@
 {%- liquid
   # Product Condition Logic (single source of truth)
   assign product_condition = product.metafields.ges.product_condition | replace: '["', '' | replace: '"]', ''
-  
+
   if product_condition == blank
     if product.title contains 'Reconditioned'
       assign product_condition = 'Reconditioned'
@@ -20,7 +20,7 @@
   # Lead Time Logic
   assign lt_min = product.metafields.ges['lead-time-min']
   assign lt_max = product.metafields.ges['lead-time-max']
-  
+
   # Override if custom lead time exists
   if product.metafields.ges.lead_time != blank
     assign lead_time = product.metafields.ges.lead_time
@@ -46,218 +46,49 @@
   if product.metafields.custom.documentation
     assign has_documents = true
   endif
+
+  # Disclaimer text based on SKU (single source of truth)
+  assign disclaimer_text = blank
+  case product.selected_or_first_available_variant.sku
+    when "Knaack 119-01"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/jobox-1-674990-field-office-print-shack-reconditioned\">Jobox 1-674990</a>, <a href=\"https://www.gequip.com/products/greenlee-8060dlx-reconditioned-w-1-year-operational-warranty\">Greenlee 8060DLX</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Greenlee 8060DLX"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/knaack-119-01-jobsite-station-print-shack-60-x-44-x-82-1-2-gang-box-1\">Knaack 119</a>, <a href=\"https://www.gequip.com/products/jobox-1-674990-field-office-print-shack-reconditioned\">Jobox 1-674990</a> etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Jobox 1-674990"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/knaack-119-01-jobsite-station-print-shack-60-x-44-x-82-1-2-gang-box-1\">Knaack 119</a>, <a href=\"https://www.gequip.com/products/greenlee-8060dlx-reconditioned-w-1-year-operational-warranty\">Greenlee 8060DLX</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Jobox 1-674990 with Casters"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/knaack-119-01-jobsite-station-print-shack-60-x-44-x-82-1-2-gang-box-1\">Knaack 119</a>, <a href=\"https://www.gequip.com/products/greenlee-8060dlx-reconditioned-w-1-year-operational-warranty\">Greenlee 8060DLX</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Knaack 69 w/ casters"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/jobox-2-688990-piano-style-storage-chest-reconditioned\">Jobox 2-688990</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Knaack 69"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/jobox-2-688990-piano-style-storage-chest-reconditioned\">Jobox 2-688990</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Jobox 2-688990"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/knaack-69-storagemaster\">Knaack 69</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Greenlee 4872"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/knaack-90-gangbox-reconditioned-w-1-year-operational-warranty\">Knaack 90</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Knaack 90"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. <a href=\"https://www.gequip.com/products/greenlee-4872-gang-box-reconditioned-w-1-year-operational-warranty\">Greenlee 4872</a>, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Knaack 89 OS"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. Jobox, Greenlee, etc.) Equivalent units are primed and painted to the correct color specifications."
+    when "Knaack 89 Original Casters out-of-stock"
+      assign disclaimer_text = "If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. Jobox, Greenlee, etc.) Equivalent units are primed and painted to the correct color specifications."
+  endcase
 -%}
-
-{%- style -%}
-/* Variables for consistent theming */
-:root {
-  --primary-color: #2563eb;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --border-color: #e5e7eb;
-  --bg-light: #f9fafb;
-  --bg-white: #ffffff;
-  --radius: 8px;
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 2.5rem;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --max-width: 1200px;
-}
-
-/* Main wrapper for consistent width */
-.product-info-wrapper {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
-}
-
-/* Lead time banner */
-.product-lead-time {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
-  padding: 1em;
-  background: var(--bg-white);
-  color: var(--text-primary);
-  border: 1px solid #ccc;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.product-lead-time i {
-  color: var(--primary-color);
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
-/* Section container */
-.product-section {
-  margin-bottom: var(--spacing-xl);
-}
-
-/* Section headings */
-.section-heading {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  font-size: 1.375rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 var(--spacing-md) 0;
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 2px solid var(--border-color);
-}
-
-.section-heading i {
-  color: var(--primary-color);
-  font-size: 1.125rem;
-  flex-shrink: 0;
-}
-
-/* Content sections */
-.content-section {
-  background: var(--bg-white);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
-/* Product description specific */
-.content-section h1,
-.content-section h2,
-.content-section h3,
-.content-section h4,
-.content-section h5,
-.content-section h6 {
-  color: var(--text-primary);
-  margin-top: var(--spacing-md);
-  margin-bottom: var(--spacing-sm);
-}
-
-.content-section ul,
-.content-section ol {
-  margin: var(--spacing-sm) 0;
-  padding-left: var(--spacing-lg);
-}
-
-.content-section li {
-  margin-bottom: var(--spacing-xs);
-}
-
-/* Document downloads */
-.download-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  margin: 0;
-}
-
-.download-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-md);
-  background: var(--bg-white);
-  color: var(--primary-color);
-  text-decoration: none;
-  border-radius: calc(var(--radius) / 2);
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  padding: 1rem;
-}
-
-.download-link:hover {
-  background: var(--primary-color);
-  color: var(--bg-white);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.download-link i {
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.download-link:hover i {
-  color: white;
-}
-
-/* Disclaimer specific styling */
-.disclaimer-content {
-  background: var(--bg-light);
-}
-
-.disclaimer-content p {
-  margin-bottom: var(--spacing-md);
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-}
-
-.disclaimer-content p:last-child {
-  margin-bottom: 0;
-}
-
-.disclaimer-content span {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .product-info-wrapper {
-    padding: 0 var(--spacing-sm);
-  }
-  
-  .product-lead-time {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 1rem;
-  }
-  
-  .section-heading {
-    font-size: 1.25rem;
-  }
-  
-  .content-section {
-    padding: var(--spacing-md);
-  }
-  
-  .download-container {
-    flex-direction: column;
-  }
-  
-  .download-link {
-    width: fit-content;
-  }
-}
-
-/* Remove default margins that might interfere */
-.product-info-wrapper h1,
-.product-info-wrapper h2,
-.product-info-wrapper h3,
-.product-info-wrapper h4,
-.product-info-wrapper h5,
-.product-info-wrapper h6,
-.product-info-wrapper p {
-  margin-top: 0;
-}
-{%- endstyle -%}
 
 <div class="product-description">
   <div class="product-lead-time d-flex align-items-center gap-2 mb-3 bg-white rounded shadow-sm">
     <i class="bi bi-truck text-primary fs-5"></i>
     <span class="fw-medium ps-4">{{ lead_time }}</span>
   </div>
+
+
+{%- if disclaimer_text != blank -%}
+  <div class="fw-bold my-5 pt-5"><i class="bi bi-info-circle"></i> Product Equivalent Disclaimer </div>
+  <div class="desc-container mb-4">
+    <div class="disclaimer-content"><p>{{ disclaimer_text }}</p></div>
+  </div>
+{%- endif -%}
+
 
   <ul class="nav nav-tabs mb-2" id="productDescTabs" role="tablist">
     <li class="nav-item" role="presentation">
