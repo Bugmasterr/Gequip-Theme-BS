@@ -48,7 +48,11 @@
     {{ 'general.accessibility.skip_content' | t }}
   </a>
   
-  <div id="header-group" class="sticky-top">
+  <div id="sale-announcement-bar">
+    🎉 <strong>Happy Spring!</strong> Use code <strong>Spring 2026</strong> at checkout to celebrate our before Easter 4% special!
+  </div>
+
+  <div id="header-group" style="padding-top: 0;">
     {% sections 'header-group' %}
   </div>
 
@@ -66,5 +70,19 @@
     render 'modal-localization'
     render 'rich-snippets'
   %}
+
+  <script>
+    (function () {
+      function setAnnouncementOffset() {
+        var bar = document.getElementById('sale-announcement-bar');
+        var header = document.getElementById('header-group');
+        if (bar && header) {
+          header.style.paddingTop = bar.offsetHeight + 'px';
+        }
+      }
+      document.addEventListener('DOMContentLoaded', setAnnouncementOffset);
+      window.addEventListener('resize', setAnnouncementOffset);
+    })();
+  </script>
 </body>
 </html>

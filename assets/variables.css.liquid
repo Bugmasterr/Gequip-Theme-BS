@@ -47,6 +47,7 @@
   --bs-dialog-backdrop-color-rgb: {{ settings.dialog_backdrop_color | color_to_rgb | remove: 'rgb(' | remove: ')' }};
   --bs-dialog-backdrop-opacity: {{ settings.dialog_backdrop_opacity | append: '%' }};
   --bs-dialog-backdrop-blur: {{ settings.dialog_backdrop_blur | append: 'px' }};
+  --bs-dialog-backdrop-blur: {{ settings.dialog_backdrop_blur | append: 'px' }};
   --bs-dialog-header-bg-color-rgb: {{ settings.dialog_header_bg_color | prepend: 'var(--bs-' | append: '-rgb)' }};
   --bs-dialog-header-bg-opacity: {{ settings.dialog_header_bg_opacity | append: '%' }};
   --bs-dialog-header-text-color: {{ settings.dialog_header_text_color }};

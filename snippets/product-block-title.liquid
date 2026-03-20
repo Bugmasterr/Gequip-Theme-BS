@@ -10,19 +10,19 @@
   assign sku = variant.sku
   assign upc = variant.barcode
 %}
-<div class="product-details">
+<div class="product-details" style="font-size: 1rem;">
   <span class="product-details__item">
     {% if vendor_collection and vendor_collection.products_count != blank and vendor_collection.products_count > 0 %}
       <a href="{{ vendor_collection.url }}">{{ vendor }}</a>
     {% else %}
       {{ vendor }}
     {% endif %}
-  </span>
+  </span> 
   {% if sku != blank %}
-    <span class="product-details__item"><span class="product-details__sep"> |</span> {{ sku }}</span>
+    <span class="product-details__item"><span style="font-size: 1.1rem;"> |</span> {{ sku }}</span>
   {% endif %}
   {% if upc != blank %}
-    <span class="product-details__item"><span class="product-details__sep"> |</span> {{ upc }}</span>
+    <span class="product-details__item"><span style="font-size: 1.1rem;"> |</span> {{ upc }}</span>
   {% endif %}
 </div>
 <h1 class="product-title title mb-0 {{ block.settings.title_font_size }} {{ pt }} {{ pb }}" {{ block.shopify_attributes }} style="font-weight: 600;">
@@ -33,4 +33,4 @@
   <div class ="equal-disclaimer-pill">
 <span class="alert-text"><i class="bi bi-exclamation-triangle-fill" style="color:rgb(202, 164, 40); font-size: 16px; padding: 3px;"></i> Notice: If ordered, this product may be fulfilled by a compatible equivalent.</span>
 </div>
-{% endif %}
+{% endif %}1
