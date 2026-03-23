@@ -340,6 +340,22 @@
 </div>
 {% endif %}
 
+{% if product.selected_or_first_available_variant.sku == "Knaack 109" %}
+        <div class="fw-bold my-5 pt-5"><i class="bi bi-info-circle"></i> Product Equivalent Disclaimer </div>
+          <div class="desc-container mb-4">
+            <div class="disclaimer-content"><p>If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. Jobox, Greenlee, etc.) Equivalent units are primed and painted to the correct color specifications.</p>
+          </div>
+</div>
+{% endif %}
+
+{% if product.selected_or_first_available_variant.sku == "Knaack 139" %}
+        <div class="fw-bold my-5 pt-5"><i class="bi bi-info-circle"></i> Product Equivalent Disclaimer </div>
+          <div class="desc-container mb-4">
+            <div class="disclaimer-content"><p>If ordered, this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer (ie. Jobox, Greenlee, etc.) Equivalent units are primed and painted to the correct color specifications.</p>
+          </div>
+</div>
+{% endif %}
+
 {% if product.selected_or_first_available_variant.sku == "Knaack 89 Original Casters out-of-stock" %}
         <div class="fw-bold my-5 pt-5"><i class="bi bi-info-circle"></i> Product Equivalent Disclaimer </div>
           <div class="desc-container mb-4">
