@@ -1,0 +1,401 @@
+<section id="ges-panel-form-section-{{ section.id }}">
+  <div class="container" style="max-width: {{ section.settings.container_max_width }}px">
+
+    {% render 'section-header' %}
+
+    {% form 'contact' %}
+
+      {% if form.posted_successfully? %}
+        <div id="thankyou" style="
+          text-align: center;
+          margin: 10px auto;
+          background-color: #334fb4;
+          color: white;
+          border-radius: 5px;
+          padding: 20px 40px;
+          max-width: fit-content;
+        ">
+          <h2>Thank you! We'll be in touch soon.</h2>
+        </div>
+      {% else %}
+
+        {{ form.errors | default_errors }}
+
+        <!-- ============================
+             SECTION 1: Customer Info
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Customer Info</legend>
+
+          <label class="label-title" for="contact-name">Name</label>
+          <input
+            class="form-control"
+            type="text"
+            id="contact-name"
+            name="contact[name]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            required>
+
+          <label class="label-title" for="contact-company">Company</label>
+          <input
+            class="form-control"
+            type="text"
+            id="contact-company"
+            name="contact[company]">
+
+          <label class="label-title" for="contact-address">Address</label>
+          <input
+            class="form-control"
+            type="text"
+            id="contact-address"
+            name="contact[address]">
+
+          <label class="label-title" for="contact-email">Email</label>
+          <input
+            class="form-control"
+            type="email"
+            id="contact-email"
+            name="contact[email]"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            spellcheck="false"
+            autocapitalize="off"
+            required>
+
+          <label class="label-title" for="contact-phone">Phone Number</label>
+          <input
+            class="form-control"
+            type="tel"
+            id="contact-phone"
+            name="contact[phone]"
+            value="{{ customer.phone }}"
+            pattern="[0-9\-]*"
+            autocomplete="tel">
+
+        </fieldset>
+
+
+        <!-- ============================
+             SECTION 2: Panel Type
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Panel Type</legend>
+
+          <label>
+            <input type="radio" name="contact[panel_type]" value="Panelboard">
+            Panelboard
+          </label>
+
+          <label>
+            <input type="radio" name="contact[panel_type]" value="Switchboard">
+            Switchboard
+          </label>
+
+          <label>
+            <input type="radio" name="contact[panel_type]" value="MDP (Main Distribution Panel)">
+            MDP (Main Distribution Panel)
+          </label>
+
+          <label>
+            <input type="radio" name="contact[panel_type]" value="Custom Assembly">
+            Custom Assembly
+          </label>
+
+        </fieldset>
+
+
+        <!-- ============================
+             SECTION 3: Electrical Specifications
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Electrical Specifications</legend>
+
+          <label class="label-title" for="contact-voltage">Voltage</label>
+          <select class="form-control" id="contact-voltage" name="contact[voltage]">
+            <option value="">-- Select --</option>
+            <option value="208Y/120">208Y/120</option>
+            <option value="480Y/277">480Y/277</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label class="label-title" for="contact-voltage-other">If Other:</label>
+          <input
+            class="form-control"
+            type="text"
+            id="contact-voltage-other"
+            name="contact[voltage_other]"
+            placeholder="Specify voltage">
+
+          <label class="label-title" for="contact-phase">Phase</label>
+          <select class="form-control" id="contact-phase" name="contact[phase]">
+            <option value="">-- Select --</option>
+            <option value="1Ø">1Ø</option>
+            <option value="3Ø">3Ø</option>
+          </select>
+
+          <label class="label-title" for="contact-wire">Wire</label>
+          <select class="form-control" id="contact-wire" name="contact[wire]">
+            <option value="">-- Select --</option>
+            <option value="3W">3W</option>
+            <option value="4W">4W</option>
+          </select>
+
+          <label class="label-title" for="contact-amperage">Amperage</label>
+          <input
+            class="form-control"
+            type="number"
+            id="contact-amperage"
+            name="contact[amperage]"
+            placeholder="0"> A
+
+          <label class="label-title" for="contact-kaic">KAIC Rating</label>
+          <select class="form-control" id="contact-kaic" name="contact[kaic]">
+            <option value="">-- Select --</option>
+            <option value="10kA">10kA</option>
+            <option value="22kA">22kA</option>
+            <option value="42kA">42kA</option>
+            <option value="65kA">65kA</option>
+            <option value="100kA">100kA</option>
+          </select>
+
+        </fieldset>
+
+
+        <!-- ============================
+             SECTION 4: Main Configuration
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Main Configuration</legend>
+
+          <label>
+            <input type="radio" name="contact[main_config]" value="Main Breaker">
+            Main Breaker
+          </label>
+
+          <label>
+            <input type="radio" name="contact[main_config]" value="Main Lug Only">
+            Main Lug Only
+          </label>
+
+          <label class="label-title" for="contact-breaker-size">Main Breaker Size</label>
+          <input
+            class="form-control"
+            type="number"
+            id="contact-breaker-size"
+            name="contact[main_breaker_size]"
+            placeholder="0"> A
+
+          <label class="label-title" for="contact-manufacturer">Manufacturer Preference</label>
+          <input
+            class="form-control"
+            type="text"
+            id="contact-manufacturer"
+            name="contact[manufacturer]">
+
+        </fieldset>
+
+
+        <!-- ============================
+             SECTION 5: Circuits / Breakers
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Circuits / Breakers</legend>
+
+          <label class="label-title" for="contact-total-circuits">Total Circuits</label>
+          <input
+            class="form-control"
+            type="number"
+            id="contact-total-circuits"
+            name="contact[total_circuits]">
+
+          <label class="label-title" for="contact-breaker-detail">Breaker Qty / Amps / Poles</label>
+          <textarea
+            class="form-control"
+            id="contact-breaker-detail"
+            name="contact[breaker_detail]"
+            rows="4"
+            placeholder="e.g. 4x20A/1P, 2x60A/2P, 1x100A/3P"></textarea>
+
+        </fieldset>
+
+
+        <!-- ============================
+             SECTION 6: Enclosure
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Enclosure</legend>
+
+          <label>
+            <input type="radio" name="contact[enclosure]" value="NEMA 1 (Indoor)">
+            NEMA 1 (Indoor)
+          </label>
+
+          <label>
+            <input type="radio" name="contact[enclosure]" value="NEMA 3R (Outdoor)">
+            NEMA 3R (Outdoor)
+          </label>
+
+          <label>
+            <input type="radio" name="contact[enclosure]" value="NEMA 4/12 (Specialty)">
+            NEMA 4/12 (Specialty)
+          </label>
+
+        </fieldset>
+
+
+        <!-- ============================
+             SECTION 7: Add-Ons
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Add-Ons</legend>
+
+          <label>
+            <input type="checkbox" name="contact[addon_receptacles]" value="Receptacles on Panel">
+            Receptacles on Panel
+          </label>
+
+          <label>
+            <input type="checkbox" name="contact[addon_whips]" value="Whips">
+            Whips
+          </label>
+
+          <label>
+            <input type="checkbox" name="contact[addon_disconnects]" value="Disconnects">
+            Disconnects
+          </label>
+
+          <label>
+            <input type="checkbox" name="contact[addon_metering]" value="Metering">
+            Metering
+          </label>
+
+          <label>
+            <input type="checkbox" name="contact[addon_feed_thru_lugs]" value="Feed-Thru Lugs">
+            Feed-Thru Lugs
+          </label>
+
+          <label>
+            <input type="checkbox" name="contact[addon_custom_labeling]" value="Custom Labeling">
+            Custom Labeling
+          </label>
+
+        </fieldset>
+
+
+        <!-- ============================
+             SECTION 8: Logistics
+        ============================= -->
+        <fieldset class="section-box">
+          <legend class="section-title">Logistics</legend>
+
+          <label class="label-title" for="contact-ship-to">Ship To</label>
+          <input
+            class="form-control"
+            type="text"
+            id="contact-ship-to"
+            name="contact[ship_to]">
+
+          <label class="label-title">Freight</label>
+          <label>
+            <input type="radio" name="contact[freight]" value="Included">
+            Included
+          </label>
+          <label>
+            <input type="radio" name="contact[freight]" value="Added">
+            Added
+          </label>
+
+          <label class="label-title" for="contact-required-by">Required By Date</label>
+          <input
+            class="form-control"
+            type="date"
+            id="contact-required-by"
+            name="contact[required_by]">
+
+        </fieldset>
+
+        <button class="submit-button btn btn-lg w-100 btn-primary" type="submit">
+          Submit
+        </button>
+
+      {% endif %}
+
+    {% endform %}
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "GES Panel Form",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "container_max_width",
+      "label": "Container max-width (px)",
+      "default": "600",
+      "info": "Leave empty to use the global container width"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "header_title",
+      "label": "Title",
+      "default": "GES Custom Electrical Panel"
+    },
+    {
+      "type": "select",
+      "id": "header_title_font_size",
+      "label": "Title font-size",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "header_description",
+      "label": "Description (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pt",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "pb",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "GES Panel Form"
+    }
+  ]
+}
+{% endschema %}
