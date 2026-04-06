@@ -49,10 +49,32 @@
         "pt": 8,
         "pb": 12
       }
+    },
+    "ges_panel_form_mGm3GY": {
+      "type": "ges-panel-form",
+      "name": "GES Panel Form",
+      "settings": {
+        "bg_color": "bg-body",
+        "bg_opacity": 100,
+        "bg_gradient": "",
+        "text_color": "text-body",
+        "border_top_width": 0,
+        "border_bottom_width": 0,
+        "border_color": "border-body",
+        "border_opacity": 100,
+        "container_max_width": "",
+        "header_title": "GES Custom Electrical Panel",
+        "header_title_font_size": "h2",
+        "header_description": "<p>Fill out the form below to request a custom electrical panel quote.</p>",
+        "header_description_font_size": "fs-md",
+        "pt": 10,
+        "pb": 10
+      }
     }
   },
   "order": [
     "5d7e9d3e-ba1d-498d-a3fd-144ce2e406e5",
-    "9b5ef318-8d23-40cd-a163-d1f62c2d0834"
+    "9b5ef318-8d23-40cd-a163-d1f62c2d0834",
+    "ges_panel_form_mGm3GY"
   ]
 }
