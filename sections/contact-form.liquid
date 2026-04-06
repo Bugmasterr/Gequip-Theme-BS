@@ -27,6 +27,9 @@
       <div class="{% if section.settings.img == nil %}col-desktop-18{% else %}col-desktop-11{% endif %}">
         {% render 'section-header' %}
         {% form 'contact' %}
+
+          <input type="hidden" name="return_to" value="/pages/home">
+
           {% if form.posted_successfully? %}
             <p class="form-success alert alert-success mb-5" role="alert">
               {{ 'general.contact_form.success' | t }}
