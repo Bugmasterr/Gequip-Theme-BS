@@ -129,7 +129,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "1300",
+        "container_max_width": "1500",
         "header_title": "Featured Categories",
         "header_title_font_size": "h2",
         "header_description": "<p>Collection of Products from Top Categories</p>",
@@ -212,7 +212,7 @@
         "border_bottom_width": 0,
         "border_color": "border-body",
         "border_opacity": 100,
-        "container_max_width": "1300",
+        "container_max_width": "1500",
         "header_title": "Top Brands",
         "header_title_font_size": "h2",
         "header_description": "<p>Collection of Products from Top Brands</p>",
@@ -250,7 +250,7 @@
         "border_bottom_width": 0,
         "border_color": "border-primary",
         "border_opacity": 25,
-        "container_max_width": "1450",
+        "container_max_width": "1500",
         "products": [],
         "collection": "featured-products",
         "limit": 24,
@@ -325,7 +325,7 @@
         "img {margin: 0rem; padding: 1rem; height: 25em; width: auto;}"
       ],
       "settings": {
-        "container_max_width": "1000"
+        "container_max_width": "1200"
       }
     },
     "media_with_text_3cgm8E": {
@@ -381,7 +381,7 @@
         ".btn {display: flex;}"
       ],
       "settings": {
-        "container_max_width": "1000"
+        "container_max_width": "1200"
       }
     },
     "featured_products_AAxprB": {
@@ -396,7 +396,7 @@
         "border_bottom_width": 0,
         "border_color": "border-secondary",
         "border_opacity": 100,
-        "container_max_width": "1400",
+        "container_max_width": "1500",
         "products": [],
         "collection": "new",
         "limit": 24,
@@ -517,7 +517,7 @@
         "border_bottom_width": 1,
         "border_color": "border-secondary",
         "border_opacity": 100,
-        "container_max_width": "1450",
+        "container_max_width": "1500",
         "products": [],
         "collection": "threading",
         "limit": 24,
@@ -536,7 +536,7 @@
         "slider_autoplay": 0,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 5,
+        "breakpoint_desktop": 6,
         "pt": 8,
         "pb": 10
       }
@@ -553,7 +553,7 @@
         "border_bottom_width": 1,
         "border_color": "border-secondary",
         "border_opacity": 100,
-        "container_max_width": "1450",
+        "container_max_width": "1500",
         "products": [],
         "collection": "conduit-benders",
         "limit": 24,
@@ -572,7 +572,7 @@
         "slider_autoplay": 0,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 5,
+        "breakpoint_desktop": 6,
         "pt": 8,
         "pb": 10
       }
@@ -589,7 +589,7 @@
         "border_bottom_width": 1,
         "border_color": "border-secondary",
         "border_opacity": 100,
-        "container_max_width": "1450",
+        "container_max_width": "1500",
         "products": [],
         "collection": "crane-rigging",
         "limit": 24,
@@ -608,7 +608,7 @@
         "slider_autoplay": 0,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 5,
+        "breakpoint_desktop": 6,
         "pt": 10,
         "pb": 10
       }
@@ -625,7 +625,7 @@
         "border_bottom_width": 1,
         "border_color": "border-secondary",
         "border_opacity": 100,
-        "container_max_width": "1450",
+        "container_max_width": "1500",
         "products": [],
         "collection": "gangboxes",
         "limit": 24,
@@ -644,7 +644,7 @@
         "slider_autoplay": 0,
         "breakpoint_mobile": 1,
         "breakpoint_tablet": 2,
-        "breakpoint_desktop": 5,
+        "breakpoint_desktop": 6,
         "pt": 10,
         "pb": 10
       }
