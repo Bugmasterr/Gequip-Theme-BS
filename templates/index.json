@@ -118,10 +118,7 @@
         "collection_RkM7UB",
         "collection_BAf6Hq"
       ],
-      "custom_css": [
-        ".img-thumbnail {padding: 1em; border: 1px solid #333; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;}",
-        ".collection-title {background: #333; color: white; font-weight: 600; margin: 0; padding: 0.5rem 0.5rem; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border: 1px solid #333;}"
-      ],
+      "custom_css": [],
       "name": "Featured collections",
       "settings": {
         "bg_color": "bg-secondary",
@@ -204,10 +201,7 @@
         "collection_EE9ndQ",
         "collection_FwH74L"
       ],
-      "custom_css": [
-        ".img-thumbnail {padding: 1em; border: 1px solid #999; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;}",
-        ".collection-title {background: #999; color: white; font-weight: 600; margin: 0; padding: 0.5rem 0.5rem; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; border: 1px solid #999;}"
-      ],
+      "custom_css": [],
       "name": "Featured collections",
       "settings": {
         "bg_color": "bg-white",

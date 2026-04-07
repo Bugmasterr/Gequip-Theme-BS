@@ -3,9 +3,9 @@
     "name": "theme_info",
     "theme_name": "ks_bootshop",
     "theme_version": "5.0.0",
-    "theme_author": "KondaSoft",
-    "theme_documentation_url": "https:\/\/www.kondasoft.com",
-    "theme_support_url": "https:\/\/community.kondasoft.com"
+    "theme_author": "GE&S",
+    "theme_documentation_url": "https://www.gequip.com",
+    "theme_support_url": "https://wwww.gequip.com"
   },
   {
     "name": "Colors",
@@ -13,31 +13,34 @@
       {
         "type": "color",
         "id": "color_brand_primary",
-        "label": "Brand Primary",
+        "label": "Primary brand color",
+        "info": "Used by the theme's Primary color option.",
         "default": "#d63384"
       },
       {
         "type": "color",
         "id": "color_brand_secondary",
-        "label": "Brand Secondary",
+        "label": "Secondary brand color",
+        "info": "Optional accent color kept separate from the theme's Secondary color option.",
         "default": "#0d6efd"
       },
       {
         "type": "color",
         "id": "color_secondary",
-        "label": "Secondary",
+        "label": "Secondary color",
+        "info": "Used by the theme's Secondary color option across sections, text, borders, and buttons.",
         "default": "#6C757D"
       },
       {
         "type": "color",
         "id": "color_body_bg",
-        "label": "Body bg",
+        "label": "Page background color",
         "default": "#ffffff"
       },
       {
         "type": "color",
         "id": "color_body_color",
-        "label": "Body color",
+        "label": "Body text color",
         "default": "#212529"
       }
     ]
@@ -49,7 +52,6 @@
         "type": "select",
         "id": "transparent_header",
         "label": "Transparent header",
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)",
         "options": [
           {
             "value": "header-transparent",
@@ -111,6 +113,74 @@
         "id": "font_headings",
         "label": "Headings font",
         "default": "sans-serif"
+      },
+      {
+        "type": "range",
+        "id": "body_font_size",
+        "label": "Body font size",
+        "default": 1,
+        "min": 0.9,
+        "max": 1.2,
+        "step": 0.1,
+        "unit": "rem"
+      },
+      {
+        "type": "range",
+        "id": "body_line_height",
+        "label": "Body line height",
+        "default": 1.6,
+        "min": 1.4,
+        "max": 1.9,
+        "step": 0.1
+      },
+      {
+        "type": "range",
+        "id": "body_letter_spacing",
+        "label": "Body letter spacing",
+        "default": 0,
+        "min": -2,
+        "max": 4,
+        "step": 0.5,
+        "info": "Fine adjustment in hundredths of an em."
+      },
+      {
+        "type": "range",
+        "id": "headings_line_height",
+        "label": "Headings line height",
+        "default": 1.1,
+        "min": 1,
+        "max": 1.4,
+        "step": 0.1
+      },
+      {
+        "type": "select",
+        "id": "headings_text_transform",
+        "label": "Headings text transform",
+        "default": "",
+        "options": [
+          {
+            "value": "",
+            "label": "Normal"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          },
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "headings_letter_spacing",
+        "label": "Headings letter spacing",
+        "default": 0.5,
+        "min": -2,
+        "max": 6,
+        "step": 0.5,
+        "info": "Fine adjustment in hundredths of an em."
       }
     ]
   },
@@ -155,7 +225,7 @@
         "type": "select",
         "id": "btn_font_family",
         "label": "Font family",
-        "default": "var(--bs-body-font-family)",
+        "default": "var(--bs-headings-font-family)",
         "options": [
           {
             "value": "var(--bs-body-font-family)",
@@ -171,7 +241,7 @@
         "type": "select",
         "id": "btn_font_weight",
         "label": "Font weight",
-        "default": "500",
+        "default": "600",
         "options": [
           {
             "value": "400",
@@ -196,9 +266,10 @@
         "type": "range",
         "id": "btn_letter_spacing",
         "label": "Letter spacing",
-        "default": 0,
+        "default": 1,
         "min": 0,
-        "max": 5
+        "max": 5,
+        "step": 1
       },
       {
         "type": "checkbox",
@@ -280,7 +351,7 @@
           },
           {
             "value": "body-bg",
-            "label": "Body"
+            "label": "Body background"
           },
           {
             "value": "white",
@@ -314,7 +385,7 @@
           },
           {
             "value": "body-color",
-            "label": "Body"
+            "label": "Body text"
           },
           {
             "value": "white",
@@ -347,8 +418,8 @@
             "label": "Secondary"
           },
           {
-            "value": "body",
-            "label": "Body"
+            "value": "body-color",
+            "label": "Body text"
           },
           {
             "value": "white",
@@ -411,8 +482,7 @@
             "label": "Carousel"
           }
         ],
-        "default": "image",
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": "image"
       },
       {
         "type": "select",
@@ -497,7 +567,7 @@
           },
           {
             "value": "body-color",
-            "label": "Body"
+            "label": "Body text"
           },
           {
             "value": "white",
@@ -526,8 +596,7 @@
         "type": "text",
         "id": "product_card_custom_badge_metafield",
         "label": "Custom badge metafield",
-        "default": "custom.badge",
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": "custom.badge"
       },
       {
         "type": "select",
@@ -549,8 +618,7 @@
         "type": "checkbox",
         "id": "product_card_show_wishlist",
         "label": "Show wishtlist button",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "select",
@@ -653,15 +721,13 @@
             "value": "variant-selector",
             "label": "Variant selector"
           }
-        ],
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        ]
       },
       {
         "type": "text",
         "id": "product_card_color_swatches",
         "label": "Color swatches",
-        "default": "Color, color",
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": "Color, color"
       }
     ]
   },
@@ -698,8 +764,7 @@
         "type": "checkbox",
         "id": "cart_shipping_calculator",
         "label": "Show shipping calculator",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "header",
@@ -709,8 +774,7 @@
         "type": "checkbox",
         "id": "cart_goal_enable",
         "label": "Enable cart goal",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "textarea",
@@ -854,8 +918,7 @@
         "type": "checkbox",
         "id": "cart_upsells_enable",
         "label": "Enable upsells",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "text",
@@ -931,8 +994,7 @@
       },
       {
         "type": "header",
-        "content": "Gift upsell",
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "content": "Gift upsell"
       },
       {
         "type": "checkbox",
@@ -966,36 +1028,31 @@
         "type": "checkbox",
         "id": "search_query",
         "label": "Show suggestions",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "search_collections",
         "label": "Search collections",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "search_articles",
         "label": "Search blog articles",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "search_pages",
         "label": "Search pages",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "search_show_quick_view",
         "label": "Show \"Quick view\" button",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "select",
@@ -1059,15 +1116,13 @@
         "type": "checkbox",
         "id": "wishlist",
         "label": "Enable wishlist",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       },
       {
         "type": "checkbox",
         "id": "recently_viewed",
         "label": "Enable recently-viewed",
-        "default": true,
-        "info": "NOTE: This feature is supported only in our Premium Shopify Themes. [Browse premium themes](https:\/\/www.kondasoft.com\/collections\/shopify-themes)"
+        "default": true
       }
     ]
   },

@@ -14,10 +14,14 @@
   {%- comment -%} 
     Colors
   {%- endcomment -%}
+  --bs-brand-primary: {{ settings.color_brand_primary }};
+  --bs-brand-primary-rgb: {{ settings.color_brand_primary | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+  --bs-brand-secondary: {{ settings.color_brand_secondary }};
+  --bs-brand-secondary-rgb: {{ settings.color_brand_secondary | color_to_rgb | remove: 'rgb(' | remove: ')' }};
   --bs-primary: {{ settings.color_brand_primary }};
   --bs-primary-rgb: {{ settings.color_brand_primary | color_to_rgb | remove: 'rgb(' | remove: ')' }};
-  --bs-secondary: {{ settings.color_brand_secondary }};
-  --bs-secondary-rgb: {{ settings.color_brand_secondary | color_to_rgb | remove: 'rgb(' | remove: '#' }};
+  --bs-secondary: {{ settings.color_secondary }};
+  --bs-secondary-rgb: {{ settings.color_secondary | color_to_rgb | remove: 'rgb(' | remove: ')' }};
   --bs-separator: {{ settings.color_separator | default: '#aaa' }};
   --bs-separator-rgb: {{ settings.color_separator | default: '#aaa' | color_to_rgb | remove: 'rgb(' | remove: ')' }};
   --bs-body-bg: {{ settings.color_body_bg }};
@@ -36,10 +40,14 @@
   {%- endcomment -%}
   --bs-body-font-family: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
   --bs-body-font-weight: {{ settings.font_body.weight }};
-  --bs-body-font-size: {{ settings.font_body_size | append: 'rem'  }};
+  --bs-body-font-size: {{ settings.body_font_size | default: 1 | append: 'rem' }};
+  --bs-body-line-height: {{ settings.body_line_height | default: 1.65 }};
+  --bs-body-letter-spacing: {{ settings.body_letter_spacing | default: 0 | times: 0.01 | append: 'em' }};
   --bs-headings-font-family: {{ settings.font_headings.family }}, {{ settings.font_headings.fallback_families }};
   --bs-headings-font-weight: {{ settings.font_headings.weight }};
+  --bs-headings-line-height: {{ settings.headings_line_height | default: 1.15 }};
   --bs-headings-text-transform: {{ settings.headings_text_transform }};
+  --bs-headings-letter-spacing: {{ settings.headings_letter_spacing | default: 0.5 | times: 0.01 | append: 'em' }};
 
   {% comment -%} 
     Modal/Dialog
@@ -47,12 +55,11 @@
   --bs-dialog-backdrop-color-rgb: {{ settings.dialog_backdrop_color | color_to_rgb | remove: 'rgb(' | remove: ')' }};
   --bs-dialog-backdrop-opacity: {{ settings.dialog_backdrop_opacity | append: '%' }};
   --bs-dialog-backdrop-blur: {{ settings.dialog_backdrop_blur | append: 'px' }};
-  --bs-dialog-backdrop-blur: {{ settings.dialog_backdrop_blur | append: 'px' }};
   --bs-dialog-header-bg-color-rgb: {{ settings.dialog_header_bg_color | prepend: 'var(--bs-' | append: '-rgb)' }};
   --bs-dialog-header-bg-opacity: {{ settings.dialog_header_bg_opacity | append: '%' }};
   --bs-dialog-header-text-color: {{ settings.dialog_header_text_color }};
   --bs-dialog-header-border-width: {{ settings.dialog_header_border_width | append: 'px' }};
-  --bs-dialog-header-border-color-rgb: {{ settings.dialog_header_border_color | prepend: 'var(--bs-' | append: '-rgb)'  }};
+  --bs-dialog-header-border-color-rgb: {% if settings.dialog_header_border_color == 'body' %}var(--bs-body-color-rgb){% else %}{{ settings.dialog_header_border_color | prepend: 'var(--bs-' | append: '-rgb)' }}{% endif %};
   --bs-dialog-header-border-opacity: {{ settings.dialog_header_border_opacity | append: '%' }};
   --bs-dialog-header-title-font-size: {{ settings.dialog_header_title_font_size | append: 'em' }};
 

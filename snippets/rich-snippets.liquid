@@ -1,22 +1,23 @@
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
     {% if settings.logo != nil %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
     "sameAs": [
-      {{ settings.social_facebook | json }},
-      {{ settings.social_instagram | json }},
-      {{ settings.social_x | json }},
-      {{ settings.social_tiktok | json }},
-      {{ settings.social_pinterest | json }},
-      {{ settings.social_snapchat | json }},
-      {{ settings.social_youtube | json }},
-      {{ settings.social_linkedin | json }}
+      {%- assign same_as_sep = '' -%}
+      {%- if settings.social_facebook != blank -%}{{ same_as_sep }}{{ settings.social_facebook | json }}{%- assign same_as_sep = ',' -%}{%- endif -%}
+      {%- if settings.social_instagram != blank -%}{{ same_as_sep }}{{ settings.social_instagram | json }}{%- assign same_as_sep = ',' -%}{%- endif -%}
+      {%- if settings.social_x != blank -%}{{ same_as_sep }}{{ settings.social_x | json }}{%- assign same_as_sep = ',' -%}{%- endif -%}
+      {%- if settings.social_tiktok != blank -%}{{ same_as_sep }}{{ settings.social_tiktok | json }}{%- assign same_as_sep = ',' -%}{%- endif -%}
+      {%- if settings.social_pinterest != blank -%}{{ same_as_sep }}{{ settings.social_pinterest | json }}{%- assign same_as_sep = ',' -%}{%- endif -%}
+      {%- if settings.social_snapchat != blank -%}{{ same_as_sep }}{{ settings.social_snapchat | json }}{%- assign same_as_sep = ',' -%}{%- endif -%}
+      {%- if settings.social_youtube != blank -%}{{ same_as_sep }}{{ settings.social_youtube | json }}{%- assign same_as_sep = ',' -%}{%- endif -%}
+      {%- if settings.social_linkedin != blank -%}{{ same_as_sep }}{{ settings.social_linkedin | json }}{%- endif -%}
     ],
-    "url": {{ request.origin | append: page.url | json }}
+    "url": {{ request.origin | json }}
   }
 </script>
 
@@ -24,7 +25,7 @@
   {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "WebSite",
       "name": {{ shop.name | json }},
       "potentialAction": {
@@ -32,7 +33,7 @@
         "target": {{ potential_action_target | json }},
         "query-input": "required name=search_term_string"
       },
-      "url": {{ request.origin | append: page.url | json }}
+      "url": {{ request.origin | json }}
     }
   </script>
 {%- endif -%}
@@ -44,11 +45,42 @@
     else
       assign seo_media = product.featured_media
     endif
+
+    # Product Condition Logic (mirrors product-description.liquid)
+    assign product_condition = product.metafields.ges.product_condition | replace: '["', '' | replace: '"]', ''
+    if product_condition == blank
+      if product.title contains 'Reconditioned'
+        assign product_condition = 'Reconditioned'
+      elsif product.title contains 'New'
+        assign product_condition = 'New Surplus'
+      elsif product.title contains 'Used'
+        assign product_condition = 'Used'
+      endif
+    endif
+
+    case product_condition
+      when 'New Surplus'
+        assign schema_condition = 'https://schema.org/NewCondition'
+      when 'Used'
+        assign schema_condition = 'https://schema.org/UsedCondition'
+      when 'Reconditioned'
+        assign schema_condition = 'https://schema.org/RefurbishedCondition'
+    endcase
+
+    # Check for equivalent-product disclaimer SKUs
+    assign equivalent_skus = 'Knaack 119-01,Greenlee 8060DLX,Jobox 1-674990,Jobox 1-674990 with Casters,Knaack 69 w/ casters,Knaack 69,Jobox 2-688990,Greenlee 4872,Knaack 90,Knaack 89 OS,Knaack 109,Knaack 139,Knaack 89 Original Casters out-of-stock' | split: ','
+    assign has_equivalent = false
+    for variant in product.variants
+      if equivalent_skus contains variant.sku
+        assign has_equivalent = true
+        break
+      endif
+    endfor
   -%}
 
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org/",
+      "@context": "https://schema.org/",
       "@type": "Product",
       "name": {{ product.title | json }},
       "url": {{ request.origin | append: product.url | json }},
@@ -57,9 +89,16 @@
           {{ seo_media | image_url: width: 1920 | prepend: "https:" | json }}
         ],
       {%- endif %}
-      "description": {{ product.description | strip_html | json }},
+      {%- if has_equivalent -%}
+        "description": {{ product.description | strip_html | append: ' Note: this product may be fulfilled by a functionally and dimensionally equivalent unit from a compatible manufacturer.' | json }},
+      {%- else -%}
+        "description": {{ product.description | strip_html | json }},
+      {%- endif -%}
       {% if product.selected_or_first_available_variant.sku != blank -%}
         "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      {%- endif %}
+      {% if schema_condition != blank -%}
+        "itemCondition": {{ schema_condition | json }},
       {%- endif %}
       "brand": {
         "@type": "Brand",
@@ -73,15 +112,15 @@
               "sku": {{ variant.sku | json }},
             {%- endif -%}
             {%- if variant.barcode.size == 12 -%}
-              "gtin12": {{ variant.barcode }},
+              "gtin12": {{ variant.barcode | json }},
             {%- endif -%}
             {%- if variant.barcode.size == 13 -%}
-              "gtin13": {{ variant.barcode }},
+              "gtin13": {{ variant.barcode | json }},
             {%- endif -%}
             {%- if variant.barcode.size == 14 -%}
-              "gtin14": {{ variant.barcode }},
+              "gtin14": {{ variant.barcode | json }},
             {%- endif -%}
-            "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+            "availability" : "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
             "price" : {{ variant.price | divided_by: 100.00 | json }},
             "priceCurrency" : {{ cart.currency.iso_code | json }},
             "url" : {{ request.origin | append: variant.url | json }}
@@ -95,7 +134,7 @@
 {%- if request.page_type == 'article' -%}
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "Article",
       "articleBody": {{ article.content | strip_html | json }},
       "mainEntityOfPage": {

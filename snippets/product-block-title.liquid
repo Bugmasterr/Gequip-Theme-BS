@@ -10,7 +10,7 @@
   assign sku = variant.sku
   assign upc = variant.barcode
 %}
-<div class="product-details" style="font-size: 1rem;">
+<div class="product-details">
   <span class="product-details__item">
     {% if vendor_collection and vendor_collection.products_count != blank and vendor_collection.products_count > 0 %}
       <a href="{{ vendor_collection.url }}">{{ vendor }}</a>
@@ -19,18 +19,18 @@
     {% endif %}
   </span> 
   {% if sku != blank %}
-    <span class="product-details__item"><span style="font-size: 1.1rem;"> |</span> {{ sku }}</span>
+    <span class="product-details__item"><span class="product-details__divider">|</span> {{ sku }}</span>
   {% endif %}
   {% if upc != blank %}
-    <span class="product-details__item"><span style="font-size: 1.1rem;"> |</span> {{ upc }}</span>
+    <span class="product-details__item"><span class="product-details__divider">|</span> {{ upc }}</span>
   {% endif %}
 </div>
-<h1 class="product-title title mb-0 {{ block.settings.title_font_size }} {{ pt }} {{ pb }}" {{ block.shopify_attributes }} style="font-weight: 600;">
+<h1 class="product-title title mb-0 {{ block.settings.title_font_size }} {{ pt }} {{ pb }}" {{ block.shopify_attributes }}>
   {{ product.title }}
 </h1>
 
   {% if sku == "Knaack 119-01" or sku == "Greenlee 8060DLX" or sku == "Jobox 1-674990" or sku == "Jobox 1-674990 with Casters" or sku == "Knaack 69" or sku == "Knaack 69 w/ casters" or sku == "Jobox 2-688990" or sku == "Greenlee 4872" or sku == "Knaack 90" or sku == "Knaack 89 OS" or sku == "Knaack 89 Original Casters out-of-stock" or sku == "Knaack 109" or sku == "Knaack 139" %}
   <div class ="equal-disclaimer-pill">
-<span class="alert-text"><i class="bi bi-exclamation-triangle-fill" style="color:rgb(202, 164, 40); font-size: 16px; padding: 3px;"></i> Notice: If ordered, this product may be fulfilled by a compatible equivalent.</span>
+<span class="alert-text"><i class="bi bi-exclamation-triangle-fill"></i> Notice: If ordered, this product may be fulfilled by a compatible equivalent.</span>
 </div>
 {% endif %}

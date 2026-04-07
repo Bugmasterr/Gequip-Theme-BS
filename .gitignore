@@ -1,5 +1,50 @@
-# General
-node_modules
+# Dependencies and package manager output
+node_modules/
+
+# Build output and local tooling caches
+dist/
+build/
+coverage/
+.cache/
+.parcel-cache/
+.sass-cache/
+.turbo/
+tmp/
+temp/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Shopify and local environment files
 config.yml
+.env
+.env.*
+!.env.example
+
+# Editor and IDE files
+.vscode/
+.idea/
+.fleet/
+.history/
+.zed/
+*.code-workspace
+
+# AI / LLM assistant files
+.claude/
+.cursor/
+.windsurf/
+.aider*
+CLAUDE.md
+AGENTS.md
+
+# OS files
 .DS_Store
+Thumbs.db
+Desktop.ini
+
+# Lockfiles not needed for theme deployment
 package-lock.json
+yarn.lock
+pnpm-lock.yaml

@@ -81,19 +81,19 @@
   data-slider-pagination="{{ section.settings.slider_pagination }}"
   data-slider-scrollbar="{{ section.settings.slider_scrollbar }}"
   data-slider-autoplay="{{ section.settings.slider_autoplay }}"
-  data-breakpoint-mobile="1"
-  data-breakpoint-tablet="3.5"
-  data-breakpoint-desktop="5.5"
+  data-breakpoint-mobile="{{ section.settings.breakpoint_mobile }}"
+  data-breakpoint-tablet="{{ section.settings.breakpoint_tablet }}"
+  data-breakpoint-desktop="{{ section.settings.breakpoint_desktop }}"
 >
   <div 
     class="container"
     style="max-width: {{ section.settings.container_max_width | append: 'px' }};">
     {% render 'section-header' %}
-    <div class="swiper">
+    <div class="swiper featured-products-swiper">
       <div class="swiper-wrapper mt-2">
         {% if section.settings.recommended_mode and request.path contains 'recommendations' %}
           {% for product in recommendations.products %}
-            <div class="swiper-slide product-card-slide">
+            <div class="swiper-slide product-card-slide featured-products-slide">
               {% render 'product-card', product: product %}
             </div>
           {% endfor %}
@@ -101,7 +101,7 @@
           {{ empty_state }}
         {% else %}
           {% for product in products limit: section.settings.limit %}
-            <div class="swiper-slide" style="width: calc(100% / var(--visible-slides)); padding: 0 8px; height: auto;">
+            <div class="swiper-slide product-card-slide featured-products-slide">
               {% render 'product-card', product: product %}
             </div>
           {% endfor %}

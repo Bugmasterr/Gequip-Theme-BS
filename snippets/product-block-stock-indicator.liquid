@@ -34,38 +34,3 @@
 </div>
 
 {{ form | payment_terms }}
-
-<style>
-  .product-stock-indicator .stock-dot {
-    display: inline-block;
-    width: 0.85em;
-    height: 0.85em;
-    border-radius: 50%;
-    margin-right: 0.5em;
-    vertical-align: middle;
-  }
-  .product-stock-indicator .bg-success {
-    background: var(--bs-success, #198754);
-  }
-  .product-stock-indicator .bg-warning {
-    background: var(--bs-warning, #ffc107);
-  }
-  .product-stock-indicator .bg-danger {
-    background: var(--bs-danger, #dc3545);
-  }
-  .product-stock-indicator .pulse-animation {
-    animation: pulse 2.5s infinite;
-    box-shadow: 0 0 0 0 rgba(32,192,117,0.5);
-  }
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(32,192,117,0.7);
-    }
-    60% {
-      box-shadow: 0 0 0 8px rgba(32,192,117,0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(32,192,117,0);
-    }
-  }
-</style>

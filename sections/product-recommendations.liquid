@@ -34,8 +34,7 @@
 
 <swiper-slider
   id="featured-products-custom"
-  class="featured-products swiper-slider pt-10 pb-10"
-  style="border-top: 1px solid var(--bs-separator); border-bottom: 1px solid var(--bs-separator); background-color: none;"
+  class="featured-products featured-products-custom swiper-slider pt-10 pb-10"
   data-section-id="featured-products-custom"
   data-slider-speed="300"
   data-slider-navigation="true"
@@ -45,8 +44,8 @@
   data-breakpoint-mobile="1"
   data-breakpoint-tablet="2"
   data-breakpoint-desktop="2">
-  <div class="container" style="max-width: 1200px;">
-    <h3 style="font-weight: normal;">Recommended Products</h3>
+  <div class="container featured-products-custom__container">
+    <h3 class="title h4 featured-products-custom__title">Recommended Products</h3>
     <div class="swiper mt-n3 mt-desktop-n3">
       <div class="swiper-wrapper">
         {% if request.page_type == 'product' and request.path contains 'recommendations' and recommendations.products.size > 0 %}

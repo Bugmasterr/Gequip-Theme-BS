@@ -1,4 +1,4 @@
-<div id="logo-banner-{{ section.id }}" class="logos overflow-hidden py-5 px-0 position-relative" style="background-color: #fff; white-space: nowrap;">
+<div id="logo-banner-{{ section.id }}" class="logos overflow-hidden py-5 px-0 position-relative" style="background-color: var(--bs-body-bg); white-space: nowrap;">
   <div class="logos-slide d-inline-block">
     {% for image in section.settings.images %}
       <img src="{{ image.src }}" alt="{{ image.alt }}" style="height: 50px; margin: 0 {{ section.settings.image_margin }}px;">
@@ -22,12 +22,12 @@
 
   .logos::before {
     left: 0;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+    background: linear-gradient(to left, rgba(var(--bs-body-bg-rgb), 0), var(--bs-body-bg));
   }
 
   .logos::after {
     right: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+    background: linear-gradient(to right, rgba(var(--bs-body-bg-rgb), 0), var(--bs-body-bg));
   }
 
   .logos-slide {
@@ -60,7 +60,7 @@
   logosSlide.style.width = `${numImages * {{ section.settings.image_width | default: 100 }}%`;
 
   // Set the animation-duration to the slide duration
-  logosSlide.style.animationDuration = `${{{ section.settings.slide_duration | default: 10 }}}s`;
+  logosSlide.style.animationDuration = `${{ section.settings.slide_duration | default: 10 }}s`;
 </script>
 
 {% schema %}
