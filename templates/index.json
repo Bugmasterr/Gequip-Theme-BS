@@ -365,7 +365,7 @@
             "btn_primary_color": "btn-white",
             "btn_secondary_text": "Request a Quote",
             "btn_secondary_url": "shopify://pages/ges-custom-electrical-panel",
-            "btn_secondary_color": "btn-secondary",
+            "btn_secondary_color": "btn-light-white",
             "pt": 10,
             "pb": 10
           }
