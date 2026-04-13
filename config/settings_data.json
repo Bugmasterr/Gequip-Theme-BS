@@ -139,5 +139,10 @@
         "settings": {}
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "a {color: #ffffff; font-weight: 600;}"
+    ]
   }
 }

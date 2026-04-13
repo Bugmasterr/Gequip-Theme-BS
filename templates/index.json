@@ -9,6 +9,34 @@
  */
 {
   "sections": {
+    "blocks_CGf9fr": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8020822_aF9kNb": {
+          "type": "ai_gen_block_8020822",
+          "settings": {
+            "height": 40,
+            "mobile_height": 30,
+            "flip_vertical": false,
+            "background_color": "#ffffff",
+            "grass_color": "#59b14d",
+            "enable_gradient": false,
+            "grass_color_light": "#59b14d",
+            "grass_color_dark": "#59b14d",
+            "opacity": 100,
+            "enable_animation": true,
+            "animation_speed": 6,
+            "animation_intensity": 2
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8020822_aF9kNb"
+      ],
+      "name": "Grass border",
+      "settings": {}
+    },
     "hero_carousel_CmDneU": {
       "type": "hero-carousel",
       "blocks": {
@@ -16,9 +44,9 @@
           "type": "slide",
           "settings": {
             "img_mobile": "shopify://shop_images/RepairBanner.png",
-            "img_desktop": "shopify://shop_images/Ridgid_Banner2_a0c0f6c1-8db4-422e-8dae-0a391bd02b12.png",
-            "overlay_color": "#334fb4",
-            "overlay_opacity": 0,
+            "img_desktop": "shopify://shop_images/no-tools.png",
+            "overlay_color": "#59b14d",
+            "overlay_opacity": 80,
             "overlay_blur": 0,
             "subtitle": "Remanufactured Excellence",
             "title": "General Equipment & Supply",
@@ -69,41 +97,69 @@
         "btn_secondary_color": "btn-secondary",
         "btn_font_size": "fs-lg",
         "pt": 0,
-        "pb": 5
+        "pb": 0
       }
     },
-    "featured_collections_WdQqPa": {
+    "blocks_C4j9eW": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8020822_p9z86a": {
+          "type": "ai_gen_block_8020822",
+          "settings": {
+            "height": 40,
+            "mobile_height": 30,
+            "flip_vertical": true,
+            "background_color": "#ffffff",
+            "grass_color": "#59b14d",
+            "enable_gradient": false,
+            "grass_color_light": "#59b14d",
+            "grass_color_dark": "#59b14d",
+            "opacity": 100,
+            "enable_animation": true,
+            "animation_speed": 6,
+            "animation_intensity": 2
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8020822_p9z86a"
+      ],
+      "name": "Grass border",
+      "settings": {}
+    },
+    "featured_collections_ADRUzY": {
       "type": "featured-collections",
       "blocks": {
-        "collection_fwRNEp": {
+        "collection_RDpa4R": {
           "type": "collection",
           "settings": {
             "collection": "conduit-bending",
             "title": ""
           }
         },
-        "collection_YD89wh": {
+        "collection_nBWbFW": {
           "type": "collection",
           "settings": {
             "collection": "cable-pulling",
             "title": ""
           }
         },
-        "collection_EGB93E": {
+        "collection_376hgb": {
           "type": "collection",
           "settings": {
             "collection": "threading",
             "title": ""
           }
         },
-        "collection_RkM7UB": {
+        "collection_pUqRWY": {
           "type": "collection",
           "settings": {
             "collection": "gangboxes",
             "title": ""
           }
         },
-        "collection_BAf6Hq": {
+        "collection_nUd79w": {
           "type": "collection",
           "settings": {
             "collection": "material-handling",
@@ -112,12 +168,13 @@
         }
       },
       "block_order": [
-        "collection_fwRNEp",
-        "collection_YD89wh",
-        "collection_EGB93E",
-        "collection_RkM7UB",
-        "collection_BAf6Hq"
+        "collection_RDpa4R",
+        "collection_nBWbFW",
+        "collection_376hgb",
+        "collection_pUqRWY",
+        "collection_nUd79w"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "Featured collections",
       "settings": {
@@ -994,8 +1051,10 @@
     }
   },
   "order": [
+    "blocks_CGf9fr",
     "hero_carousel_CmDneU",
-    "featured_collections_WdQqPa",
+    "blocks_C4j9eW",
+    "featured_collections_ADRUzY",
     "featured_collections_6gCzrm",
     "featured_products_nXJKQn",
     "media_with_text_xTY8gi",

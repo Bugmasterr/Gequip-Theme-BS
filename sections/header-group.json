@@ -16,7 +16,6 @@
       "blocks": {
         "slide_QYRfKM": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "announcement": "<strong>🌼 Shop Our Spring Sale Now!  🌼</strong>"
           }
@@ -26,12 +25,12 @@
         "slide_QYRfKM"
       ],
       "custom_css": [
-        "DIV {background-color: #59b14d;}"
+        ".bg-primary {background-color: #59b14d !important;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
-        "bg_gradient": "",
+        "bg_gradient": "bg-gradient",
         "text_color": "text-white",
         "border_top_width": 0,
         "border_bottom_width": 0,

@@ -11,15 +11,55 @@
   "type": "footer",
   "name": "Footer Group",
   "sections": {
+    "blocks_BfVnJd": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ef2b355_wUrHi4": {
+          "type": "ai_gen_block_ef2b355",
+          "settings": {
+            "bee_size": 40,
+            "animation_duration": 15
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_8020822_wz7K34": {
+          "type": "ai_gen_block_8020822",
+          "settings": {
+            "height": 40,
+            "mobile_height": 30,
+            "flip_vertical": false,
+            "background_color": "#ffffff",
+            "grass_color": "#59b14d",
+            "enable_gradient": false,
+            "grass_color_light": "#59b14d",
+            "grass_color_dark": "#59b14d",
+            "opacity": 100,
+            "enable_animation": true,
+            "animation_speed": 6,
+            "animation_intensity": 2
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ef2b355_wUrHi4",
+        "ai_gen_block_8020822_wz7K34"
+      ],
+      "name": "Grass border",
+      "settings": {}
+    },
     "newsletter_fL4LWF": {
       "type": "newsletter",
       "custom_css": [
         ".newsletter-notice {padding: 4px;}",
         ".title {padding: 5px;}",
         "input {background: whitesmoke;}",
-        "input:hover {background: white; outline: 1px solid #334fb4; transition: background 0.5s;}",
+        "input:hover {background: white; outline: 1px solid #00000050; transition: background 0.33s;}",
         "input:focus {background: white;}",
-        "label {color: gray;}"
+        "label {color: gray;}",
+        ".bg-primary {background: #59b14d !important;}",
+        ".btn {background: #59b14d95;}",
+        ".btn:hover {background: #59b14d; outline: 1px solid #333 !important;}"
       ],
       "settings": {
         "bg_color": "bg-primary",
@@ -31,7 +71,7 @@
         "border_color": "border-primary",
         "border_opacity": 10,
         "container_max_width": "800",
-        "header_title": "Signup For The Best Deals",
+        "header_title": "🌼 Signup For The Best Deals 🌼",
         "header_title_font_size": "h3",
         "header_description": "<p>Stay Updated on Exclusive Discounts and Sales Offers!</p>",
         "header_description_font_size": "fs-lg",
@@ -90,7 +130,9 @@
         "7468602d-7e94-4bd5-9673-02b2f8269581",
         "0f9016c8-7819-40d8-a874-905df26582ca"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".bg-primary {background: #59b14d !important;}"
+      ],
       "settings": {
         "bg_color": "bg-primary",
         "bg_opacity": 100,
@@ -109,6 +151,7 @@
     }
   },
   "order": [
+    "blocks_BfVnJd",
     "newsletter_fL4LWF",
     "footer"
   ]
