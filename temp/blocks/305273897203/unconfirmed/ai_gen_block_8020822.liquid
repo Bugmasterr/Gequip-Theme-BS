@@ -1,6 +1,384 @@
+{% doc %}
+  @prompt
+    i want to generate a section that is similar to a border, but i want it to be an colorable svg of grass flat vector, fulscreen, make it look more like blades of grass with different variations of shape, height, direction, etc, add more configurable parameters
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-grass-border-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-grass-border-svg-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    height: {{ block.settings.height }}px;
+    {% if block.settings.flip_vertical %}
+      transform: scaleY(-1);
+    {% endif %}
+  }
+
+  .ai-grass-border-blade-{{ ai_gen_id }} {
+    fill: {{ block.settings.grass_color }};
+    opacity: {{ block.settings.opacity | divided_by: 100.0 }};
+    transition: fill 0.3s ease;
+  }
+
+  .ai-grass-border-blade-light-{{ ai_gen_id }} {
+    fill: {% if block.settings.enable_gradient %}{{ block.settings.grass_color_light }}{% else %}{{ block.settings.grass_color }}{% endif %};
+    opacity: {{ block.settings.opacity | divided_by: 100.0 | times: 0.7 }};
+    transition: fill 0.3s ease;
+  }
+
+  .ai-grass-border-blade-dark-{{ ai_gen_id }} {
+    fill: {% if block.settings.enable_gradient %}{{ block.settings.grass_color_dark }}{% else %}{{ block.settings.grass_color }}{% endif %};
+    opacity: {{ block.settings.opacity | divided_by: 100.0 | times: 1.3 }};
+    transition: fill 0.3s ease;
+  }
+
+  {% if block.settings.enable_animation %}
+    .ai-grass-border-svg-{{ ai_gen_id }} path {
+      animation: ai-grass-sway-{{ ai_gen_id }} {{ block.settings.animation_speed }}s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    .ai-grass-border-svg-{{ ai_gen_id }} path:nth-child(2n) {
+      animation-delay: 0.2s;
+    }
+
+    .ai-grass-border-svg-{{ ai_gen_id }} path:nth-child(3n) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes ai-grass-sway-{{ ai_gen_id }} {
+      0%, 100% {
+        transform: skewX(0deg);
+      }
+      25% {
+        transform: skewX({{ block.settings.animation_intensity }}deg);
+      }
+      75% {
+        transform: skewX(-{{ block.settings.animation_intensity }}deg);
+      }
+    }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    .ai-grass-border-svg-{{ ai_gen_id }} {
+      height: {{ block.settings.mobile_height }}px;
+    }
+  }
+{% endstyle %}
+
+<grass-border-{{ ai_gen_id }} class="ai-grass-border-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <svg
+    class="ai-grass-border-svg-{{ ai_gen_id }}"
+    viewBox="0 0 1440 120"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M0,120 L0,85 Q2,60 4,85 L4,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M8,120 L8,70 Q11,45 14,70 L14,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M18,120 L18,75 Q20,55 22,75 L22,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M26,120 L26,80 Q29,50 32,80 L32,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M36,120 L36,65 Q39,40 42,65 L42,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M46,120 L46,78 Q48,58 50,78 L50,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M54,120 L54,72 Q57,48 60,72 L60,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M64,120 L64,82 Q66,62 68,82 L68,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M72,120 L72,68 Q75,42 78,68 L78,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M82,120 L82,76 Q84,54 86,76 L86,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M90,120 L90,84 Q93,58 96,84 L96,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M100,120 L100,70 Q103,44 106,70 L106,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M110,120 L110,79 Q112,57 114,79 L114,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M118,120 L118,73 Q121,49 124,73 L124,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M128,120 L128,81 Q130,59 132,81 L132,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M136,120 L136,67 Q139,41 142,67 L142,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M146,120 L146,75 Q148,53 150,75 L150,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M154,120 L154,83 Q157,61 160,83 L160,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M164,120 L164,69 Q167,43 170,69 L170,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M174,120 L174,77 Q176,55 178,77 L178,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M182,120 L182,71 Q185,47 188,71 L188,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M192,120 L192,85 Q194,63 196,85 L196,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M200,120 L200,66 Q203,40 206,66 L206,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M210,120 L210,74 Q212,52 214,74 L214,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M218,120 L218,80 Q221,56 224,80 L224,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M228,120 L228,68 Q231,42 234,68 L234,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M238,120 L238,78 Q240,56 242,78 L242,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M246,120 L246,72 Q249,48 252,72 L252,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M256,120 L256,82 Q258,60 260,82 L260,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M264,120 L264,65 Q267,39 270,65 L270,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M274,120 L274,76 Q276,54 278,76 L278,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M282,120 L282,84 Q285,62 288,84 L288,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M292,120 L292,70 Q295,44 298,70 L298,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M302,120 L302,79 Q304,57 306,79 L306,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M310,120 L310,73 Q313,49 316,73 L316,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M320,120 L320,81 Q322,59 324,81 L324,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M328,120 L328,67 Q331,41 334,67 L334,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M338,120 L338,75 Q340,53 342,75 L342,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M346,120 L346,83 Q349,61 352,83 L352,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M356,120 L356,69 Q359,43 362,69 L362,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M366,120 L366,77 Q368,55 370,77 L370,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M374,120 L374,71 Q377,47 380,71 L380,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M384,120 L384,85 Q386,63 388,85 L388,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M392,120 L392,66 Q395,40 398,66 L398,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M402,120 L402,74 Q404,52 406,74 L406,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M410,120 L410,80 Q413,56 416,80 L416,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M420,120 L420,68 Q423,42 426,68 L426,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M430,120 L430,78 Q432,56 434,78 L434,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M438,120 L438,72 Q441,48 444,72 L444,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M448,120 L448,82 Q450,60 452,82 L452,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M456,120 L456,65 Q459,39 462,65 L462,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M466,120 L466,76 Q468,54 470,76 L470,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M474,120 L474,84 Q477,62 480,84 L480,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M484,120 L484,70 Q487,44 490,70 L490,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M494,120 L494,79 Q496,57 498,79 L498,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M502,120 L502,73 Q505,49 508,73 L508,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M512,120 L512,81 Q514,59 516,81 L516,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M520,120 L520,67 Q523,41 526,67 L526,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M530,120 L530,75 Q532,53 534,75 L534,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M538,120 L538,83 Q541,61 544,83 L544,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M548,120 L548,69 Q551,43 554,69 L554,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M558,120 L558,77 Q560,55 562,77 L562,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M566,120 L566,71 Q569,47 572,71 L572,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M576,120 L576,85 Q578,63 580,85 L580,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M584,120 L584,66 Q587,40 590,66 L590,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M594,120 L594,74 Q596,52 598,74 L598,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M602,120 L602,80 Q605,56 608,80 L608,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M612,120 L612,68 Q615,42 618,68 L618,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M622,120 L622,78 Q624,56 626,78 L626,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M630,120 L630,72 Q633,48 636,72 L636,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M640,120 L640,82 Q642,60 644,82 L644,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M648,120 L648,65 Q651,39 654,65 L654,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M658,120 L658,76 Q660,54 662,76 L662,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M666,120 L666,84 Q669,62 672,84 L672,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M676,120 L676,70 Q679,44 682,70 L682,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M686,120 L686,79 Q688,57 690,79 L690,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M694,120 L694,73 Q697,49 700,73 L700,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M704,120 L704,81 Q706,59 708,81 L708,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M712,120 L712,67 Q715,41 718,67 L718,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M722,120 L722,75 Q724,53 726,75 L726,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M730,120 L730,83 Q733,61 736,83 L736,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M740,120 L740,69 Q743,43 746,69 L746,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M750,120 L750,77 Q752,55 754,77 L754,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M758,120 L758,71 Q761,47 764,71 L764,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M768,120 L768,85 Q770,63 772,85 L772,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M776,120 L776,66 Q779,40 782,66 L782,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M786,120 L786,74 Q788,52 790,74 L790,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M794,120 L794,80 Q797,56 800,80 L800,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M804,120 L804,68 Q807,42 810,68 L810,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M814,120 L814,78 Q816,56 818,78 L818,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M822,120 L822,72 Q825,48 828,72 L828,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M832,120 L832,82 Q834,60 836,82 L836,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M840,120 L840,65 Q843,39 846,65 L846,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M850,120 L850,76 Q852,54 854,76 L854,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M858,120 L858,84 Q861,62 864,84 L864,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M868,120 L868,70 Q871,44 874,70 L874,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M878,120 L878,79 Q880,57 882,79 L882,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M886,120 L886,73 Q889,49 892,73 L892,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M896,120 L896,81 Q898,59 900,81 L900,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M904,120 L904,67 Q907,41 910,67 L910,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M914,120 L914,75 Q916,53 918,75 L918,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M922,120 L922,83 Q925,61 928,83 L928,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M932,120 L932,69 Q935,43 938,69 L938,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M942,120 L942,77 Q944,55 946,77 L946,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M950,120 L950,71 Q953,47 956,71 L956,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M960,120 L960,85 Q962,63 964,85 L964,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M968,120 L968,66 Q971,40 974,66 L974,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M978,120 L978,74 Q980,52 982,74 L982,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M986,120 L986,80 Q989,56 992,80 L992,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M996,120 L996,68 Q999,42 1002,68 L1002,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1006,120 L1006,78 Q1008,56 1010,78 L1010,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1014,120 L1014,72 Q1017,48 1020,72 L1020,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1024,120 L1024,82 Q1026,60 1028,82 L1028,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1032,120 L1032,65 Q1035,39 1038,65 L1038,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1042,120 L1042,76 Q1044,54 1046,76 L1046,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1050,120 L1050,84 Q1053,62 1056,84 L1056,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1060,120 L1060,70 Q1063,44 1066,70 L1066,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1070,120 L1070,79 Q1072,57 1074,79 L1074,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1078,120 L1078,73 Q1081,49 1084,73 L1084,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1088,120 L1088,81 Q1090,59 1092,81 L1092,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1096,120 L1096,67 Q1099,41 1102,67 L1102,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1106,120 L1106,75 Q1108,53 1110,75 L1110,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1114,120 L1114,83 Q1117,61 1120,83 L1120,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1124,120 L1124,69 Q1127,43 1130,69 L1130,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1134,120 L1134,77 Q1136,55 1138,77 L1138,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1142,120 L1142,71 Q1145,47 1148,71 L1148,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1152,120 L1152,85 Q1154,63 1156,85 L1156,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1160,120 L1160,66 Q1163,40 1166,66 L1166,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1170,120 L1170,74 Q1172,52 1174,74 L1174,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1178,120 L1178,80 Q1181,56 1184,80 L1184,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1188,120 L1188,68 Q1191,42 1194,68 L1194,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1198,120 L1198,78 Q1200,56 1202,78 L1202,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1206,120 L1206,72 Q1209,48 1212,72 L1212,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1216,120 L1216,82 Q1218,60 1220,82 L1220,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1224,120 L1224,65 Q1227,39 1230,65 L1230,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1234,120 L1234,76 Q1236,54 1238,76 L1238,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1242,120 L1242,84 Q1245,62 1248,84 L1248,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1252,120 L1252,70 Q1255,44 1258,70 L1258,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1262,120 L1262,79 Q1264,57 1266,79 L1266,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1270,120 L1270,73 Q1273,49 1276,73 L1276,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1280,120 L1280,81 Q1282,59 1284,81 L1284,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1288,120 L1288,67 Q1291,41 1294,67 L1294,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1298,120 L1298,75 Q1300,53 1302,75 L1302,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1306,120 L1306,83 Q1309,61 1312,83 L1312,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1316,120 L1316,69 Q1319,43 1322,69 L1322,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1326,120 L1326,77 Q1328,55 1330,77 L1330,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1334,120 L1334,71 Q1337,47 1340,71 L1340,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1344,120 L1344,85 Q1346,63 1348,85 L1348,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1352,120 L1352,66 Q1355,40 1358,66 L1358,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1362,120 L1362,74 Q1364,52 1366,74 L1366,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1370,120 L1370,80 Q1373,56 1376,80 L1376,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1380,120 L1380,68 Q1383,42 1386,68 L1386,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1390,120 L1390,78 Q1392,56 1394,78 L1394,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1398,120 L1398,72 Q1401,48 1404,72 L1404,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1408,120 L1408,82 Q1410,60 1412,82 L1412,120 Z"></path>
+    <path class="ai-grass-border-blade-light-{{ ai_gen_id }}" d="M1416,120 L1416,65 Q1419,39 1422,65 L1422,120 Z"></path>
+    <path class="ai-grass-border-blade-dark-{{ ai_gen_id }}" d="M1426,120 L1426,76 Q1428,54 1430,76 L1430,120 Z"></path>
+    <path class="ai-grass-border-blade-{{ ai_gen_id }}" d="M1434,120 L1434,84 Q1437,62 1440,84 L1440,120 Z"></path>
+  </svg>
+</grass-border-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class GrassBorder{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.updateGrassPattern();
+      }
+
+      updateGrassPattern() {
+        const svg = this.querySelector('.ai-grass-border-svg-{{ ai_gen_id }}');
+        if (!svg) return;
+
+        svg.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    customElements.define('grass-border-{{ ai_gen_id }}', GrassBorder{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Grass border",
+  "tag": null,
+  "class": "grass-border-block",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Height (desktop)",
+      "min": 40,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Height (mobile)",
+      "min": 30,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_vertical",
+      "label": "Flip vertically",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "grass_color",
+      "label": "Grass color",
+      "default": "#22c55e"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient",
+      "label": "Enable color variation",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "grass_color_light",
+      "label": "Light variation",
+      "default": "#4ade80"
+    },
+    {
+      "type": "color",
+      "id": "grass_color_dark",
+      "label": "Dark variation",
+      "default": "#16a34a"
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": "Opacity",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_animation",
+      "label": "Enable sway animation",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "label": "Animation speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "animation_intensity",
+      "label": "Sway intensity",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grass border"
+    }
+  ]
+}
 {% endschema %}
