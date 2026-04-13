@@ -16,6 +16,7 @@
       "blocks": {
         "slide_QYRfKM": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "announcement": "<strong>🌼 Shop Our Spring Sale Now!  🌼</strong>"
           }
