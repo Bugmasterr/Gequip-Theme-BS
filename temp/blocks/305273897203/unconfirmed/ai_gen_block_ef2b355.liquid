@@ -1,6 +1,166 @@
+{% doc %}
+  @prompt
+    add a bee (the bee emoji) that flies around in a random twirly pattern and repeats, similar to a marquee but an animated bee emoji, make him fly right to left instead of left to right and tighten the vertical range in which the bee can fly and smooth the curves/movement interpolation , flip the bee emoji hes flying backwards and keep him in his section not outside of it
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-flying-bee-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .ai-flying-bee__emoji-{{ ai_gen_id }} {
+    position: absolute;
+    font-size: {{ block.settings.bee_size }}px;
+    animation: ai-flying-bee-path-{{ ai_gen_id }} {{ block.settings.animation_duration }}s ease-in-out infinite;
+  }
+
+  @keyframes ai-flying-bee-path-{{ ai_gen_id }} {
+    0% {
+      left: 110%;
+      top: 45%;
+      transform: rotate(0deg);
+    }
+    5% {
+      left: 102%;
+      top: 42%;
+      transform: rotate(-8deg);
+    }
+    10% {
+      left: 95%;
+      top: 48%;
+      transform: rotate(5deg);
+    }
+    15% {
+      left: 88%;
+      top: 44%;
+      transform: rotate(-6deg);
+    }
+    20% {
+      left: 82%;
+      top: 50%;
+      transform: rotate(7deg);
+    }
+    25% {
+      left: 75%;
+      top: 46%;
+      transform: rotate(-5deg);
+    }
+    30% {
+      left: 68%;
+      top: 52%;
+      transform: rotate(8deg);
+    }
+    35% {
+      left: 62%;
+      top: 48%;
+      transform: rotate(-7deg);
+    }
+    40% {
+      left: 55%;
+      top: 54%;
+      transform: rotate(6deg);
+    }
+    45% {
+      left: 48%;
+      top: 50%;
+      transform: rotate(-8deg);
+    }
+    50% {
+      left: 42%;
+      top: 56%;
+      transform: rotate(7deg);
+    }
+    55% {
+      left: 35%;
+      top: 52%;
+      transform: rotate(-6deg);
+    }
+    60% {
+      left: 28%;
+      top: 58%;
+      transform: rotate(8deg);
+    }
+    65% {
+      left: 22%;
+      top: 54%;
+      transform: rotate(-7deg);
+    }
+    70% {
+      left: 15%;
+      top: 60%;
+      transform: rotate(6deg);
+    }
+    75% {
+      left: 10%;
+      top: 56%;
+      transform: rotate(-5deg);
+    }
+    80% {
+      left: 5%;
+      top: 62%;
+      transform: rotate(7deg);
+    }
+    85% {
+      left: 2%;
+      top: 58%;
+      transform: rotate(-6deg);
+    }
+    90% {
+      left: -2%;
+      top: 64%;
+      transform: rotate(5deg);
+    }
+    95% {
+      left: -4%;
+      top: 60%;
+      transform: rotate(-4deg);
+    }
+    100% {
+      left: -10%;
+      top: 65%;
+      transform: rotate(0deg);
+    }
+  }
+{% endstyle %}
+
+<div class="ai-flying-bee-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-flying-bee__emoji-{{ ai_gen_id }}">🐝</div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Flying bee",
+  "settings": [
+    {
+      "type": "range",
+      "id": "bee_size",
+      "label": "Bee size",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "label": "Animation duration",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "s",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flying bee"
+    }
+  ]
+}
 {% endschema %}
