@@ -36,7 +36,7 @@
             "opacity": 100,
             "enable_animation": true,
             "animation_speed": 6,
-            "animation_intensity": 2
+            "animation_intensity": 3
           },
           "blocks": {}
         }
