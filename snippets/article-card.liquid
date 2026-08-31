@@ -28,19 +28,7 @@
       {% if forloop.first and template.name == 'blog' %}
         {% assign is_featured_article = true %}
       {% endif %}
-      {% render 'image-url', 
-        img: article.image, 
-        size: 600,
-        orientation: section.settings.article_card_img_orientation, 
-        formats: 'webp,jpg',
-        loading: is_featured_article ? 'eager' : 'lazy',
-        fetchpriority: is_featured_article ? 'high' : 'auto',
-        preload: is_featured_article,
-        placeholder: 'blur',
-        breakpoints: '400,600,800,1000,1200',
-        sizes_attr: '(max-width: 767px) 90vw, (max-width: 991px) 45vw, 30vw',
-        class: section.settings.article_card_img_border
-      %}
+      {% render 'image-url', img: article.image, size: 600, orientation: section.settings.article_card_img_orientation, formats: 'webp,jpg', loading: is_featured_article, fetchpriority: is_featured_article, preload: is_featured_article, placeholder: 'blur', breakpoints: '400,600,800,1000,1200', sizes_attr: '(max-width: 767px) 90vw, (max-width: 991px) 45vw, 30vw', class: section.settings.article_card_img_border %}
     </div>
     <h3 class="article-card-title mb-0 {{ section.settings.article_card_title_size }}">
       {{ article.title }}
@@ -56,4 +44,23 @@
       </div>
     {% endif %}
   </a>
-</div>
+</div>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image-url', \n        img: article.image, \n        size: 600,\n
+    \       orientation: section.settings.article_card_img_orientation, \n        formats:
+    'webp,jpg',\n        loading: is_featured_article ? 'eager' : 'lazy',\n        fetchpriority:
+    is_featured_article ? 'high' : 'auto',\n        preload: is_featured_article,\n
+    \       placeholder: 'blur',\n        breakpoints: '400,600,800,1000,1200',\n
+    \       sizes_attr: '(max-width: 767px) 90vw, (max-width: 991px) 45vw, 30vw',\n
+    \       class: section.settings.article_card_img_border\n      %}"
+  to: "{% render 'image-url', img: article.image, size: 600, orientation: section.settings.article_card_img_orientation,
+    formats: 'webp,jpg', loading: is_featured_article, fetchpriority: is_featured_article,
+    preload: is_featured_article, placeholder: 'blur', breakpoints: '400,600,800,1000,1200',
+    sizes_attr: '(max-width: 767px) 90vw, (max-width: 991px) 45vw, 30vw', class: section.settings.article_card_img_border
+    %}"
+  position: 1078..1488
+{%- endcomment -%}

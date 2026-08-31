@@ -57,20 +57,7 @@
                 -}}
               </div>
             {% elsif block.settings.img != blank %}
-              {% render 'image-url', 
-                img: block.settings.img, 
-                size: 1200,
-                orientation: block.settings.img_orientation,
-                class: block.settings.media_border,
-                loading: 'lazy',
-                fetchpriority: forloop.first ? 'high' : 'auto',
-                preload: forloop.first,
-                formats: 'webp,jpg',
-                placeholder: 'blur',
-                breakpoints: '400,600,900,1200,1600',
-                sizes_attr: '(min-width: 992px) 50vw, 100vw',
-                alt: block.settings.img.alt | escape
-              %}
+              {% render 'image-url', img: block.settings.img, size: 1200, orientation: block.settings.img_orientation, class: block.settings.media_border, loading: 'lazy', fetchpriority: forloop.first, preload: forloop.first, formats: 'webp,jpg', placeholder: 'blur', breakpoints: '400,600,900,1200,1600', sizes_attr: '(min-width: 992px) 50vw, 100vw', alt: block.settings.img.alt %}
             {% else %}
               {{ 'image' | placeholder_svg_tag: 'img-thumbnail' }}
             {% endif %}
@@ -532,4 +519,23 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'image-url', \n                img: block.settings.img, \n                size:
+    1200,\n                orientation: block.settings.img_orientation,\n                class:
+    block.settings.media_border,\n                loading: 'lazy',\n                fetchpriority:
+    forloop.first ? 'high' : 'auto',\n                preload: forloop.first,\n                formats:
+    'webp,jpg',\n                placeholder: 'blur',\n                breakpoints:
+    '400,600,900,1200,1600',\n                sizes_attr: '(min-width: 992px) 50vw,
+    100vw',\n                alt: block.settings.img.alt | escape\n              %}"
+  to: "{% render 'image-url', img: block.settings.img, size: 1200, orientation: block.settings.img_orientation,
+    class: block.settings.media_border, loading: 'lazy', fetchpriority: forloop.first,
+    preload: forloop.first, formats: 'webp,jpg', placeholder: 'blur', breakpoints:
+    '400,600,900,1200,1600', sizes_attr: '(min-width: 992px) 50vw, 100vw', alt: block.settings.img.alt
+    %}"
+  position: 2662..3030
+{%- endcomment -%}

@@ -73,7 +73,7 @@
                         render 'product-block-stock-indicator', block: block
                       when 'recommended_products'
                         render 'product-recommendations', block: block
-                      when 'disclaimer_collapse', block: block
+                      when 'disclaimer_collapse', block
                         render 'product-block-collapse-disclaimer', block: block
                       when '@app'
                         render block
@@ -1297,4 +1297,13 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                      when 'disclaimer_collapse', block: block"
+  to: "                      when 'disclaimer_collapse', block"
+  position: 3426..3481
+{%- endcomment -%}

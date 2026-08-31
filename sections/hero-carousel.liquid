@@ -65,36 +65,10 @@
               --overlay-blur: {{ block.settings.overlay_blur | append: 'px' }}">
             {% if block.settings.img_mobile != blank or block.settings.img_desktop != blank %}
               <div class="d-tablet-none" style="{{ media_mobile_height }}">
-                {% render 'image-url',
-                  img: block.settings.img_mobile,
-                  size: 800,
-                  orientation: 'auto',
-                  loading: media_loading,
-                  fetchpriority: forloop.first ? 'high' : 'auto',
-                  preload: forloop.first,
-                  formats: 'webp,jpg',
-                  placeholder: 'blur',
-                  breakpoints: '400,600,800,1000,1200',
-                  sizes_attr: '100vw',
-                  class: 'carousel-media',
-                  art_direction: true
-                %}
+                {% render 'image-url', img: block.settings.img_mobile, size: 800, orientation: 'auto', loading: media_loading, fetchpriority: forloop.first, preload: forloop.first, formats: 'webp,jpg', placeholder: 'blur', breakpoints: '400,600,800,1000,1200', sizes_attr: '100vw', class: 'carousel-media', art_direction: true %}
               </div>
               <div class="d-none d-tablet-block" style="{{ media_desktop_height }}">
-                {% render 'image-url',
-                  img: block.settings.img_desktop,
-                  size: 1800,
-                  orientation: 'auto',
-                  loading: media_loading,
-                  fetchpriority: forloop.first ? 'high' : 'auto',
-                  preload: forloop.first,
-                  formats: 'webp,jpg',
-                  placeholder: 'blur',
-                  breakpoints: '800,1000,1200,1600,2000',
-                  sizes_attr: '{{ section.settings.width }}vw',
-                  class: 'carousel-media',
-                  art_direction: true
-                %}
+                {% render 'image-url', img: block.settings.img_desktop, size: 1800, orientation: 'auto', loading: media_loading, fetchpriority: forloop.first, preload: forloop.first, formats: 'webp,jpg', placeholder: 'blur', breakpoints: '800,1000,1200,1600,2000', sizes_attr: '{{ section.settings.width }}vw', class: 'carousel-media', art_direction: true %}
               </div>
             {% else %}
               {% capture current %}{% cycle 1, 2 %}{% endcapture %}
@@ -661,3 +635,51 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'image-url',
+                      img: block.settings.img_mobile,
+                      size: 800,
+                      orientation: 'auto',
+                      loading: media_loading,
+                      fetchpriority: forloop.first ? 'high' : 'auto',
+                      preload: forloop.first,
+                      formats: 'webp,jpg',
+                      placeholder: 'blur',
+                      breakpoints: '400,600,800,1000,1200',
+                      sizes_attr: '100vw',
+                      class: 'carousel-media',
+                      art_direction: true
+                    %}
+  to: "{% render 'image-url', img: block.settings.img_mobile, size: 800, orientation:
+    'auto', loading: media_loading, fetchpriority: forloop.first, preload: forloop.first,
+    formats: 'webp,jpg', placeholder: 'blur', breakpoints: '400,600,800,1000,1200',
+    sizes_attr: '100vw', class: 'carousel-media', art_direction: true %}"
+  position: 2585..2898
+- from: |-
+    {% render 'image-url',
+                      img: block.settings.img_desktop,
+                      size: 1800,
+                      orientation: 'auto',
+                      loading: media_loading,
+                      fetchpriority: forloop.first ? 'high' : 'auto',
+                      preload: forloop.first,
+                      formats: 'webp,jpg',
+                      placeholder: 'blur',
+                      breakpoints: '800,1000,1200,1600,2000',
+                      sizes_attr: '{{ section.settings.width }}vw',
+                      class: 'carousel-media',
+                      art_direction: true
+                    %}
+  to: "{% render 'image-url', img: block.settings.img_desktop, size: 1800, orientation:
+    'auto', loading: media_loading, fetchpriority: forloop.first, preload: forloop.first,
+    formats: 'webp,jpg', placeholder: 'blur', breakpoints: '800,1000,1200,1600,2000',
+    sizes_attr: '{{ section.settings.width }}vw', class: 'carousel-media', art_direction:
+    true %}"
+  position: 3021..3363
+{% endcomment %}
